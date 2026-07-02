@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720" viewBox="0 0 1600 720" fill="none">
+  <!-- Ambient woodland atmosphere -->
+  <ellipse cx="200" cy="560" rx="340" ry="260" fill="#B3A2FE" fill-opacity=".06"/>
+  <ellipse cx="1400" cy="200" rx="300" ry="240" fill="#a2bffe" fill-opacity=".055"/>
+  <ellipse cx="120" cy="120" rx="220" ry="160" fill="#bce4de" fill-opacity=".05"/>
+  <ellipse cx="1480" cy="580" rx="260" ry="200" fill="#9b88eb" fill-opacity=".045"/>
+
+  <!-- LEFT: slender birch-style trees -->
+  <path d="M48 720V280c0-8 4-14 10-16 6-2 12 0 16 6 4 8 4 18 0 26-2 4-4 8-6 12V720z" fill="#8a9a7e" fill-opacity=".08"/>
+  <path d="M44 300c-18 8-32 22-42 40M52 340c-14 6-26 16-34 30M60 380c-10 4-18 12-22 22" stroke="#7aab8e" stroke-opacity=".14" stroke-width="1.2" stroke-linecap="round"/>
+  <ellipse cx="24" cy="260" rx="42" ry="52" fill="#a8c9b0" fill-opacity=".09"/>
+  <ellipse cx="68" cy="240" rx="36" ry="44" fill="#7aab8e" fill-opacity=".08"/>
+  <ellipse cx="44" cy="220" rx="28" ry="34" fill="#bce4de" fill-opacity=".07"/>
+
+  <path d="M118 720V220c0-10 6-18 14-20 8-2 16 2 20 12 4 12 2 26-4 36-2 4-4 8-6 12V720z" fill="#9b88eb" fill-opacity=".07"/>
+  <path d="M112 240c-22 10-38 28-50 50M122 290c-16 8-30 20-40 36M132 340c-12 6-22 16-28 28" stroke="#9b88eb" stroke-opacity=".12" stroke-width="1.1" stroke-linecap="round"/>
+  <ellipse cx="88" cy="190" rx="48" ry="58" fill="#B3A2FE" fill-opacity=".08"/>
+  <ellipse cx="140" cy="170" rx="38" ry="46" fill="#c4b5ff" fill-opacity=".07"/>
+
+  <!-- LEFT: ferns and bracken -->
+  <path d="M0 720c20-60 48-110 88-148 24-20 54-32 86-34-40 44-62 94-72 148-6 34-8 68-10 34z" fill="#7aab8e" fill-opacity=".09"/>
+  <path d="M24 640c-8 12-10 26-8 40M36 590c-6 10-6 22-2 32M48 540c-4 8-4 18 0 26M60 490c-3 6-2 14 2 20" stroke="#7aab8e" stroke-opacity=".13" stroke-width="1" stroke-linecap="round"/>
+  <path d="M160 720c8-48 24-88 48-118 16-20 36-32 60-34-28 32-44 68-52 108-4 22-8 44-12 66-4 24-8 48-44 44z" fill="#a8c9b0" fill-opacity=".085"/>
+  <path d="M188 640c-8 12-10 26-8 40M200 590c-6 10-6 22-2 32M212 540c-4 8-4 18 0 26" stroke="#8fd4c8" stroke-opacity=".12" stroke-width=".9" stroke-linecap="round"/>
+
+  <!-- LEFT: wildflowers and bluebells -->
+  <path d="M240 720c10-32 24-58 44-78 12-10 28-14 44-12-24 20-40 46-48 76-4 18-8 36-12 54-8 28-16 52-28 40z" fill="#9b88eb" fill-opacity=".07"/>
+  <ellipse cx="228" cy="660" rx="5" ry="9" fill="#B3A2FE" fill-opacity=".14" transform="rotate(-20 228 660)"/>
+  <ellipse cx="252" cy="632" rx="4" ry="7" fill="#a2bffe" fill-opacity=".12" transform="rotate(14 252 632)"/>
+  <ellipse cx="276" cy="608" rx="4" ry="8" fill="#9b88eb" fill-opacity=".13" transform="rotate(-8 276 608)"/>
+  <circle cx="264" cy="648" r="2.2" fill="#B3A2FE" fill-opacity=".18"/>
+  <circle cx="288" cy="620" r="1.8" fill="#bce4de" fill-opacity=".16"/>
+
+  <!-- LEFT top: hanging branch -->
+  <path d="M0 0c40 30 72 68 88 112 8-28 4-58-8-84-24 2-48 4-72 6-4 24-6 48-8 66z" fill="#B3A2FE" fill-opacity=".07"/>
+  <path d="M32 48c14-10 30-14 48-12M56 88c10-8 22-12 36-10M80 128c8-6 18-10 28-8" stroke="#9b88eb" stroke-opacity=".11" stroke-width="1.1" stroke-linecap="round"/>
+  <ellipse cx="72" cy="156" rx="9" ry="15" fill="#c4b5ff" fill-opacity=".1" transform="rotate(-24 72 156)"/>
+  <ellipse cx="108" cy="120" rx="7" ry="12" fill="#bce4de" fill-opacity=".09" transform="rotate(18 108 120)"/>
+
+  <!-- RIGHT: rounded oak-style canopy -->
+  <path d="M1600 720c-30-90-70-160-120-210-36-36-80-56-128-58 52 56 82 120 92 188 6 38 10 76 16 80z" fill="#7aab8e" fill-opacity=".08"/>
+  <ellipse cx="1480" cy="380" rx="120" ry="100" fill="#a8c9b0" fill-opacity=".09"/>
+  <ellipse cx="1540" cy="340" rx="90" ry="76" fill="#7aab8e" fill-opacity=".08"/>
+  <ellipse cx="1420" cy="320" rx="70" ry="58" fill="#bce4de" fill-opacity=".07"/>
+  <path d="M1520 720V420c0-6 4-12 10-14 6-2 12 0 14 8 2 8 0 16-4 22-2 3-4 6-6 10V720z" fill="#8a9a7e" fill-opacity=".07"/>
+  <path d="M1560 720V460c0-5 3-10 8-12 5-2 10 0 12 6 2 6 0 12-3 17-1 2-2 4-4 6V720z" fill="#9b88eb" fill-opacity=".06"/>
+
+  <!-- RIGHT: lavender and tall stems -->
+  <path d="M1600 0c-50 36-88 82-104 134-10 34-14 72-14 110-6-48-2-96 14-142 20-58 56-102 104-102z" fill="#B3A2FE" fill-opacity=".075"/>
+  <path d="M1540 80c-8 14-20 24-34 28M1510 130c-6 10-16 16-28 18M1480 180c-4 8-12 14-22 16" stroke="#9b88eb" stroke-opacity=".12" stroke-width="1.1" stroke-linecap="round"/>
+  <ellipse cx="1500" cy="210" rx="8" ry="14" fill="#B3A2FE" fill-opacity=".12" transform="rotate(22 1500 210)"/>
+  <ellipse cx="1536" cy="250" rx="6" ry="11" fill="#c4b5ff" fill-opacity=".11" transform="rotate(-16 1536 250)"/>
+  <path d="M1460 60c-3 8-2 18 4 24-4-4-6-12-4-20 1-2 0-3 0-4z" fill="#a2bffe" fill-opacity=".1"/>
+  <path d="M1488 40c2 6 2 14-2 20 3-3 4-9 3-15 0-2-1-3-1-5z" fill="#B3A2FE" fill-opacity=".09"/>
+
+  <!-- RIGHT: fern bank -->
+  <path d="M1600 720c-24-68-58-128-104-168-32-28-70-44-112-40 48 52 74 112 82 176 4 26 8 52 18 32z" fill="#7aab8e" fill-opacity=".085"/>
+  <path d="M1520 620c6 10 8 22 6 34M1504 570c4 8 4 18 0 26M1488 520c3 6 2 14-2 20M1472 470c2 5 1 11-2 16" stroke="#7aab8e" stroke-opacity=".12" stroke-width="1" stroke-linecap="round"/>
+  <path d="M1600 580c-18-54-48-100-88-132-22-18-48-28-76-24 34 40 58 86 68 134 4 22 8 44 12 66 4 20 8 40 16 28z" fill="#a8c9b0" fill-opacity=".075"/>
+
+  <!-- RIGHT top: birch cluster -->
+  <path d="M1380 40c-28 22-58 38-92 46 24-18 48-38 66-64 8 6 16 12 26 18z" fill="#bce4de" fill-opacity=".08"/>
+  <path d="M1340 72c-10 12-24 20-40 24M1300 108c-8 10-18 16-30 18" stroke="#7aab8e" stroke-opacity=".11" stroke-width="1" stroke-linecap="round"/>
+  <ellipse cx="1280" cy="96" rx="10" ry="16" fill="#a8c9b0" fill-opacity=".1" transform="rotate(26 1280 96)"/>
+
+  <!-- BOTTOM edges: ground cover -->
+  <path d="M320 720c12-28 28-52 50-70 14-12 32-18 50-16-26 22-44 48-56 78-6 16-12 32-18 48-10 28-20 52-26 40z" fill="#9b88eb" fill-opacity=".065"/>
+  <path d="M1280 720c-12-28-28-52-50-70-14-12-32-18-50-16 26 22 44 48 56 78 6 16 12 32 18 48 10 28 20 52 26 40z" fill="#bce4de" fill-opacity=".06"/>
+  <path d="M400 700c-6 8-14 14-24 16 8-10 16-20 24-32" stroke="#7aab8e" stroke-opacity=".1" stroke-width="1" stroke-linecap="round"/>
+  <path d="M1200 700c6 8 14 14 24 16-8-10-16-20-24-32" stroke="#9b88eb" stroke-opacity=".1" stroke-width="1" stroke-linecap="round"/>
+
+  <!-- Mid-edge framing (keeps centre clearer) -->
+  <path d="M340 720c6-44 16-82 32-114 8-14 20-24 36-28-20 26-30 56-36 88-4 18-8 36-12 54-4 20-8 40-20 30z" fill="#a8c9b0" fill-opacity=".055"/>
+  <path d="M1260 720c-6-44-16-82-32-114-8-14-20-24-36-28 20 26 30 56 36 88 4 18 8 36 12 54 4 20 8 40 20 30z" fill="#a8c9b0" fill-opacity=".055"/>
+  <path d="M300 160c-8 14-20 24-36 30 14-10 26-22 38-36" stroke="#7aab8e" stroke-opacity=".1" stroke-width="1" stroke-linecap="round"/>
+  <path d="M1300 560c8 14 20 24 36 30-14-10-26-22-38-36" stroke="#7aab8e" stroke-opacity=".1" stroke-width="1" stroke-linecap="round"/>
+
+  <!-- Delicate mid accents -->
+  <circle cx="400" cy="200" r="2" fill="#B3A2FE" fill-opacity=".14"/>
+  <circle cx="440" cy="240" r="1.6" fill="#bce4de" fill-opacity=".12"/>
+  <circle cx="1160" cy="480" r="2" fill="#9b88eb" fill-opacity=".13"/>
+  <circle cx="1200" cy="440" r="1.6" fill="#a2bffe" fill-opacity=".11"/>
+  <circle cx="380" cy="520" r="1.8" fill="#7aab8e" fill-opacity=".12"/>
+  <circle cx="1220" cy="260" r="1.8" fill="#7aab8e" fill-opacity=".11"/>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 210" fill="none" preserveAspectRatio="none">
+  <rect x="10" y="10" width="400" height="190" rx="18" stroke="url(#pillarVineGrad)" stroke-width="1.45" fill="none" opacity=".93"/>
+  <path d="M52 10h316" stroke="#bce4de" stroke-width=".9" stroke-linecap="round" opacity=".32"/>
+  <path d="M52 200h316" stroke="#bce4de" stroke-width=".9" stroke-linecap="round" opacity=".32"/>
+  <defs>
+    <linearGradient id="pillarVineGrad" x1="0" y1="0" x2="420" y2="210" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7aab8e"/>
+      <stop offset=".25" stop-color="#bce4de"/>
+      <stop offset=".5" stop-color="#B3A2FE"/>
+      <stop offset=".75" stop-color="#a8c9b0"/>
+      <stop offset="1" stop-color="#7aab8e"/>
+    </linearGradient>
+  </defs>
+</svg>
