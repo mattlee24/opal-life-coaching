@@ -6,7 +6,7 @@ export default function CoachingPage() {
   const data = services.coaching;
   return (
     <>
-      <SeoHead title={data.seo.title} description={data.seo.description} />
+      <SeoHead title={data.seo.title} description={data.seo.description} path={`/${data.slug}`} />
       <ServicePageContent data={data} />
     </>
   );

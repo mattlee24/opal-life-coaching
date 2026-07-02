@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { OpalSep } from "@/components/ui/OpalSep";
+import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/cn";
 import type { ServicePageData } from "@/lib/services";
 
@@ -31,7 +34,7 @@ export function ServiceSessionsSection({ data }: ServiceSessionsSectionProps) {
             </span>
           </div>
 
-          <div className="service-sessions-body max-md:order-2 flex w-full flex-col gap-[clamp(1.35rem,2.6vw,1.95rem)]">
+          <Reveal className="service-sessions-body max-md:order-2 flex w-full flex-col gap-[clamp(1.35rem,2.6vw,1.95rem)]">
             <h2 className="service-sessions-lead m-0 max-w-[20ch] font-serif text-[clamp(1.85rem,3.2vw,2.55rem)] font-semibold leading-[1.22] tracking-[-.022em] text-blue max-md:mx-auto max-md:max-w-[min(540px,100%)] max-md:text-center">
               Whenever you&apos;re ready, the door is open.
             </h2>
@@ -135,7 +138,7 @@ export function ServiceSessionsSection({ data }: ServiceSessionsSectionProps) {
                 </figure>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

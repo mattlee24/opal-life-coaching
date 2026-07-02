@@ -1,3 +1,7 @@
+"use client";
+
+import { Reveal } from "@/components/ui/Reveal";
+
 const values = [
   {
     icon: "/assets/icon-value-pace.svg",
@@ -27,7 +31,13 @@ export function Values() {
         <div className={"values-strip mx-auto flex max-w-[min(1180px,100%)] items-stretch max-[900px]:max-w-[min(480px,100%)] max-[900px]:flex-col"}>
           {values.flatMap((value, index) => {
             const item = (
-              <article key={value.title} className={"value-item flex flex-1 items-center gap-[1.35rem] px-[clamp(1.5rem,2.5vw,2rem)] py-[clamp(1rem,2vw,1.35rem)] min-w-0 max-[900px]:gap-[1.1rem] max-[900px]:px-0 max-[900px]:py-[1.1rem]"}>
+              <Reveal
+                key={value.title}
+                delay={index * 90}
+                variant="up"
+                fill
+                className={"value-item flex flex-1 items-center gap-[1.35rem] px-[clamp(1.5rem,2.5vw,2rem)] py-[clamp(1rem,2vw,1.35rem)] min-w-0 max-[900px]:gap-[1.1rem] max-[900px]:px-0 max-[900px]:py-[1.1rem]"}
+              >
                 <div className={"value-icon relative h-[76px] w-[76px] shrink-0 flex items-center justify-center"}>
                   <span className={"value-icon-halo absolute inset-[2px] rounded-full bg-[radial-gradient(circle_at_50%_38%,rgba(255,255,255,.95)_0%,rgba(244,252,248,.85)_42%,rgba(212,235,228,.55)_68%,transparent_90%)] shadow-[0_0_0_1px_rgba(179,162,254,.1),0_8px_22px_rgba(179,162,254,.08)]"} aria-hidden="true" />
                   <img src={value.icon} alt="" className={"relative z-[1] h-[50px] w-[50px] [filter:drop-shadow(0_2px_8px_rgba(179,162,254,.12))]"} />
@@ -36,7 +46,7 @@ export function Values() {
                   <h3 className={"mb-[.38rem] text-[clamp(1.48rem,2.15vw,1.82rem)] leading-[1.12] tracking-[-.015em] text-[#9b88eb]"}>{value.title}</h3>
                   <p className={"text-[.91rem] leading-[1.62] text-blue"}>{value.description}</p>
                 </div>
-              </article>
+              </Reveal>
             );
 
             if (index === 0) return [item];

@@ -1,3 +1,4 @@
+import { SiteImageFill } from "@/components/ui/SiteImage";
 import Link from "next/link";
 import { cn } from "@/lib/cn";
 
@@ -5,10 +6,13 @@ export function Hero() {
   return (
     <section className={"hero relative isolate flex min-h-screen min-h-dvh items-center overflow-hidden bg-[#f7faf8] box-border pt-[clamp(6.25rem,12vh,8.25rem)] pb-[clamp(2rem,4vh,3rem)]"}>
       <div className={"hero-bg absolute inset-0 overflow-hidden"} aria-hidden="true">
-        <img
-          src="/assets/hero-woodland-v3.png"
+        <SiteImageFill
+          src="/assets/hero-woodland-v3.jpg"
           alt=""
-          className={"h-full w-full object-cover object-[62%_52%] [filter:saturate(1.12)_contrast(1.05)_brightness(1.03)]"}
+          priority
+          fetchPriority="high"
+          sizes="100vw"
+          className={"object-cover object-[62%_52%] [filter:saturate(1.12)_contrast(1.05)_brightness(1.03)]"}
         />
       </div>
       <div className={"hero-vignette pointer-events-none absolute inset-0 z-[1]"} aria-hidden="true" />
@@ -26,6 +30,8 @@ export function Hero() {
               <img
                 src="/assets/icon-opal-heart.svg"
                 alt=""
+                width={30}
+                height={30}
                 className={"block h-full w-full"}
               />
             </span>

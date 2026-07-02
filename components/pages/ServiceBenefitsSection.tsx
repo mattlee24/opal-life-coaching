@@ -1,4 +1,7 @@
+"use client";
+
 import { OpalSep } from "@/components/ui/OpalSep";
+import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/cn";
 import type { ServicePageData } from "@/lib/services";
 
@@ -27,7 +30,7 @@ export function ServiceBenefitsSection({ data }: ServiceBenefitsSectionProps) {
 
       <div className="site-wrap relative z-[1] w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]">
         <div className="service-benefits-editorial grid w-full grid-cols-1 items-start gap-[clamp(1.75rem,3.2vw,2.75rem)] md:grid-cols-[minmax(0,1fr)_auto] md:gap-[clamp(1.75rem,3.2vw,2.75rem)]">
-          <div className="service-benefits-body max-md:order-2 flex w-full flex-col gap-[clamp(1.5rem,2.8vw,2rem)]">
+          <Reveal className="service-benefits-body max-md:order-2 flex w-full flex-col gap-[clamp(1.5rem,2.8vw,2rem)]">
             <header className="service-benefits-head m-0 max-md:text-center">
               <h2 className="m-0 font-serif text-[clamp(1.85rem,3.2vw,2.45rem)] font-semibold leading-[1.12] tracking-[-.02em] text-blue">
                 What you can{" "}
@@ -38,8 +41,8 @@ export function ServiceBenefitsSection({ data }: ServiceBenefitsSectionProps) {
 
             <div className="service-benefits-pillars grid w-full grid-cols-1 items-stretch gap-4 md:grid-cols-3 md:gap-[clamp(1.15rem,2.2vw,1.75rem)]">
               {data.benefits.map((benefit, index) => (
+                <Reveal key={benefit.title} delay={index * 110} variant="up" fill>
                 <article
-                  key={benefit.title}
                   className={cn(
                     "service-benefits-pillar vine-panel vine-panel--pillar group relative isolate h-full min-h-0 overflow-hidden rounded-[18px]",
                     "border-2 border-transparent bg-clip-padding",
@@ -96,9 +99,10 @@ export function ServiceBenefitsSection({ data }: ServiceBenefitsSectionProps) {
                     </p>
                   </div>
                 </article>
+                </Reveal>
               ))}
             </div>
-          </div>
+          </Reveal>
 
           <div
             className="service-benefits-rail max-md:order-1 flex flex-col items-center gap-4 self-stretch pt-[.45rem] max-md:mb-[.35rem] max-md:flex-row max-md:gap-4 max-md:self-auto max-md:pt-0"

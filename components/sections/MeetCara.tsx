@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { OpalSep } from "@/components/ui/OpalSep";
+import { Reveal } from "@/components/ui/Reveal";
+import { SiteImage } from "@/components/ui/SiteImage";
 import { cn } from "@/lib/cn";
 
 export function MeetCara() {
@@ -7,7 +11,7 @@ export function MeetCara() {
     <section className={cn("meet-cara relative isolate overflow-hidden bg-[#f3f0fa]", "py-[var(--section-y)]")} id="about">
       <div className={"meet-cara-scene pointer-events-none absolute inset-0 z-0"} aria-hidden="true" />
       <div className={cn("site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]", "meet-cara-inner relative z-[1] grid items-center gap-[clamp(2.75rem,6.5vw,6rem)] max-md:grid-cols-1 max-md:gap-11 md:grid-cols-[minmax(300px,.88fr)_minmax(340px,1.12fr)]")}>
-        <div className={"meet-cara-photo relative justify-self-center w-full max-w-[min(480px,100%)] max-md:max-w-[min(380px,88vw)]"}>
+        <Reveal variant="left" className={"meet-cara-photo relative justify-self-center w-full max-w-[min(480px,100%)] max-md:max-w-[min(380px,88vw)]"}>
           <span className={"meet-cara-glow pointer-events-none absolute inset-[6%_-8%_-6%] z-0 rounded-full"} aria-hidden="true" />
           <div className={"meet-cara-portrait relative z-[1] p-[clamp(1.1rem,2.2vw,1.65rem)]"}>
             <span className={"meet-cara-vine pointer-events-none absolute inset-0 z-[4] rounded-[30px]"} aria-hidden="true" />
@@ -33,9 +37,12 @@ export function MeetCara() {
             </span>
             <div className={"meet-cara-frame relative z-[2] overflow-hidden rounded-[20px] bg-[linear-gradient(180deg,#fff_0%,#f8f6fc_100%)] p-1.5 shadow-[0_1px_0_rgba(255,255,255,.95)_inset,0_32px_72px_rgba(179,162,254,.18),0_14px_36px_rgba(28,48,163,.07)]"}>
               <span className={"meet-cara-sheen pointer-events-none absolute inset-0 z-[3] overflow-hidden rounded-[inherit]"} aria-hidden="true" />
-              <img
+              <SiteImage
                 src="/assets/cara-tarot.png"
                 alt="Cara, life coach and healer"
+                width={480}
+                height={600}
+                sizes="(max-width: 768px) 88vw, 480px"
                 className={"relative z-[1] block aspect-[4/5] w-full rounded-[15px] object-cover"}
               />
             </div>
@@ -54,8 +61,8 @@ export function MeetCara() {
             />
             <p className={"font-serif text-[clamp(.95rem,1.4vw,1.08rem)] font-semibold leading-[1.2] whitespace-nowrap text-blue max-md:whitespace-normal"}>One step at a time</p>
           </div>
-        </div>
-        <div className={"meet-cara-copy relative max-w-[min(580px,100%)] max-md:mx-auto max-md:text-center"}>
+        </Reveal>
+        <Reveal variant="right" delay={120} className={"meet-cara-copy relative max-w-[min(580px,100%)] max-md:mx-auto max-md:text-center"}>
           <span className={"meet-cara-copy-sprig pointer-events-none absolute top-[-.25rem] right-[clamp(-1rem,-2vw,0)] w-[min(76px,16vw)] opacity-20 max-md:hidden"} aria-hidden="true">
             <img
               src="/assets/sprig-delicate.svg"
@@ -98,7 +105,7 @@ export function MeetCara() {
               Warm, personal sessions — online or in person.
             </p>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -6,7 +6,7 @@ export default function ReikiPage() {
   const data = services.reiki;
   return (
     <>
-      <SeoHead title={data.seo.title} description={data.seo.description} />
+      <SeoHead title={data.seo.title} description={data.seo.description} path={`/${data.slug}`} />
       <ServicePageContent data={data} />
     </>
   );

@@ -3,6 +3,12 @@ export const site = {
   tagline: "With Cara",
   email: "hello@opallifecoaching.com",
   location: "Chichester & Eastergate, West Sussex",
+  url: "https://opal-life-coaching.vercel.app",
+  ogImage: "/assets/cara-tarot.png",
+  social: {
+    facebook: null as string | null,
+    instagram: null as string | null,
+  },
 } as const;
 
 export const serviceLinks = [

@@ -1,7 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useState } from "react";
 import { OpalSep } from "@/components/ui/OpalSep";
+import { FaqItem } from "@/components/ui/FaqItem";
+import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/cn";
 
 const faqs = [
@@ -33,40 +35,13 @@ const faqs = [
 ] as const;
 
 export function Faqs() {
-  const listRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const list = listRef.current;
-    if (!list) return;
-
-    const items = list.querySelectorAll<HTMLDetailsElement>(".faq-item");
-    const handlers: Array<{ item: HTMLDetailsElement; handler: () => void }> =
-      [];
-
-    items.forEach((item) => {
-      const handler = () => {
-        if (item.open) {
-          items.forEach((other) => {
-            if (other !== item) other.open = false;
-          });
-        }
-      };
-      item.addEventListener("toggle", handler);
-      handlers.push({ item, handler });
-    });
-
-    return () => {
-      handlers.forEach(({ item, handler }) => {
-        item.removeEventListener("toggle", handler);
-      });
-    };
-  }, []);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <section className={cn("faqs relative isolate overflow-hidden bg-white", "py-[var(--section-y)]")} id="faqs">
       <div className={"faqs-scene pointer-events-none absolute inset-0 z-0"} aria-hidden="true" />
       <div className={"site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]"}>
-        <header className={"faqs-head mx-auto mb-[clamp(2.5rem,5vw,3.25rem)] max-w-[640px] text-center"}>
+        <Reveal className={"faqs-head mx-auto mb-[clamp(2.5rem,5vw,3.25rem)] max-w-[640px] text-center"}>
           <p className={"text-[.68rem] font-bold tracking-[.18em] uppercase text-muted"}>FAQs</p>
           <h2 className={"mb-4 text-[clamp(2rem,3.8vw,2.75rem)] leading-[1.08] tracking-[-.02em] text-blue"}>Questions you might have</h2>
           <p className={"mx-auto text-base leading-[1.75] text-muted"}>
@@ -74,21 +49,23 @@ export function Faqs() {
             out.
           </p>
           <OpalSep center wide />
-        </header>
-        <div className={"faq-list mx-auto flex max-w-[700px] flex-col"} ref={listRef}>
-          {faqs.map((faq, index) => (
-            <div key={faq.question}>
-              {index > 0 && <div className={"faq-divider h-px border-none bg-[linear-gradient(90deg,transparent,rgba(179,162,254,.38)_18%,rgba(188,228,222,.42)_50%,rgba(179,162,254,.38)_82%,transparent)]"} aria-hidden="true" />}
-              <details className={cn("faq-item relative", "faq-item")}>
-                <summary className={"flex cursor-pointer list-none items-center justify-between gap-5 py-[1.35rem] font-serif text-[clamp(1.12rem,1.65vw,1.28rem)] font-semibold leading-[1.35] text-blue transition-colors hover:text-[#152570]"}>
-                  <span className={"faq-q flex-1 text-left"}>{faq.question}</span>
-                  <span className={"faq-chevron flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full bg-pastel-lilac/10 transition-colors"} aria-hidden="true" />
-                </summary>
-                <p className={"text-[.92rem] leading-[1.85] text-muted pr-8 pb-[1.35rem] max-w-[58ch] max-md:pr-0"}>{faq.answer}</p>
-              </details>
-            </div>
-          ))}
-        </div>
+        </Reveal>
+        <Reveal delay={80}>
+          <div className={"faq-list mx-auto flex max-w-[700px] flex-col"}>
+            {faqs.map((faq, index) => (
+              <FaqItem
+                key={faq.question}
+                question={faq.question}
+                answer={faq.answer}
+                showDivider={index > 0}
+                isOpen={openIndex === index}
+                onToggle={() =>
+                  setOpenIndex((current) => (current === index ? null : index))
+                }
+              />
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   );

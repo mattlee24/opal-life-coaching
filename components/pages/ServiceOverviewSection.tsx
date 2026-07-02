@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/cn";
 import type { ServicePageData } from "@/lib/services";
 
@@ -19,7 +22,7 @@ export function ServiceOverviewSection({ data }: ServiceOverviewSectionProps) {
 
       <div className="site-wrap service-overview-inner relative z-[2] w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]">
         <div className="service-overview-grid grid w-full grid-cols-1 items-center gap-[clamp(2.75rem,5vw,4.5rem)] md:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)]">
-          <div className="service-overview-copy">
+          <Reveal variant="left" className="service-overview-copy">
             <div className="service-overview-editorial grid grid-cols-[auto_1fr] items-start gap-[clamp(1.75rem,3.2vw,2.75rem)] max-md:grid-cols-1 max-md:gap-[1.65rem]">
               <div
                 className="service-overview-rail flex flex-col items-center gap-4 pt-[.45rem] max-md:mb-[.35rem] max-md:flex-row max-md:gap-4 max-md:pt-0"
@@ -67,9 +70,9 @@ export function ServiceOverviewSection({ data }: ServiceOverviewSectionProps) {
                 ) : null}
               </div>
             </div>
-          </div>
+          </Reveal>
 
-          <aside className="service-overview-aside" aria-label="Service highlight">
+          <Reveal variant="right" delay={120} className="service-overview-aside" aria-label="Service highlight">
             <div
               className={cn(
                 "service-overview-card opal-panel",
@@ -110,7 +113,7 @@ export function ServiceOverviewSection({ data }: ServiceOverviewSectionProps) {
                 </p>
               </div>
             </div>
-          </aside>
+          </Reveal>
         </div>
       </div>
     </section>

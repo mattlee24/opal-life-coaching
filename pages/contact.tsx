@@ -8,6 +8,7 @@ export default function ContactPage() {
       <SeoHead
         title="Contact — Opal Life Coaching"
         description="Get in touch or book a session with Cara."
+        path="/contact"
       />
       <Contact offsetHeader />
       <Faqs />

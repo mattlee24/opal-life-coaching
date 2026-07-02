@@ -103,10 +103,7 @@ export function Header() {
       >
         <div className={cn("site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]", "hdr flex min-w-0 items-center gap-3")}>
           <Link className={"logo flex shrink-0 items-center"} href="/" onClick={closeMenu}>
-            <img
-              src="/assets/logo-mark.png"
-              alt="Opal Life Coaching"
-            />
+            <img src="/assets/logo-mark.png" alt="Opal Life Coaching" />
           </Link>
           <nav className={"nav ml-auto hidden min-w-0 flex-wrap items-center justify-end gap-[.35rem] md:flex"} aria-label="Primary">
             {aboutLink ? (

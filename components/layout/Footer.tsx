@@ -1,5 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import { OpalSep } from "@/components/ui/OpalSep";
+import { Reveal } from "@/components/ui/Reveal";
+import { SiteImage } from "@/components/ui/SiteImage";
+import { SocialLink, hasSocialLinks } from "@/components/ui/SocialLink";
 import { cn } from "@/lib/cn";
 import { site } from "@/lib/site";
 
@@ -25,7 +30,7 @@ export function Footer() {
           className={"footer-sprig absolute bottom-[clamp(5rem,12vh,8rem)] right-[clamp(.5rem,3vw,2.5rem)] w-[clamp(58px,6.5vw,84px)] scale-x-[-1] opacity-22 [filter:drop-shadow(0_6px_16px_rgba(179,162,254,.1))] max-lg:opacity-14"}
         />
       </div>
-      <div className={"footer-calm relative z-[2] px-0 pt-[clamp(5.5rem,11vw,7.5rem)] pb-[clamp(2.25rem,4.5vw,3rem)] text-center"}>
+      <Reveal className={"footer-calm relative z-[2] px-0 pt-[clamp(5.5rem,11vw,7.5rem)] pb-[clamp(2.25rem,4.5vw,3rem)] text-center"}>
         <div className={cn("site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]", "footer-calm-inner relative mx-auto max-w-[580px] px-2")}>
           <h2 className={"mb-[.75rem] text-[clamp(2.15rem,4.2vw,3.05rem)] leading-[1.06] tracking-[-.025em] text-blue"}>
             You&apos;re welcome here
@@ -40,14 +45,17 @@ export function Footer() {
           </p>
           <OpalSep center wide />
         </div>
-      </div>
+      </Reveal>
       <div className={cn("site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]", "footer-main relative z-[2] pb-[clamp(1.5rem,3vw,2rem)]")}>
         <div className={"footer-grid grid justify-items-center gap-[clamp(2rem,4vw,3.5rem)] py-[clamp(2.35rem,4.5vw,3rem)] pb-[clamp(1rem,2vw,1.25rem)] max-lg:grid-cols-1 max-lg:gap-4 md:grid-cols-[1.15fr_1fr_1fr]"}>
           <div className={"footer-brand flex w-[min(100%,34ch)] flex-col items-start text-left"}>
             <Link className={"footer-logo-wrap relative mb-[1.2rem] inline-block rounded-full bg-[linear-gradient(145deg,rgba(179,162,254,.45),rgba(188,228,222,.38)_50%,rgba(179,162,254,.35))] p-1 shadow-[0_10px_28px_rgba(179,162,254,.16)]"} href="/">
-              <img
+              <SiteImage
                 src="/assets/logo-mark.png"
                 alt="Opal Life Coaching"
+                width={76}
+                height={76}
+                sizes="76px"
                 className={"h-[76px] w-[76px] rounded-full bg-white object-cover shadow-[0_6px_20px_rgba(179,162,254,.14)]"}
               />
             </Link>
@@ -78,32 +86,20 @@ export function Footer() {
             </p>
             <p className={"mb-[.6rem] text-[.88rem] leading-[1.65] text-muted"}>Chichester &amp; Eastergate</p>
             <p className={"mb-[.6rem] text-[.88rem] leading-[1.65] text-muted"}>West Sussex</p>
+            {hasSocialLinks() ? (
             <div className={"footer-social mt-[1.15rem] flex justify-start gap-[.7rem]"}>
-              <a
-                href="#"
-                aria-label="Facebook"
-                rel="noopener noreferrer"
+              <SocialLink
+                network="facebook"
+                showLabel={false}
                 className={"inline-flex h-[42px] w-[42px] items-center justify-center rounded-full border border-pastel-lilac/22 bg-white/72 shadow-[0_6px_18px_rgba(179,162,254,.08)] transition-[background,border-color,transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:border-pastel-lilac/40 hover:bg-white hover:shadow-[0_10px_24px_rgba(179,162,254,.16)] motion-reduce:hover:translate-y-0"}
-              >
-                <img
-                  src="/assets/icon-social-facebook.svg"
-                  alt=""
-                  className={"block h-5 w-5"}
-                />
-              </a>
-              <a
-                href="#"
-                aria-label="Instagram"
-                rel="noopener noreferrer"
+              />
+              <SocialLink
+                network="instagram"
+                showLabel={false}
                 className={"inline-flex h-[42px] w-[42px] items-center justify-center rounded-full border border-pastel-lilac/22 bg-white/72 shadow-[0_6px_18px_rgba(179,162,254,.08)] transition-[background,border-color,transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:border-pastel-lilac/40 hover:bg-white hover:shadow-[0_10px_24px_rgba(179,162,254,.16)] motion-reduce:hover:translate-y-0"}
-              >
-                <img
-                  src="/assets/icon-social-instagram.svg"
-                  alt=""
-                  className={"block h-5 w-5"}
-                />
-              </a>
+              />
             </div>
+            ) : null}
           </div>
         </div>
         <div className={"footer-cta px-0 py-[clamp(1.85rem,3.5vw,2.65rem)] text-center"}>

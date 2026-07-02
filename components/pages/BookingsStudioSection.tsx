@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Reveal } from "@/components/ui/Reveal";
 import { OpalSep } from "@/components/ui/OpalSep";
 import { cn } from "@/lib/cn";
 import type { BookingService } from "@/lib/services";
@@ -98,7 +99,7 @@ export function BookingsStudioSection({ services }: BookingsStudioSectionProps) 
       )}
     >
       <div className="site-wrap mx-auto w-full max-w-[var(--max)] px-[var(--page-x)]">
-        <header className="bookings-studio-head mx-auto mb-[clamp(2rem,4vw,2.75rem)] max-w-[min(720px,100%)] text-center">
+        <Reveal className="bookings-studio-head mx-auto mb-[clamp(2rem,4vw,2.75rem)] max-w-[min(720px,100%)] text-center">
           <p className="mb-4 inline-flex h-[34px] items-center justify-center rounded-full border border-pastel-lilac/20 bg-white/72 px-[.85rem] text-[.68rem] font-bold tracking-[.18em] text-[#9580f5] uppercase">
             Book your session
           </p>
@@ -113,8 +114,9 @@ export function BookingsStudioSection({ services }: BookingsStudioSectionProps) 
             Select a service to view live availability. Each calendar opens in place
             below — online or in person, at a pace that suits you.
           </p>
-        </header>
+        </Reveal>
 
+        <Reveal delay={80}>
         <div
           className="bookings-studio-tabs mb-[clamp(1.35rem,2.4vw,1.75rem)] flex flex-wrap justify-center gap-2"
           role="tablist"
@@ -234,6 +236,7 @@ export function BookingsStudioSection({ services }: BookingsStudioSectionProps) 
             </div>
           </div>
         </div>
+        </Reveal>
 
         <ul
           className="bookings-studio-reassurance mx-auto mt-[clamp(1.75rem,3vw,2.25rem)] flex max-w-[min(720px,100%)] list-none flex-wrap justify-center gap-x-6 gap-y-2 p-0 text-[.78rem] font-semibold text-blue"

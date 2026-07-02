@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/cn";
 
 export function ClosingInvitationCta() {
@@ -17,7 +18,7 @@ export function ClosingInvitationCta() {
       </div>
 
       <div className={cn("site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]", "about-close-inner relative z-[2] grid w-full items-center gap-[clamp(2.5rem,5vw,4.5rem)] max-md:grid-cols-1 max-md:gap-9 md:grid-cols-[minmax(280px,1.05fr)_minmax(280px,.95fr)]")}>
-        <div className={"about-close-copy max-w-[min(520px,100%)] max-md:mx-auto max-md:max-w-full max-md:text-center"}>
+        <Reveal variant="left" className={"about-close-copy max-w-[min(520px,100%)] max-md:mx-auto max-md:max-w-full max-md:text-center"}>
           <p className={"inline-flex items-center justify-center h-[34px] px-[.85rem] text-[.68rem] font-bold tracking-[.18em] uppercase leading-none text-[#9580f5] mb-4 bg-white/55 border border-pastel-lilac/20 rounded-full box-border"}>Take the first step</p>
           <h2>
             <span className={"about-close-line block text-[clamp(2.15rem,4.2vw,3.15rem)] leading-[1.04] tracking-[-.03em]"}>I&apos;d love to meet you</span>
@@ -45,9 +46,9 @@ export function ClosingInvitationCta() {
             <li className={"inline-flex items-center gap-[.45rem] text-[.76rem] font-semibold tracking-[.02em] text-blue"}>No pressure</li>
             <li className={"inline-flex items-center gap-[.45rem] text-[.76rem] font-semibold tracking-[.02em] text-blue"}>At your pace</li>
           </ul>
-        </div>
+        </Reveal>
 
-        <div className={"about-close-stage relative flex min-h-[clamp(320px,36vw,420px)] items-center justify-center max-md:order-[-1] max-md:min-h-[clamp(280px,62vw,340px)]"}>
+        <Reveal variant="right" delay={120} className={"about-close-stage relative flex min-h-[clamp(320px,36vw,420px)] items-center justify-center max-md:order-[-1] max-md:min-h-[clamp(280px,62vw,340px)]"}>
           <div className={"about-close-orbit pointer-events-none absolute inset-0 flex items-center justify-center"} aria-hidden="true">
             <span
               className={cn(
@@ -101,7 +102,7 @@ export function ClosingInvitationCta() {
               </div>
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

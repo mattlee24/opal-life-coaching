@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { OpalSep } from "@/components/ui/OpalSep";
+import { Reveal } from "@/components/ui/Reveal";
+import { SiteImage } from "@/components/ui/SiteImage";
 import { cn } from "@/lib/cn";
 
 const services = [
@@ -36,7 +40,7 @@ export function Services() {
   return (
     <section className={cn("services relative overflow-hidden bg-white", "py-[var(--section-y)]")} id="services">
       <div className={"site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]"}>
-        <header className={"services-head mx-auto mb-[clamp(3rem,6vw,4.25rem)] max-w-[min(820px,100%)] text-center"}>
+        <Reveal className={"services-head mx-auto mb-[clamp(3rem,6vw,4.25rem)] max-w-[min(820px,100%)] text-center"}>
           <p className={"text-[.68rem] font-bold tracking-[.18em] uppercase text-muted"}>Services</p>
           <h2 className={"mb-[.85rem] text-[clamp(2.2rem,4.3vw,3.2rem)] leading-[1.06] tracking-[-.025em] text-blue"}>
             Find the support
@@ -62,21 +66,22 @@ export function Services() {
             </span>
           </div>
           <OpalSep center wide />
-        </header>
+        </Reveal>
         <div className={"svc-grid grid items-stretch gap-[clamp(1.15rem,2vw,1.85rem)] max-md:mx-auto max-md:max-w-[min(380px,100%)] max-md:grid-cols-1 max-md:gap-7 md:grid-cols-2 xl:grid-cols-3"}>
-          {services.map((service) => (
+          {services.map((service, index) => (
+            <Reveal key={service.href} delay={index * 120} variant="up" fill>
             <article
-              key={service.href}
               className={cn("svc-card relative flex h-full flex-col isolate overflow-hidden rounded-[26px] border-2 border-transparent bg-clip-padding bg-[linear-gradient(180deg,#fdfffe_0%,#f3f9f6_55%,#f8f6fc_100%)] pb-[2.35rem] shadow-[0_1px_0_rgba(255,255,255,.95)_inset,0_20px_54px_rgba(93,138,111,.08),0_8px_26px_rgba(179,162,254,.05)] transition-[transform,box-shadow] duration-500 ease-opal hover:-translate-y-2.5 hover:shadow-[0_1px_0_rgba(255,255,255,1)_inset,0_32px_70px_rgba(93,138,111,.13),0_14px_36px_rgba(179,162,254,.12)] motion-reduce:hover:translate-y-0", "svc-card", service.variant)}
             >
               <span className={"svc-opal-sheen pointer-events-none absolute inset-0 z-[1] rounded-[inherit]"} aria-hidden="true" />
               <div className={"svc-icon-hero relative z-[2] flex min-h-[clamp(200px,21vw,240px)] items-center justify-center px-4 pt-8 pb-[1.65rem] max-md:min-h-[195px] lg:min-h-[200px] xl:min-h-[230px] xl:pt-10"}>
                 <div className={"svc-icon-halo relative flex aspect-square w-[min(176px,76%)] items-center justify-center rounded-full bg-[radial-gradient(circle_at_50%_38%,#fff_0%,rgba(244,252,248,.95)_35%,rgba(212,235,228,.75)_62%,rgba(188,228,222,.35)_82%,transparent_94%)] shadow-[0_14px_44px_rgba(93,138,111,.13),0_0_0_2px_rgba(122,171,142,.14)_inset,0_0_0_6px_rgba(255,255,255,.7)] transition-[transform,box-shadow] duration-[550ms] ease-opal max-md:w-[min(176px,74%)] lg:w-[min(172px,76%)] xl:w-[188px]"}>
-                  <img
+                  <SiteImage
                     src={service.icon}
                     alt=""
                     width={148}
                     height={148}
+                    sizes="(max-width: 768px) 74vw, 156px"
                     className={"relative z-[1] h-auto w-[min(146px,82%)] object-contain [filter:saturate(1.12)_contrast(1.06)_drop-shadow(0_10px_22px_rgba(93,138,111,.18))] transition-transform duration-[550ms] ease-opal lg:w-[min(142px,82%)] xl:w-[156px]"}
                   />
                 </div>
@@ -109,9 +114,10 @@ export function Services() {
                 </div>
               </div>
             </article>
+            </Reveal>
           ))}
         </div>
-        <footer className={"services-foot mx-auto mt-[clamp(2.25rem,4vw,3rem)] max-w-[42ch] text-center"}>
+        <Reveal className={"services-foot mx-auto mt-[clamp(2.25rem,4vw,3rem)] max-w-[42ch] text-center"}>
           <p className={"text-[.9rem] leading-[1.7] text-muted"}>
             Not sure where to start? Every path can be blended —{" "}
             <Link href="#contact" className={"font-semibold text-blue border-b border-pastel-lilac/35 transition-[border-color,color] hover:border-[#9580f5] hover:text-[#152570]"}>
@@ -119,7 +125,7 @@ export function Services() {
             </Link>{" "}
             and we&apos;ll find what fits.
           </p>
-        </footer>
+        </Reveal>
       </div>
     </section>
   );
