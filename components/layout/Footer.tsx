@@ -27,6 +27,8 @@ export function Footer() {
         <img
           src="/assets/sprig-fern.svg"
           alt=""
+          width={84}
+          height={84}
           className={"footer-sprig absolute bottom-[clamp(5rem,12vh,8rem)] right-[clamp(.5rem,3vw,2.5rem)] w-[clamp(58px,6.5vw,84px)] scale-x-[-1] opacity-22 [filter:drop-shadow(0_6px_16px_rgba(179,162,254,.1))] max-lg:opacity-14"}
         />
       </div>

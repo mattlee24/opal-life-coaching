@@ -19,6 +19,30 @@ type SelectProps = {
   defaultValue?: string;
 };
 
+function SelectChevron({ open }: { open: boolean }) {
+  return (
+    <svg
+      className={cn(
+        "custom-select-chevron shrink-0 text-[#7d68e8] transition-transform duration-[250ms] ease-opal",
+        open && "custom-select-chevron--open",
+      )}
+      width="12"
+      height="12"
+      viewBox="0 0 12 12"
+      aria-hidden="true"
+    >
+      <path
+        d="M2.5 4.5 6 8 9.5 4.5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export function Select({
   id: idProp,
   name,
@@ -82,11 +106,11 @@ export function Select({
           <span className={selected ? undefined : "custom-select-placeholder text-[rgba(92,88,120,.45)]"}>
             {display}
           </span>
-          <span className={"custom-select-chevron mt-[-3px] h-2 w-2 shrink-0 rotate-45 border-r-[2.5px] border-b-[2.5px] border-[#7d68e8] transition-transform duration-[250ms] ease-opal"} aria-hidden="true" />
+          <SelectChevron open={open} />
         </button>
         <ul
           id={listId}
-          className={"custom-select-options absolute top-[calc(100%+.35rem)] right-0 left-0 z-30 max-h-[min(240px,42vh)] overflow-y-auto rounded-xl border border-pastel-lilac/24 bg-[linear-gradient(180deg,#fff_0%,#faf8ff_100%)] p-[.4rem] shadow-[0_16px_40px_rgba(179,162,254,.16)]"}
+          className={"custom-select-options opal-scroll absolute top-[calc(100%+.35rem)] right-0 left-0 z-30 max-h-[min(240px,42vh)] overflow-y-auto rounded-xl border border-pastel-lilac/24 bg-[linear-gradient(180deg,#fff_0%,#faf8ff_100%)] p-[.4rem] shadow-[0_16px_40px_rgba(179,162,254,.16)]"}
           role="listbox"
           aria-labelledby={`${id}-label`}
           hidden={!open}

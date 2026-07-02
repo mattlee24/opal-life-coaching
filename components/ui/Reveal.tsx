@@ -78,12 +78,14 @@ export function Reveal({
       }
     };
 
-    checkVisible();
-    requestAnimationFrame(checkVisible);
+    const raf = requestAnimationFrame(() => {
+      requestAnimationFrame(checkVisible);
+    });
     window.addEventListener("scroll", checkVisible, { passive: true });
     window.addEventListener("resize", checkVisible, { passive: true });
 
     return () => {
+      cancelAnimationFrame(raf);
       observer.disconnect();
       window.removeEventListener("scroll", checkVisible);
       window.removeEventListener("resize", checkVisible);

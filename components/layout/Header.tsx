@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/cn";
 import { mainNavLinks } from "@/lib/site";
@@ -10,6 +11,7 @@ import {
 } from "@/components/layout/ServicesDropdownPanel";
 
 export function Header() {
+  const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -42,6 +44,18 @@ export function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    const resetHeader = () => {
+      setMenuOpen(false);
+      setMobileServicesOpen(false);
+      setServicesOpen(false);
+      setScrolled(window.scrollY > 24);
+    };
+
+    router.events.on("routeChangeStart", resetHeader);
+    return () => router.events.off("routeChangeStart", resetHeader);
+  }, [router.events]);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -103,7 +117,13 @@ export function Header() {
       >
         <div className={cn("site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]", "hdr flex min-w-0 items-center gap-3")}>
           <Link className={"logo flex shrink-0 items-center"} href="/" onClick={closeMenu}>
-            <img src="/assets/logo-mark.png" alt="Opal Life Coaching" />
+            <img
+              src="/assets/logo-mark.png"
+              alt="Opal Life Coaching"
+              width={136}
+              height={136}
+              decoding="async"
+            />
           </Link>
           <nav className={"nav ml-auto hidden min-w-0 flex-wrap items-center justify-end gap-[.35rem] md:flex"} aria-label="Primary">
             {aboutLink ? (

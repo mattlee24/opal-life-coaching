@@ -20,6 +20,32 @@ Opal Life Coaching serves people at crossroads — career changes, life transiti
 
 Sessions are available **online or in person** in the Chichester and Eastergate area. A free discovery call is offered for coaching enquiries.
 
+**Live site:** [opal-life-coaching.vercel.app](https://opal-life-coaching.vercel.app)
+
+---
+
+## Built with
+
+| Layer | Technology |
+|-------|------------|
+| **Framework** | [Next.js 16](https://nextjs.org/) (Pages Router) |
+| **UI** | [React 19](https://react.dev/) |
+| **Language** | [TypeScript 5](https://www.typescriptlang.org/) |
+| **Styling** | [Tailwind CSS v4](https://tailwindcss.com/) + custom CSS design tokens |
+| **Fonts** | [next/font](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) — Manrope, Cormorant Garamond, Sacramento |
+| **Images** | [next/image](https://nextjs.org/docs/pages/building-your-application/optimizing/images) with AVIF/WebP |
+| **Booking** | [Cal.com](https://cal.com/) embed (`NEXT_PUBLIC_CAL_USERNAME`) |
+| **Hosting** | [Vercel](https://vercel.com/) |
+| **Package manager** | Yarn |
+
+**Notable implementation details:**
+
+- Scroll-triggered entrance animations (`Reveal` + Intersection Observer)
+- Smooth FAQ accordion and custom accessible form `<Select>`
+- SEO: canonical URLs, Open Graph, Twitter cards, JSON-LD, sitemap, `robots.txt`
+- Security headers via `next.config.ts` (CSP-adjacent hardening, frame options, referrer policy)
+- Performance: compressed assets, font/image optimisation, Lighthouse-focused polish
+
 ---
 
 ## Screenshots
@@ -30,7 +56,7 @@ Sessions are available **online or in person** in the Chichester and Eastergate 
 
 **About Cara** — personal storytelling with nature-inspired framing:
 
-![About Cara](docs/screenshots/about-cara.png)
+![About Cara](docs/screenshots/about-cara.jpg)
 
 ---
 
@@ -84,7 +110,7 @@ OpalLifeCoaching/
 │   └── globals.css             # Design tokens, components, responsive rules
 │
 └── docs/
-    └── screenshots/            # README preview images
+    └── screenshots/            # README preview images (see scripts/capture-readme-screenshots.mjs)
 ```
 
 ### Key modules

@@ -49,6 +49,12 @@
     --vine-pad-x: clamp(2.5rem, 4.5vw, 3.35rem);
     --vine-pad-compact-y: clamp(2.25rem, 3.75vw, 3rem);
     --vine-pad-compact-x: clamp(2rem, 3.5vw, 2.75rem);
+    --scrollbar-size: 12px;
+    --scrollbar-size-compact: 8px;
+    --scrollbar-purple: #9580f5;
+    --scrollbar-purple-deep: #7d68e8;
+    --scrollbar-purple-soft: #b3a2fe;
+    --scrollbar-track-inline: rgba(179, 162, 254, 0.12);
   }
 
   *,
@@ -275,7 +281,7 @@
 .menu-btn--open span:nth-child(3){top:20px;transform:translateX(-50%) rotate(-45deg)}
 
 /* Hero */
-.hero{position:relative;min-height:100vh;min-height:100dvh;display:flex;align-items:center;overflow:hidden;background:#f7faf8;isolation:isolate;padding-top:clamp(6.25rem,12vh,8.25rem);padding-bottom:clamp(2rem,4vh,3rem);box-sizing:border-box}
+.hero{position:relative;min-height:100vh;min-height:100dvh;display:flex;align-items:center;overflow:hidden;background:#f7faf8;isolation:isolate;padding-top:calc(var(--header-height) + clamp(1.75rem,5vh,2.75rem));padding-bottom:clamp(2rem,4vh,3rem);box-sizing:border-box}
 .hero-bg{position:absolute;inset:0;overflow:hidden}
 .hero-bg img,.hero-bg span>img{width:100%;height:100%;object-fit:cover;object-position:62% 52%;filter:saturate(1.12) contrast(1.05) brightness(1.03);animation:hero-drift 38s ease-in-out infinite alternate;transform-origin:62% 52%}
 .hero-bg span{position:absolute!important;inset:0!important}
@@ -309,7 +315,7 @@
 .hero-trust span::before{content:'';width:5px;height:5px;border-radius:50%;background:linear-gradient(135deg,#B3A2FE,#bce4de);flex-shrink:0}
 
 /* Inner page heroes — full-height, no photo; ambient brand atmosphere */
-.page-hero{position:relative;min-height:100vh;min-height:100dvh;display:flex;align-items:center;overflow:hidden;isolation:isolate;padding-top:clamp(6.25rem,12vh,8.25rem);padding-bottom:clamp(3.5rem,7vh,4.5rem);box-sizing:border-box;background:linear-gradient(180deg,#fcfbff 0%,#faf8ff 48%,#f5f2fc 100%);border-bottom:1px solid rgba(179,162,254,.1)}
+.page-hero{position:relative;min-height:100vh;min-height:100dvh;display:flex;align-items:center;overflow:hidden;isolation:isolate;padding-top:calc(var(--header-height) + clamp(1.75rem,5vh,2.75rem));padding-bottom:clamp(3.5rem,7vh,4.5rem);box-sizing:border-box;background:linear-gradient(180deg,#fcfbff 0%,#faf8ff 48%,#f5f2fc 100%);border-bottom:1px solid rgba(179,162,254,.1)}
 .page-hero--lavender{background:linear-gradient(180deg,#fcfbff 0%,#faf8ff 50%,#f3f0fa 100%)}
 .page-hero--sage{background:linear-gradient(180deg,#f8fcfa 0%,#f6faf7 48%,#f0f7f4 100%)}
 .page-hero--opal{background:linear-gradient(180deg,#fcfbff 0%,#f8f6fc 52%,#f3f0fa 100%)}
@@ -904,11 +910,12 @@
 .custom-select{position:relative}
 .custom-select-trigger{display:flex;align-items:center;justify-content:space-between;gap:.75rem;width:100%;padding:.85rem 1.05rem;font:inherit;font-size:.92rem;font-weight:500;color:var(--text);text-align:left;background:#faf9ff;border:1px solid rgba(179,162,254,.22);border-radius:12px;cursor:pointer;transition:border-color .2s,box-shadow .2s,background .2s}
 .custom-select-placeholder{color:rgba(92,88,120,.45)}
-.custom-select-chevron{flex-shrink:0;width:8px;height:8px;border-right:2.5px solid #7d68e8;border-bottom:2.5px solid #7d68e8;transform:rotate(45deg);margin-top:-3px;transition:transform .25s var(--ease)}
+.custom-select-chevron{display:block;flex-shrink:0}
+.custom-select-chevron--open{transform:rotate(180deg)}
 .custom-select.open .custom-select-trigger,.custom-select-trigger:focus-visible{outline:none;border-color:var(--pastel-lilac);background:#fff;box-shadow:0 0 0 3px rgba(179,162,254,.14)}
-.custom-select.open .custom-select-chevron{transform:rotate(-135deg);margin-top:2px}
 .custom-select-options{position:absolute;top:calc(100% + .35rem);left:0;right:0;margin:0;padding:.4rem;list-style:none;background:linear-gradient(180deg,#fff 0%,#faf8ff 100%);border:1px solid rgba(179,162,254,.24);border-radius:12px;box-shadow:0 16px 40px rgba(179,162,254,.16);max-height:min(240px,42vh);overflow-y:auto;z-index:30}
 .custom-select-option{padding:.72rem .85rem;font-size:.9rem;color:var(--text);border-radius:8px;cursor:pointer;transition:background .15s,color .15s}
+
 .custom-select-option:hover,.custom-select-option.selected{background:rgba(179,162,254,.12);color:var(--blue)}
 
 /* FAQs */
@@ -1031,6 +1038,7 @@
   #hd .logo img{width:clamp(80px,22vw,92px)!important;height:clamp(80px,22vw,92px)!important}
   #hd.scrolled .hdr,#hd.menu-open .hdr{padding-top:.55rem;padding-bottom:.55rem}
   #hd.scrolled .logo img,#hd.menu-open .logo img{width:clamp(48px,12vw,54px)!important;height:clamp(48px,12vw,54px)!important}
+  .hero,.page-hero{align-items:flex-start;padding-top:calc(var(--header-height) + clamp(2.5rem,8vh,3.75rem))}
   .nav{display:none}
   .menu-btn{display:flex;align-items:center;justify-content:center}
   .hero-eyebrow{height:auto;min-height:2.75rem;margin-bottom:1.65rem;font-size:.78rem;padding-inline:.85rem}
@@ -1287,4 +1295,71 @@
 @media(max-width:768px){
   .nav-dropdown{display:none}
 }
+
+}
+
+/* Site scrollbars — unlayered so WebKit/Firefox pick them up reliably */
+
+html,
+body {
+  scrollbar-width: thin;
+  scrollbar-color: #9580f5 transparent;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #b3a2fe 0%, #9580f5 55%, #7d68e8 100%);
+  border-radius: 999px;
+  border: 5px solid transparent;
+  background-clip: padding-box;
+  box-shadow: 0 2px 12px rgba(149, 128, 245, 0.42);
+}
+
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #c4b5ff 0%, #9580f5 50%, #6a58d4 100%);
+  background-clip: padding-box;
+  box-shadow: 0 4px 16px rgba(149, 128, 245, 0.52);
+}
+
+html::-webkit-scrollbar-corner,
+body::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Inline panels (form dropdowns, etc.) — same purple, flush to track */
+.opal-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #9580f5 rgba(179, 162, 254, 0.14);
+}
+
+.opal-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.opal-scroll::-webkit-scrollbar-track {
+  background: rgba(179, 162, 254, 0.12);
+  border-radius: 999px;
+  margin: 0.2rem 0;
+}
+
+.opal-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #b3a2fe 0%, #9580f5 55%, #7d68e8 100%);
+  border-radius: 999px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.opal-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #c4b5ff 0%, #9580f5 50%, #6a58d4 100%);
 }

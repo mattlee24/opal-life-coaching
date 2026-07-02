@@ -69,6 +69,8 @@ export function Contact({ offsetHeader }: ContactProps) {
                   src="/assets/icon-contact-location.svg"
                   alt=""
                   aria-hidden="true"
+                  width={20}
+                  height={20}
                   className={"mt-[.12rem] h-5 w-5 shrink-0 opacity-82"}
                 />
                 <span>
