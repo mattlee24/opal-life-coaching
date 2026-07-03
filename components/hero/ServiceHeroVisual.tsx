@@ -1,4 +1,5 @@
 import type { ServiceVariant } from "@/lib/services";
+import { DecorativeImage } from "@/components/ui/DecorativeImage";
 import { cn } from "@/lib/cn";
 import { HeroVisual3D } from "./HeroVisual3D";
 
@@ -20,23 +21,22 @@ export function ServiceHeroVisual({
       <div className={cn("hero-orbit pointer-events-none absolute rounded-full border border-pastel-lilac/22 animate-[hero-orbit-spin_28s_linear_infinite] motion-reduce:animate-none", "hero-orbit--outer inset-[2%] border-pastel-mint/35")} aria-hidden="true" />
       <div className={cn("hero-orbit pointer-events-none absolute rounded-full border border-pastel-lilac/22 animate-[hero-orbit-spin_28s_linear_infinite] motion-reduce:animate-none", "hero-orbit--inner inset-[14%] animate-[hero-orbit-spin_22s_linear_infinite_reverse] border-dashed border-pastel-lilac/28 motion-reduce:animate-none")} aria-hidden="true" />
       <div className={cn("hero-float pointer-events-none absolute z-[4] opacity-55 [filter:drop-shadow(0_6px_16px_rgba(179,162,254,.18))] animate-[hero-float-drift_7s_ease-in-out_infinite] motion-reduce:animate-none", "hero-float--a top-[6%] right-[2%] w-[min(52px,14vw)] [animation-delay:-1.5s]")} aria-hidden="true">
-        <img src="/assets/nature-leaf-opal.svg" alt="" className={"block h-auto w-full"} />
+        <DecorativeImage src="/assets/nature-leaf-opal.svg" width={80} height={80} className={"block h-auto w-full"} />
       </div>
       <div className={cn("hero-float pointer-events-none absolute z-[4] opacity-55 [filter:drop-shadow(0_6px_16px_rgba(179,162,254,.18))] animate-[hero-float-drift_7s_ease-in-out_infinite] motion-reduce:animate-none", "hero-float--b bottom-[10%] left-0 w-[min(64px,16vw)] [animation-delay:-3.2s]")} aria-hidden="true">
-        <img src="/assets/sprig-delicate.svg" alt="" className={"block h-auto w-full"} />
+        <DecorativeImage src="/assets/sprig-delicate.svg" width={40} height={80} className={"block h-auto w-full"} />
       </div>
       <div className={cn("hero-float pointer-events-none absolute z-[4] opacity-55 [filter:drop-shadow(0_6px_16px_rgba(179,162,254,.18))] animate-[hero-float-drift_7s_ease-in-out_infinite] motion-reduce:animate-none", "hero-float--c top-[18%] left-[4%] w-[min(44px,12vw)] [animation-delay:-4.8s]")} aria-hidden="true">
-        <img src="/assets/sprig-fern.svg" alt="" className={"block h-auto w-full"} />
+        <DecorativeImage src="/assets/sprig-fern.svg" width={48} height={96} className={"block h-auto w-full"} />
       </div>
       <article className={cn("hero-service-card pointer-events-none relative z-[3] mx-auto w-[min(100%,340px)] [transform:translateZ(48px)] shadow-[0_1px_0_rgba(255,255,255,.95)_inset,0_28px_70px_rgba(93,138,111,.14),0_12px_36px_rgba(179,162,254,.12)] hover:[transform:translateZ(48px)]", "svc-card relative flex h-auto flex-col isolate overflow-hidden rounded-[26px] border-2 border-transparent bg-clip-padding bg-[linear-gradient(180deg,#fdfffe_0%,#f3f9f6_55%,#f8f6fc_100%)] pb-[clamp(1.65rem,4vw,2.35rem)] shadow-[0_1px_0_rgba(255,255,255,.95)_inset,0_20px_54px_rgba(93,138,111,.08),0_8px_26px_rgba(179,162,254,.05)] transition-[transform,box-shadow] duration-500 ease-opal hover:-translate-y-2.5 hover:shadow-[0_1px_0_rgba(255,255,255,1)_inset,0_32px_70px_rgba(93,138,111,.13),0_14px_36px_rgba(179,162,254,.12)] motion-reduce:hover:translate-y-0", "svc-card", variant)}>
         <span className={"svc-opal-sheen pointer-events-none absolute inset-0 z-[1] rounded-[inherit]"} aria-hidden="true" />
         <div className={"svc-icon-hero relative z-[2] flex min-h-[clamp(200px,21vw,240px)] items-center justify-center px-4 pt-[clamp(1.65rem,4vw,2rem)] pb-[clamp(1.15rem,3vw,1.65rem)] max-md:min-h-[170px] max-md:pt-6 max-md:pb-4 lg:min-h-[200px] xl:min-h-[230px] xl:pt-10"}>
           <div className={"svc-icon-halo relative flex aspect-square w-[min(176px,76%)] items-center justify-center rounded-full bg-[radial-gradient(circle_at_50%_38%,#fff_0%,rgba(244,252,248,.95)_35%,rgba(212,235,228,.75)_62%,rgba(188,228,222,.35)_82%,transparent_94%)] shadow-[0_14px_44px_rgba(93,138,111,.13),0_0_0_2px_rgba(122,171,142,.14)_inset,0_0_0_6px_rgba(255,255,255,.7)] transition-[transform,box-shadow] duration-[550ms] ease-opal max-md:w-[min(152px,68%)] lg:w-[min(172px,76%)] xl:w-[188px]"}>
-            <img
+            <DecorativeImage
               src={icon}
-              alt=""
-              width={168}
-              height={168}
+              width={400}
+              height={266}
               className={"relative z-[1] h-auto w-[min(146px,82%)] object-contain [filter:saturate(1.12)_contrast(1.06)_drop-shadow(0_10px_22px_rgba(93,138,111,.18))] transition-transform duration-[550ms] ease-opal lg:w-[min(142px,82%)] xl:w-[156px]"}
             />
           </div>

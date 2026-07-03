@@ -1,5 +1,6 @@
 "use client";
 
+import { DecorativeImage } from "@/components/ui/DecorativeImage";
 import { Reveal } from "@/components/ui/Reveal";
 
 const values = [
@@ -40,7 +41,12 @@ export function Values() {
               >
                 <div className={"value-icon relative h-[76px] w-[76px] shrink-0 flex items-center justify-center"}>
                   <span className={"value-icon-halo absolute inset-[2px] rounded-full bg-[radial-gradient(circle_at_50%_38%,rgba(255,255,255,.95)_0%,rgba(244,252,248,.85)_42%,rgba(212,235,228,.55)_68%,transparent_90%)] shadow-[0_0_0_1px_rgba(179,162,254,.1),0_8px_22px_rgba(179,162,254,.08)]"} aria-hidden="true" />
-                  <img src={value.icon} alt="" className={"relative z-[1] h-[50px] w-[50px] [filter:drop-shadow(0_2px_8px_rgba(179,162,254,.12))]"} />
+                  <DecorativeImage
+                    src={value.icon}
+                    width={48}
+                    height={48}
+                    className={"relative z-[1] h-[50px] w-[50px] [filter:drop-shadow(0_2px_8px_rgba(179,162,254,.12))]"}
+                  />
                 </div>
                 <div className={"value-text min-w-0"}>
                   <h3 className={"mb-[.38rem] text-[clamp(1.48rem,2.15vw,1.82rem)] leading-[1.12] tracking-[-.015em] text-[#9b88eb]"}>{value.title}</h3>

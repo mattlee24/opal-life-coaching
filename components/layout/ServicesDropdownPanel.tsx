@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DecorativeImage } from "@/components/ui/DecorativeImage";
 import { cn } from "@/lib/cn";
 import { navServices } from "@/lib/nav-services";
 
@@ -19,11 +20,11 @@ export function ServicesDropdownPanel({
     >
       <div className="nav-services-panel__glow" aria-hidden="true" />
       <div className="nav-services-panel__shell">
-        <img
+        <DecorativeImage
           src="/assets/sprig-fern.svg"
-          alt=""
+          width={48}
+          height={96}
           className="nav-services-panel__sprig"
-          aria-hidden="true"
         />
         <div className="nav-services-panel__inner">
           <header className="nav-services-panel__head">
@@ -50,7 +51,7 @@ export function ServicesDropdownPanel({
                 )}
               >
                 <span className="nav-services-item__halo" aria-hidden="true">
-                  <img src={service.icon} alt="" />
+                  <DecorativeImage src={service.icon} width={400} height={266} />
                 </span>
                 <span className="nav-services-item__tag">{service.tag}</span>
                 <span className="nav-services-item__title">{service.title}</span>
@@ -101,7 +102,7 @@ export function ServicesMobilePanel({
           className={cn("mnav-services-item", `mnav-services-item--${service.variant}`)}
         >
           <span className="mnav-services-item__icon" aria-hidden="true">
-            <img src={service.icon} alt="" />
+            <DecorativeImage src={service.icon} width={400} height={266} />
           </span>
           <span className="mnav-services-item__copy">
             <span className="mnav-services-item__tag">{service.tag}</span>

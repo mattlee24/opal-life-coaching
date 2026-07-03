@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { AboutHero } from "@/components/hero/AboutHero";
 import { ClosingInvitationCta } from "@/components/pages/ClosingInvitationCta";
+import { DecorativeImage } from "@/components/ui/DecorativeImage";
 import { OpalSep } from "@/components/ui/OpalSep";
 import { cn } from "@/lib/cn";
 
@@ -104,13 +105,13 @@ export function AboutPageContent() {
                       className={cn("about-story-visual-sprig pointer-events-none absolute z-[3] opacity-42 [filter:drop-shadow(0_4px_12px_rgba(179,162,254,.1))]", "about-story-visual-sprig--tl top-[-4%] left-[-8%] w-[min(56px,12vw)] rotate-[-14deg]")}
                       aria-hidden="true"
                     >
-                      <img src="/assets/sprig-fern.svg" alt="" />
+                      <DecorativeImage src="/assets/sprig-fern.svg" width={48} height={96} />
                     </span>
                     <span
                       className={cn("about-story-visual-sprig pointer-events-none absolute z-[3] opacity-42 [filter:drop-shadow(0_4px_12px_rgba(179,162,254,.1))]", "about-story-visual-sprig--br right-[-10%] bottom-[8%] w-[min(50px,10vw)] rotate-[16deg]")}
                       aria-hidden="true"
                     >
-                      <img src="/assets/nature-leaf-opal.svg" alt="" />
+                      <DecorativeImage src="/assets/nature-leaf-opal.svg" width={80} height={80} />
                     </span>
                     <div className={"about-story-portrait relative z-[2] overflow-hidden rounded-[22px] bg-[linear-gradient(155deg,rgba(188,228,222,.5)_0%,rgba(179,162,254,.38)_50%,rgba(168,201,176,.45)_100%)] p-1.5 shadow-[0_24px_64px_rgba(179,162,254,.14),0_10px_28px_rgba(28,48,163,.07)] rotate-[-1.5deg] transition-transform duration-[550ms] ease-opal hover:rotate-0 hover:-translate-y-1 motion-reduce:hover:translate-y-0"}>
                       <img
@@ -156,7 +157,7 @@ export function AboutPageContent() {
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <span className={"about-essence-sprig pointer-events-none absolute top-[clamp(.65rem,1.2vw,.85rem)] left-[clamp(.65rem,1.2vw,.85rem)] w-[min(36px,8vw)] opacity-42 [filter:drop-shadow(0_3px_10px_rgba(179,162,254,.1))]"} aria-hidden="true">
-                      <img src="/assets/nature-leaf-opal.svg" alt="" />
+                      <DecorativeImage src="/assets/nature-leaf-opal.svg" width={80} height={80} />
                     </span>
                     <div className={"about-essence-icon relative mb-[.35rem] flex h-[76px] w-[76px] items-center justify-center"}>
                       <span

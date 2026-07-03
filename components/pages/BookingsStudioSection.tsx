@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { DecorativeImage } from "@/components/ui/DecorativeImage";
 import { Reveal } from "@/components/ui/Reveal";
 import { OpalSep } from "@/components/ui/OpalSep";
 import { cn } from "@/lib/cn";
@@ -140,7 +141,7 @@ export function BookingsStudioSection({ services }: BookingsStudioSectionProps) 
                   `bookings-studio-tab--${service.variant}`,
                 )}
               >
-                <img src={service.icon} alt="" className="bookings-studio-tab__icon" />
+                <DecorativeImage src={service.icon} width={400} height={266} className="bookings-studio-tab__icon" />
                 <span className="bookings-studio-tab__copy">
                   <span className="bookings-studio-tab__tag">{service.tag}</span>
                   <span className="bookings-studio-tab__label">{service.label}</span>
@@ -165,7 +166,7 @@ export function BookingsStudioSection({ services }: BookingsStudioSectionProps) 
                     `bookings-studio-service-icon--${activeService.variant}`,
                   )}
                 >
-                  <img src={activeService.icon} alt="" />
+                  <DecorativeImage src={activeService.icon} width={400} height={266} />
                 </span>
                 <div>
                   <p className="m-0 text-[.62rem] font-bold tracking-[.16em] text-[#9580f5] uppercase">

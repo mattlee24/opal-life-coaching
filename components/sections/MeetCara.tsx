@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { OpalSep } from "@/components/ui/OpalSep";
 import { Reveal } from "@/components/ui/Reveal";
+import { DecorativeImage } from "@/components/ui/DecorativeImage";
 import { SiteImage } from "@/components/ui/SiteImage";
 import { cn } from "@/lib/cn";
 
@@ -19,9 +20,10 @@ export function MeetCara() {
               className={cn("meet-cara-sprig pointer-events-none absolute z-[5] opacity-55 [filter:drop-shadow(0_4px_12px_rgba(179,162,254,.15))]", "meet-cara-sprig--tl top-[-2%] left-[-4%] w-[min(52px,12vw)] rotate-[-12deg] max-md:left-0")}
               aria-hidden="true"
             >
-              <img
+              <DecorativeImage
                 src="/assets/nature-leaf-opal.svg"
-                alt=""
+                width={80}
+                height={80}
                 className={"block h-auto w-full"}
               />
             </span>
@@ -29,9 +31,10 @@ export function MeetCara() {
               className={cn("meet-cara-sprig pointer-events-none absolute z-[5] opacity-55 [filter:drop-shadow(0_4px_12px_rgba(179,162,254,.15))]", "meet-cara-sprig--br right-[-5%] bottom-[2%] w-[min(64px,14vw)] rotate-[18deg] scale-x-[-1] max-md:right-0")}
               aria-hidden="true"
             >
-              <img
+              <DecorativeImage
                 src="/assets/sprig-delicate.svg"
-                alt=""
+                width={40}
+                height={80}
                 className={"block h-auto w-full"}
               />
             </span>
@@ -47,16 +50,17 @@ export function MeetCara() {
               />
             </div>
           </div>
-          <img
+          <DecorativeImage
             src="/assets/icon-opal-heart.svg"
-            alt=""
+            width={36}
+            height={36}
             className={"meet-cara-heart absolute top-[3%] left-0 z-[6] h-9 w-9 opacity-92 [filter:drop-shadow(0_4px_14px_rgba(179,162,254,.4))]"}
-            aria-hidden="true"
           />
           <div className={"meet-cara-badge absolute right-[2%] bottom-[4%] z-[6] inline-flex max-w-[min(100%,260px)] items-center gap-[.55rem] rounded-full border border-pastel-lilac/24 bg-white/97 px-[1.05rem] py-[.6rem] pl-[.75rem] shadow-[0_12px_32px_rgba(179,162,254,.16)] backdrop-blur-[8px] max-md:right-[4%] max-md:bottom-[3%] max-md:max-w-[calc(100%-1.5rem)]"} aria-hidden="true">
-            <img
+            <DecorativeImage
               src="/assets/icon-opal-heart.svg"
-              alt=""
+              width={22}
+              height={22}
               className={"h-[22px] w-[22px] shrink-0 [filter:drop-shadow(0_2px_6px_rgba(179,162,254,.25))]"}
             />
             <p className={"font-serif text-[clamp(.95rem,1.4vw,1.08rem)] font-semibold leading-[1.2] whitespace-nowrap text-blue max-md:whitespace-normal"}>One step at a time</p>
@@ -64,9 +68,10 @@ export function MeetCara() {
         </Reveal>
         <Reveal variant="right" delay={120} className={"meet-cara-copy relative max-w-[min(580px,100%)] max-md:mx-auto max-md:text-center"}>
           <span className={"meet-cara-copy-sprig pointer-events-none absolute top-[-.25rem] right-[clamp(-1rem,-2vw,0)] w-[min(76px,16vw)] opacity-20 max-md:hidden"} aria-hidden="true">
-            <img
+            <DecorativeImage
               src="/assets/sprig-delicate.svg"
-              alt=""
+              width={40}
+              height={80}
               className={"block h-auto w-full"}
             />
           </span>

@@ -7,7 +7,9 @@ export default function Document() {
       lang="en-GB"
       className={`${manrope.variable} ${cormorant.variable} ${sacramento.variable}`}
     >
-      <Head />
+      <Head>
+        <meta charSet="utf-8" />
+      </Head>
       <body className={manrope.className}>
         <Main />
         <NextScript />

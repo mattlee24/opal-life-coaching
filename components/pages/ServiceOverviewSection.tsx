@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { DecorativeImage } from "@/components/ui/DecorativeImage";
 import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/cn";
 import type { ServicePageData } from "@/lib/services";
@@ -81,22 +82,22 @@ export function ServiceOverviewSection({ data }: ServiceOverviewSectionProps) {
             >
               <div className="service-overview-card__sheen" aria-hidden="true" />
               <div className="service-overview-card__inner opal-panel__inner">
-                <img
+                <DecorativeImage
                   src="/assets/sprig-fern.svg"
-                  alt=""
+                  width={48}
+                  height={96}
                   className="service-overview-card__sprig service-overview-card__sprig--tl"
-                  aria-hidden="true"
                 />
-                <img
+                <DecorativeImage
                   src="/assets/nature-leaf-opal.svg"
-                  alt=""
+                  width={80}
+                  height={80}
                   className="service-overview-card__sprig service-overview-card__sprig--br"
-                  aria-hidden="true"
                 />
 
                 <div className="service-overview-icon-stage">
                   <span className="service-overview-icon-halo" aria-hidden="true">
-                    <img src={data.icon} alt="" />
+                    <DecorativeImage src={data.icon} width={400} height={266} />
                   </span>
                   <span className="service-overview-icon-tag">{data.tag}</span>
                 </div>

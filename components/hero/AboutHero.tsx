@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DecorativeImage } from "@/components/ui/DecorativeImage";
 import { cn } from "@/lib/cn";
 
 export function AboutHero() {
@@ -28,9 +29,10 @@ export function AboutHero() {
           <div className={"hero-divider my-[1.75rem] flex w-[min(440px,100%)] items-center gap-4"} aria-hidden="true">
             <span className={"hero-divider-line h-[2px] min-w-14 flex-1 rounded-[2px] bg-[linear-gradient(90deg,rgba(179,162,254,0)_0%,rgba(179,162,254,.6)_18%,rgba(188,228,222,.75)_100%)]"} />
             <span className={"hero-divider-heart h-[30px] w-[30px] shrink-0 [filter:drop-shadow(0_4px_14px_rgba(179,162,254,.38))]"}>
-              <img
+              <DecorativeImage
                 src="/assets/icon-opal-heart.svg"
-                alt=""
+                width={30}
+                height={30}
                 className={"block h-full w-full"}
               />
             </span>
@@ -69,19 +71,19 @@ export function AboutHero() {
             className={cn("about-hero-float pointer-events-none absolute z-[4] opacity-50 [filter:drop-shadow(0_6px_16px_rgba(179,162,254,.12))] animate-[about-hero-float_7s_ease-in-out_infinite_alternate] motion-reduce:animate-none", "about-hero-float--tl top-[6%] left-[4%] w-[min(56px,12vw)]")}
             aria-hidden="true"
           >
-            <img src="/assets/sprig-fern.svg" alt="" />
+            <DecorativeImage src="/assets/sprig-fern.svg" width={48} height={96} />
           </span>
           <span
             className={cn("about-hero-float pointer-events-none absolute z-[4] opacity-50 [filter:drop-shadow(0_6px_16px_rgba(179,162,254,.12))] animate-[about-hero-float_7s_ease-in-out_infinite_alternate] motion-reduce:animate-none", "about-hero-float--br right-[2%] bottom-[10%] w-[min(48px,10vw)]")}
             aria-hidden="true"
           >
-            <img src="/assets/nature-leaf-opal.svg" alt="" />
+            <DecorativeImage src="/assets/nature-leaf-opal.svg" width={80} height={80} />
           </span>
           <span
             className={cn("about-hero-float pointer-events-none absolute z-[4] opacity-50 [filter:drop-shadow(0_6px_16px_rgba(179,162,254,.12))] animate-[about-hero-float_7s_ease-in-out_infinite_alternate] motion-reduce:animate-none", "about-hero-float--tr top-[18%] right-[8%] w-[min(42px,9vw)]")}
             aria-hidden="true"
           >
-            <img src="/assets/sprig-delicate.svg" alt="" />
+            <DecorativeImage src="/assets/sprig-delicate.svg" width={40} height={80} />
           </span>
 
           <div className={"about-hero-photo relative z-[3] mx-auto w-full max-w-[min(500px,92%)] max-md:max-w-[min(420px,88vw)]"}>
