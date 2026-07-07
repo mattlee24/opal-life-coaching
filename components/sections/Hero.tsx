@@ -4,7 +4,7 @@ import { cn } from "@/lib/cn";
 
 export function Hero() {
   return (
-    <section className={"hero relative isolate flex min-h-screen min-h-dvh items-center overflow-hidden bg-[#f7faf8] box-border pt-[clamp(6.25rem,12vh,8.25rem)] pb-[clamp(2rem,4vh,3rem)]"}>
+    <section className={"hero relative isolate flex min-h-[max(100svh,800px)] items-center overflow-hidden bg-[#f7faf8] box-border pt-[calc(var(--header-height)+clamp(2rem,5vh,3.25rem))] pb-[clamp(2.75rem,5.5vh,4.25rem)]"}>
       <div className={"hero-bg absolute inset-0 overflow-hidden"} aria-hidden="true">
         <SiteImageFill
           src="/assets/hero-woodland-v3.jpg"
@@ -20,8 +20,8 @@ export function Hero() {
       <div className={cn("site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]", "hero-inner relative z-[3] w-full")}>
         <div className={"hero-copy max-w-[min(540px,100%)]"}>
           <p className={"inline-flex items-center gap-2 h-11 px-[.9rem] mb-[2.35rem] text-[.86rem] font-bold tracking-[.18em] uppercase text-[#9580f5] bg-white/82 border border-pastel-lilac/22 rounded-full shadow-[0_8px_24px_rgba(179,162,254,.1)] before:content-[''] before:w-1.5 before:h-1.5 before:rounded-full before:bg-gradient-to-br before:from-pastel-lilac before:to-pastel-mint before:shrink-0"}>Life coaching with Cara</p>
-          <h1 className={"mb-[.12rem] max-w-full text-[clamp(2.5rem,4.6vw,4rem)] leading-[1.06] tracking-[-.03em]"}>Support for your journey.</h1>
-          <span className={cn("font-script font-normal text-pastel-lilac leading-[1.1]", "block max-w-full text-[clamp(2.65rem,4.9vw,4.2rem)] leading-[1.02] whitespace-normal lg:whitespace-nowrap")}>
+          <h1 className={"mb-[.12rem] max-w-full text-[clamp(2.3rem,3.9vw,3.5rem)] max-md:text-[clamp(2rem,7vw,2.55rem)] leading-[1.08] tracking-[-.03em]"}>Support for your journey.</h1>
+          <span className={cn("font-script font-normal text-pastel-lilac leading-[1.1]", "block max-w-full text-[clamp(2.45rem,4.2vw,3.75rem)] max-md:text-[clamp(2.2rem,8vw,2.85rem)] leading-[1.05] whitespace-normal lg:whitespace-nowrap")}>
             Guidance for your life.
           </span>
           <div className={"hero-divider my-[1.75rem] flex w-[min(440px,100%)] items-center gap-4"} aria-hidden="true">

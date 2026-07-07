@@ -49,8 +49,8 @@ export function Footer() {
         </div>
       </Reveal>
       <div className={cn("site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]", "footer-main relative z-[2] pb-[clamp(1.5rem,3vw,2rem)]")}>
-        <div className={"footer-grid grid justify-items-center gap-[clamp(2rem,4vw,3.5rem)] py-[clamp(2.35rem,4.5vw,3rem)] pb-[clamp(1rem,2vw,1.25rem)] max-lg:grid-cols-1 max-lg:gap-4 md:grid-cols-[1.15fr_1fr_1fr]"}>
-          <div className={"footer-brand flex w-[min(100%,34ch)] flex-col items-start text-left"}>
+        <div className={"footer-grid grid justify-items-center gap-[clamp(2rem,4vw,3.5rem)] py-[clamp(2.35rem,4.5vw,3rem)] pb-[clamp(1rem,2vw,1.25rem)] max-lg:grid-cols-1 max-lg:justify-items-start max-lg:gap-8 md:grid-cols-[1.15fr_1fr_1fr]"}>
+          <div className={"footer-brand flex w-[min(100%,34ch)] flex-col items-start text-left max-lg:w-full"}>
             <Link className={"footer-logo-wrap relative mb-[1.2rem] inline-block rounded-full bg-[linear-gradient(145deg,rgba(179,162,254,.45),rgba(188,228,222,.38)_50%,rgba(179,162,254,.35))] p-1 shadow-[0_10px_28px_rgba(179,162,254,.16)]"} href="/">
               <SiteImage
                 src="/assets/logo-mark.png"
@@ -69,9 +69,9 @@ export function Footer() {
               Everything is personal. Everything is at your pace.
             </span>
           </div>
-          <nav className={"footer-col flex w-[min(100%,280px)] flex-col items-start text-left"} aria-label="Footer navigation">
+          <nav className={"footer-col flex w-[min(100%,280px)] flex-col items-start text-left max-lg:w-full max-lg:border-t max-lg:border-pastel-lilac/15 max-lg:pt-8"} aria-label="Footer navigation">
             <h4 className={"relative mb-[1.15rem] pb-[.65rem] font-serif text-[1.3rem] font-semibold text-blue after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-9 after:rounded-[2px] after:bg-[linear-gradient(90deg,rgba(179,162,254,.7),rgba(188,228,222,.75))] after:content-['']"}>Explore</h4>
-            <div className={"footer-links flex w-full flex-col items-start gap-2 md:block md:columns-2 md:[column-gap:1.75rem]"}>
+            <div className={"footer-links grid w-full grid-cols-2 gap-x-6 gap-y-1.5 md:block md:columns-2 md:[column-gap:1.75rem]"}>
               {footerLinks.map(({ href, label }) => (
                 <Link key={href} href={href} className={"block break-inside-avoid py-[.2rem] text-[.88rem] text-muted transition-[color,transform] duration-200 ease-opal hover:translate-x-[3px] hover:text-blue"}>
                   {label}
@@ -79,7 +79,7 @@ export function Footer() {
               ))}
             </div>
           </nav>
-          <div className={"footer-col flex w-[min(100%,280px)] flex-col items-start text-left"}>
+          <div className={"footer-col flex w-[min(100%,280px)] flex-col items-start text-left max-lg:w-full max-lg:border-t max-lg:border-pastel-lilac/15 max-lg:pt-8"}>
             <h4 className={"relative mb-[1.15rem] pb-[.65rem] font-serif text-[1.3rem] font-semibold text-blue after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-9 after:rounded-[2px] after:bg-[linear-gradient(90deg,rgba(179,162,254,.7),rgba(188,228,222,.75))] after:content-['']"}>Get in touch</h4>
             <p className={"mb-[.6rem] text-[.88rem] leading-[1.65] text-muted"}>
               <a href={`mailto:${site.email}`} className={"border-b border-pastel-lilac/35 text-blue transition-[border-color,color] hover:border-[#9580f5]"}>
@@ -104,7 +104,7 @@ export function Footer() {
             ) : null}
           </div>
         </div>
-        <div className={"footer-cta px-0 py-[clamp(1.85rem,3.5vw,2.65rem)] text-center"}>
+        <div className={"footer-cta px-0 py-[clamp(1.85rem,3.5vw,2.65rem)] text-center max-lg:text-left"}>
           <Link
             href="/bookings"
             className={cn(
@@ -120,7 +120,7 @@ export function Footer() {
         <div
           className={cn(
             "site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]",
-            "flex flex-wrap items-center justify-between gap-3 text-[.78rem] text-muted max-md:flex-col max-md:text-center",
+            "flex flex-wrap items-center justify-between gap-3 text-[.78rem] text-muted max-md:flex-col max-md:items-start max-md:text-left",
           )}
         >
           <span>© 2026 Opal Life Coaching. All rights reserved.</span>

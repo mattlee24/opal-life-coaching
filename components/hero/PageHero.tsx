@@ -39,7 +39,7 @@ export function PageHero({
   return (
     <section
       className={cn(
-        "page-hero relative isolate flex min-h-screen min-h-dvh items-center overflow-hidden box-border border-b border-pastel-lilac/10 pt-[clamp(6.25rem,12vh,8.25rem)] pb-[clamp(3.5rem,7vh,4.5rem)] bg-[linear-gradient(180deg,#fcfbff_0%,#faf8ff_48%,#f5f2fc_100%)]",
+        "page-hero relative isolate flex min-h-[max(100svh,800px)] items-center overflow-hidden box-border border-b border-pastel-lilac/10 pt-[calc(var(--header-height)+clamp(2rem,5vh,3.25rem))] pb-[clamp(4rem,7vh,5.5rem)] bg-[linear-gradient(180deg,#fcfbff_0%,#faf8ff_48%,#f5f2fc_100%)]",
         tone === "sage"
           ? "page-hero--sage bg-[linear-gradient(180deg,#f8fcfa_0%,#f6faf7_48%,#f0f7f4_100%)]"
           : tone === "opal"
@@ -72,8 +72,8 @@ export function PageHero({
           )}
         >
           <p className={"inline-flex items-center gap-2 h-11 px-[.9rem] mb-[2.35rem] text-[.86rem] font-bold tracking-[.18em] uppercase text-[#9580f5] bg-white/82 border border-pastel-lilac/22 rounded-full shadow-[0_8px_24px_rgba(179,162,254,.1)] before:content-[''] before:w-1.5 before:h-1.5 before:rounded-full before:bg-gradient-to-br before:from-pastel-lilac before:to-pastel-mint before:shrink-0"}>{eyebrow}</p>
-          <h1 className={"mb-[.12rem] max-w-full text-[clamp(2.5rem,4.6vw,4rem)] leading-[1.06] tracking-[-.03em]"}>{title}</h1>
-          <span className={cn("font-script font-normal text-pastel-lilac leading-[1.1]", "block max-w-full text-[clamp(2.65rem,4.9vw,4.2rem)] leading-[1.02] whitespace-normal lg:whitespace-nowrap")}>{script}</span>
+          <h1 className={"mb-[.12rem] max-w-full text-[clamp(2.3rem,3.9vw,3.5rem)] max-md:text-[clamp(2rem,7vw,2.55rem)] leading-[1.08] tracking-[-.03em]"}>{title}</h1>
+          <span className={cn("font-script font-normal text-pastel-lilac leading-[1.1]", "block max-w-full text-[clamp(2.45rem,4.2vw,3.75rem)] max-md:text-[clamp(2.2rem,8vw,2.85rem)] leading-[1.05] whitespace-normal lg:whitespace-nowrap")}>{script}</span>
           <div
             className={cn("hero-divider my-[1.75rem] flex w-[min(440px,100%)] items-center gap-4", !split && "mx-auto")}
             aria-hidden="true"

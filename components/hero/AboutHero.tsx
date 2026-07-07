@@ -4,7 +4,7 @@ import { cn } from "@/lib/cn";
 
 export function AboutHero() {
   return (
-    <section className={"about-hero relative isolate flex min-h-screen min-h-dvh items-center overflow-hidden bg-[linear-gradient(168deg,#fcfbff_0%,#f8f6fc_38%,#f3f0fa_72%,#f6faf7_100%)] box-border pt-[clamp(6.25rem,12vh,8.25rem)] pb-[clamp(3.5rem,7vh,5rem)]"}>
+    <section className={"about-hero relative isolate flex min-h-[max(100svh,820px)] items-center overflow-hidden bg-[linear-gradient(168deg,#fcfbff_0%,#f8f6fc_38%,#f3f0fa_72%,#f6faf7_100%)] box-border pt-[calc(var(--header-height)+clamp(2rem,5vh,3.25rem))] pb-[clamp(4rem,7vh,5.5rem)]"}>
       <div className={"about-hero-atmosphere pointer-events-none absolute inset-0 z-0 overflow-hidden"} aria-hidden="true">
         <div className={"about-hero-mesh absolute inset-0"} />
         <div className={cn("about-hero-nature absolute inset-0", "about-hero-nature--meet")} />
@@ -21,8 +21,8 @@ export function AboutHero() {
         <div className={"about-hero-copy relative z-[2] max-w-[min(540px,100%)] max-md:max-w-full"}>
           <p className={"inline-flex items-center gap-2 h-11 px-[.9rem] mb-[2.35rem] text-[.86rem] font-bold tracking-[.18em] uppercase text-[#9580f5] bg-white/82 border border-pastel-lilac/22 rounded-full shadow-[0_8px_24px_rgba(179,162,254,.1)] before:content-[''] before:w-1.5 before:h-1.5 before:rounded-full before:bg-gradient-to-br before:from-pastel-lilac before:to-pastel-mint before:shrink-0"}>About Cara</p>
           <h1>
-            <span className={"about-hero-line block mb-[.08rem] text-[clamp(2.5rem,5.2vw,4.25rem)] leading-[1.02] tracking-[-.035em] max-md:text-[clamp(2.2rem,8vw,3.25rem)]"}>A calm space to</span>
-            <span className={cn("font-script font-normal text-pastel-lilac leading-[1.1]", "about-hero-script block mt-[.05rem] text-[clamp(3rem,7.5vw,6.25rem)] leading-[.92] text-[#9580f5] [text-shadow:0_18px_48px_rgba(179,162,254,.18)] max-md:text-[clamp(2.75rem,12vw,4.25rem)]")}>
+            <span className={"about-hero-line block mb-[.08rem] text-[clamp(2.3rem,4.4vw,3.7rem)] leading-[1.05] tracking-[-.035em] max-md:text-[clamp(2rem,7.5vw,2.95rem)]"}>A calm space to</span>
+            <span className={cn("font-script font-normal text-pastel-lilac leading-[1.1]", "about-hero-script block mt-[.05rem] text-[clamp(2.75rem,6.4vw,5.35rem)] leading-[.95] text-[#9580f5] [text-shadow:0_18px_48px_rgba(179,162,254,.18)] max-md:text-[clamp(2.5rem,11vw,3.85rem)]")}>
               be heard
             </span>
           </h1>
