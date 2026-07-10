@@ -34,7 +34,7 @@ Sessions are available **online or in person** in the Chichester and Eastergate 
 | **Styling** | [Tailwind CSS v4](https://tailwindcss.com/) + custom CSS design tokens |
 | **Fonts** | [next/font](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) — Manrope, Cormorant Garamond, Sacramento |
 | **Images** | [next/image](https://nextjs.org/docs/pages/building-your-application/optimizing/images) with AVIF/WebP |
-| **Booking** | [Cal.com](https://cal.com/) embed (`NEXT_PUBLIC_CAL_USERNAME`) |
+| **Booking** | [Cal.com](https://cal.com/) embed via [`@calcom/embed-react`](https://cal.com/docs/developing/guides/embeds/embed-react) (`NEXT_PUBLIC_CAL_USERNAME`) |
 | **Hosting** | [Vercel](https://vercel.com/) |
 | **Package manager** | Yarn |
 
@@ -117,7 +117,7 @@ OpalLifeCoaching/
 
 - **`lib/services.ts`** — Single source of truth for service copy, sessions, pricing, SEO metadata, and booking labels. Service pages and the bookings studio both read from here.
 - **`components/pages/ServicePageContent.tsx`** — Shared layout for all three service routes.
-- **`components/pages/BookingsStudioSection.tsx`** — Tabbed booking interface with Cal.com embed support.
+- **`components/pages/BookingsStudioSection.tsx`** — Session grid grouped by service, with per-event Cal.com booking embeds.
 - **`components/pages/ClosingInvitationCta.tsx`** — Shared closing call-to-action used across service, about, and bookings pages.
 - **`styles/globals.css`** — Brand tokens, opal/vine border systems, header behaviour, and section styling.
 

@@ -1,7 +1,6 @@
 import { BookingsStudioSection } from "@/components/pages/BookingsStudioSection";
 import { ClosingInvitationCta } from "@/components/pages/ClosingInvitationCta";
 import { PageHero } from "@/components/hero/PageHero";
-import { bookingServices } from "@/lib/services";
 
 export function BookingsPageContent() {
   return (
@@ -10,7 +9,7 @@ export function BookingsPageContent() {
         eyebrow="Bookings"
         title="Choose your session"
         script="at a time that suits you"
-        lead="Pick a service below to view live availability and book directly. Prefer a conversation first? You can always enquire before you commit."
+        lead="View live availability and book directly below. Prefer a conversation first? You can always enquire before you commit."
         trust={[
           "Reply within 24 hours",
           "All services available",
@@ -22,7 +21,7 @@ export function BookingsPageContent() {
       />
 
       <div id="page-content">
-        <BookingsStudioSection services={bookingServices} />
+        <BookingsStudioSection />
 
         <ClosingInvitationCta />
       </div>

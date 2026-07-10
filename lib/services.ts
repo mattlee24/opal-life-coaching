@@ -300,29 +300,3 @@ export const services: Record<string, ServicePageData> = {
     bookingLabel: "Reiki Healing",
   },
 };
-
-export type BookingService = {
-  slug: string;
-  href: string;
-  label: string;
-  tag: string;
-  variant: ServiceVariant;
-  icon: string;
-  calSlug: string;
-  summary: string;
-  sessions: ServicePageData["sessions"];
-  trust: string[];
-};
-
-export const bookingServices: BookingService[] = Object.values(services).map((s) => ({
-  slug: s.slug,
-  href: `/${s.slug}`,
-  label: s.bookingLabel,
-  tag: s.tag,
-  variant: s.variant,
-  icon: s.icon,
-  calSlug: s.slug,
-  summary: s.intro,
-  sessions: s.sessions,
-  trust: s.hero.trust,
-}));
