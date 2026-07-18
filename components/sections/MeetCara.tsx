@@ -41,7 +41,7 @@ export function MeetCara() {
             <div className={"meet-cara-frame relative z-[2] overflow-hidden rounded-[20px] bg-[linear-gradient(180deg,#fff_0%,#f8f6fc_100%)] p-1.5 shadow-[0_1px_0_rgba(255,255,255,.95)_inset,0_32px_72px_rgba(179,162,254,.18),0_14px_36px_rgba(28,48,163,.07)]"}>
               <span className={"meet-cara-sheen pointer-events-none absolute inset-0 z-[3] overflow-hidden rounded-[inherit]"} aria-hidden="true" />
               <SiteImage
-                src="/assets/cara-tarot.png"
+                src="/assets/cara-meet.jpg"
                 alt="Cara, life coach and healer"
                 width={480}
                 height={600}
