@@ -144,12 +144,15 @@ export function ServiceSessionsSection({ data }: ServiceSessionsSectionProps) {
                     <span className="service-sessions-photo-vine pointer-events-none absolute inset-0 z-[4]" aria-hidden="true" />
                     <div className="service-sessions-photo-inner relative z-[2] overflow-hidden">
                       <SiteImage
-                        src="/assets/cara-speaking.png"
-                        alt="Cara, ready to welcome you"
+                        src={data.sessionsImage ?? "/assets/cara-speaking.png"}
+                        alt={data.sessionsImageAlt ?? "Cara, ready to welcome you"}
                         width={480}
-                        height={560}
+                        height={600}
                         sizes="(max-width: 768px) 78vw, 420px"
-                        className="block aspect-[4/5] w-full object-cover object-left"
+                        className={cn(
+                          "block aspect-[4/5] w-full object-cover",
+                          data.sessionsImage ? "object-center" : "object-left",
+                        )}
                       />
                     </div>
                   </div>

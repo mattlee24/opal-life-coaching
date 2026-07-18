@@ -93,11 +93,11 @@ export function AboutHero() {
               <div className={"about-hero-frame relative z-[2] overflow-hidden rounded-[20px] bg-[linear-gradient(180deg,#fff_0%,#f8f6fc_100%)] p-[7px] shadow-[0_2px_0_rgba(255,255,255,.95)_inset,0_36px_88px_rgba(179,162,254,.22),0_16px_40px_rgba(28,48,163,.1)] rotate-[-1.5deg] transition-transform duration-[600ms] ease-opal hover:rotate-0 hover:-translate-y-1 motion-reduce:hover:translate-y-0"}>
                 <span className={"about-hero-sheen pointer-events-none absolute inset-0 z-[3] overflow-hidden rounded-[inherit]"} aria-hidden="true" />
                 <img
-                  src="/assets/cara-reading.png"
-                  alt="Cara in conversation during a coaching session"
-                  width={640}
-                  height={480}
-                  className={"relative z-[1] block aspect-[5/4] w-full rounded-[14px] object-cover object-[center_26%]"}
+                  src="/assets/cara-about-hero.jpg"
+                  alt="Cara smiling during a tarot reading at the table"
+                  width={800}
+                  height={640}
+                  className={"relative z-[1] block aspect-[5/4] w-full rounded-[14px] object-cover object-center"}
                 />
               </div>
             </div>

@@ -122,11 +122,11 @@ export function AboutPageContent() {
                     </span>
                     <div className={"about-story-portrait relative z-[2] overflow-hidden rounded-[22px] bg-[linear-gradient(155deg,rgba(188,228,222,.5)_0%,rgba(179,162,254,.38)_50%,rgba(168,201,176,.45)_100%)] p-1.5 shadow-[0_24px_64px_rgba(179,162,254,.14),0_10px_28px_rgba(28,48,163,.07)] rotate-[-1.5deg] transition-transform duration-[550ms] ease-opal hover:rotate-0 hover:-translate-y-1 motion-reduce:hover:translate-y-0"}>
                       <img
-                        src="/assets/cara-speaking.png"
-                        alt="Cara speaking warmly with a client"
+                        src="/assets/about-story-room.jpg"
+                        alt="A calm session space with a wooden table, chairs and soft natural light"
                         width={480}
-                        height={560}
-                        className={"block aspect-[3/4] w-full rounded-[16px] bg-white object-cover object-left scale-[1.14]"}
+                        height={640}
+                        className={"block aspect-[3/4] w-full rounded-[16px] bg-white object-cover object-center"}
                       />
                     </div>
                     <figcaption className={"about-story-tag absolute left-1/2 bottom-[5%] z-[4] max-w-[calc(100%-1.5rem)] -translate-x-1/2 rounded-full border border-pastel-lilac/20 bg-white/95 px-[1.05rem] py-[.58rem] text-center font-serif text-[clamp(.9rem,1.15vw,1rem)] font-semibold leading-[1.2] whitespace-nowrap text-blue shadow-[0_10px_28px_rgba(179,162,254,.12)] backdrop-blur-[8px] max-md:whitespace-normal"}>

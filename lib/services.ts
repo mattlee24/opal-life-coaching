@@ -32,6 +32,8 @@ export type ServicePageData = {
   expectations: string[];
   faqs: { question: string; answer: string }[];
   bookingLabel: string;
+  sessionsImage?: string;
+  sessionsImageAlt?: string;
 };
 
 export const services: Record<string, ServicePageData> = {
@@ -128,6 +130,8 @@ export const services: Record<string, ServicePageData> = {
     variant: "t",
     icon: "/assets/svc-icon-tarot.png",
     tag: "Reflection",
+    sessionsImage: "/assets/cara-tarot-session.jpg",
+    sessionsImageAlt: "Cara at the table guiding a tarot reading with cards and a crystal wand",
     seo: {
       title: "Tarot Readings — Opal Life Coaching",
       description:
@@ -216,6 +220,8 @@ export const services: Record<string, ServicePageData> = {
     variant: "r",
     icon: "/assets/svc-icon-reiki.png",
     tag: "Balance",
+    sessionsImage: "/assets/reiki-room.jpg",
+    sessionsImageAlt: "The calm Reiki treatment room with massage table, crystals and soft light",
     seo: {
       title: "Reiki Healing — Opal Life Coaching",
       description:
