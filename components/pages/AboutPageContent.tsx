@@ -10,20 +10,20 @@ const essenceItems = [
   {
     icon: "/assets/icon-value-personal.svg",
     title: "Entirely personal",
-    text: "Sessions shaped around your story — never a template.",
-    vine: "vine-panel--card",
+    text: "Sessions shaped around your story — never a template. We start where you are, and let the conversation find its own shape.",
+    accent: "personal",
   },
   {
     icon: "/assets/icon-value-holistic.svg",
     title: "Many strands",
-    text: "Coaching, intuitive guidance and gentle healing — woven in when it helps.",
-    vine: "vine-panel--content",
+    text: "Coaching, intuitive guidance and gentle healing — woven in when it helps, left aside when it doesn't.",
+    accent: "holistic",
   },
   {
     icon: "/assets/icon-value-pace.svg",
     title: "At your pace",
-    text: "Unhurried, confidential support with no pressure to perform.",
-    vine: "vine-panel--slim",
+    text: "Unhurried, confidential support with no pressure to perform. There is room to pause, breathe, and begin again.",
+    accent: "pace",
   },
 ] as const;
 
@@ -31,23 +31,29 @@ const pathSteps = [
   {
     step: "01",
     title: "Practical coaching",
-    text: "Grounded conversations, honest reflection and tools you can use in everyday life.",
-    icon: "/assets/svc-icon-coaching.png",
+    text: "Grounded conversations, honest reflection and tools you can use in everyday life. We slow things down enough to notice what's true — then find a next step that feels doable, not overwhelming.",
+    note: "Ideal when you're stuck, undecided, or ready for clearer direction.",
+    icon: "/assets/icon-value-personal.svg",
     accent: "coaching",
+    tag: "Clarity",
   },
   {
     step: "02",
     title: "Intuitive guidance",
-    text: "Tarot and inner wisdom woven in when it feels supportive — never forced.",
-    icon: "/assets/svc-icon-tarot.png",
+    text: "Tarot and inner wisdom woven in when it feels supportive — never forced. Sometimes a fresh perspective helps you see what your mind has been circling, so you can move with more trust.",
+    note: "Offered gently, only when it deepens the conversation.",
+    icon: "/assets/icon-value-holistic.svg",
     accent: "tarot",
+    tag: "Perspective",
   },
   {
     step: "03",
     title: "Gentle healing",
-    text: "Reiki and restful practices to help your body and mind feel safe again.",
-    icon: "/assets/svc-icon-reiki.png",
+    text: "Reiki and restful practices to help your body and mind feel safe again. There's no need to perform or explain everything — rest itself can be the work.",
+    note: "A soft place to land when you've been carrying too much.",
+    icon: "/assets/icon-value-pace.svg",
     accent: "reiki",
+    tag: "Rest",
   },
 ] as const;
 
@@ -139,77 +145,57 @@ export function AboutPageContent() {
           </div>
         </section>
 
-        <section className={cn("about-essence relative isolate overflow-hidden border-y border-pastel-lilac/10 bg-[linear-gradient(180deg,#f3f0fa_0%,#faf8ff_52%,#f6faf7_100%)]", "py-[var(--section-y)]")}>
-          <div className={"site-wrap w-full max-w-[1200px] mx-auto px-[var(--page-x)]"}>
-            <header className={"about-essence-head mb-[clamp(2.5rem,5vw,3.5rem)] text-center"}>
-              <p className={"inline-flex items-center justify-center h-[34px] px-[.85rem] text-[.68rem] font-bold tracking-[.18em] uppercase leading-none text-[#9580f5] mb-4 bg-white/55 border border-pastel-lilac/20 rounded-full box-border"}>What guides me</p>
-              <h2>
-                Three threads, <span className={"font-script font-normal text-pastel-lilac leading-[1.1]"}>one conversation</span>
-              </h2>
-              <OpalSep center wide />
-            </header>
-            <div className={"about-essence-grid grid w-full items-stretch gap-[clamp(1.35rem,2.2vw,1.85rem)] max-md:max-w-[min(380px,100%)] max-md:mx-auto max-md:grid-cols-1 max-md:gap-[1.35rem] md:grid-cols-3"}>
-              {essenceItems.map((item, index) => (
-                <article
-                  key={item.title}
-                  className={cn(
-                    "about-essence-card",
-                    "vine-panel",
-                    item.vine,
-                    index === 1 && "-translate-y-3 max-md:translate-y-0",
-                  )}
-                >
-                  <div className={cn("vine-panel__inner", "items-center justify-center gap-[.65rem] text-center relative pt-[.25rem]")}>
-                    <span className={"about-essence-thread absolute top-[clamp(.75rem,1.4vw,1rem)] right-[clamp(.75rem,1.4vw,1rem)] font-serif text-[clamp(1.25rem,1.85vw,1.45rem)] font-semibold leading-none text-nature-sage/35"} aria-hidden="true">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <span className={"about-essence-sprig pointer-events-none absolute top-[clamp(.65rem,1.2vw,.85rem)] left-[clamp(.65rem,1.2vw,.85rem)] w-[min(36px,8vw)] opacity-42 [filter:drop-shadow(0_3px_10px_rgba(179,162,254,.1))]"} aria-hidden="true">
-                      <DecorativeImage src="/assets/nature-leaf-opal.svg" width={80} height={80} />
-                    </span>
-                    <div className={"about-essence-icon relative mb-[.35rem] flex h-[76px] w-[76px] items-center justify-center"}>
-                      <span
-                        className={cn(
-                          "about-essence-icon-halo absolute inset-[2px] rounded-full shadow-[0_0_0_1px_rgba(179,162,254,.1),0_10px_26px_rgba(179,162,254,.1)]",
-                          index === 0 &&
-                            "bg-[radial-gradient(circle_at_50%_38%,#fff_0%,rgba(232,248,242,.95)_40%,rgba(188,228,222,.55)_70%,transparent_92%)]",
-                          index === 1 &&
-                            "bg-[radial-gradient(circle_at_50%_38%,#fff_0%,rgba(240,235,255,.95)_38%,rgba(212,235,228,.5)_68%,transparent_92%)]",
-                          index === 2 &&
-                            "bg-[radial-gradient(circle_at_50%_38%,#fff_0%,rgba(235,242,255,.95)_38%,rgba(212,235,228,.55)_68%,transparent_92%)]",
-                        )}
-                        aria-hidden="true"
-                      />
-                      <img
-                        src={item.icon}
-                        alt=""
-                        width={40}
-                        height={40}
-                        className={"relative z-[1] h-auto w-[42px] [filter:drop-shadow(0_2px_8px_rgba(179,162,254,.12))]"}
-                      />
-                    </div>
-                    <h3 className={"font-serif text-[clamp(1.35rem,2vw,1.55rem)] leading-[1.12] text-blue"}>{item.title}</h3>
-                    <p className={"max-w-[26ch] text-[.9rem] leading-[1.72] text-muted"}>{item.text}</p>
-                  </div>
-                </article>
-              ))}
+        <section className={cn("about-essence relative isolate overflow-hidden border-y border-pastel-lilac/10", "py-[var(--section-y)]")}>
+          <div className="about-essence-sky pointer-events-none absolute inset-0 z-0" aria-hidden="true" />
+
+          <div className="site-wrap relative z-[1] w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]">
+            <div className="about-essence-layout">
+              <Reveal className="about-essence-lead">
+                <p className="about-essence-kicker">What guides me</p>
+                <h2>
+                  Three threads,{" "}
+                  <span className="font-script font-normal text-[#9580f5] leading-[1.05]">one conversation</span>
+                </h2>
+                <OpalSep wide className="about-essence-sep" />
+                <p className="about-essence-intro">
+                  The work is never one fixed method. It is a gentle weaving —
+                  personal, holistic, and always at a pace that feels kind.
+                </p>
+              </Reveal>
+
+              <div className="about-essence-braid" aria-label="Guiding principles">
+                <span className="about-essence-braid-line" aria-hidden="true" />
+                <span className="about-essence-watermark font-script" aria-hidden="true">
+                  woven together
+                </span>
+
+                {essenceItems.map((item, index) => (
+                  <Reveal key={item.title} delay={index * 110} variant="up" fill>
+                    <article
+                      className={cn(
+                        "about-essence-thread",
+                        `about-essence-thread--${item.accent}`,
+                        `about-essence-thread--${index % 2 === 0 ? "a" : "b"}`,
+                      )}
+                    >
+                      <span className="about-essence-thread-node" aria-hidden="true">
+                        <DecorativeImage src={item.icon} width={26} height={26} />
+                      </span>
+                      <div className="about-essence-thread-copy">
+                        <p className="about-essence-thread-index">{String(index + 1).padStart(2, "0")}</p>
+                        <h3>{item.title}</h3>
+                        <p>{item.text}</p>
+                      </div>
+                    </article>
+                  </Reveal>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
         <section className={cn("about-path relative isolate overflow-hidden border-t border-pastel-lilac/12", "py-[var(--section-y)]")}>
           <div className="about-path-sky pointer-events-none absolute inset-0 z-0" aria-hidden="true" />
-          <div className="about-path-shapes pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
-            <span className="about-path-shape about-path-shape--ring" />
-            <span className="about-path-shape about-path-shape--ring-sm" />
-            <span className="about-path-shape about-path-shape--blob" />
-            <span className="about-path-shape about-path-shape--arc" />
-            <span className="about-path-shape about-path-shape--diamond" />
-          </div>
-          <div className="about-path-orbs pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
-            <span className="about-path-orb about-path-orb--a" />
-            <span className="about-path-orb about-path-orb--b" />
-            <span className="about-path-orb about-path-orb--c" />
-          </div>
           <div className="about-path-ambient pointer-events-none absolute inset-0 z-0" aria-hidden="true" />
 
           <DecorativeImage
@@ -225,51 +211,43 @@ export function AboutPageContent() {
             className="about-path-float about-path-float--br pointer-events-none absolute z-[1] max-md:opacity-20"
           />
 
-          <div className={"site-wrap relative z-[2] w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]"}>
-            <Reveal className={"about-path-head mx-auto mb-[clamp(2.75rem,5.5vw,3.85rem)] max-w-[min(640px,100%)] text-center"}>
-              <p className={"about-path-kicker"}>My approach</p>
+          <div className="site-wrap relative z-[2] w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]">
+            <Reveal className="about-path-head mx-auto mb-[clamp(2.5rem,5vw,3.5rem)] max-w-[min(640px,100%)] text-center">
+              <p className="about-path-kicker">My approach</p>
               <h2>
-                How I work <span className={"font-script font-normal text-[#9580f5] leading-[1.05]"}>with you</span>
+                How I work <span className="font-script font-normal text-[#9580f5] leading-[1.05]">with you</span>
               </h2>
               <OpalSep center wide />
-              <p className={"about-path-intro"}>
+              <p className="about-path-intro">
                 A calm, collaborative space — practical when you need direction,
                 intuitive when you need perspective, gentle when you need rest.
               </p>
             </Reveal>
 
-            <ol className={"about-path-flow"}>
-              {pathSteps.map((item, index) => (
-                <li
-                  key={item.step}
-                  className={cn(
-                    "about-path-row",
-                    index % 2 === 0 ? "about-path-row--left" : "about-path-row--right",
-                    `about-path-row--${item.accent}`,
-                  )}
-                >
-                  <div className="about-path-node" aria-hidden="true">
-                    <span className="about-path-node-glow" />
-                    <span className="about-path-node-ring" />
-                    <span className="about-path-node-num">{item.step}</span>
-                  </div>
-                  <Reveal delay={index * 140} variant="up" className="about-path-card-wrap" fill>
-                    <span className="about-path-card-stem" aria-hidden="true" />
-                    <article className={cn("about-path-card", "opal-panel")}>
-                      <div className={cn("opal-panel__inner", "about-path-card-inner")}>
-                        <div className="about-path-card-icon" aria-hidden="true">
-                          <span className="about-path-card-icon-halo" />
-                          <DecorativeImage src={item.icon} width={30} height={30} className="relative z-[1]" />
+            <div className="about-path-stage">
+              <ul className="about-path-strands">
+                {pathSteps.map((item, index) => (
+                  <li key={item.step}>
+                    <Reveal delay={index * 100} variant="up" fill>
+                      <article className={cn("about-path-strand", `about-path-strand--${item.accent}`)}>
+                        <div className="about-path-strand-top">
+                          <span className="about-path-strand-icon" aria-hidden="true">
+                            <DecorativeImage src={item.icon} width={28} height={28} />
+                          </span>
+                          <span className="about-path-strand-index" aria-hidden="true">
+                            {item.step}
+                          </span>
                         </div>
+                        <p className="about-path-strand-tag">{item.tag}</p>
                         <h3>{item.title}</h3>
-                        <span className="about-path-card-rule" aria-hidden="true" />
-                        <p>{item.text}</p>
-                      </div>
-                    </article>
-                  </Reveal>
-                </li>
-              ))}
-            </ol>
+                        <p className="about-path-strand-text">{item.text}</p>
+                        <p className="about-path-strand-note">{item.note}</p>
+                      </article>
+                    </Reveal>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </section>
 
