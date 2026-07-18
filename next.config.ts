@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { site } from "./lib/site";
 
 const contentSecurityPolicy = [
   "default-src 'self'",
@@ -27,6 +28,9 @@ const securityHeaders = [
     value: "camera=(), microphone=(), geolocation=(), payment=(self \"https://cal.com\")",
   },
   { key: "X-DNS-Prefetch-Control", value: "on" },
+  ...(!site.allowIndexing
+    ? [{ key: "X-Robots-Tag", value: "noindex, nofollow" }]
+    : []),
 ];
 
 const nextConfig: NextConfig = {

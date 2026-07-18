@@ -14,7 +14,7 @@ export function SeoHead({
   description,
   path = "",
   image = site.ogImage,
-  noIndex = false,
+  noIndex = !site.allowIndexing,
 }: SeoHeadProps) {
   const canonical = `${site.url}${path}`;
   const imageUrl = image.startsWith("http") ? image : `${site.url}${image}`;

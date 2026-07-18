@@ -1,4 +1,4 @@
+# Site is in development — indexing disabled.
+# Set site.allowIndexing to true in lib/site.ts and restore Allow when going live.
 User-agent: *
-Allow: /
-
-Sitemap: https://opal-life-coaching.vercel.app/sitemap.xml
+Disallow: /

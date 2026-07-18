@@ -5,6 +5,8 @@ export const site = {
   location: "Chichester & Eastergate, West Sussex",
   url: "https://opal-life-coaching.vercel.app",
   ogImage: "/assets/cara-tarot.png",
+  /** Flip to true when ready for search engines. */
+  allowIndexing: false,
   social: {
     facebook: null as string | null,
     instagram: null as string | null,
