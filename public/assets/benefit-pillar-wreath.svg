@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 260" fill="none" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="wreathStroke" x1="0" y1="0" x2="420" y2="260" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7aab8e"/>
+      <stop offset=".5" stop-color="#a8c9b0"/>
+      <stop offset="1" stop-color="#7aab8e"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Single soft frame -->
+  <rect x="16" y="16" width="388" height="228" rx="18" stroke="url(#wreathStroke)" stroke-width="1.6" fill="none" opacity=".75"/>
+
+  <!-- Corner flourishes only — top-left -->
+  <path d="M22 54c6-16 18-28 34-34M18 72c-2-10 2-22 10-28" stroke="#6b9a7e" stroke-width="1.5" stroke-linecap="round" opacity=".8"/>
+  <path d="M14 36c6 4 10 12 8 20-6-2-9-8-9-15 0-2 1-3 1-5z" fill="#7aab8e" opacity=".85"/>
+  <path d="M32 18c4 6 4 13 0 18-4-4-6-10-4-15z" fill="#8fd4c8" opacity=".8"/>
+  <circle cx="18" cy="58" r="2" fill="#9580f5" opacity=".45"/>
+
+  <!-- top-right -->
+  <path d="M398 54c-6-16-18-28-34-34M402 72c2-10-2-22-10-28" stroke="#6b9a7e" stroke-width="1.5" stroke-linecap="round" opacity=".8"/>
+  <path d="M406 36c-6 4-10 12-8 20 6-2 9-8 9-15 0-2-1-3-1-5z" fill="#7aab8e" opacity=".85"/>
+  <path d="M388 18c-4 6-4 13 0 18 4-4 6-10 4-15z" fill="#8fd4c8" opacity=".8"/>
+  <circle cx="402" cy="58" r="2" fill="#9580f5" opacity=".45"/>
+
+  <!-- bottom-left -->
+  <path d="M22 206c6 16 18 28 34 34M18 188c-2 10 2 22 10 28" stroke="#6b9a7e" stroke-width="1.5" stroke-linecap="round" opacity=".8"/>
+  <path d="M14 224c6-4 10-12 8-20-6 2-9 8-9 15 0 2 1 3 1 5z" fill="#7aab8e" opacity=".85"/>
+  <path d="M32 242c4-6 4-13 0-18-4 4-6 10-4 15z" fill="#8fd4c8" opacity=".8"/>
+  <circle cx="18" cy="202" r="2" fill="#9580f5" opacity=".45"/>
+
+  <!-- bottom-right -->
+  <path d="M398 206c-6 16-18 28-34 34M402 188c2 10-2 22-10 28" stroke="#6b9a7e" stroke-width="1.5" stroke-linecap="round" opacity=".8"/>
+  <path d="M406 224c-6-4-10-12-8-20 6 2 9 8 9 15 0 2-1 3-1 5z" fill="#7aab8e" opacity=".85"/>
+  <path d="M388 242c-4-6-4-13 0-18 4 4 6 10 4 15z" fill="#8fd4c8" opacity=".8"/>
+  <circle cx="402" cy="202" r="2" fill="#9580f5" opacity=".45"/>
+</svg>

@@ -52,7 +52,7 @@ export const services: Record<string, ServicePageData> = {
       description:
         "Practical, personal coaching for transitions, decisions and the life you're building — always at your pace.",
       trust: ["Free discovery call", "Online or in person", "At your pace"],
-      tone: "sage",
+      tone: "lavender",
     },
     intro:
       "Life coaching with Cara is a calm, collaborative space to untangle what's feeling heavy, clarify what you want, and take steps that feel genuinely right for you. There's no fixed formula — sessions are shaped around your story, your goals, and where you are today.",
@@ -228,7 +228,7 @@ export const services: Record<string, ServicePageData> = {
       description:
         "Release tension, restore balance, and invite profound peace through gentle energy healing.",
       trust: ["In-person sessions", "Chichester & Eastergate", "Deep relaxation"],
-      tone: "sage",
+      tone: "lavender",
     },
     intro:
       "Reiki is a gentle, hands-on or hands-near healing practice that helps your body and mind settle into a state of deep rest. Many clients describe feeling lighter, calmer and more grounded afterwards — as though they've finally been able to exhale properly.",

@@ -3,6 +3,7 @@ import { AboutHero } from "@/components/hero/AboutHero";
 import { ClosingInvitationCta } from "@/components/pages/ClosingInvitationCta";
 import { DecorativeImage } from "@/components/ui/DecorativeImage";
 import { OpalSep } from "@/components/ui/OpalSep";
+import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/cn";
 
 const essenceItems = [
@@ -31,16 +32,22 @@ const pathSteps = [
     step: "01",
     title: "Practical coaching",
     text: "Grounded conversations, honest reflection and tools you can use in everyday life.",
+    icon: "/assets/svc-icon-coaching.png",
+    accent: "coaching",
   },
   {
     step: "02",
     title: "Intuitive guidance",
     text: "Tarot and inner wisdom woven in when it feels supportive — never forced.",
+    icon: "/assets/svc-icon-tarot.png",
+    accent: "tarot",
   },
   {
     step: "03",
     title: "Gentle healing",
     text: "Reiki and restful practices to help your body and mind feel safe again.",
+    icon: "/assets/svc-icon-reiki.png",
+    accent: "reiki",
   },
 ] as const;
 
@@ -189,39 +196,77 @@ export function AboutPageContent() {
           </div>
         </section>
 
-        <section className={cn("about-path relative isolate overflow-hidden border-t border-pastel-lilac/10 bg-white", "py-[var(--section-y)]")}>
-          <div className={"site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]"}>
-            <header className={"about-path-head mx-auto mb-[clamp(2.5rem,5vw,3.5rem)] max-w-[min(640px,100%)] text-center"}>
-              <p className={"inline-flex items-center justify-center h-[34px] px-[.85rem] text-[.68rem] font-bold tracking-[.18em] uppercase leading-none text-[#9580f5] mb-4 bg-white/55 border border-pastel-lilac/20 rounded-full box-border"}>My approach</p>
+        <section className={cn("about-path relative isolate overflow-hidden border-t border-pastel-lilac/12", "py-[var(--section-y)]")}>
+          <div className="about-path-sky pointer-events-none absolute inset-0 z-0" aria-hidden="true" />
+          <div className="about-path-shapes pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
+            <span className="about-path-shape about-path-shape--ring" />
+            <span className="about-path-shape about-path-shape--ring-sm" />
+            <span className="about-path-shape about-path-shape--blob" />
+            <span className="about-path-shape about-path-shape--arc" />
+            <span className="about-path-shape about-path-shape--diamond" />
+          </div>
+          <div className="about-path-orbs pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
+            <span className="about-path-orb about-path-orb--a" />
+            <span className="about-path-orb about-path-orb--b" />
+            <span className="about-path-orb about-path-orb--c" />
+          </div>
+          <div className="about-path-ambient pointer-events-none absolute inset-0 z-0" aria-hidden="true" />
+
+          <DecorativeImage
+            src="/assets/sprig-delicate.svg"
+            width={40}
+            height={80}
+            className="about-path-float about-path-float--tl pointer-events-none absolute z-[1] max-md:hidden"
+          />
+          <DecorativeImage
+            src="/assets/sprig-fern.svg"
+            width={48}
+            height={96}
+            className="about-path-float about-path-float--br pointer-events-none absolute z-[1] max-md:opacity-20"
+          />
+
+          <div className={"site-wrap relative z-[2] w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]"}>
+            <Reveal className={"about-path-head mx-auto mb-[clamp(2.75rem,5.5vw,3.85rem)] max-w-[min(640px,100%)] text-center"}>
+              <p className={"about-path-kicker"}>My approach</p>
               <h2>
-                How I work <span className={"font-script font-normal text-pastel-lilac leading-[1.1]"}>with you</span>
+                How I work <span className={"font-script font-normal text-[#9580f5] leading-[1.05]"}>with you</span>
               </h2>
               <OpalSep center wide />
-              <p className={"about-path-intro mt-[clamp(1.25rem,2.4vw,1.65rem)] mx-auto max-w-[48ch] text-[clamp(1rem,1.15vw,1.05rem)] leading-[1.85] text-muted"}>
+              <p className={"about-path-intro"}>
                 A calm, collaborative space — practical when you need direction,
                 intuitive when you need perspective, gentle when you need rest.
               </p>
-            </header>
-            <ol className={"about-path-flow relative mx-auto flex max-w-[min(860px,100%)] flex-col gap-[clamp(2rem,4vw,3rem)] p-0 list-none max-md:max-w-[min(420px,100%)] max-md:gap-6 max-md:pl-[.15rem]"}>
+            </Reveal>
+
+            <ol className={"about-path-flow"}>
               {pathSteps.map((item, index) => (
                 <li
                   key={item.step}
                   className={cn(
-                    "about-path-row relative grid items-center gap-[clamp(1rem,2.2vw,1.85rem)] max-md:grid-cols-[auto_1fr] max-md:gap-4",
-                    index % 2 === 0 ? "about-path-row about-path-row--left" : "about-path-row about-path-row--right",
-                    index % 2 === 0 && "md:grid-cols-[1fr_auto_1fr]",
-                    index % 2 === 1 && "md:grid-cols-[1fr_auto_1fr]",
+                    "about-path-row",
+                    index % 2 === 0 ? "about-path-row--left" : "about-path-row--right",
+                    `about-path-row--${item.accent}`,
                   )}
                 >
-                  <div className={"about-path-node relative z-[1] flex h-[3.25rem] w-[3.25rem] items-center justify-center rounded-full border border-pastel-lilac/32 bg-[linear-gradient(165deg,#fff_0%,#f8f5ff_48%,#f3faf7_100%)] shadow-[0_0_0_6px_rgba(255,255,255,.92),0_10px_28px_rgba(179,162,254,.14),inset_0_1px_0_rgba(255,255,255,.9)] max-md:h-[2.85rem] max-md:w-[2.85rem] max-md:shadow-[0_0_0_5px_rgba(255,255,255,.92),0_8px_22px_rgba(179,162,254,.12),inset_0_1px_0_rgba(255,255,255,.9)]"} aria-hidden="true">
-                    <span className={"font-serif text-[1.02rem] font-semibold leading-none text-[#9580f5]"}>{item.step}</span>
+                  <div className="about-path-node" aria-hidden="true">
+                    <span className="about-path-node-glow" />
+                    <span className="about-path-node-ring" />
+                    <span className="about-path-node-num">{item.step}</span>
                   </div>
-                  <article className={cn("about-path-card", "opal-panel", "about-path-card m-0 rounded-[20px] px-[clamp(1.5rem,2.4vw,1.85rem)] py-[clamp(1.65rem,2.8vw,2.15rem)] transition-transform duration-[450ms] ease-opal")}>
-                    <div className={cn("opal-panel__inner", "gap-[.45rem]")}>
-                      <h3 className={"font-serif text-[clamp(1.32rem,2vw,1.5rem)] leading-[1.15] text-blue"}>{item.title}</h3>
-                      <p className={"text-[.92rem] leading-[1.78] text-muted"}>{item.text}</p>
-                    </div>
-                  </article>
+                  <Reveal delay={index * 140} variant="up" className="about-path-card-wrap" fill>
+                    <span className="about-path-card-stem" aria-hidden="true" />
+                    <article className={cn("about-path-card", "opal-panel")}>
+                      <div className={cn("opal-panel__inner", "about-path-card-inner")}>
+                        <div className="about-path-card-icon" aria-hidden="true">
+                          <span className="about-path-card-icon-halo" />
+                          <DecorativeImage src={item.icon} width={30} height={30} className="relative z-[1]" />
+                        </div>
+                        <h3>{item.title}</h3>
+                        <span className="about-path-card-rule" aria-hidden="true" />
+                        <p>{item.text}</p>
+                      </div>
+                    </article>
+                  </Reveal>
                 </li>
               ))}
             </ol>

@@ -2,14 +2,19 @@
 
 import Cal, { getCalApi } from "@calcom/embed-react";
 import Image from "next/image";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
+  calBookingCategories,
   calBookingEvents,
   groupCalBookingEventsByCategory,
+  type CalBookingCategoryId,
   type CalBookingEvent,
 } from "@/lib/cal-booking-events";
+import { cn } from "@/lib/cn";
 
 const CAL_USERNAME = process.env.NEXT_PUBLIC_CAL_USERNAME ?? "";
+
+type FilterId = "all" | CalBookingCategoryId;
 
 const calUiConfig = {
   theme: "light" as const,
@@ -59,30 +64,58 @@ function formatLabel(event: CalBookingEvent) {
   return event.location === "inPerson" ? "In person" : "Online";
 }
 
+function getDisplayTitle(event: CalBookingEvent, categoryLabel: string) {
+  return event.title
+    .replace(new RegExp(`^${categoryLabel}\\s*[—–-]\\s*`, "i"), "")
+    .replace(/\s*\(\d+\s*min\)\s*$/i, "")
+    .trim();
+}
+
 function CalBookingCard({
   event,
+  categoryId,
+  categoryLabel,
   onSelect,
 }: {
   event: CalBookingEvent;
+  categoryId: CalBookingCategoryId;
+  categoryLabel: string;
   onSelect: (slug: string) => void;
 }) {
-  const shortTitle = event.title.replace(/^[^:]+:\s*/, "");
+  const displayTitle = getDisplayTitle(event, categoryLabel);
+  const isInPerson = event.location === "inPerson";
 
   return (
     <button
       type="button"
       onClick={() => onSelect(event.slug)}
-      className="bookings-cal-card group text-left"
+      className={cn("bookings-cal-card group text-left", `bookings-cal-card--${categoryId}`)}
     >
-      <span className="bookings-cal-card__top">
-        <span className="bookings-cal-card__name">{shortTitle}</span>
-        <span className="bookings-cal-card__price">£{event.priceGbp}</span>
+      <span className="bookings-cal-card__glow" aria-hidden="true" />
+      <span className="bookings-cal-card__ribbon" aria-hidden="true" />
+
+      <span className="bookings-cal-card__header">
+        <span className={cn("bookings-cal-card__mark", isInPerson && "bookings-cal-card__mark--place")}>
+          <span aria-hidden="true">{isInPerson ? "◎" : "◌"}</span>
+          {formatLabel(event)}
+        </span>
+        <span className="bookings-cal-card__price">
+          <span className="bookings-cal-card__price-currency">£</span>
+          {event.priceGbp}
+        </span>
       </span>
+
+      <span className="bookings-cal-card__name">{displayTitle}</span>
       <p className="bookings-cal-card__desc">{event.description}</p>
-      <span className="bookings-cal-card__meta">
-        <span>{event.lengthInMinutes} min</span>
-        <span aria-hidden="true">·</span>
-        <span>{formatLabel(event)}</span>
+
+      <span className="bookings-cal-card__chips">
+        <span className="bookings-cal-card__chip">{event.lengthInMinutes} minutes</span>
+        {event.note ? <span className="bookings-cal-card__chip bookings-cal-card__chip--note">Flexible</span> : null}
+      </span>
+
+      <span className="bookings-cal-card__cta">
+        Book this session
+        <span aria-hidden="true">→</span>
       </span>
     </button>
   );
@@ -91,9 +124,18 @@ function CalBookingCard({
 function CalProfileEmbed() {
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
   const [embedKey, setEmbedKey] = useState(0);
+  const [filter, setFilter] = useState<FilterId>("all");
 
   const selectedEvent = calBookingEvents.find((event) => event.slug === selectedSlug);
-  const grouped = groupCalBookingEventsByCategory();
+  const grouped = useMemo(() => groupCalBookingEventsByCategory(), []);
+  const visibleGroups = useMemo(
+    () =>
+      grouped.filter(
+        (group) =>
+          group.events.length > 0 && (filter === "all" || group.id === filter),
+      ),
+    [filter, grouped],
+  );
 
   const backToGrid = useCallback(() => {
     setSelectedSlug(null);
@@ -141,11 +183,14 @@ function CalProfileEmbed() {
             </div>
 
             <div className="bookings-cal-selected-head">
-              <h3 className="bookings-cal-selected-head__title">{selectedEvent.title}</h3>
-              <p className="bookings-cal-selected-head__meta">
-                {selectedEvent.lengthInMinutes} min · {formatLabel(selectedEvent)} · £
-                {selectedEvent.priceGbp}
-              </p>
+              <div className="bookings-cal-selected-head__copy">
+                <p className="bookings-cal-selected-head__eyebrow">Your session</p>
+                <h3 className="bookings-cal-selected-head__title">{selectedEvent.title}</h3>
+                <p className="bookings-cal-selected-head__meta">
+                  {selectedEvent.lengthInMinutes} min · {formatLabel(selectedEvent)}
+                </p>
+              </div>
+              <span className="bookings-cal-selected-head__price">£{selectedEvent.priceGbp}</span>
             </div>
 
             <div className="bookings-cal-embed-host">
@@ -159,25 +204,90 @@ function CalProfileEmbed() {
           </>
         ) : (
           <div className="bookings-cal-grid-wrap">
-            {grouped.map((group) =>
-              group.events.length === 0 ? null : (
-                <section key={group.id} className="bookings-cal-group">
-                  <div className="bookings-cal-group__head">
-                    {group.icon ? (
-                      <span className="bookings-cal-group__icon" aria-hidden="true">
-                        <Image src={group.icon} alt="" width={36} height={36} />
-                      </span>
-                    ) : null}
+            <div className="bookings-cal-filters" role="tablist" aria-label="Filter by service">
+              <button
+                type="button"
+                role="tab"
+                aria-selected={filter === "all"}
+                className={cn(
+                  "bookings-cal-filter",
+                  filter === "all" && "bookings-cal-filter--active",
+                )}
+                onClick={() => setFilter("all")}
+              >
+                <span className="bookings-cal-filter__dot" aria-hidden="true" />
+                All sessions
+              </button>
+              {calBookingCategories.map((category) => (
+                <button
+                  key={category.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={filter === category.id}
+                  className={cn(
+                    "bookings-cal-filter",
+                    `bookings-cal-filter--${category.id}`,
+                    filter === category.id && "bookings-cal-filter--active",
+                  )}
+                  onClick={() => setFilter(category.id)}
+                >
+                  {category.icon ? (
+                    <span className="bookings-cal-filter__halo" aria-hidden="true">
+                      <Image
+                        src={category.icon}
+                        alt=""
+                        width={24}
+                        height={24}
+                        className="bookings-cal-filter__icon"
+                      />
+                    </span>
+                  ) : (
+                    <span className="bookings-cal-filter__dot" aria-hidden="true" />
+                  )}
+                  {category.label}
+                </button>
+              ))}
+            </div>
+
+            {visibleGroups.map((group) => (
+              <section
+                key={group.id}
+                className={cn("bookings-cal-group", `bookings-cal-group--${group.id}`)}
+              >
+                <div className="bookings-cal-group__head">
+                  {group.icon ? (
+                    <span className="bookings-cal-group__icon" aria-hidden="true">
+                      <Image src={group.icon} alt="" width={40} height={40} />
+                    </span>
+                  ) : (
+                    <span className="bookings-cal-group__icon bookings-cal-group__icon--plain" aria-hidden="true">
+                      ✦
+                    </span>
+                  )}
+                  <div className="bookings-cal-group__titles">
                     <h3 className="bookings-cal-group__title">{group.label}</h3>
+                    {group.blurb ? (
+                      <p className="bookings-cal-group__blurb">{group.blurb}</p>
+                    ) : null}
+                    <p className="bookings-cal-group__count">
+                      {group.events.length} session{group.events.length === 1 ? "" : "s"} to choose from
+                    </p>
                   </div>
-                  <div className="bookings-cal-grid">
-                    {group.events.map((event) => (
-                      <CalBookingCard key={event.slug} event={event} onSelect={selectEvent} />
-                    ))}
-                  </div>
-                </section>
-              ),
-            )}
+                  <span className="bookings-cal-group__rule" aria-hidden="true" />
+                </div>
+                <div className="bookings-cal-grid">
+                  {group.events.map((event) => (
+                    <CalBookingCard
+                      key={event.slug}
+                      event={event}
+                      categoryId={group.id}
+                      categoryLabel={group.label}
+                      onSelect={selectEvent}
+                    />
+                  ))}
+                </div>
+              </section>
+            ))}
           </div>
         )}
       </div>

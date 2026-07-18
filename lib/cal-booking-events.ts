@@ -14,11 +14,35 @@ export const calBookingCategories: {
   id: CalBookingCategoryId;
   label: string;
   icon?: string;
+  blurb?: string;
 }[] = [
-  { id: "coaching", label: "Life Coaching", icon: "/assets/svc-icon-coaching.png" },
-  { id: "tarot", label: "Tarot Readings", icon: "/assets/svc-icon-tarot.png" },
-  { id: "reiki", label: "Reiki Healing", icon: "/assets/svc-icon-reiki.png" },
-  { id: "combined", label: "Combined Sessions" },
+  {
+    id: "coaching",
+    label: "Life Coaching",
+    icon: "/assets/svc-icon-coaching.png",
+    blurb:
+      "A calm, collaborative space to untangle what's feeling heavy, clarify what you want, and take steps that feel genuinely right for you.",
+  },
+  {
+    id: "tarot",
+    label: "Tarot Readings",
+    icon: "/assets/svc-icon-tarot.png",
+    blurb:
+      "Thoughtful readings for reflection and fresh perspective — online, by message, or in person.",
+  },
+  {
+    id: "reiki",
+    label: "Reiki Healing",
+    icon: "/assets/svc-icon-reiki.png",
+    blurb:
+      "Gentle energy healing to restore balance, ease tension, and support your wellbeing.",
+  },
+  {
+    id: "combined",
+    label: "Combined Sessions",
+    blurb:
+      "Coaching, tarot and Reiki woven together in one session, shaped around what you need most.",
+  },
 ];
 
 export const calBookingEvents: CalBookingEvent[] = [
