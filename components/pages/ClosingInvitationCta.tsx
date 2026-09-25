@@ -1,8 +1,44 @@
 import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/cn";
+import { textList, type ClosingCta } from "@/lib/cms-types";
 
-export function ClosingInvitationCta() {
+export type ClosingCtaContent = Pick<
+  ClosingCta,
+  | "eyebrow"
+  | "title"
+  | "script"
+  | "lead"
+  | "assurances"
+  | "cardTitle"
+  | "cardText"
+  | "primaryCta"
+  | "secondaryCta"
+>;
+
+/**
+ * Fallback copy for pages not yet wired to Payload (currently only /bookings).
+ * Everywhere else the content comes from Payload → Pages → Closing invitation.
+ */
+const defaultContent: ClosingCtaContent = {
+  eyebrow: "Take the first step",
+  title: "I'd love to meet you",
+  script: "whenever you're ready",
+  lead: "Book a free discovery call, explore a service, or simply send a message. There's no pressure to have it all figured out.",
+  assurances: [{ text: "Free discovery call" }, { text: "No pressure" }, { text: "At your pace" }],
+  cardTitle: "Your invitation",
+  cardText: "Start with a conversation — we'll figure out together what feels right for you.",
+  primaryCta: { label: "Book a session", href: "/bookings" },
+  secondaryCta: { label: "Get in touch", href: "/contact" },
+};
+
+type ClosingInvitationCtaProps = {
+  content?: ClosingCtaContent;
+};
+
+export function ClosingInvitationCta({ content = defaultContent }: ClosingInvitationCtaProps) {
+  const assurances = textList(content.assurances);
+
   return (
     <section className={cn("about-close relative isolate overflow-hidden border-t border-pastel-lilac/12 bg-[#f3f0fa]", "py-[var(--section-y)]")}>
       <div className={"about-close-atmosphere pointer-events-none absolute inset-0 z-0 overflow-hidden"} aria-hidden="true">
@@ -19,11 +55,11 @@ export function ClosingInvitationCta() {
 
       <div className={cn("site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]", "about-close-inner relative z-[2] grid w-full items-center gap-[clamp(2.5rem,5vw,4.5rem)] max-md:grid-cols-1 max-md:gap-9 md:grid-cols-[minmax(280px,1.05fr)_minmax(280px,.95fr)]")}>
         <Reveal variant="left" className={"about-close-copy max-w-[min(520px,100%)] max-md:mx-auto max-md:max-w-full max-md:text-center"}>
-          <p className={"inline-flex items-center justify-center h-[34px] px-[.85rem] text-[.68rem] font-bold tracking-[.18em] uppercase leading-none text-[#9580f5] mb-4 bg-white/55 border border-pastel-lilac/20 rounded-full box-border"}>Take the first step</p>
+          <p className={"inline-flex items-center justify-center h-[34px] px-[.85rem] text-[.68rem] font-bold tracking-[.18em] uppercase leading-none text-[#9580f5] mb-4 bg-white/55 border border-pastel-lilac/20 rounded-full box-border"}>{content.eyebrow}</p>
           <h2>
-            <span className={"about-close-line block text-[clamp(2.15rem,4.2vw,3.15rem)] leading-[1.04] tracking-[-.03em]"}>I&apos;d love to meet you</span>
+            <span className={"about-close-line block text-[clamp(2.15rem,4.2vw,3.15rem)] leading-[1.04] tracking-[-.03em]"}>{content.title}</span>
             <span className={cn("font-script font-normal text-pastel-lilac leading-[1.1]", "about-close-script block mt-[.12rem] text-[clamp(2.5rem,5.5vw,4rem)] leading-[.94] text-[#9580f5] [text-shadow:0_14px_40px_rgba(179,162,254,.16)]")}>
-              whenever you&apos;re ready
+              {content.script}
             </span>
           </h2>
           <div className={cn("hero-divider my-[1.75rem] flex w-[min(440px,100%)] items-center gap-4", "about-close-divider my-[clamp(1.25rem,2.4vh,1.65rem)] mb-[clamp(1.35rem,2.6vh,1.75rem)] w-[min(380px,100%)] max-md:mx-auto")} aria-hidden="true">
@@ -38,13 +74,12 @@ export function ClosingInvitationCta() {
             <span className={"hero-divider-line h-[2px] min-w-14 flex-1 rounded-[2px] bg-[linear-gradient(90deg,rgba(188,228,222,.75)_0%,rgba(179,162,254,.6)_82%,rgba(179,162,254,0)_100%)]"} />
           </div>
           <p className={"about-close-lead max-w-[38ch] text-[clamp(1rem,1.2vw,1.06rem)] leading-[1.88] text-muted max-md:mx-auto"}>
-            Book a free discovery call, explore a service, or simply send a
-            message. There&apos;s no pressure to have it all figured out.
+            {content.lead}
           </p>
           <ul className={"about-close-assurances mt-[clamp(1.5rem,2.8vh,1.85rem)] flex flex-wrap gap-x-[1.25rem] gap-y-[.55rem] border-t border-pastel-lilac/14 pt-[clamp(1.15rem,2vh,1.35rem)] list-none max-md:justify-center"} aria-label="What to expect">
-            <li className={"inline-flex items-center gap-[.45rem] text-[.76rem] font-semibold tracking-[.02em] text-blue"}>Free discovery call</li>
-            <li className={"inline-flex items-center gap-[.45rem] text-[.76rem] font-semibold tracking-[.02em] text-blue"}>No pressure</li>
-            <li className={"inline-flex items-center gap-[.45rem] text-[.76rem] font-semibold tracking-[.02em] text-blue"}>At your pace</li>
+            {assurances.map((item) => (
+              <li key={item} className={"inline-flex items-center gap-[.45rem] text-[.76rem] font-semibold tracking-[.02em] text-blue"}>{item}</li>
+            ))}
           </ul>
         </Reveal>
 
@@ -75,29 +110,28 @@ export function ClosingInvitationCta() {
                   className={"h-[26px] w-[26px] [filter:drop-shadow(0_3px_10px_rgba(179,162,254,.28))]"}
                 />
               </span>
-              <p className={"font-serif text-[clamp(1.45rem,2.2vw,1.65rem)] font-semibold leading-[1.15] text-blue"}>Your invitation</p>
+              <p className={"font-serif text-[clamp(1.45rem,2.2vw,1.65rem)] font-semibold leading-[1.15] text-blue"}>{content.cardTitle}</p>
               <p className={"max-w-[28ch] text-[.9rem] leading-[1.72] text-muted"}>
-                Start with a conversation — we&apos;ll figure out together
-                what feels right for you.
+                {content.cardText}
               </p>
               <div className={"about-close-btns mt-[.55rem] flex w-full flex-col gap-3"}>
                 <Link
-                  href="/bookings"
+                  href={content.primaryCta.href}
                   className={cn(
                     "inline-flex items-center justify-center gap-[.45rem] px-7 py-[.85rem] rounded-[4px] text-[.72rem] font-bold tracking-[.08em] uppercase border-2 border-transparent cursor-pointer transition-[transform,box-shadow,background,border-color] duration-200 ease-opal hover:-translate-y-0.5 motion-reduce:hover:translate-y-0 disabled:opacity-55 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:shadow-none bg-pastel-lilac text-white border-pastel-lilac shadow-[0_8px_24px_rgba(179,162,254,.28)] hover:bg-[#a894fc] hover:border-[#a894fc]",
                     "w-full normal-case tracking-[.02em] text-[.82rem] font-semibold",
                   )}
                 >
-                  Book a session
+                  {content.primaryCta.label}
                 </Link>
                 <Link
-                  href="/contact"
+                  href={content.secondaryCta.href}
                   className={cn(
                     "inline-flex items-center justify-center gap-[.45rem] px-7 py-[.85rem] rounded-[4px] text-[.72rem] font-bold tracking-[.08em] uppercase border-2 border-transparent cursor-pointer transition-[transform,box-shadow,background,border-color] duration-200 ease-opal hover:-translate-y-0.5 motion-reduce:hover:translate-y-0 disabled:opacity-55 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:shadow-none bg-transparent text-blue border-pastel-lilac hover:bg-pastel-lilac/8",
                     "w-full normal-case tracking-[.02em] text-[.82rem] font-semibold bg-white/78 backdrop-blur-[8px]",
                   )}
                 >
-                  Get in touch
+                  {content.secondaryCta.label}
                 </Link>
               </div>
             </div>

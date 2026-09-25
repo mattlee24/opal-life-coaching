@@ -4,53 +4,34 @@ import Link from "next/link";
 import { OpalSep } from "@/components/ui/OpalSep";
 import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/cn";
+import type { HomePage, Testimonial } from "@/lib/cms-types";
 
-const testimonials = [
-  {
-    theme: "Feeling calmer & clearer",
-    quote:
-      "I came in feeling overwhelmed and left with a real sense of calm. Cara helped me see things more clearly and find a way forward that actually felt right for me.",
-    cite: "Coaching client",
-    spotlight: false,
-  },
-  {
-    theme: "Feeling understood & supported",
-    quote:
-      "Cara has a wonderful way of making you feel truly heard. There was no judgement — just warmth, compassion and gentle guidance exactly when I needed it.",
-    cite: "Reiki client",
-    spotlight: true,
-  },
-  {
-    theme: "Gaining confidence & direction",
-    quote:
-      "After our sessions I felt so much more confident about the decisions I was facing. I finally had direction and the belief that I could move forward on my own terms.",
-    cite: "Tarot & coaching client",
-    spotlight: false,
-  },
-] as const;
+type TestimonialsProps = {
+  content: HomePage["testimonialsSection"];
+  testimonials: Testimonial[];
+};
 
-export function Testimonials() {
+export function Testimonials({ content, testimonials }: TestimonialsProps) {
   return (
     <section className={cn("testimonials relative overflow-hidden bg-white", "py-[var(--section-y)]")} id="testimonials">
       <div className={"site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]"}>
         <Reveal className={"testimonials-head mx-auto mb-[clamp(3rem,5.5vw,4rem)] max-w-[min(760px,100%)] text-center"}>
-          <p className={"text-[.68rem] font-bold tracking-[.18em] uppercase text-muted"}>Client stories</p>
+          <p className={"text-[.68rem] font-bold tracking-[.18em] uppercase text-muted"}>{content.eyebrow}</p>
           <h2 className={"mb-4 text-[clamp(2.15rem,4.2vw,3.05rem)] leading-[1.06] tracking-[-.025em] text-blue"}>
-            Kind words
+            {content.title}
             <br />
             <span className={"mt-[.2rem] block text-[clamp(2.35rem,4.5vw,3.2rem)] leading-[.98] text-[#9580f5]"}>
-              from those I&apos;ve supported
+              {content.script}
             </span>
           </h2>
           <p className={"mx-auto max-w-[44ch] text-[1.02rem] leading-[1.78] text-muted"}>
-            Every journey is different — here&apos;s what clients often share
-            after working together.
+            {content.lead}
           </p>
           <OpalSep center wide />
         </Reveal>
         <div className={"test-grid mb-10 grid items-center gap-[clamp(1rem,1.8vw,1.5rem)] max-md:mx-auto max-md:max-w-[min(460px,100%)] max-md:grid-cols-1 max-md:items-stretch md:grid-cols-[1fr_1.12fr_1fr]"}>
           {testimonials.map((item, index) => (
-            <Reveal key={item.theme} delay={index * 120} variant="up" fill>
+            <Reveal key={item.id} delay={index * 120} variant="up" fill>
             <article
               className={cn(
                 "test-card relative flex flex-col isolate overflow-hidden rounded-[22px] border-2 border-transparent bg-clip-padding bg-[linear-gradient(180deg,#fefffe_0%,#faf8ff_55%,#f6faf7_100%)] px-[clamp(1.85rem,2.8vw,2.25rem)] pt-[clamp(2rem,3.2vw,2.5rem)] pb-[clamp(2.1rem,3.2vw,2.45rem)] shadow-[0_18px_48px_rgba(179,162,254,.07),0_8px_24px_rgba(93,138,111,.05)] transition-[transform,box-shadow] duration-[450ms] ease-opal hover:-translate-y-1.5 hover:shadow-[0_26px_60px_rgba(179,162,254,.13),0_12px_32px_rgba(93,138,111,.09)] motion-reduce:hover:translate-y-0",
@@ -79,16 +60,16 @@ export function Testimonials() {
         </div>
         <footer className={"testimonials-foot pt-[.35rem] text-center"}>
           <p className={"mb-[1.15rem] text-[.88rem] leading-[1.65] text-muted"}>
-            Real stories from real sessions — shared with warmth and permission.
+            {content.footerText}
           </p>
           <Link
-            href="/contact"
+            href={content.cta.href}
             className={cn(
               "inline-flex items-center justify-center gap-[.45rem] px-7 py-[.85rem] rounded-[4px] text-[.72rem] font-bold tracking-[.08em] uppercase border-2 border-transparent cursor-pointer transition-[transform,box-shadow,background,border-color] duration-200 ease-opal hover:-translate-y-0.5 motion-reduce:hover:translate-y-0 disabled:opacity-55 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:shadow-none bg-pastel-lilac text-white border-pastel-lilac shadow-[0_8px_24px_rgba(179,162,254,.28)] hover:bg-[#a894fc] hover:border-[#a894fc]",
               "normal-case tracking-[.02em] text-[.82rem] font-semibold px-7 py-[.85rem]",
             )}
           >
-            Read more reviews
+            {content.cta.label}
           </Link>
         </footer>
       </div>

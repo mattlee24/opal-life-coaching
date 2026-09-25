@@ -1,10 +1,10 @@
-import type { ServiceVariant } from "@/lib/services";
+import type { ServiceVariant } from "@/lib/cms-types";
 import { DecorativeImage } from "@/components/ui/DecorativeImage";
 import { cn } from "@/lib/cn";
 import { HeroVisual3D } from "./HeroVisual3D";
 
 type ServiceHeroVisualProps = {
-  icon: string;
+  icon: string | null;
   variant: ServiceVariant;
   tag: string;
   title: string;
@@ -33,12 +33,14 @@ export function ServiceHeroVisual({
         <span className={"svc-opal-sheen pointer-events-none absolute inset-0 z-[1] rounded-[inherit]"} aria-hidden="true" />
         <div className={"svc-icon-hero relative z-[2] flex min-h-[clamp(200px,21vw,240px)] items-center justify-center px-4 pt-[clamp(1.65rem,4vw,2rem)] pb-[clamp(1.15rem,3vw,1.65rem)] max-md:min-h-[170px] max-md:pt-6 max-md:pb-4 lg:min-h-[200px] xl:min-h-[230px] xl:pt-10"}>
           <div className={"svc-icon-halo relative flex aspect-square w-[min(176px,76%)] items-center justify-center rounded-full bg-[radial-gradient(circle_at_50%_38%,#fff_0%,rgba(244,252,248,.95)_35%,rgba(212,235,228,.75)_62%,rgba(188,228,222,.35)_82%,transparent_94%)] shadow-[0_14px_44px_rgba(93,138,111,.13),0_0_0_2px_rgba(122,171,142,.14)_inset,0_0_0_6px_rgba(255,255,255,.7)] transition-[transform,box-shadow] duration-[550ms] ease-opal max-md:w-[min(152px,68%)] lg:w-[min(172px,76%)] xl:w-[188px]"}>
-            <DecorativeImage
-              src={icon}
-              width={400}
-              height={266}
-              className={"relative z-[1] h-auto w-[min(146px,82%)] object-contain [filter:saturate(1.12)_contrast(1.06)_drop-shadow(0_10px_22px_rgba(93,138,111,.18))] transition-transform duration-[550ms] ease-opal lg:w-[min(142px,82%)] xl:w-[156px]"}
-            />
+            {icon ? (
+              <DecorativeImage
+                src={icon}
+                width={400}
+                height={266}
+                className={"relative z-[1] h-auto w-[min(146px,82%)] object-contain [filter:saturate(1.12)_contrast(1.06)_drop-shadow(0_10px_22px_rgba(93,138,111,.18))] transition-transform duration-[550ms] ease-opal lg:w-[min(142px,82%)] xl:w-[156px]"}
+              />
+            ) : null}
           </div>
         </div>
         <div className={"svc-divider relative z-[2] mx-auto mb-[.25rem] h-px w-[min(100px,42%)] bg-[linear-gradient(90deg,transparent,rgba(179,162,254,.38)_20%,rgba(188,228,222,.45)_50%,rgba(179,162,254,.38)_80%,transparent)]"} aria-hidden="true" />

@@ -5,28 +5,19 @@ import { DecorativeImage } from "@/components/ui/DecorativeImage";
 import { Reveal } from "@/components/ui/Reveal";
 import { SiteImage } from "@/components/ui/SiteImage";
 import { cn } from "@/lib/cn";
-import type { ServicePageData } from "@/lib/services";
+import { asMedia, textList, type Service, type ServicePageSection } from "@/lib/cms-types";
 
 type ServiceSessionsSectionProps = {
-  data: ServicePageData;
+  data: Service;
+  sections: ServicePageSection;
 };
 
-const journeySteps = [
-  {
-    title: "Browse sessions",
-    text: "Explore session types and pricing on the bookings page",
-  },
-  {
-    title: "Pick a time",
-    text: "Choose a slot that suits you — online or in person",
-  },
-  {
-    title: "Or talk first",
-    text: "Begin with a free discovery call if you'd like to chat before booking",
-  },
-];
+export function ServiceSessionsSection({ data, sections }: ServiceSessionsSectionProps) {
+  const content = sections.sessions;
+  const trust = textList(data.hero.trust);
+  const ownImage = asMedia(data.sessionsImage);
+  const image = ownImage ?? asMedia(content.fallbackImage);
 
-export function ServiceSessionsSection({ data }: ServiceSessionsSectionProps) {
   return (
     <section
       className={cn(
@@ -72,25 +63,23 @@ export function ServiceSessionsSection({ data }: ServiceSessionsSectionProps) {
               <div className="service-sessions-path flex flex-col gap-[clamp(1.75rem,3vw,2.25rem)]">
                 <Reveal className="service-sessions-head max-md:text-center">
                   <p className="service-sessions-kicker m-0 mb-4 text-[.68rem] font-bold tracking-[.18em] text-[#9580f5] uppercase">
-                    Your gentle invitation
+                    {content.kicker}
                   </p>
                   <h2 className="service-sessions-lead m-0 max-w-[16ch] font-serif text-[clamp(2.15rem,3.8vw,3rem)] font-semibold leading-[1.08] tracking-[-.03em] text-blue max-md:mx-auto">
-                    Whenever you&apos;re ready,{" "}
+                    {content.title}{" "}
                     <span className="font-script font-normal text-[clamp(2.45rem,4.5vw,3.45rem)] leading-[.95] text-[#9580f5]">
-                      the door is open
+                      {content.script}
                     </span>
                   </h2>
                   <p className="service-sessions-lead-copy m-0 mt-[clamp(1.1rem,2vw,1.45rem)] max-w-[46ch] text-[clamp(1.02rem,1.15vw,1.08rem)] leading-[1.85] text-muted max-md:mx-auto">
-                    There&apos;s no rush to decide. When it feels right, you&apos;ll find session options,
-                    transparent pricing and availability — or reach out first if you&apos;d rather talk
-                    it through.
+                    {content.lead}
                   </p>
                 </Reveal>
 
                 <Reveal delay={60}>
                   <ol className="service-sessions-journey m-0 flex list-none flex-col gap-[clamp(1.15rem,2vw,1.45rem)] p-0">
-                    {journeySteps.map((step, index) => (
-                      <li key={step.title} className="service-sessions-step">
+                    {(content.steps ?? []).map((step, index) => (
+                      <li key={step.id ?? step.title} className="service-sessions-step">
                         <span className="service-sessions-step-num" aria-hidden="true">
                           {String(index + 1).padStart(2, "0")}
                         </span>
@@ -102,23 +91,23 @@ export function ServiceSessionsSection({ data }: ServiceSessionsSectionProps) {
                     ))}
                   </ol>
 
-                  {data.hero.trust.length > 0 ? (
+                  {trust.length > 0 ? (
                     <ul
                       className="service-sessions-signals m-0 mt-[clamp(1.35rem,2.4vw,1.75rem)] flex list-none flex-wrap gap-x-[1.25rem] gap-y-[.55rem] border-t border-pastel-lilac/16 p-0 pt-[clamp(1.1rem,2vw,1.35rem)] max-md:justify-center"
                       aria-label="Booking highlights"
                     >
-                      {data.hero.trust.map((item) => (
+                      {trust.map((item) => (
                         <li key={item}>{item}</li>
                       ))}
                     </ul>
                   ) : null}
 
                   <div className="service-sessions-actions mt-[clamp(1.35rem,2.4vw,1.75rem)] flex flex-wrap items-center gap-[.9rem] max-md:justify-center">
-                    <Link href="/bookings" className="service-sessions-btn service-sessions-btn--primary">
-                      View bookings &amp; pricing
+                    <Link href={content.primaryCta.href} className="service-sessions-btn service-sessions-btn--primary">
+                      {content.primaryCta.label}
                     </Link>
-                    <Link href="/contact" className="service-sessions-btn service-sessions-btn--ghost">
-                      Ask a question first
+                    <Link href={content.secondaryCta.href} className="service-sessions-btn service-sessions-btn--ghost">
+                      {content.secondaryCta.label}
                     </Link>
                   </div>
                 </Reveal>
@@ -143,22 +132,24 @@ export function ServiceSessionsSection({ data }: ServiceSessionsSectionProps) {
                   <div className="service-sessions-photo-frame relative z-[2]">
                     <span className="service-sessions-photo-vine pointer-events-none absolute inset-0 z-[4]" aria-hidden="true" />
                     <div className="service-sessions-photo-inner relative z-[2] overflow-hidden">
-                      <SiteImage
-                        src={data.sessionsImage ?? "/assets/cara-speaking.png"}
-                        alt={data.sessionsImageAlt ?? "Cara, ready to welcome you"}
-                        width={480}
-                        height={600}
-                        sizes="(max-width: 768px) 78vw, 420px"
-                        className={cn(
-                          "block aspect-[4/5] w-full object-cover",
-                          data.sessionsImage ? "object-center" : "object-left",
-                        )}
-                      />
+                      {image?.url ? (
+                        <SiteImage
+                          src={image.url}
+                          alt={image.alt}
+                          width={480}
+                          height={600}
+                          sizes="(max-width: 768px) 78vw, 420px"
+                          className={cn(
+                            "block aspect-[4/5] w-full object-cover",
+                            ownImage ? "object-center" : "object-left",
+                          )}
+                        />
+                      ) : null}
                     </div>
                   </div>
 
                   <figcaption className="service-sessions-photo-caption">
-                    With warmth, whenever you&apos;re ready
+                    {content.caption}
                   </figcaption>
                 </figure>
               </Reveal>

@@ -3,18 +3,29 @@
 import { DecorativeImage } from "@/components/ui/DecorativeImage";
 import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/cn";
-import type { ServicePageData } from "@/lib/services";
+import {
+  mediaUrl,
+  serviceVariant,
+  textList,
+  type Service,
+  type ServicePageSection,
+} from "@/lib/cms-types";
 
 type ServiceOverviewSectionProps = {
-  data: ServicePageData;
+  data: Service;
+  sections: ServicePageSection;
 };
 
-export function ServiceOverviewSection({ data }: ServiceOverviewSectionProps) {
+export function ServiceOverviewSection({ data, sections }: ServiceOverviewSectionProps) {
+  const variant = serviceVariant(data.slug);
+  const trust = textList(data.hero.trust);
+  const iconSrc = mediaUrl(data.icon);
+
   return (
     <section
       className={cn(
         "service-overview relative isolate overflow-hidden border-t border-pastel-lilac/10 bg-white py-[var(--section-y)]",
-        `service-overview--${data.variant}`,
+        `service-overview--${variant}`,
       )}
     >
       <div className="service-overview-scene pointer-events-none absolute inset-0 z-0" aria-hidden="true" />
@@ -78,12 +89,12 @@ export function ServiceOverviewSection({ data }: ServiceOverviewSectionProps) {
                   </p>
                 </div>
 
-                {data.hero.trust.length > 0 ? (
+                {trust.length > 0 ? (
                   <ul
                     className="service-overview-signals m-0 flex list-none flex-wrap gap-x-[1.25rem] gap-y-[.6rem] border-t border-pastel-lilac/14 p-0 pt-[clamp(1.1rem,2vw,1.4rem)] max-md:justify-center"
                     aria-label="Session highlights"
                   >
-                    {data.hero.trust.map((item) => (
+                    {trust.map((item) => (
                       <li key={item}>{item}</li>
                     ))}
                   </ul>
@@ -95,7 +106,7 @@ export function ServiceOverviewSection({ data }: ServiceOverviewSectionProps) {
           <Reveal
             variant="right"
             delay={120}
-            className={cn("service-overview-aside", `service-overview-aside--${data.variant}`)}
+            className={cn("service-overview-aside", `service-overview-aside--${variant}`)}
             aria-label="Service highlight"
           >
             <figure className="service-overview-pull relative mx-auto w-full max-w-[min(440px,100%)]">
@@ -115,12 +126,14 @@ export function ServiceOverviewSection({ data }: ServiceOverviewSectionProps) {
               />
 
               <div className="service-overview-pull-inner relative z-[2] flex flex-col items-center text-center">
-                <DecorativeImage
-                  src={data.icon}
-                  width={400}
-                  height={266}
-                  className="service-overview-pull-icon"
-                />
+                {iconSrc ? (
+                  <DecorativeImage
+                    src={iconSrc}
+                    width={400}
+                    height={266}
+                    className="service-overview-pull-icon"
+                  />
+                ) : null}
                 <p className="service-overview-pull-tag">{data.tag}</p>
 
                 <blockquote className="service-overview-quote">
@@ -131,9 +144,9 @@ export function ServiceOverviewSection({ data }: ServiceOverviewSectionProps) {
                 </blockquote>
 
                 <figcaption className="service-overview-pull-caption">
-                  <span className="service-overview-pull-script">Cara</span>
+                  <span className="service-overview-pull-script">{sections.overview.captionScript}</span>
                   <span className="service-overview-pull-note">
-                    Warm, confidential, and entirely personal
+                    {sections.overview.captionNote}
                   </span>
                 </figcaption>
               </div>

@@ -1,13 +1,8 @@
-import { ServicePageContent } from "@/components/pages/ServicePageContent";
-import { SeoHead } from "@/components/layout/SeoHead";
-import { services } from "@/lib/services";
+import { ServicePage } from "@/components/pages/ServicePage";
+import { serviceStaticProps } from "@/lib/cms";
 
-export default function TarotPage() {
-  const data = services.tarot;
-  return (
-    <>
-      <SeoHead title={data.seo.title} description={data.seo.description} path={`/${data.slug}`} />
-      <ServicePageContent data={data} />
-    </>
-  );
+export default ServicePage;
+
+export async function getStaticProps() {
+  return serviceStaticProps("tarot");
 }

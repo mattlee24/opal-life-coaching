@@ -1,3 +1,4 @@
+import { withPayload } from "@payloadcms/next/withPayload";
 import type { NextConfig } from "next";
 import { site } from "./lib/site";
 
@@ -38,6 +39,14 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [64, 96, 128, 160, 200, 256, 320, 384],
+    remotePatterns: [
+      // Payload media stored in Vercel Blob
+      { protocol: "https", hostname: "*.public.blob.vercel-storage.com" },
+    ],
+    localPatterns: [
+      { pathname: "/assets/**" },
+      { pathname: "/api/media/file/**" },
+    ],
   },
   poweredByHeader: false,
   async headers() {
@@ -50,4 +59,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withPayload(nextConfig, { devBundleServerPackages: false });

@@ -1,4 +1,4 @@
-import { site } from "@/lib/site";
+import { useSiteSettings } from "@/components/layout/LayoutDataContext";
 
 type SocialLinkProps = {
   network: "facebook" | "instagram";
@@ -10,23 +10,23 @@ const socialMeta = {
   facebook: {
     label: "Facebook",
     icon: "/assets/icon-social-facebook.svg",
-    href: site.social.facebook,
   },
   instagram: {
     label: "Instagram",
     icon: "/assets/icon-social-instagram.svg",
-    href: site.social.instagram,
   },
 } as const;
 
 export function SocialLink({ network, className = "", showLabel = true }: SocialLinkProps) {
+  const settings = useSiteSettings();
   const meta = socialMeta[network];
-  if (!meta.href) return null;
+  const href = settings.social?.[network];
+  if (!href) return null;
 
   return (
     <a
       className={className}
-      href={meta.href}
+      href={href}
       aria-label={meta.label}
       rel="noopener noreferrer"
     >
@@ -36,6 +36,7 @@ export function SocialLink({ network, className = "", showLabel = true }: Social
   );
 }
 
-export function hasSocialLinks() {
-  return Boolean(site.social.facebook || site.social.instagram);
+export function useHasSocialLinks() {
+  const { social } = useSiteSettings();
+  return Boolean(social?.facebook || social?.instagram);
 }

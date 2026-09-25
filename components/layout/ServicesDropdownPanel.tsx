@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { DecorativeImage } from "@/components/ui/DecorativeImage";
+import { useLayoutData } from "@/components/layout/LayoutDataContext";
 import { cn } from "@/lib/cn";
-import { navServices } from "@/lib/nav-services";
+import { serviceHref, serviceVariant } from "@/lib/cms-types";
 
 type ServicesDropdownPanelProps = {
   open: boolean;
@@ -12,6 +13,9 @@ export function ServicesDropdownPanel({
   open,
   onItemClick,
 }: ServicesDropdownPanelProps) {
+  const { navigation, services } = useLayoutData();
+  const dropdown = navigation.header.dropdown;
+
   return (
     <div
       className={cn("nav-services-panel", open && "nav-services-panel--open")}
@@ -28,34 +32,35 @@ export function ServicesDropdownPanel({
         />
         <div className="nav-services-panel__inner">
           <header className="nav-services-panel__head">
-            <p className="nav-services-panel__eyebrow">Explore offerings</p>
+            <p className="nav-services-panel__eyebrow">{dropdown.eyebrow}</p>
             <p className="nav-services-panel__script font-script">
-              Find your path
+              {dropdown.script}
             </p>
             <p className="nav-services-panel__lead">
-              Three gentle ways to be supported — each one personal, unhurried,
-              and entirely yours.
+              {dropdown.lead}
             </p>
           </header>
 
           <div className="nav-services-panel__grid">
-            {navServices.map((service) => (
+            {services.map((service) => (
               <Link
-                key={service.href}
-                href={service.href}
+                key={service.slug}
+                href={serviceHref(service.slug)}
                 role="menuitem"
                 onClick={onItemClick}
                 className={cn(
                   "nav-services-item",
-                  `nav-services-item--${service.variant}`,
+                  `nav-services-item--${serviceVariant(service.slug)}`,
                 )}
               >
                 <span className="nav-services-item__halo" aria-hidden="true">
-                  <DecorativeImage src={service.icon} width={400} height={266} />
+                  {service.icon?.url ? (
+                    <DecorativeImage src={service.icon.url} width={400} height={266} />
+                  ) : null}
                 </span>
                 <span className="nav-services-item__tag">{service.tag}</span>
                 <span className="nav-services-item__title">{service.title}</span>
-                <span className="nav-services-item__short">{service.short}</span>
+                <span className="nav-services-item__short">{service.navShort}</span>
                 <span className="nav-services-item__arrow" aria-hidden="true">
                   →
                 </span>
@@ -64,13 +69,13 @@ export function ServicesDropdownPanel({
           </div>
 
           <footer className="nav-services-panel__foot">
-            <Link href="/bookings" onClick={onItemClick} className="nav-services-panel__cta text-white">
-              Book a session
+            <Link href={dropdown.cta.href} onClick={onItemClick} className="nav-services-panel__cta text-white">
+              {dropdown.cta.label}
             </Link>
             <span className="nav-services-panel__note">
-              Not sure yet?{" "}
-              <Link href="/contact" onClick={onItemClick}>
-                Let&apos;s find what fits
+              {dropdown.footnote}{" "}
+              <Link href={dropdown.footnoteLink.href} onClick={onItemClick}>
+                {dropdown.footnoteLink.label}
               </Link>
             </span>
           </footer>
@@ -89,25 +94,29 @@ export function ServicesMobilePanel({
   open,
   onItemClick,
 }: ServicesMobilePanelProps) {
+  const { services } = useLayoutData();
+
   return (
     <div
       className={cn("mnav-services", open && "mnav-services--open")}
       aria-hidden={!open}
     >
-      {navServices.map((service) => (
+      {services.map((service) => (
         <Link
-          key={service.href}
-          href={service.href}
+          key={service.slug}
+          href={serviceHref(service.slug)}
           onClick={onItemClick}
-          className={cn("mnav-services-item", `mnav-services-item--${service.variant}`)}
+          className={cn("mnav-services-item", `mnav-services-item--${serviceVariant(service.slug)}`)}
         >
           <span className="mnav-services-item__icon" aria-hidden="true">
-            <DecorativeImage src={service.icon} width={400} height={266} />
+            {service.icon?.url ? (
+              <DecorativeImage src={service.icon.url} width={400} height={266} />
+            ) : null}
           </span>
           <span className="mnav-services-item__copy">
             <span className="mnav-services-item__tag">{service.tag}</span>
             <span className="mnav-services-item__title">{service.title}</span>
-            <span className="mnav-services-item__short">{service.short}</span>
+            <span className="mnav-services-item__short">{service.navShort}</span>
           </span>
           <span className="mnav-services-item__arrow" aria-hidden="true">
             →

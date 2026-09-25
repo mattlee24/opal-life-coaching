@@ -6,8 +6,16 @@ import { Reveal } from "@/components/ui/Reveal";
 import { DecorativeImage } from "@/components/ui/DecorativeImage";
 import { SiteImage } from "@/components/ui/SiteImage";
 import { cn } from "@/lib/cn";
+import { asMedia, textList, type HomePage } from "@/lib/cms-types";
 
-export function MeetCara() {
+type MeetCaraProps = {
+  content: HomePage["meetCara"];
+};
+
+export function MeetCara({ content }: MeetCaraProps) {
+  const portrait = asMedia(content.portrait);
+  const essence = textList(content.essence);
+
   return (
     <section className={cn("meet-cara relative isolate overflow-hidden bg-[#f3f0fa]", "py-[var(--section-y)]")} id="about">
       <div className={"meet-cara-scene pointer-events-none absolute inset-0 z-0"} aria-hidden="true" />
@@ -40,14 +48,16 @@ export function MeetCara() {
             </span>
             <div className={"meet-cara-frame relative z-[2] overflow-hidden rounded-[20px] bg-[linear-gradient(180deg,#fff_0%,#f8f6fc_100%)] p-1.5 shadow-[0_1px_0_rgba(255,255,255,.95)_inset,0_32px_72px_rgba(179,162,254,.18),0_14px_36px_rgba(28,48,163,.07)]"}>
               <span className={"meet-cara-sheen pointer-events-none absolute inset-0 z-[3] overflow-hidden rounded-[inherit]"} aria-hidden="true" />
-              <SiteImage
-                src="/assets/cara-meet.jpg"
-                alt="Cara, life coach and healer"
-                width={480}
-                height={600}
-                sizes="(max-width: 768px) 88vw, 480px"
-                className={"relative z-[1] block aspect-[4/5] w-full rounded-[15px] object-cover"}
-              />
+              {portrait?.url ? (
+                <SiteImage
+                  src={portrait.url}
+                  alt={portrait.alt}
+                  width={480}
+                  height={600}
+                  sizes="(max-width: 768px) 88vw, 480px"
+                  className={"relative z-[1] block aspect-[4/5] w-full rounded-[15px] object-cover"}
+                />
+              ) : null}
             </div>
           </div>
           <DecorativeImage
@@ -63,7 +73,7 @@ export function MeetCara() {
               height={22}
               className={"h-[22px] w-[22px] shrink-0 [filter:drop-shadow(0_2px_6px_rgba(179,162,254,.25))]"}
             />
-            <p className={"font-serif text-[clamp(.95rem,1.4vw,1.08rem)] font-semibold leading-[1.2] whitespace-nowrap text-blue max-md:whitespace-normal"}>One step at a time</p>
+            <p className={"font-serif text-[clamp(.95rem,1.4vw,1.08rem)] font-semibold leading-[1.2] whitespace-nowrap text-blue max-md:whitespace-normal"}>{content.badge}</p>
           </div>
         </Reveal>
         <Reveal variant="right" delay={120} className={"meet-cara-copy relative max-w-[min(580px,100%)] max-md:mx-auto max-md:text-center"}>
@@ -75,39 +85,36 @@ export function MeetCara() {
               className={"block h-auto w-full"}
             />
           </span>
-          <p className={"text-[.68rem] font-bold tracking-[.18em] uppercase text-muted"}>Meet Cara</p>
+          <p className={"text-[.68rem] font-bold tracking-[.18em] uppercase text-muted"}>{content.eyebrow}</p>
           <h2 className={"mb-[1.1rem] text-[clamp(2.35rem,4.2vw,3.2rem)] leading-[1.04] tracking-[-.025em] text-blue"}>
-            Hi, I&apos;m <span className={"font-script font-normal text-pastel-lilac leading-[1.1]"}>Cara</span>
+            {content.greeting} <span className={"font-script font-normal text-pastel-lilac leading-[1.1]"}>{content.name}</span>
           </h2>
           <OpalSep wide className={"w-[min(400px,100%)] mb-[1.65rem] max-md:mx-auto"} />
           <blockquote className={"meet-cara-pull relative mb-[1.35rem] border-none p-0"}>
             <p className={"font-serif text-[clamp(1.32rem,2.15vw,1.62rem)] font-medium leading-[1.58] text-blue max-w-[34ch] max-md:mx-auto"}>
-              I help people who feel stuck, overwhelmed or at a crossroads to
-              find clarity, confidence and a way forward.
+              {content.quote}
             </p>
           </blockquote>
           <p className={"meet-cara-body mb-6 max-w-[48ch] text-[.98rem] leading-[1.85] text-muted max-md:mx-auto"}>
-            My approach combines practical coaching, intuition and gentle
-            support to help you create a calmer, happier life — one step at a
-            time.
+            {content.body}
           </p>
           <ul className={"meet-cara-essence mb-[1.85rem] flex flex-wrap items-center gap-y-[.35rem] p-0 list-none max-md:justify-center"} aria-label="Cara's approach">
-            <li className={"text-[.66rem] font-bold uppercase tracking-[.12em] text-[#9580f5] after:mx-[.7rem] after:text-[rgba(179,162,254,.4)] after:content-['·'] last:after:hidden"}>Practical coaching</li>
-            <li className={"text-[.66rem] font-bold uppercase tracking-[.12em] text-[#9580f5] after:mx-[.7rem] after:text-[rgba(179,162,254,.4)] after:content-['·'] last:after:hidden"}>Intuitive guidance</li>
-            <li className={"text-[.66rem] font-bold uppercase tracking-[.12em] text-[#9580f5] after:mx-[.7rem] after:text-[rgba(179,162,254,.4)] after:content-['·'] last:after:hidden"}>Gentle support</li>
+            {essence.map((item) => (
+              <li key={item} className={"text-[.66rem] font-bold uppercase tracking-[.12em] text-[#9580f5] after:mx-[.7rem] after:text-[rgba(179,162,254,.4)] after:content-['·'] last:after:hidden"}>{item}</li>
+            ))}
           </ul>
           <div className={"meet-cara-cta flex flex-col items-start gap-[.85rem] max-md:items-center"}>
             <Link
-              href="/about"
+              href={content.cta.href}
               className={cn(
                 "inline-flex items-center justify-center gap-[.45rem] px-7 py-[.85rem] rounded-[4px] text-[.72rem] font-bold tracking-[.08em] uppercase border-2 border-transparent cursor-pointer transition-[transform,box-shadow,background,border-color] duration-200 ease-opal hover:-translate-y-0.5 motion-reduce:hover:translate-y-0 disabled:opacity-55 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:shadow-none bg-pastel-lilac text-white border-pastel-lilac shadow-[0_8px_24px_rgba(179,162,254,.28)] hover:bg-[#a894fc] hover:border-[#a894fc]",
                 "normal-case tracking-[.02em] text-[.82rem] font-semibold px-7 py-[.88rem] after:content-['→'] after:ml-[.35rem] after:inline-block after:transition-transform after:duration-200 after:ease-opal hover:after:translate-x-[3px]",
               )}
             >
-              Read more about me
+              {content.cta.label}
             </Link>
             <p className={"meet-cara-note max-w-[36ch] text-[.82rem] leading-[1.6] text-muted max-md:mx-auto"}>
-              Warm, personal sessions — online or in person.
+              {content.note}
             </p>
           </div>
         </Reveal>

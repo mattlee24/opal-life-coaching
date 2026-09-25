@@ -1,5 +1,8 @@
+import type { GetStaticProps } from "next";
 import { BookingsPageContent } from "@/components/pages/BookingsPageContent";
 import { SeoHead } from "@/components/layout/SeoHead";
+import { getLayoutData, REVALIDATE_SECONDS } from "@/lib/cms";
+import type { LayoutData } from "@/lib/cms-types";
 
 export default function BookingsPage() {
   return (
@@ -13,3 +16,9 @@ export default function BookingsPage() {
     </>
   );
 }
+
+// Bookings page content is not in Payload yet — only the shared header/footer data is loaded.
+export const getStaticProps: GetStaticProps<{ layout: LayoutData }> = async () => ({
+  props: { layout: await getLayoutData() },
+  revalidate: REVALIDATE_SECONDS,
+});
