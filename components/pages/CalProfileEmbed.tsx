@@ -2,7 +2,7 @@
 
 import Cal, { getCalApi } from "@calcom/embed-react";
 import Image from "next/image";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   calBookingCategories,
   calBookingEvents,
@@ -125,6 +125,7 @@ function CalProfileEmbed() {
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
   const [embedKey, setEmbedKey] = useState(0);
   const [filter, setFilter] = useState<FilterId>("all");
+  const panelRef = useRef<HTMLDivElement>(null);
 
   const selectedEvent = calBookingEvents.find((event) => event.slug === selectedSlug);
   const grouped = useMemo(() => groupCalBookingEventsByCategory(), []);
@@ -156,6 +157,11 @@ function CalProfileEmbed() {
     })();
   }, [embedKey, selectedSlug]);
 
+  useEffect(() => {
+    if (!selectedSlug) return;
+    panelRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [selectedSlug]);
+
   if (!CAL_USERNAME) {
     return (
       <div
@@ -171,7 +177,7 @@ function CalProfileEmbed() {
   }
 
   return (
-    <div className="vine-panel bookings-cal-vine">
+    <div ref={panelRef} className="vine-panel bookings-cal-vine">
       <div className="vine-panel__inner bookings-cal-vine__inner">
         {selectedSlug && selectedEvent ? (
           <>
