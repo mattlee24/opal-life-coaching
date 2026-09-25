@@ -17,7 +17,7 @@ function formatBytes(bytes?: number | null) {
 function thumbnail(doc: Media) {
   if (!doc.url) return null;
   if (doc.mimeType === "image/svg+xml") return doc.url;
-  return `/_next/image?url=${encodeURIComponent(doc.url)}&w=640&q=70`;
+  return `/_next/image?url=${encodeURIComponent(doc.url)}&w=640&q=75`;
 }
 
 function pageHref(page: number, search: string) {
