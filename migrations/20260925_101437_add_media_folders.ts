@@ -18,7 +18,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
   );
   
-  ALTER TABLE "media" ADD COLUMN "_objectkey" varchar;
   ALTER TABLE "media" ADD COLUMN "folder_id" integer;
   ALTER TABLE "payload_locked_documents_rels" ADD COLUMN "payload_folders_id" integer;
   ALTER TABLE "payload_folders_folder_type" ADD CONSTRAINT "payload_folders_folder_type_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."payload_folders"("id") ON DELETE cascade ON UPDATE no action;
@@ -47,7 +46,6 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   
   DROP INDEX "media_folder_idx";
   DROP INDEX "payload_locked_documents_rels_payload_folders_id_idx";
-  ALTER TABLE "media" DROP COLUMN "_objectkey";
   ALTER TABLE "media" DROP COLUMN "folder_id";
   ALTER TABLE "payload_locked_documents_rels" DROP COLUMN "payload_folders_id";
   DROP TYPE "public"."enum_payload_folders_folder_type";`)
