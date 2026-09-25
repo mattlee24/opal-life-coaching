@@ -53,6 +53,9 @@ const paths: Record<NavIconName, React.ReactNode> = {
       <path d="m21 16-5-5-8 9" />
     </>
   ),
+  folder: (
+    <path d="M3 7a2 2 0 0 1 2-2h4.5l2 2.5H19a2 2 0 0 1 2 2V17a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z" />
+  ),
   compass: (
     <>
       <circle cx="12" cy="12" r="9" />

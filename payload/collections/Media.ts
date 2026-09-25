@@ -24,6 +24,7 @@ export const Media: CollectionConfig = {
   access: {
     read: () => true,
   },
+  folders: true,
   hooks: revalidateCollectionHooks,
   upload: {
     mimeTypes: ["image/*"],
