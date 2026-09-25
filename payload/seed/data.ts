@@ -442,6 +442,32 @@ export const globals = {
       footerBefore: "Not sure where to start? Every path can be blended —",
       footerLink: link("get in touch", "#contact"),
       footerAfter: "and we'll find what fits.",
+      cards: [
+        {
+          slug: "coaching",
+          title: "Life Coaching",
+          tag: "Clarity",
+          icon: media("svc-icon-coaching.png"),
+          cardDescription:
+            "Clarify goals, navigate transitions, and build lasting confidence in the life you're creating.",
+        },
+        {
+          slug: "tarot",
+          title: "Tarot Readings",
+          tag: "Reflection",
+          icon: media("svc-icon-tarot.png"),
+          cardDescription:
+            "Thoughtful, intuitive readings offering fresh perspective and space for deep reflection.",
+        },
+        {
+          slug: "reiki",
+          title: "Reiki Healing",
+          tag: "Balance",
+          icon: media("svc-icon-reiki.png"),
+          cardDescription:
+            "Release tension, restore balance, and invite profound peace through gentle energy healing.",
+        },
+      ],
     },
     meetCara: {
       eyebrow: "Meet Cara",

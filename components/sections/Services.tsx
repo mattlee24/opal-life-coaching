@@ -5,7 +5,7 @@ import { OpalSep } from "@/components/ui/OpalSep";
 import { Reveal } from "@/components/ui/Reveal";
 import { SiteImage } from "@/components/ui/SiteImage";
 import { cn } from "@/lib/cn";
-import { serviceHref, serviceVariant, type HomePage, type ServiceSummary } from "@/lib/cms-types";
+import { serviceHref, serviceVariant, toHomeServiceCard, type HomePage, type ServiceSummary } from "@/lib/cms-types";
 
 const keyPillClass = {
   c: "border-[#a2bffe]/28 bg-[rgba(232,240,255,.55)] text-[#5f4fd4]",
@@ -44,7 +44,8 @@ export function Services({ content, services }: ServicesProps) {
           <OpalSep center wide />
         </Reveal>
         <div className={"svc-grid grid items-stretch gap-[clamp(1.15rem,2vw,1.85rem)] max-md:mx-auto max-md:max-w-[min(380px,100%)] max-md:grid-cols-1 max-md:gap-7 md:grid-cols-2 xl:grid-cols-3"}>
-          {services.map((service, index) => {
+          {(content.cards ?? []).map((rawCard, index) => {
+            const service = toHomeServiceCard(rawCard);
             const variant = serviceVariant(service.slug);
             return (
             <Reveal key={service.slug} delay={index * 120} variant="up" fill>

@@ -91,6 +91,15 @@ export function toSummary(service: Service): ServiceSummary {
   };
 }
 
+/** A home page service card, edited independently from the service's own page. */
+export type HomeServiceCard = Omit<NonNullable<HomePage["servicesSection"]["cards"]>[number], "icon"> & {
+  icon: Media | null;
+};
+
+export function toHomeServiceCard(card: NonNullable<HomePage["servicesSection"]["cards"]>[number]): HomeServiceCard {
+  return { ...card, icon: asMedia(card.icon) };
+}
+
 /** Header and Footer globals, loaded together for every page. */
 export type Navigation = { header: Header; footer: Footer };
 

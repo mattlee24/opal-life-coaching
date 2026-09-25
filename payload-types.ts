@@ -717,6 +717,22 @@ export interface HomePage {
        */
       href: string;
     };
+    /**
+     * The three service cards shown here. These are separate from the same service's own page — update both if you want them to match.
+     */
+    cards?:
+      | {
+          slug: 'coaching' | 'tarot' | 'reiki';
+          title: string;
+          /**
+           * One-word theme, e.g. “Clarity”.
+           */
+          tag: string;
+          icon: number | Media;
+          cardDescription: string;
+          id?: string | null;
+        }[]
+      | null;
   };
   meetCara: {
     eyebrow: string;
@@ -1256,6 +1272,16 @@ export interface HomePageSelect<T extends boolean = true> {
           | {
               label?: T;
               href?: T;
+            };
+        cards?:
+          | T
+          | {
+              slug?: T;
+              title?: T;
+              tag?: T;
+              icon?: T;
+              cardDescription?: T;
+              id?: T;
             };
       };
   meetCara?:

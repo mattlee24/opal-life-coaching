@@ -1,6 +1,7 @@
 import type { GlobalConfig } from "payload";
 import { headingFields, iconChoiceField, imageField, linkField, seoField, textListField } from "../fields";
 import { revalidateGlobalHooks } from "../hooks/revalidateSite";
+import { serviceSlugOptions } from "../collections/Services";
 
 export const HomePage: GlobalConfig = {
   slug: "home-page",
@@ -45,7 +46,6 @@ export const HomePage: GlobalConfig = {
         {
           label: "Services",
           name: "servicesSection",
-          description: "The service cards themselves are edited under Content → Services.",
           fields: [
             { name: "eyebrow", type: "text", required: true },
             ...headingFields({ scriptRequired: true }),
@@ -59,6 +59,30 @@ export const HomePage: GlobalConfig = {
               ],
             },
             linkField("footerLink", "Footer link"),
+            {
+              name: "cards",
+              type: "array",
+              labels: { singular: "Card", plural: "Cards" },
+              minRows: 3,
+              maxRows: 3,
+              admin: {
+                description:
+                  "The three service cards shown here. These are separate from the same service's own page — update both if you want them to match.",
+              },
+              fields: [
+                {
+                  name: "slug",
+                  label: "Links to page",
+                  type: "select",
+                  required: true,
+                  options: serviceSlugOptions,
+                },
+                { name: "title", type: "text", required: true },
+                { name: "tag", type: "text", required: true, admin: { description: "One-word theme, e.g. “Clarity”." } },
+                imageField("icon", "Icon", { required: true }),
+                { name: "cardDescription", label: "Card description", type: "textarea", required: true },
+              ],
+            },
           ],
         },
         {
