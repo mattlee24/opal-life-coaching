@@ -1,4 +1,7 @@
 # Site is in development — indexing disabled.
 # Set site.allowIndexing to true in lib/site.ts and restore Allow when going live.
+# Keep the Payload admin disallowed once the site is live.
 User-agent: *
 Disallow: /
+Disallow: /admin
+Disallow: /preview

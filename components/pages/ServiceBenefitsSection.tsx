@@ -4,18 +4,21 @@ import { DecorativeImage } from "@/components/ui/DecorativeImage";
 import { OpalSep } from "@/components/ui/OpalSep";
 import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/cn";
-import type { ServicePageData } from "@/lib/services";
+import { serviceVariant, type Service, type ServicePageSection } from "@/lib/cms-types";
 
 type ServiceBenefitsSectionProps = {
-  data: ServicePageData;
+  data: Service;
+  sections: ServicePageSection;
 };
 
-export function ServiceBenefitsSection({ data }: ServiceBenefitsSectionProps) {
+export function ServiceBenefitsSection({ data, sections }: ServiceBenefitsSectionProps) {
+  const content = sections.benefits;
+
   return (
     <section
       className={cn(
         "service-benefits relative isolate overflow-hidden border-y border-pastel-lilac/12 py-[var(--section-y)]",
-        `service-benefits--${data.variant}`,
+        `service-benefits--${serviceVariant(data.slug)}`,
       )}
     >
       <div className="service-benefits-sky pointer-events-none absolute inset-0 z-0" aria-hidden="true" />
@@ -52,16 +55,16 @@ export function ServiceBenefitsSection({ data }: ServiceBenefitsSectionProps) {
           <div className="service-benefits-body max-md:order-2 flex w-full flex-col gap-[clamp(1.85rem,3.4vw,2.55rem)]">
             <Reveal className="service-benefits-head m-0 max-md:text-center">
               <p className="service-benefits-kicker m-0 mb-4 text-[.68rem] font-bold tracking-[.18em] text-[#9580f5] uppercase">
-                How it helps
+                {content.kicker}
               </p>
               <h2 className="m-0 font-serif text-[clamp(2.15rem,3.8vw,3rem)] font-semibold leading-[1.08] tracking-[-.028em] text-blue">
-                What you can{" "}
+                {content.title}{" "}
                 <span className="font-script font-normal text-[clamp(2.5rem,4.4vw,3.45rem)] leading-[.95] text-[#9580f5]">
-                  expect
+                  {content.script}
                 </span>
               </h2>
               <p className="service-benefits-sub m-0 mt-[.85rem] max-w-[38ch] text-[clamp(.95rem,1.05vw,1.02rem)] leading-[1.7] text-[var(--muted)] max-md:mx-auto">
-                Three things people often feel after working together — soft, steady, and entirely at your pace.
+                {content.sub}
               </p>
               <OpalSep wide className="mt-[1.15rem] max-md:mx-auto" />
             </Reveal>
@@ -72,7 +75,7 @@ export function ServiceBenefitsSection({ data }: ServiceBenefitsSectionProps) {
               <span className="service-benefits-ground-vine pointer-events-none absolute z-[1]" aria-hidden="true" />
 
               <div className="service-benefits-pillars relative z-[2] grid w-full grid-cols-1 items-stretch gap-[clamp(1.25rem,2.4vw,1.65rem)] md:grid-cols-3 md:gap-[clamp(1.25rem,2.4vw,1.85rem)]">
-                {data.benefits.map((benefit, index) => (
+                {(data.benefits ?? []).map((benefit, index) => (
                   <Reveal key={benefit.title} delay={index * 140} variant="up" fill>
                     <article
                       className={cn(
@@ -117,7 +120,7 @@ export function ServiceBenefitsSection({ data }: ServiceBenefitsSectionProps) {
             </span>
             <span className="service-benefits-rail-line min-h-[clamp(4rem,9vw,6rem)] w-px flex-1 bg-gradient-to-b from-pastel-lilac/50 via-pastel-mint/40 to-transparent max-md:h-px max-md:min-h-0 max-md:flex-1 max-md:bg-gradient-to-r" />
             <span className="service-benefits-rail-label text-[.62rem] font-bold tracking-[.2em] text-[#9580f5] uppercase [writing-mode:vertical-rl] rotate-180 max-md:rotate-0 max-md:[writing-mode:horizontal-tb] max-md:tracking-[.16em]">
-              How it helps
+              {content.kicker}
             </span>
           </div>
         </div>

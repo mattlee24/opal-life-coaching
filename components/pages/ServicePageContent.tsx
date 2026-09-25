@@ -4,13 +4,22 @@ import { ServiceBenefitsSection } from "@/components/pages/ServiceBenefitsSectio
 import { ServiceOverviewSection } from "@/components/pages/ServiceOverviewSection";
 import { ClosingInvitationCta } from "@/components/pages/ClosingInvitationCta";
 import { ServiceSessionsSection } from "@/components/pages/ServiceSessionsSection";
-import type { ServicePageData } from "@/lib/services";
+import {
+  mediaUrl,
+  serviceVariant,
+  textList,
+  type ClosingCta,
+  type Service,
+  type ServicePageSection,
+} from "@/lib/cms-types";
 
 type ServicePageContentProps = {
-  data: ServicePageData;
+  data: Service;
+  sections: ServicePageSection;
+  closingCta: ClosingCta;
 };
 
-export function ServicePageContent({ data }: ServicePageContentProps) {
+export function ServicePageContent({ data, sections, closingCta }: ServicePageContentProps) {
   return (
     <div className={"inner-page"}>
       <PageHero
@@ -18,14 +27,14 @@ export function ServicePageContent({ data }: ServicePageContentProps) {
         title={data.hero.title}
         script={data.hero.script}
         lead={data.hero.description}
-        trust={data.hero.trust}
-        tone={data.hero.tone}
-        primaryCta={{ href: "/bookings", label: "Book this service" }}
-        secondaryCta={{ href: "/contact", label: "Ask a question" }}
+        trust={textList(data.hero.trust)}
+        tone={data.hero.tone ?? undefined}
+        primaryCta={sections.hero.primaryCta}
+        secondaryCta={sections.hero.secondaryCta}
         visual={
           <ServiceHeroVisual
-            icon={data.icon}
-            variant={data.variant}
+            icon={mediaUrl(data.icon)}
+            variant={serviceVariant(data.slug)}
             tag={data.tag}
             title={data.hero.title}
           />
@@ -34,13 +43,13 @@ export function ServicePageContent({ data }: ServicePageContentProps) {
       />
 
       <div id="page-content">
-      <ServiceOverviewSection data={data} />
+      <ServiceOverviewSection data={data} sections={sections} />
 
-      <ServiceBenefitsSection data={data} />
+      <ServiceBenefitsSection data={data} sections={sections} />
 
-      <ServiceSessionsSection data={data} />
+      <ServiceSessionsSection data={data} sections={sections} />
 
-      <ClosingInvitationCta />
+      <ClosingInvitationCta content={closingCta} />
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/cn";
-import { mainNavLinks } from "@/lib/site";
+import { useLayoutData } from "@/components/layout/LayoutDataContext";
 import {
   ServicesDropdownPanel,
   ServicesMobilePanel,
@@ -12,6 +12,10 @@ import {
 
 export function Header() {
   const router = useRouter();
+  const { settings, navigation } = useLayoutData();
+  const header = navigation.header;
+  const linksBefore = header.linksBeforeServices ?? [];
+  const linksAfter = header.linksAfterServices ?? [];
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -102,9 +106,6 @@ export function Header() {
     setMobileServicesOpen(false);
   };
 
-  const aboutLink = mainNavLinks.find((link) => link.href === "/about");
-  const otherNavLinks = mainNavLinks.filter((link) => link.href !== "/about");
-
   return (
     <>
       <header
@@ -119,18 +120,18 @@ export function Header() {
           <Link className={"logo flex shrink-0 items-center"} href="/" onClick={closeMenu}>
             <img
               src="/assets/logo-mark.png"
-              alt="Opal Life Coaching"
+              alt={settings.name}
               width={136}
               height={136}
               decoding="async"
             />
           </Link>
           <nav className={"nav ml-auto hidden min-w-0 flex-wrap items-center justify-end gap-[.35rem] md:flex"} aria-label="Primary">
-            {aboutLink ? (
-              <Link href={aboutLink.href} className={"px-[1.05rem] py-[.65rem] text-[.98rem] font-semibold leading-[1.3] tracking-[.015em] text-blue transition-opacity hover:opacity-70 max-[1200px]:px-[.8rem] max-[1200px]:py-[.6rem] max-[1200px]:text-[.9rem] max-[1100px]:px-[.65rem] max-[1100px]:py-[.55rem] max-[1100px]:text-[.84rem]"}>
-                {aboutLink.label}
+            {linksBefore.map(({ href, label }) => (
+              <Link key={href} href={href} className={"px-[1.05rem] py-[.65rem] text-[.98rem] font-semibold leading-[1.3] tracking-[.015em] text-blue transition-opacity hover:opacity-70 max-[1200px]:px-[.8rem] max-[1200px]:py-[.6rem] max-[1200px]:text-[.9rem] max-[1100px]:px-[.65rem] max-[1100px]:py-[.55rem] max-[1100px]:text-[.84rem]"}>
+                {label}
               </Link>
-            ) : null}
+            ))}
 
             <div
               className="nav-dropdown relative"
@@ -145,7 +146,7 @@ export function Header() {
                 aria-haspopup="true"
                 onClick={() => setServicesOpen((o) => !o)}
               >
-                Services
+                {header.servicesLabel}
                 <span className="nav-dropdown-chevron" aria-hidden="true" />
               </button>
               <ServicesDropdownPanel
@@ -154,14 +155,14 @@ export function Header() {
               />
             </div>
 
-            {otherNavLinks.map(({ href, label }) => (
+            {linksAfter.map(({ href, label }) => (
               <Link key={href} href={href} className={"px-[1.05rem] py-[.65rem] text-[.98rem] font-semibold leading-[1.3] tracking-[.015em] text-blue transition-opacity hover:opacity-70 max-[1200px]:px-[.8rem] max-[1200px]:py-[.6rem] max-[1200px]:text-[.9rem] max-[1100px]:px-[.65rem] max-[1100px]:py-[.55rem] max-[1100px]:text-[.84rem]"}>
                 {label}
               </Link>
             ))}
 
-            <Link href="/bookings" className={"nav-book ml-[.85rem] whitespace-nowrap rounded-[4px] bg-pastel-lilac px-[1.25rem] py-[.65rem] text-[.98rem] font-semibold leading-[1.3] tracking-[.015em] text-white shadow-[0_6px_18px_rgba(179,162,254,.25)] transition-colors hover:bg-[#a894fc] max-[1200px]:px-[1.1rem] max-[1200px]:py-[.6rem] max-[1200px]:text-[.9rem] max-[1100px]:px-[.95rem] max-[1100px]:py-[.55rem] max-[1100px]:text-[.84rem]"}>
-              Book a session
+            <Link href={header.bookCta.href} className={"nav-book ml-[.85rem] whitespace-nowrap rounded-[4px] bg-pastel-lilac px-[1.25rem] py-[.65rem] text-[.98rem] font-semibold leading-[1.3] tracking-[.015em] text-white shadow-[0_6px_18px_rgba(179,162,254,.25)] transition-colors hover:bg-[#a894fc] max-[1200px]:px-[1.1rem] max-[1200px]:py-[.6rem] max-[1200px]:text-[.9rem] max-[1100px]:px-[.95rem] max-[1100px]:py-[.55rem] max-[1100px]:text-[.84rem]"}>
+              {header.bookCta.label}
             </Link>
           </nav>
           <button
@@ -195,15 +196,16 @@ export function Header() {
       >
         <div className="mnav-shell">
           <div className="mnav-links">
-            {aboutLink ? (
+            {linksBefore.map(({ href, label }) => (
               <Link
-                href={aboutLink.href}
+                key={href}
+                href={href}
                 onClick={closeMenu}
                 className="mnav-link"
               >
-                {aboutLink.label}
+                {label}
               </Link>
-            ) : null}
+            ))}
 
             <div className="mnav-group">
               <button
@@ -213,7 +215,7 @@ export function Header() {
                 aria-controls="mobile-services-panel"
                 onClick={() => setMobileServicesOpen((open) => !open)}
               >
-                <span>Services</span>
+                <span>{header.servicesLabel}</span>
                 <span className="nav-dropdown-chevron" aria-hidden="true" />
               </button>
               <div
@@ -227,7 +229,7 @@ export function Header() {
               </div>
             </div>
 
-            {otherNavLinks.map(({ href, label }) => (
+            {linksAfter.map(({ href, label }) => (
               <Link
                 key={href}
                 href={href}
@@ -240,11 +242,11 @@ export function Header() {
           </div>
 
           <div className="mnav-footer">
-            <Link href="/contact" onClick={closeMenu} className="mnav-footer-link">
-              Get in touch
+            <Link href={header.mobileContactCta.href} onClick={closeMenu} className="mnav-footer-link">
+              {header.mobileContactCta.label}
             </Link>
-            <Link href="/bookings" onClick={closeMenu} className="mnav-book">
-              Book a session
+            <Link href={header.bookCta.href} onClick={closeMenu} className="mnav-book">
+              {header.bookCta.label}
             </Link>
           </div>
         </div>

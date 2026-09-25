@@ -2,35 +2,19 @@
 
 import { DecorativeImage } from "@/components/ui/DecorativeImage";
 import { Reveal } from "@/components/ui/Reveal";
+import { valueIconSrc, type HomePage } from "@/lib/cms-types";
 
-const values = [
-  {
-    icon: "/assets/icon-value-pace.svg",
-    title: "At your pace",
-    description:
-      "No pressure, no rush — we move forward only when you feel ready.",
-  },
-  {
-    icon: "/assets/icon-value-personal.svg",
-    title: "Entirely personal",
-    description:
-      "Every session is tailored to you — your story, your goals, your path.",
-  },
-  {
-    icon: "/assets/icon-value-holistic.svg",
-    title: "Holistic care",
-    description:
-      "Coaching, Reiki and tarot woven together for mind, body and spirit.",
-  },
-] as const;
+type ValuesProps = {
+  values: HomePage["values"];
+};
 
-export function Values() {
+export function Values({ values }: ValuesProps) {
   return (
     <section className={"values relative isolate overflow-hidden border-y border-pastel-lilac/10 bg-[linear-gradient(180deg,#fcfbff_0%,#faf8ff_42%,#f8f6fc_100%)] py-[clamp(2.75rem,5vh,3.75rem)]"}>
       <div className={"values-ambient pointer-events-none absolute inset-0"} aria-hidden="true" />
       <div className={"site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]"}>
         <div className={"values-strip mx-auto flex max-w-[min(1180px,100%)] items-stretch max-[900px]:max-w-[min(480px,100%)] max-[900px]:flex-col"}>
-          {values.flatMap((value, index) => {
+          {(values ?? []).flatMap((value, index) => {
             const item = (
               <Reveal
                 key={value.title}
@@ -42,7 +26,7 @@ export function Values() {
                 <div className={"value-icon relative h-[76px] w-[76px] shrink-0 flex items-center justify-center"}>
                   <span className={"value-icon-halo absolute inset-[2px] rounded-full bg-[radial-gradient(circle_at_50%_38%,rgba(255,255,255,.95)_0%,rgba(244,252,248,.85)_42%,rgba(212,235,228,.55)_68%,transparent_90%)] shadow-[0_0_0_1px_rgba(179,162,254,.1),0_8px_22px_rgba(179,162,254,.08)]"} aria-hidden="true" />
                   <DecorativeImage
-                    src={value.icon}
+                    src={valueIconSrc[value.icon]}
                     width={48}
                     height={48}
                     className={"relative z-[1] h-[50px] w-[50px] [filter:drop-shadow(0_2px_8px_rgba(179,162,254,.12))]"}

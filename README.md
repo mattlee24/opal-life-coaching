@@ -28,7 +28,8 @@ Sessions are available **online or in person** in the Chichester and Eastergate 
 
 | Layer | Technology |
 |-------|------------|
-| **Framework** | [Next.js 16](https://nextjs.org/) (Pages Router) |
+| **Framework** | [Next.js 16](https://nextjs.org/) (Pages Router for the site, App Router for the CMS admin) |
+| **CMS** | [Payload 3](https://payloadcms.com/) — admin at `/admin`, Postgres ([Neon](https://neon.tech/)) + [Vercel Blob](https://vercel.com/docs/storage/vercel-blob) for media |
 | **UI** | [React 19](https://react.dev/) |
 | **Language** | [TypeScript 5](https://www.typescriptlang.org/) |
 | **Styling** | [Tailwind CSS v4](https://tailwindcss.com/) + custom CSS design tokens |
@@ -80,16 +81,27 @@ Each service page follows a consistent editorial flow: hero → overview → ben
 
 ```
 OpalLifeCoaching/
-├── pages/                      # Routes (Next.js Pages Router)
-│   ├── _app.tsx                # Shared shell — header, footer, global styles
+├── app/(payload)/              # Payload admin (/admin) + REST/GraphQL API (/api) — generated, App Router
+├── payload.config.ts           # Payload config: database, storage, collections, globals
+├── payload/
+│   ├── collections/            # Services, Testimonials, FAQs, Media, Users
+│   ├── globals/                # Home, About, Contact & FAQs, Service page sections, Closing invitation, Header & footer, Site settings
+│   ├── fields/                 # Shared field helpers (links, headings, SEO…)
+│   ├── hooks/revalidateSite.ts # Refreshes the static pages after every content change
+│   └── seed/                   # Original site copy + `yarn seed` script
+├── migrations/                 # Payload database migrations (run on deploy)
+├── payload-types.ts            # Generated types (`yarn generate:types`)
+│
+├── pages/                      # Routes (Next.js Pages Router) — content via getStaticProps
+│   ├── _app.tsx                # Shared shell — header, footer, CMS layout context
 │   ├── _document.tsx           # HTML document, font loading
 │   ├── index.tsx               # Homepage
 │   ├── about.tsx
-│   ├── bookings.tsx
-│   ├── coaching.tsx
+│   ├── bookings.tsx            # Content not in Payload yet (header/footer only)
+│   ├── coaching.tsx / tarot.tsx / reiki.tsx
 │   ├── contact.tsx
-│   ├── reiki.tsx
-│   └── tarot.tsx
+│   ├── 404.tsx + [...slug].tsx # Branded 404 page
+│   └── api/revalidate.ts       # On-demand ISR endpoint called by Payload hooks
 │
 ├── components/
 │   ├── hero/                   # Page heroes, 3D service visuals, about hero
@@ -99,8 +111,10 @@ OpalLifeCoaching/
 │   └── ui/                     # Shared primitives (OpalSep, Select, etc.)
 │
 ├── lib/
-│   ├── site.ts                 # Site name, email, location, nav links
-│   ├── services.ts             # Service page content & booking metadata
+│   ├── cms.ts                  # Server-only Payload fetchers used by getStaticProps
+│   ├── cms-types.ts            # Client-safe CMS types and helpers
+│   ├── revalidation.ts         # Route list + token for on-demand revalidation
+│   ├── site.ts                 # Build-time config (site URL, search indexing flag)
 │   └── cn.ts                   # Class name utility
 │
 ├── public/
@@ -115,7 +129,8 @@ OpalLifeCoaching/
 
 ### Key modules
 
-- **`lib/services.ts`** — Single source of truth for service copy, sessions, pricing, SEO metadata, and booking labels. Service pages and the bookings studio both read from here.
+- **Payload CMS** — all page copy, services, testimonials, FAQs, navigation and photos are edited at `/admin` (see [Content management](#content-management)).
+- **`lib/cms.ts`** — Loads Payload content through the Local API inside `getStaticProps`.
 - **`components/pages/ServicePageContent.tsx`** — Shared layout for all three service routes.
 - **`components/pages/BookingsStudioSection.tsx`** — Session grid grouped by service, with per-event Cal.com booking embeds.
 - **`components/pages/ClosingInvitationCta.tsx`** — Shared closing call-to-action used across service, about, and bookings pages.
@@ -163,10 +178,65 @@ The `<OpalSep />` component provides the signature heart divider between section
 
 ---
 
+## Content management
+
+Site content lives in [Payload CMS](https://payloadcms.com/), served from the same Next.js app at **`/admin`**.
+
+| Admin section | What it controls |
+|---|---|
+| **Pages → Home / About / Contact** | Copy, buttons, highlights and photos for each page |
+| **Pages → Life Coaching / Tarot / Reiki** | Each service's page, card, menu entry, photo and SEO |
+| **Components → Header / Footer** | Navigation, Services dropdown, footer copy and links |
+| **Components → Closing invitation / Service page layout** | Shared sections used on several pages |
+| **Components → Testimonials / FAQs** | Home page quotes (first three shown) and the FAQ list (drag to reorder) |
+| **Library → Photos** | Uploaded photos and service icons |
+| **Settings → Site settings / Admin users** | Email, social links, default SEO and who can sign in |
+
+The sidebar is custom (`payload/admin/navItems.ts`); Payload's default groups are hidden with `admin.group: false`.
+
+**Live preview** opens beside every editor and updates as you type (`payload/livePreview.ts` picks what to show; `lib/useLivePreviewProps.ts` applies unsaved edits). Pages scroll to the section being edited (`payload/admin/PreviewSectionSync.tsx`); shared components are shown on their own via `pages/preview/[component].tsx`. The admin is themed to match the site — see `app/(payload)/custom.scss` and `payload/admin/`.
+
+Pages are statically generated. Saving anything in the admin calls `pages/api/revalidate.ts`, which regenerates every public page, so changes are live within a few seconds. Decorative artwork (sprigs, vines, hearts, value icons) stays in `public/assets` as part of the design.
+
+### Environment variables
+
+| Variable | Purpose |
+|---|---|
+| `DATABASE_URL` | Neon Postgres connection string (added by the Vercel Neon integration) |
+| `PAYLOAD_SECRET` | Long random string for signing admin sessions (`openssl rand -hex 32`) |
+| `BLOB_READ_WRITE_TOKEN` | Vercel Blob token for media uploads (added when a Blob store is connected). Without it, uploads are stored in `./media` locally |
+| `VERCEL_AUTOMATION_BYPASS_SECRET` | Optional — lets revalidation reach protected preview deployments |
+
+### First-time setup
+
+```bash
+vercel env pull .env.local   # DATABASE_URL, BLOB_READ_WRITE_TOKEN, PAYLOAD_SECRET
+yarn dev                     # creates the schema in the dev database automatically
+yarn seed                    # loads the original site copy and photos (safe to re-run; `yarn seed --force` overwrites)
+```
+
+Then open `http://localhost:3000/admin` and create the first admin user.
+
+### Schema changes
+
+Local development pushes schema changes automatically. Before deploying a change to collections or globals, create a migration and commit it — `yarn build` runs `payload migrate` before `next build` on Vercel:
+
+```bash
+yarn payload migrate:create <name>
+yarn generate:types
+```
+
+Use a separate Neon branch for local development so dev schema pushes never touch production.
+
+---
+
 ## Integrations
 
 | Service | Purpose |
 |---------|---------|
+| **Payload CMS** | Content editing at `/admin` |
+| **Neon** | Postgres database for Payload |
+| **Vercel Blob** | Media storage for Payload uploads |
 | **Cal.com** | Live session booking (configured via `NEXT_PUBLIC_CAL_USERNAME`) |
 | **Vercel** | Hosting and deployment |
 

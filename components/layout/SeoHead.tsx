@@ -1,4 +1,6 @@
 import Head from "next/head";
+import { useSiteSettings } from "@/components/layout/LayoutDataContext";
+import { mediaUrl } from "@/lib/cms-types";
 import { site } from "@/lib/site";
 
 type SeoHeadProps = {
@@ -13,22 +15,22 @@ export function SeoHead({
   title,
   description,
   path = "",
-  image = site.ogImage,
+  image,
   noIndex = !site.allowIndexing,
 }: SeoHeadProps) {
+  const settings = useSiteSettings();
   const canonical = `${site.url}${path}`;
-  const imageUrl = image.startsWith("http") ? image : `${site.url}${image}`;
+  const shareImage = image ?? mediaUrl(settings.seo.image) ?? "";
+  const imageUrl = shareImage.startsWith("http") ? shareImage : `${site.url}${shareImage}`;
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    name: site.name,
-    description:
-      description ??
-      "Holistic life coaching, Reiki healing and tarot readings in West Sussex and online.",
+    name: settings.name,
+    description: description ?? settings.seo.description,
     url: site.url,
-    email: site.email,
-    areaServed: site.location,
+    email: settings.email,
+    areaServed: settings.location,
     image: imageUrl,
     priceRange: "££",
   };
@@ -42,7 +44,7 @@ export function SeoHead({
       {noIndex ? <meta name="robots" content="noindex,nofollow" /> : null}
 
       <meta property="og:type" content="website" />
-      <meta property="og:site_name" content={site.name} />
+      <meta property="og:site_name" content={settings.name} />
       <meta property="og:title" content={title} />
       {description ? <meta property="og:description" content={description} /> : null}
       <meta property="og:url" content={canonical} />
