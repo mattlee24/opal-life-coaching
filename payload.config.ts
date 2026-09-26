@@ -49,6 +49,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
+  folders: {},
   collections: [Services, Testimonials, Faqs, Media, Users],
   globals: [HomePage, AboutPage, ContactPage, Header, Footer, ClosingCta, ServicePageSections, SiteSettings],
   editor: lexicalEditor(),

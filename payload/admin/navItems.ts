@@ -16,6 +16,7 @@ export type NavIconName =
   | "quote"
   | "help"
   | "image"
+  | "folder"
   | "settings"
   | "users";
 
@@ -71,7 +72,10 @@ export async function getNavSections(payload: Payload): Promise<NavSection[]> {
     {
       title: "Library",
       description: "Files used around the site",
-      items: [{ href: "/admin/collections/media/grid", label: "Photos", icon: "image", description: "Upload and replace images" }],
+      items: [
+        { href: "/admin/collections/media/grid", label: "Photos", icon: "image", description: "Upload and replace images" },
+        { href: "/admin/browse-by-folder", label: "Browse by folder", icon: "folder", description: "Organise photos into folders" },
+      ],
     },
     {
       title: "Settings",

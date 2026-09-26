@@ -586,6 +586,12 @@ textarea:focus,
   display: none !important;
 }
 
+// Folders get their own curated entry in the sidebar (payload/admin/navItems.ts),
+// so hide Payload's own nav button to avoid a duplicate.
+.browse-by-folder-button {
+  display: none !important;
+}
+
 // ---- Photos grid (payload/admin/media/MediaGridView.tsx) ------------------------
 
 .opal-view-toggle {
