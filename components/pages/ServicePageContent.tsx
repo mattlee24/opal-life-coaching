@@ -35,7 +35,6 @@ export function ServicePageContent({ data, sections, closingCta }: ServicePageCo
           <ServiceHeroVisual
             icon={mediaUrl(data.icon)}
             variant={serviceVariant(data.slug)}
-            tag={data.tag}
             title={data.hero.title}
           />
         }
