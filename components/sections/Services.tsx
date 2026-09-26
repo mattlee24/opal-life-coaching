@@ -67,18 +67,7 @@ export function Services({ content, services }: ServicesProps) {
                   ) : null}
                 </div>
               </div>
-              <div className={"svc-divider relative z-[2] mx-auto mb-[.25rem] h-px w-[min(100px,42%)] bg-[linear-gradient(90deg,transparent,rgba(179,162,254,.38)_20%,rgba(188,228,222,.45)_50%,rgba(179,162,254,.38)_80%,transparent)]"} aria-hidden="true" />
               <div className={"svc-card-body relative z-[2] flex min-h-0 flex-1 flex-col items-center px-[1.65rem] pt-[.65rem] text-center"}>
-                <span
-                  className={cn(
-                    "svc-tag mb-[.75rem] inline-block rounded-full px-[.65rem] py-[.28rem] text-[.6rem] font-bold uppercase tracking-[.13em]",
-                    variant === "c" && "border border-[#a2bffe]/25 bg-[rgba(232,240,255,.7)] text-[#5f4fd4]",
-                    variant === "t" && "border border-pastel-lilac/22 bg-[rgba(244,240,255,.75)] text-[#7d68e8]",
-                    variant === "r" && "border border-pastel-mint/32 bg-[rgba(236,248,245,.8)] text-[#4a8f7a]",
-                  )}
-                >
-                  {service.tag}
-                </span>
                 <h3 className={"text-[clamp(1.58rem,2.2vw,1.95rem)] leading-[1.1] tracking-[-.015em] text-blue transition-colors"}>{service.title}</h3>
                 <p className={"mb-[1.55rem] max-w-[28ch] flex-1 text-[.9rem] leading-[1.76] text-muted"}>{service.cardDescription}</p>
                 <div className={"svc-actions mt-auto flex w-full justify-center"}>

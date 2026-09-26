@@ -134,8 +134,6 @@ export function ServiceOverviewSection({ data, sections }: ServiceOverviewSectio
                     className="service-overview-pull-icon"
                   />
                 ) : null}
-                <p className="service-overview-pull-tag">{data.tag}</p>
-
                 <blockquote className="service-overview-quote">
                   <span className="service-overview-quote-mark" aria-hidden="true">
                     &ldquo;
