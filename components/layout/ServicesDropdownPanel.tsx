@@ -58,7 +58,6 @@ export function ServicesDropdownPanel({
                     <DecorativeImage src={service.icon.url} width={400} height={266} />
                   ) : null}
                 </span>
-                <span className="nav-services-item__tag">{service.tag}</span>
                 <span className="nav-services-item__title">{service.title}</span>
                 <span className="nav-services-item__short">{service.navShort}</span>
                 <span className="nav-services-item__arrow" aria-hidden="true">
@@ -114,7 +113,6 @@ export function ServicesMobilePanel({
             ) : null}
           </span>
           <span className="mnav-services-item__copy">
-            <span className="mnav-services-item__tag">{service.tag}</span>
             <span className="mnav-services-item__title">{service.title}</span>
             <span className="mnav-services-item__short">{service.navShort}</span>
           </span>
