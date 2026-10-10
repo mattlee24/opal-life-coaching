@@ -27,7 +27,7 @@ export function AboutHero({ content }: AboutHeroProps) {
 
       <div className={cn("site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]", "about-hero-inner relative z-[2] grid w-full items-center gap-[clamp(2rem,5vw,4rem)] max-md:grid-cols-1 max-md:gap-11 md:grid-cols-[minmax(280px,.92fr)_minmax(300px,1.08fr)]")}>
         <div className={"about-hero-copy relative z-[2] max-w-[min(540px,100%)] max-md:max-w-full"}>
-          <p className={"inline-flex items-center gap-2 h-11 px-[.9rem] mb-[2.35rem] text-[.86rem] font-bold tracking-[.18em] uppercase text-[#9580f5] bg-white/82 border border-pastel-lilac/22 rounded-full shadow-[0_8px_24px_rgba(179,162,254,.1)] before:content-[''] before:w-1.5 before:h-1.5 before:rounded-full before:bg-gradient-to-br before:from-pastel-lilac before:to-pastel-mint before:shrink-0"}>{content.eyebrow}</p>
+          <p className={"inline-flex items-center whitespace-nowrap h-11 px-[.9rem] mb-[2.35rem] text-[.86rem] font-bold tracking-[.18em] uppercase text-[#9580f5] bg-white/82 border border-pastel-lilac/22 rounded-full shadow-[0_8px_24px_rgba(179,162,254,.1)] max-md:text-[.66rem] max-md:tracking-[.1em] max-md:px-[.75rem]"}>{content.eyebrow}</p>
           <h1>
             <span className={"about-hero-line block mb-[.08rem] text-[clamp(2.3rem,4.4vw,3.7rem)] leading-[1.05] tracking-[-.035em] max-md:text-[clamp(2rem,7.5vw,2.95rem)]"}>{content.title}</span>
             <span className={cn("font-script font-normal text-pastel-lilac leading-[1.1]", "about-hero-script block mt-[.05rem] text-[clamp(2.75rem,6.4vw,5.35rem)] leading-[.95] text-[#9580f5] [text-shadow:0_18px_48px_rgba(179,162,254,.18)] max-md:text-[clamp(2.5rem,11vw,3.85rem)]")}>

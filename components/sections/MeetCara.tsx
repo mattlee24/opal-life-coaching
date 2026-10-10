@@ -85,19 +85,13 @@ export function MeetCara({ content }: MeetCaraProps) {
               className={"block h-auto w-full"}
             />
           </span>
-          <p className={"text-[.68rem] font-bold tracking-[.18em] uppercase text-muted"}>{content.eyebrow}</p>
           <h2 className={"mb-[1.1rem] text-[clamp(2.35rem,4.2vw,3.2rem)] leading-[1.04] tracking-[-.025em] text-blue"}>
             {content.greeting} <span className={"font-script font-normal text-pastel-lilac leading-[1.1]"}>{content.name}</span>
           </h2>
           <OpalSep wide className={"w-[min(400px,100%)] mb-[1.65rem] max-md:mx-auto"} />
-          <blockquote className={"meet-cara-pull relative mb-[1.35rem] border-none p-0"}>
-            <p className={"font-serif text-[clamp(1.32rem,2.15vw,1.62rem)] font-medium leading-[1.58] text-blue max-w-[34ch] max-md:mx-auto"}>
-              {content.quote}
+            <p className={"font-serif text-[clamp(1.32rem,2.15vw,1.62rem)] font-medium leading-[1.58] text-blue max-w-[34ch] max-md:mx-auto my-6"}>
+              {content.body}
             </p>
-          </blockquote>
-          <p className={"meet-cara-body mb-6 max-w-[48ch] text-[.98rem] leading-[1.85] text-muted max-md:mx-auto"}>
-            {content.body}
-          </p>
           <ul className={"meet-cara-essence mb-[1.85rem] flex flex-wrap items-center gap-y-[.35rem] p-0 list-none max-md:justify-center"} aria-label="Cara's approach">
             {essence.map((item) => (
               <li key={item} className={"text-[.66rem] font-bold uppercase tracking-[.12em] text-[#9580f5] after:mx-[.7rem] after:text-[rgba(179,162,254,.4)] after:content-['·'] last:after:hidden"}>{item}</li>

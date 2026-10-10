@@ -1169,7 +1169,7 @@
   .svc-icon-hero{min-height:195px}
   .svc-icon-halo{width:min(176px,74%)}
   .svc-icon-halo img{width:min(146px,82%)}
-  .test-grid{grid-template-columns:1fr;max-width:min(460px,100%);margin-inline:auto;align-items:stretch}
+  .test-grid{grid-template-columns:1fr;align-items:stretch}
   .test-card--spotlight{transform:none}
   .test-card--spotlight:hover{transform:translateY(-6px)}
   .faq-panel p{padding:0 0 1.35rem 0}

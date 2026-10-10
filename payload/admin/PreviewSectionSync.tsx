@@ -8,7 +8,7 @@ import { useEffect, type ReactNode } from "react";
  * field (or switches tab), the preview scrolls to that section of the page.
  *
  * Maps the first part of each field's path (Payload renders inputs with
- * id="field-<path>", e.g. field-meetCara__quote) to a section name understood by
+ * id="field-<path>", e.g. field-meetCara__body) to a section name understood by
  * lib/useLivePreviewProps.ts on the site.
  */
 const sectionMaps: { match: RegExp; sections: Record<string, string> }[] = [

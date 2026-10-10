@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRef, useState } from "react";
 import { OpalSep } from "@/components/ui/OpalSep";
 import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/cn";
@@ -12,6 +13,31 @@ type TestimonialsProps = {
 };
 
 export function Testimonials({ content, testimonials }: TestimonialsProps) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
+
+  const handleScroll = () => {
+    const track = trackRef.current;
+    if (!track) return;
+    const slides = Array.from(track.children) as HTMLElement[];
+    const center = track.scrollLeft + track.clientWidth / 2;
+    let nearest = 0;
+    let best = Infinity;
+    slides.forEach((slide, i) => {
+      const distance = Math.abs(slide.offsetLeft + slide.offsetWidth / 2 - center);
+      if (distance < best) {
+        best = distance;
+        nearest = i;
+      }
+    });
+    setActive(nearest);
+  };
+
+  const goTo = (index: number) => {
+    const slide = trackRef.current?.children[index] as HTMLElement | undefined;
+    slide?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+  };
+
   return (
     <section className={cn("testimonials relative overflow-hidden bg-white", "py-[var(--section-y)]")} id="testimonials">
       <div className={"site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]"}>
@@ -29,9 +55,14 @@ export function Testimonials({ content, testimonials }: TestimonialsProps) {
           </p>
           <OpalSep center wide />
         </Reveal>
-        <div className={"test-grid mb-10 grid items-center gap-[clamp(1rem,1.8vw,1.5rem)] max-md:mx-auto max-md:max-w-[min(460px,100%)] max-md:grid-cols-1 max-md:items-stretch md:grid-cols-[1fr_1.12fr_1fr]"}>
+        <div
+          ref={trackRef}
+          onScroll={handleScroll}
+          className={"test-grid grid items-center gap-[clamp(1rem,1.8vw,1.5rem)] max-md:-mx-[var(--page-x)] max-md:flex max-md:snap-x max-md:snap-mandatory max-md:items-stretch max-md:gap-4 max-md:overflow-x-auto max-md:scroll-px-[var(--page-x)] max-md:px-[var(--page-x)] max-md:pb-6 max-md:pt-2 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden md:mb-10 md:grid-cols-[1fr_1.12fr_1fr]"}
+        >
           {testimonials.map((item, index) => (
-            <Reveal key={item.id} delay={index * 120} variant="up" fill>
+            <div key={item.id} className={"max-md:flex max-md:w-[86%] max-md:shrink-0 max-md:snap-center md:contents"}>
+            <Reveal delay={index * 120} variant="up" fill>
             <article
               className={cn(
                 "test-card relative flex flex-col isolate overflow-hidden rounded-[22px] border-2 border-transparent bg-clip-padding bg-[linear-gradient(180deg,#fefffe_0%,#faf8ff_55%,#f6faf7_100%)] px-[clamp(1.85rem,2.8vw,2.25rem)] pt-[clamp(2rem,3.2vw,2.5rem)] pb-[clamp(2.1rem,3.2vw,2.45rem)] shadow-[0_18px_48px_rgba(179,162,254,.07),0_8px_24px_rgba(93,138,111,.05)] transition-[transform,box-shadow] duration-[450ms] ease-opal hover:-translate-y-1.5 hover:shadow-[0_26px_60px_rgba(179,162,254,.13),0_12px_32px_rgba(93,138,111,.09)] motion-reduce:hover:translate-y-0",
@@ -56,6 +87,23 @@ export function Testimonials({ content, testimonials }: TestimonialsProps) {
               <cite className={"relative z-[1] mt-auto flex items-center gap-[.55rem] text-[.76rem] font-semibold not-italic tracking-[.04em] text-muted before:h-0.5 before:w-[18px] before:shrink-0 before:rounded-[2px] before:bg-[linear-gradient(90deg,rgba(179,162,254,.55),rgba(188,228,222,.65))] before:content-['']"}>{item.cite}</cite>
             </article>
             </Reveal>
+            </div>
+          ))}
+        </div>
+        <div className={"mb-8 flex justify-center gap-2 md:hidden"} role="tablist" aria-label="Testimonials">
+          {testimonials.map((item, index) => (
+            <button
+              key={item.id}
+              type="button"
+              role="tab"
+              aria-selected={index === active}
+              aria-label={`Show testimonial ${index + 1}`}
+              onClick={() => goTo(index)}
+              className={cn(
+                "h-2 rounded-full transition-[width,background] duration-300",
+                index === active ? "w-6 bg-pastel-lilac" : "w-2 bg-pastel-lilac/30",
+              )}
+            />
           ))}
         </div>
         <footer className={"testimonials-foot pt-[.35rem] text-center"}>

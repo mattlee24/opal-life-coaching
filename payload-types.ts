@@ -735,7 +735,6 @@ export interface HomePage {
       | null;
   };
   meetCara: {
-    eyebrow: string;
     /**
      * e.g. “Hi, I'm”
      */
@@ -744,7 +743,6 @@ export interface HomePage {
      * Shown in script.
      */
     name: string;
-    quote: string;
     body: string;
     essence?:
       | {
@@ -1287,10 +1285,8 @@ export interface HomePageSelect<T extends boolean = true> {
   meetCara?:
     | T
     | {
-        eyebrow?: T;
         greeting?: T;
         name?: T;
-        quote?: T;
         body?: T;
         essence?:
           | T

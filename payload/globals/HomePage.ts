@@ -89,7 +89,6 @@ export const HomePage: GlobalConfig = {
           label: "Meet Cara",
           name: "meetCara",
           fields: [
-            { name: "eyebrow", type: "text", required: true },
             {
               type: "row",
               fields: [
@@ -97,7 +96,6 @@ export const HomePage: GlobalConfig = {
                 { name: "name", type: "text", required: true, admin: { description: "Shown in script." } },
               ],
             },
-            { name: "quote", type: "textarea", required: true },
             { name: "body", type: "textarea", required: true },
             textListField("essence", "Approach list", { singular: "Point", plural: "Points", maxRows: 4 }),
             linkField("cta", "Button"),

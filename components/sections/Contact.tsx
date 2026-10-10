@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { OpalSep } from "@/components/ui/OpalSep";
 import { Reveal } from "@/components/ui/Reveal";
 import { Select } from "@/components/ui/Select";
@@ -34,7 +35,6 @@ export function Contact({ content, offsetHeader }: ContactProps) {
         <Reveal variant="left" className={"contact-intro flex flex-col max-lg:text-center"}>
           <div className={"contact-intro-panel relative flex flex-1 flex-col p-0"}>
             <header className={"contact-intro-head relative mb-[.15rem]"}>
-              <p className={"inline-flex items-center gap-2 h-11 px-[.9rem] mb-4 text-[.86rem] font-bold tracking-[.18em] uppercase text-[#9580f5] bg-white/82 border border-pastel-lilac/22 rounded-full shadow-[0_8px_24px_rgba(179,162,254,.1)] before:content-[''] before:w-1.5 before:h-1.5 before:rounded-full before:bg-gradient-to-br before:from-pastel-lilac before:to-pastel-mint before:shrink-0 max-lg:mx-auto"}>{intro.eyebrow}</p>
               <h2 className={"mb-[.4rem] text-[clamp(2.25rem,4.4vw,3.1rem)] leading-[1.04] tracking-[-.03em] text-blue"}>
                 {intro.title}
                 <br />
@@ -71,17 +71,65 @@ export function Contact({ content, offsetHeader }: ContactProps) {
               </div>
               ) : null}
               <p className={"contact-location flex max-w-[34ch] items-start gap-[.8rem] text-[.92rem] leading-[1.68] text-muted max-lg:justify-center"}>
-                <img
-                  src="/assets/icon-contact-location.svg"
-                  alt=""
+                <svg
                   aria-hidden="true"
                   width={20}
                   height={20}
-                  className={"mt-[.12rem] h-5 w-5 shrink-0 opacity-82"}
-                />
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#9580f5"
+                  strokeWidth={1.5}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className={"mt-[.12rem] h-5 w-5 shrink-0"}
+                >
+                  <path d="M12 21s7-5.6 7-10.5a7 7 0 10-14 0C5 15.4 12 21 12 21z" />
+                  <circle cx="12" cy="10.5" r="2.5" />
+                </svg>
                 <span>
                   <strong className={"mb-[.2rem] block text-[.68rem] font-bold uppercase tracking-[.12em] text-blue"}>{intro.locationTitle}</strong>
                   {intro.locationText}
+                </span>
+              </p>
+              <p className={"contact-location flex max-w-[34ch] items-start gap-[.8rem] text-[.92rem] leading-[1.68] text-muted max-lg:justify-center"}>
+                <svg
+                  aria-hidden="true"
+                  width={20}
+                  height={20}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#9580f5"
+                  strokeWidth={1.5}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className={"mt-[.12rem] h-5 w-5 shrink-0"}
+                >
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z" />
+                </svg>
+                <span>
+                  <strong className={"mb-[.2rem] block text-[.68rem] font-bold uppercase tracking-[.12em] text-blue"}>Online / Phone call</strong>
+                  Video or phone sessions from anywhere
+                </span>
+              </p>
+              <p className={"contact-location flex max-w-[34ch] items-start gap-[.8rem] text-[.92rem] leading-[1.68] text-muted max-lg:justify-center"}>
+                <svg
+                  aria-hidden="true"
+                  width={20}
+                  height={20}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#9580f5"
+                  strokeWidth={1.5}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className={"mt-[.12rem] h-5 w-5 shrink-0"}
+                >
+                  <path d="M4 5h16v11H9l-5 4V5z" />
+                </svg>
+                <span>
+                  <strong className={"mb-[.2rem] block text-[.68rem] font-bold uppercase tracking-[.12em] text-blue"}>By message</strong>
+                  Some sessions take place entirely over message
                 </span>
               </p>
             </div>
@@ -90,6 +138,12 @@ export function Contact({ content, offsetHeader }: ContactProps) {
                 <span key={item} className={"inline-flex items-center gap-[.45rem] text-[.76rem] font-semibold tracking-[.02em] text-blue"}>{item}</span>
               ))}
             </div>
+            <Link
+              href="/bookings"
+              className={"mt-[1.75rem] inline-flex items-center justify-center self-start rounded-[4px] border-2 border-pastel-lilac bg-pastel-lilac px-8 py-[.95rem] text-[.74rem] font-bold uppercase tracking-[.1em] text-white shadow-[0_12px_36px_rgba(179,162,254,.34),0_4px_12px_rgba(179,162,254,.18)] transition-[transform,box-shadow,background,border-color] duration-200 ease-opal hover:-translate-y-0.5 hover:border-[#a894fc] hover:bg-[#a894fc] hover:shadow-[0_16px_42px_rgba(179,162,254,.4),0_6px_16px_rgba(179,162,254,.22)] motion-reduce:hover:translate-y-0 max-lg:self-center"}
+            >
+              Book now
+            </Link>
           </div>
         </Reveal>
         <Reveal variant="right" delay={120} className={"contact-form-wrap relative isolate overflow-hidden rounded-[24px] border-2 border-transparent bg-clip-padding bg-[linear-gradient(180deg,#fefffe_0%,#faf8ff_55%,#f6faf7_100%)] px-[clamp(3.1rem,5.25vw,3.85rem)] py-[clamp(3.35rem,5.75vw,4.25rem)] shadow-[0_28px_72px_rgba(179,162,254,.12),0_14px_36px_rgba(93,138,111,.08)]"} id="contact-form">
