@@ -61,7 +61,7 @@ export function Testimonials({ content, testimonials }: TestimonialsProps) {
           className={"test-grid grid items-center gap-[clamp(1rem,1.8vw,1.5rem)] max-md:-mx-[var(--page-x)] max-md:flex max-md:snap-x max-md:snap-mandatory max-md:items-stretch max-md:gap-4 max-md:overflow-x-auto max-md:scroll-px-[var(--page-x)] max-md:px-[var(--page-x)] max-md:pb-6 max-md:pt-2 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden md:mb-10 md:grid-cols-[1fr_1.12fr_1fr]"}
         >
           {testimonials.map((item, index) => (
-            <div key={item.id} className={"max-md:flex max-md:w-[86%] max-md:shrink-0 max-md:snap-center md:contents"}>
+            <div key={item.id} className={"max-md:flex max-md:w-[86%] max-md:shrink-0 max-md:snap-start md:contents"}>
             <Reveal delay={index * 120} variant="up" fill>
             <article
               className={cn(

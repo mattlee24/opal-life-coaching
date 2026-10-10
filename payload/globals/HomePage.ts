@@ -17,7 +17,6 @@ export const HomePage: GlobalConfig = {
           label: "Hero",
           name: "hero",
           fields: [
-            { name: "eyebrow", type: "text", required: true },
             ...headingFields({ scriptRequired: true }),
             { name: "lead", type: "textarea", required: true },
             linkField("primaryCta", "Primary button"),

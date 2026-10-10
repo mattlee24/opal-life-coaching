@@ -662,7 +662,6 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface HomePage {
   id: number;
   hero: {
-    eyebrow: string;
     title: string;
     /**
      * Shown in the handwritten accent font.
@@ -899,7 +898,6 @@ export interface AboutPage {
 export interface ContactPage {
   id: number;
   contact: {
-    eyebrow: string;
     title: string;
     /**
      * Shown in the handwritten accent font.
@@ -1223,7 +1221,6 @@ export interface HomePageSelect<T extends boolean = true> {
   hero?:
     | T
     | {
-        eyebrow?: T;
         title?: T;
         script?: T;
         lead?: T;
@@ -1435,7 +1432,6 @@ export interface ContactPageSelect<T extends boolean = true> {
   contact?:
     | T
     | {
-        eyebrow?: T;
         title?: T;
         script?: T;
         lead?: T;

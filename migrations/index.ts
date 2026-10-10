@@ -3,6 +3,7 @@ import * as migration_20260924_171630_split_header_footer from './20260924_17163
 import * as migration_20260925_115211_add_home_services_cards from './20260925_115211_add_home_services_cards';
 import * as migration_20261010_145848_remove_meet_cara_quote from './20261010_145848_remove_meet_cara_quote';
 import * as migration_20261010_150001_remove_meet_cara_eyebrow from './20261010_150001_remove_meet_cara_eyebrow';
+import * as migration_20261011_100000_remove_hero_and_contact_eyebrow from './20261011_100000_remove_hero_and_contact_eyebrow';
 
 export const migrations = [
   {
@@ -28,6 +29,11 @@ export const migrations = [
   {
     up: migration_20261010_150001_remove_meet_cara_eyebrow.up,
     down: migration_20261010_150001_remove_meet_cara_eyebrow.down,
-    name: '20261010_150001_remove_meet_cara_eyebrow'
+    name: '20261010_150001_remove_meet_cara_eyebrow',
+  },
+  {
+    up: migration_20261011_100000_remove_hero_and_contact_eyebrow.up,
+    down: migration_20261011_100000_remove_hero_and_contact_eyebrow.down,
+    name: '20261011_100000_remove_hero_and_contact_eyebrow',
   },
 ];
