@@ -71,7 +71,7 @@ export function PageHero({
             !split && "page-hero--centered flex w-full max-w-full flex-col items-center mx-auto",
           )}
         >
-          <p className={"inline-flex items-center gap-2 h-11 px-[.9rem] mb-[2.35rem] text-[.86rem] font-bold tracking-[.18em] uppercase text-[#9580f5] bg-white/82 border border-pastel-lilac/22 rounded-full shadow-[0_8px_24px_rgba(179,162,254,.1)] before:content-[''] before:w-1.5 before:h-1.5 before:rounded-full before:bg-gradient-to-br before:from-pastel-lilac before:to-pastel-mint before:shrink-0"}>{eyebrow}</p>
+          <p className={"inline-flex items-center whitespace-nowrap h-11 px-[.9rem] mb-[2.35rem] text-[.86rem] font-bold tracking-[.18em] uppercase text-[#9580f5] bg-white/82 border border-pastel-lilac/22 rounded-full shadow-[0_8px_24px_rgba(179,162,254,.1)] max-md:text-[.66rem] max-md:tracking-[.1em] max-md:px-[.75rem]"}>{eyebrow}</p>
           <h1 className={"mb-[.12rem] max-w-full text-[clamp(2.3rem,3.9vw,3.5rem)] max-md:text-[clamp(2rem,7vw,2.55rem)] leading-[1.08] tracking-[-.03em]"}>{title}</h1>
           <span className={cn("font-script font-normal text-pastel-lilac leading-[1.1]", "block max-w-full text-[clamp(2.45rem,4.2vw,3.75rem)] max-md:text-[clamp(2.2rem,8vw,2.85rem)] leading-[1.05] whitespace-normal lg:whitespace-nowrap")}>{script}</span>
           <div

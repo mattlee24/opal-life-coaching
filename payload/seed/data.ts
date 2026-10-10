@@ -413,7 +413,7 @@ export const globals = {
       lead: "Holistic life coaching, Reiki healing and tarot readings — gentle, personal support when you're ready to move forward.",
       primaryCta: link("Book a session", "/bookings"),
       secondaryCta: link("Explore my services", "#services"),
-      trust: texts("Chichester & Eastergate", "In person & online", "At your pace"),
+      trust: texts("Chichester & Eastergate", "In person & online", "By message"),
       backgroundImage: media("hero-woodland-v3.jpg"),
     },
     values: [
@@ -470,11 +470,8 @@ export const globals = {
       ],
     },
     meetCara: {
-      eyebrow: "Meet Cara",
       greeting: "Hi, I'm",
       name: "Cara",
-      quote:
-        "I help people who feel stuck, overwhelmed or at a crossroads to find clarity, confidence and a way forward.",
       body: "My approach combines practical coaching, intuition and gentle support to help you create a calmer, happier life — one step at a time.",
       essence: texts("Practical coaching", "Intuitive guidance", "Gentle support"),
       cta: link("Read more about me", "/about"),

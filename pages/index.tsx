@@ -14,7 +14,7 @@ export default function HomePage({ layout, home, contact, testimonials, faqs }: 
     <>
       <SeoHead title={home.seo.title} description={home.seo.description} path="/" />
       <Hero content={home.hero} />
-      <Values values={home.values} />
+      {/* <Values values={home.values} /> */}
       <Services content={home.servicesSection} services={layout.services} />
       <MeetCara content={home.meetCara} />
       <Testimonials content={home.testimonialsSection} testimonials={testimonials} />
