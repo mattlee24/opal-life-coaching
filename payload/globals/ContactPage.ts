@@ -19,7 +19,6 @@ export const ContactPage: GlobalConfig = {
           label: "Contact section",
           name: "contact",
           fields: [
-            { name: "eyebrow", type: "text", required: true },
             ...headingFields({ scriptRequired: true }),
             { name: "lead", type: "textarea", required: true },
             {

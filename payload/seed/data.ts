@@ -407,7 +407,6 @@ export const globals = {
 
   "home-page": {
     hero: {
-      eyebrow: "Life coaching with Cara",
       title: "Support for your journey.",
       script: "Guidance for your life.",
       lead: "Holistic life coaching, Reiki healing and tarot readings — gentle, personal support when you're ready to move forward.",
@@ -587,7 +586,6 @@ export const globals = {
 
   "contact-page": {
     contact: {
-      eyebrow: "Next steps",
       title: "Ready to take",
       script: "the next step?",
       lead: "I'd love to support you on your journey. Get in touch or book a session today.",
