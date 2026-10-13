@@ -38,7 +38,6 @@ export const ServicePageSections: GlobalConfig = {
           label: "How it helps",
           name: "benefits",
           fields: [
-            { name: "kicker", type: "text", required: true },
             ...headingFields({ scriptRequired: true }),
             { name: "sub", label: "Subheading", type: "textarea", required: true },
           ],
@@ -47,7 +46,6 @@ export const ServicePageSections: GlobalConfig = {
           label: "Next step",
           name: "sessions",
           fields: [
-            { name: "kicker", type: "text", required: true },
             ...headingFields({ scriptRequired: true }),
             { name: "lead", type: "textarea", required: true },
             {

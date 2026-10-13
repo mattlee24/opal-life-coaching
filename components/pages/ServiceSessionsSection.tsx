@@ -53,25 +53,19 @@ export function ServiceSessionsSection({ data, sections }: ServiceSessionsSectio
               03
             </span>
             <span className="min-h-[clamp(4rem,9vw,6rem)] w-px flex-1 bg-gradient-to-b from-pastel-lilac/50 via-pastel-mint/45 to-transparent max-md:h-px max-md:min-h-0 max-md:flex-1 max-md:bg-gradient-to-r" />
-            <span className="text-[.62rem] font-bold tracking-[.2em] text-[#9580f5] uppercase [writing-mode:vertical-rl] rotate-180 max-md:rotate-0 max-md:[writing-mode:horizontal-tb] max-md:tracking-[.16em]">
-              Next step
-            </span>
           </div>
 
           <div className="service-sessions-body max-md:order-2 flex w-full flex-col">
             <div className="service-sessions-stage grid w-full items-center gap-[clamp(2.25rem,4.5vw,3.75rem)] max-md:grid-cols-1 md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
               <div className="service-sessions-path flex flex-col gap-[clamp(1.75rem,3vw,2.25rem)]">
                 <Reveal className="service-sessions-head max-md:text-center">
-                  <p className="service-sessions-kicker m-0 mb-4 text-[.68rem] font-bold tracking-[.18em] text-[#9580f5] uppercase">
-                    {content.kicker}
-                  </p>
-                  <h2 className="service-sessions-lead m-0 max-w-[16ch] font-serif text-[clamp(2.15rem,3.8vw,3rem)] font-semibold leading-[1.08] tracking-[-.03em] text-blue max-md:mx-auto">
+                  <h2 className="service-sessions-lead type-heading m-0 max-w-[16ch] max-md:mx-auto">
                     {content.title}{" "}
-                    <span className="font-script font-normal text-[clamp(2.45rem,4.5vw,3.45rem)] leading-[.95] text-[#9580f5]">
+                    <span className="type-script inline!">
                       {content.script}
                     </span>
                   </h2>
-                  <p className="service-sessions-lead-copy m-0 mt-[clamp(1.1rem,2vw,1.45rem)] max-w-[46ch] text-[clamp(1.02rem,1.15vw,1.08rem)] leading-[1.85] text-muted max-md:mx-auto">
+                  <p className="service-sessions-lead-copy type-body m-0 mt-[clamp(1.1rem,2vw,1.45rem)] max-w-[46ch] max-md:mx-auto">
                     {content.lead}
                   </p>
                 </Reveal>
@@ -84,8 +78,8 @@ export function ServiceSessionsSection({ data, sections }: ServiceSessionsSectio
                           {String(index + 1).padStart(2, "0")}
                         </span>
                         <div className="service-sessions-step-copy">
-                          <strong>{step.title}</strong>
-                          <p>{step.text}</p>
+                          <strong className="type-title block">{step.title}</strong>
+                          <p className="type-body">{step.text}</p>
                         </div>
                       </li>
                     ))}
@@ -97,7 +91,7 @@ export function ServiceSessionsSection({ data, sections }: ServiceSessionsSectio
                       aria-label="Booking highlights"
                     >
                       {trust.map((item) => (
-                        <li key={item}>{item}</li>
+                        <li key={item} className="type-body">{item}</li>
                       ))}
                     </ul>
                   ) : null}
@@ -148,7 +142,7 @@ export function ServiceSessionsSection({ data, sections }: ServiceSessionsSectio
                     </div>
                   </div>
 
-                  <figcaption className="service-sessions-photo-caption">
+                  <figcaption className="service-sessions-photo-caption type-body">
                     {content.caption}
                   </figcaption>
                 </figure>

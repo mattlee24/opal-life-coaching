@@ -176,7 +176,6 @@ export interface Service {
    */
   navShort: string;
   hero: {
-    eyebrow: string;
     title: string;
     /**
      * Shown in the handwritten accent font.
@@ -473,7 +472,6 @@ export interface ServicesSelect<T extends boolean = true> {
   hero?:
     | T
     | {
-        eyebrow?: T;
         title?: T;
         script?: T;
         description?: T;
@@ -699,7 +697,6 @@ export interface HomePage {
       }[]
     | null;
   servicesSection: {
-    eyebrow: string;
     title: string;
     /**
      * Shown in the handwritten accent font.
@@ -760,8 +757,26 @@ export interface HomePage {
     badge: string;
     portrait: number | Media;
   };
+  socialSection: {
+    title: string;
+    /**
+     * Shown in the handwritten accent font.
+     */
+    script: string;
+    lead: string;
+    /**
+     * Shown in larger text under the lead.
+     */
+    body: string;
+    /**
+     * e.g. “Follow”.
+     */
+    followLabel: string;
+    facebookCaption?: string | null;
+    instagramCaption?: string | null;
+    youtubeCaption?: string | null;
+  };
   testimonialsSection: {
-    eyebrow: string;
     title: string;
     /**
      * Shown in the handwritten accent font.
@@ -791,7 +806,6 @@ export interface HomePage {
 export interface AboutPage {
   id: number;
   hero: {
-    eyebrow: string;
     title: string;
     /**
      * Shown in the handwritten accent font.
@@ -822,7 +836,6 @@ export interface AboutPage {
     portrait: number | Media;
   };
   story: {
-    eyebrow: string;
     title: string;
     /**
      * Shown in the handwritten accent font.
@@ -841,7 +854,6 @@ export interface AboutPage {
     caption: string;
   };
   essence: {
-    kicker: string;
     title: string;
     /**
      * Shown in the handwritten accent font.
@@ -863,7 +875,6 @@ export interface AboutPage {
       | null;
   };
   path: {
-    kicker: string;
     title: string;
     /**
      * Shown in the handwritten accent font.
@@ -874,7 +885,6 @@ export interface AboutPage {
       | {
           icon: 'pace' | 'personal' | 'holistic';
           accent: 'coaching' | 'tarot' | 'reiki';
-          tag: string;
           title: string;
           text: string;
           note: string;
@@ -907,8 +917,14 @@ export interface ContactPage {
     emailLabel: string;
     emailNote: string;
     socialLabel: string;
-    locationTitle: string;
-    locationText: string;
+    sessionOptions?:
+      | {
+          icon: 'online' | 'location' | 'message';
+          title: string;
+          text?: string | null;
+          id?: string | null;
+        }[]
+      | null;
     trust?:
       | {
           text: string;
@@ -942,7 +958,6 @@ export interface ContactPage {
     messagePlaceholder?: string | null;
   };
   faqsSection: {
-    eyebrow: string;
     title: string;
     lead: string;
   };
@@ -1076,7 +1091,6 @@ export interface Footer {
  */
 export interface ClosingCta {
   id: number;
-  eyebrow: string;
   title: string;
   /**
    * Shown in the handwritten accent font.
@@ -1137,7 +1151,6 @@ export interface ServicePageSection {
     captionNote: string;
   };
   benefits: {
-    kicker: string;
     title: string;
     /**
      * Shown in the handwritten accent font.
@@ -1146,7 +1159,6 @@ export interface ServicePageSection {
     sub: string;
   };
   sessions: {
-    kicker: string;
     title: string;
     /**
      * Shown in the handwritten accent font.
@@ -1202,6 +1214,7 @@ export interface SiteSetting {
   social?: {
     facebook?: string | null;
     instagram?: string | null;
+    youtube?: string | null;
   };
   seo: {
     /**
@@ -1255,7 +1268,6 @@ export interface HomePageSelect<T extends boolean = true> {
   servicesSection?:
     | T
     | {
-        eyebrow?: T;
         title?: T;
         script?: T;
         lead?: T;
@@ -1301,10 +1313,21 @@ export interface HomePageSelect<T extends boolean = true> {
         badge?: T;
         portrait?: T;
       };
+  socialSection?:
+    | T
+    | {
+        title?: T;
+        script?: T;
+        lead?: T;
+        body?: T;
+        followLabel?: T;
+        facebookCaption?: T;
+        instagramCaption?: T;
+        youtubeCaption?: T;
+      };
   testimonialsSection?:
     | T
     | {
-        eyebrow?: T;
         title?: T;
         script?: T;
         lead?: T;
@@ -1334,7 +1357,6 @@ export interface AboutPageSelect<T extends boolean = true> {
   hero?:
     | T
     | {
-        eyebrow?: T;
         title?: T;
         script?: T;
         lead?: T;
@@ -1362,7 +1384,6 @@ export interface AboutPageSelect<T extends boolean = true> {
   story?:
     | T
     | {
-        eyebrow?: T;
         title?: T;
         script?: T;
         sub?: T;
@@ -1380,7 +1401,6 @@ export interface AboutPageSelect<T extends boolean = true> {
   essence?:
     | T
     | {
-        kicker?: T;
         title?: T;
         script?: T;
         intro?: T;
@@ -1398,7 +1418,6 @@ export interface AboutPageSelect<T extends boolean = true> {
   path?:
     | T
     | {
-        kicker?: T;
         title?: T;
         script?: T;
         intro?: T;
@@ -1407,7 +1426,6 @@ export interface AboutPageSelect<T extends boolean = true> {
           | {
               icon?: T;
               accent?: T;
-              tag?: T;
               title?: T;
               text?: T;
               note?: T;
@@ -1438,8 +1456,14 @@ export interface ContactPageSelect<T extends boolean = true> {
         emailLabel?: T;
         emailNote?: T;
         socialLabel?: T;
-        locationTitle?: T;
-        locationText?: T;
+        sessionOptions?:
+          | T
+          | {
+              icon?: T;
+              title?: T;
+              text?: T;
+              id?: T;
+            };
         trust?:
           | T
           | {
@@ -1474,7 +1498,6 @@ export interface ContactPageSelect<T extends boolean = true> {
   faqsSection?:
     | T
     | {
-        eyebrow?: T;
         title?: T;
         lead?: T;
       };
@@ -1591,7 +1614,6 @@ export interface FooterSelect<T extends boolean = true> {
  * via the `definition` "closing-cta_select".
  */
 export interface ClosingCtaSelect<T extends boolean = true> {
-  eyebrow?: T;
   title?: T;
   script?: T;
   lead?: T;
@@ -1649,7 +1671,6 @@ export interface ServicePageSectionsSelect<T extends boolean = true> {
   benefits?:
     | T
     | {
-        kicker?: T;
         title?: T;
         script?: T;
         sub?: T;
@@ -1657,7 +1678,6 @@ export interface ServicePageSectionsSelect<T extends boolean = true> {
   sessions?:
     | T
     | {
-        kicker?: T;
         title?: T;
         script?: T;
         lead?: T;
@@ -1701,6 +1721,7 @@ export interface SiteSettingsSelect<T extends boolean = true> {
     | {
         facebook?: T;
         instagram?: T;
+        youtube?: T;
       };
   seo?:
     | T

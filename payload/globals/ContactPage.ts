@@ -30,10 +30,32 @@ export const ContactPage: GlobalConfig = {
             },
             { name: "socialLabel", label: "Social label", type: "text", required: true },
             {
-              type: "row",
+              name: "sessionOptions",
+              label: "Where sessions take place",
+              type: "array",
+              labels: { singular: "Option", plural: "Options" },
+              minRows: 1,
+              maxRows: 4,
               fields: [
-                { name: "locationTitle", label: "Location title", type: "text", required: true },
-                { name: "locationText", label: "Location text", type: "text", required: true },
+                {
+                  type: "row",
+                  fields: [
+                    {
+                      name: "icon",
+                      type: "select",
+                      required: true,
+                      defaultValue: "online",
+                      options: [
+                        { label: "Online (globe)", value: "online" },
+                        { label: "In person (map pin)", value: "location" },
+                        { label: "Message (speech bubble)", value: "message" },
+                      ],
+                      admin: { width: "30%" },
+                    },
+                    { name: "title", type: "text", required: true, admin: { width: "70%" } },
+                  ],
+                },
+                { name: "text", type: "text" },
               ],
             },
             textListField("trust", "Reassurances", { singular: "Reassurance", plural: "Reassurances", maxRows: 4 }),
@@ -105,7 +127,6 @@ export const ContactPage: GlobalConfig = {
           name: "faqsSection",
           description: "The questions themselves are edited under Content → FAQs.",
           fields: [
-            { name: "eyebrow", type: "text", required: true },
             { name: "title", label: "Heading", type: "text", required: true },
             { name: "lead", type: "textarea", required: true },
           ],

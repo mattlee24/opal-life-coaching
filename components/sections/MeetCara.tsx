@@ -73,7 +73,7 @@ export function MeetCara({ content }: MeetCaraProps) {
               height={22}
               className={"h-[22px] w-[22px] shrink-0 [filter:drop-shadow(0_2px_6px_rgba(179,162,254,.25))]"}
             />
-            <p className={"font-serif text-[clamp(.95rem,1.4vw,1.08rem)] font-semibold leading-[1.2] whitespace-nowrap text-blue max-md:whitespace-normal"}>{content.badge}</p>
+            <p className={"type-label whitespace-nowrap max-md:whitespace-normal"}>{content.badge}</p>
           </div>
         </Reveal>
         <Reveal variant="right" delay={120} className={"meet-cara-copy relative max-w-[min(580px,100%)] max-md:mx-auto max-md:text-center"}>
@@ -85,16 +85,16 @@ export function MeetCara({ content }: MeetCaraProps) {
               className={"block h-auto w-full"}
             />
           </span>
-          <h2 className={"mb-[1.1rem] text-[clamp(2.35rem,4.2vw,3.2rem)] leading-[1.04] tracking-[-.025em] text-blue"}>
-            {content.greeting} <span className={"font-script font-normal text-pastel-lilac leading-[1.1]"}>{content.name}</span>
+          <h2 className={"type-heading mb-[1.1rem]"}>
+            {content.greeting} <span className={"type-script inline!"}>{content.name}</span>
           </h2>
           <OpalSep wide className={"w-[min(400px,100%)] mb-[1.65rem] max-md:mx-auto"} />
-            <p className={"font-serif text-[clamp(1.32rem,2.15vw,1.62rem)] font-medium leading-[1.58] text-blue max-w-[34ch] max-md:mx-auto my-6"}>
+            <p className={"type-body max-w-[44ch] max-md:mx-auto my-6"}>
               {content.body}
             </p>
           <ul className={"meet-cara-essence mb-[1.85rem] flex flex-wrap items-center gap-y-[.35rem] p-0 list-none max-md:justify-center"} aria-label="Cara's approach">
             {essence.map((item) => (
-              <li key={item} className={"text-[.66rem] font-bold uppercase tracking-[.12em] text-[#9580f5] after:mx-[.7rem] after:text-[rgba(179,162,254,.4)] after:content-['·'] last:after:hidden"}>{item}</li>
+              <li key={item} className={"type-label after:mx-[.7rem] after:text-[rgba(179,162,254,.4)] after:content-['·'] last:after:hidden"}>{item}</li>
             ))}
           </ul>
           <div className={"meet-cara-cta flex flex-col items-start gap-[.85rem] max-md:items-center"}>
@@ -107,7 +107,7 @@ export function MeetCara({ content }: MeetCaraProps) {
             >
               {content.cta.label}
             </Link>
-            <p className={"meet-cara-note max-w-[36ch] text-[.82rem] leading-[1.6] text-muted max-md:mx-auto"}>
+            <p className={"meet-cara-note type-body max-w-[36ch] max-md:mx-auto"}>
               {content.note}
             </p>
           </div>

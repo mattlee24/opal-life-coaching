@@ -1,12 +1,14 @@
 import { useSiteSettings } from "@/components/layout/LayoutDataContext";
 
 type SocialLinkProps = {
-  network: "facebook" | "instagram";
+  network: SocialNetwork;
   className?: string;
   showLabel?: boolean;
 };
 
-const socialMeta = {
+export type SocialNetwork = "facebook" | "instagram" | "youtube";
+
+export const socialMeta = {
   facebook: {
     label: "Facebook",
     icon: "/assets/icon-social-facebook.svg",
@@ -14,6 +16,10 @@ const socialMeta = {
   instagram: {
     label: "Instagram",
     icon: "/assets/icon-social-instagram.svg",
+  },
+  youtube: {
+    label: "YouTube",
+    icon: "/assets/icon-social-youtube.svg",
   },
 } as const;
 
@@ -38,5 +44,5 @@ export function SocialLink({ network, className = "", showLabel = true }: Social
 
 export function useHasSocialLinks() {
   const { social } = useSiteSettings();
-  return Boolean(social?.facebook || social?.instagram);
+  return Boolean(social?.facebook || social?.instagram || social?.youtube);
 }

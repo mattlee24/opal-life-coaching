@@ -28,7 +28,7 @@ export function FaqItem({
       <h3 className="m-0">
         <button
           type="button"
-          className="faq-trigger flex w-full cursor-pointer list-none items-center justify-between gap-5 border-0 bg-transparent py-[1.35rem] text-left font-serif text-[clamp(1.12rem,1.65vw,1.28rem)] font-semibold leading-[1.35] text-blue transition-colors hover:text-[#152570]"
+          className="type-title faq-trigger flex w-full cursor-pointer list-none items-center justify-between gap-5 border-0 bg-transparent py-[1.35rem] text-left transition-colors hover:text-[#152570]"
           aria-expanded={isOpen}
           onClick={onToggle}
         >
@@ -44,7 +44,7 @@ export function FaqItem({
         aria-hidden={!isOpen}
       >
         <div className="faq-panel__inner">
-          <p className="m-0 max-w-[58ch] pr-8 pb-[1.35rem] text-[.92rem] leading-[1.85] text-muted max-md:pr-0">
+          <p className="type-body m-0 max-w-[58ch] pr-8 pb-[1.35rem] max-md:pr-0">
             {answer}
           </p>
         </div>

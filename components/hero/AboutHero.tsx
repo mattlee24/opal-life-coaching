@@ -27,12 +27,9 @@ export function AboutHero({ content }: AboutHeroProps) {
 
       <div className={cn("site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]", "about-hero-inner relative z-[2] grid w-full items-center gap-[clamp(2rem,5vw,4rem)] max-md:grid-cols-1 max-md:gap-11 md:grid-cols-[minmax(280px,.92fr)_minmax(300px,1.08fr)]")}>
         <div className={"about-hero-copy relative z-[2] max-w-[min(540px,100%)] max-md:max-w-full"}>
-          <p className={"inline-flex items-center whitespace-nowrap h-11 px-[.9rem] mb-[2.35rem] text-[.86rem] font-bold tracking-[.18em] uppercase text-[#9580f5] bg-white/82 border border-pastel-lilac/22 rounded-full shadow-[0_8px_24px_rgba(179,162,254,.1)] max-md:text-[.66rem] max-md:tracking-[.1em] max-md:px-[.75rem]"}>{content.eyebrow}</p>
-          <h1>
-            <span className={"about-hero-line block mb-[.08rem] text-[clamp(2.3rem,4.4vw,3.7rem)] leading-[1.05] tracking-[-.035em] max-md:text-[clamp(2rem,7.5vw,2.95rem)]"}>{content.title}</span>
-            <span className={cn("font-script font-normal text-pastel-lilac leading-[1.1]", "about-hero-script block mt-[.05rem] text-[clamp(2.75rem,6.4vw,5.35rem)] leading-[.95] text-[#9580f5] [text-shadow:0_18px_48px_rgba(179,162,254,.18)] max-md:text-[clamp(2.5rem,11vw,3.85rem)]")}>
-              {content.script}
-            </span>
+          <h1 className={"type-display"}>
+            {content.title}
+            <span className={"type-script mt-[.35rem]"}>{content.script}</span>
           </h1>
           <div className={"hero-divider my-[1.75rem] flex w-[min(440px,100%)] items-center gap-4"} aria-hidden="true">
             <span className={"hero-divider-line h-[2px] min-w-14 flex-1 rounded-[2px] bg-[linear-gradient(90deg,rgba(179,162,254,0)_0%,rgba(179,162,254,.6)_18%,rgba(188,228,222,.75)_100%)]"} />
@@ -46,7 +43,7 @@ export function AboutHero({ content }: AboutHeroProps) {
             </span>
             <span className={"hero-divider-line h-[2px] min-w-14 flex-1 rounded-[2px] bg-[linear-gradient(90deg,rgba(188,228,222,.75)_0%,rgba(179,162,254,.6)_82%,rgba(179,162,254,0)_100%)]"} />
           </div>
-          <p className={"hero-lead mb-[2.25rem] max-w-[34ch] text-[clamp(1.02rem,1.35vw,1.12rem)] leading-[1.88] text-muted"}>
+          <p className={"type-body hero-lead mb-[2.25rem] max-w-[34ch]"}>
             {content.lead}
           </p>
           <div className={cn("hero-btns flex flex-wrap gap-[.9rem]", "about-hero-btns")}>
@@ -59,7 +56,7 @@ export function AboutHero({ content }: AboutHeroProps) {
           </div>
           <div className={cn("hero-trust relative mt-8 flex flex-wrap gap-x-[1.35rem] gap-y-[.55rem] border-t border-transparent pt-[1.65rem] md:gap-x-[1.35rem] md:gap-y-[.55rem] max-md:gap-x-4 max-md:gap-y-[.45rem]", "about-hero-trust")} aria-label="At a glance">
             {trust.map((item) => (
-              <span key={item} className={"inline-flex items-center gap-[.45rem] text-[.76rem] font-semibold tracking-[.02em] text-blue max-md:text-[.72rem]"}>{item}</span>
+              <span key={item} className={"type-label inline-flex items-center gap-[.45rem]"}>{item}</span>
             ))}
           </div>
         </div>
@@ -115,7 +112,7 @@ export function AboutHero({ content }: AboutHeroProps) {
                 alt=""
                 className={"h-5 w-5 shrink-0"}
               />
-              <p className={"font-serif text-[clamp(.88rem,1.3vw,1.02rem)] font-semibold leading-[1.2] whitespace-nowrap text-blue max-md:text-center max-md:whitespace-normal"}>{content.badge}</p>
+              <p className={"type-label whitespace-nowrap max-md:text-center max-md:whitespace-normal"}>{content.badge}</p>
             </div>
           </div>
         </div>

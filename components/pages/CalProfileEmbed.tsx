@@ -95,22 +95,22 @@ function CalBookingCard({
       <span className="bookings-cal-card__ribbon" aria-hidden="true" />
 
       <span className="bookings-cal-card__header">
-        <span className={cn("bookings-cal-card__mark", isInPerson && "bookings-cal-card__mark--place")}>
+        <span className={cn("bookings-cal-card__mark type-label", isInPerson && "bookings-cal-card__mark--place")}>
           <span aria-hidden="true">{isInPerson ? "◎" : "◌"}</span>
           {formatLabel(event)}
         </span>
-        <span className="bookings-cal-card__price">
+        <span className="bookings-cal-card__price type-title">
           <span className="bookings-cal-card__price-currency">£</span>
           {event.priceGbp}
         </span>
       </span>
 
-      <span className="bookings-cal-card__name">{displayTitle}</span>
-      <p className="bookings-cal-card__desc">{event.description}</p>
+      <span className="bookings-cal-card__name type-title">{displayTitle}</span>
+      <p className="bookings-cal-card__desc type-body">{event.description}</p>
 
       <span className="bookings-cal-card__chips">
-        <span className="bookings-cal-card__chip">{event.lengthInMinutes} minutes</span>
-        {event.note ? <span className="bookings-cal-card__chip bookings-cal-card__chip--note">Flexible</span> : null}
+        <span className="bookings-cal-card__chip type-label">{event.lengthInMinutes} minutes</span>
+        {event.note ? <span className="bookings-cal-card__chip bookings-cal-card__chip--note type-label">Flexible</span> : null}
       </span>
 
       <span className="bookings-cal-card__cta">
@@ -168,7 +168,7 @@ function CalProfileEmbed() {
         className="bookings-cal-unconfigured rounded-[20px] border border-dashed border-pastel-lilac/35 bg-white/72 px-6 py-12 text-center"
         role="status"
       >
-        <p className="m-0 text-[.92rem] leading-[1.75] text-muted">
+        <p className="type-body m-0">
           Live booking will appear here once{" "}
           <code className="text-[#9580f5]">NEXT_PUBLIC_CAL_USERNAME</code> is configured.
         </p>
@@ -190,13 +190,13 @@ function CalProfileEmbed() {
 
             <div className="bookings-cal-selected-head">
               <div className="bookings-cal-selected-head__copy">
-                <p className="bookings-cal-selected-head__eyebrow">Your session</p>
-                <h3 className="bookings-cal-selected-head__title">{selectedEvent.title}</h3>
-                <p className="bookings-cal-selected-head__meta">
+                <p className="bookings-cal-selected-head__eyebrow type-label">Your session</p>
+                <h3 className="bookings-cal-selected-head__title type-title">{selectedEvent.title}</h3>
+                <p className="bookings-cal-selected-head__meta type-body">
                   {selectedEvent.lengthInMinutes} min · {formatLabel(selectedEvent)}
                 </p>
               </div>
-              <span className="bookings-cal-selected-head__price">£{selectedEvent.priceGbp}</span>
+              <span className="bookings-cal-selected-head__price type-title">£{selectedEvent.priceGbp}</span>
             </div>
 
             <div className="bookings-cal-embed-host">
@@ -271,11 +271,11 @@ function CalProfileEmbed() {
                     </span>
                   )}
                   <div className="bookings-cal-group__titles">
-                    <h3 className="bookings-cal-group__title">{group.label}</h3>
+                    <h3 className="bookings-cal-group__title type-title">{group.label}</h3>
                     {group.blurb ? (
-                      <p className="bookings-cal-group__blurb">{group.blurb}</p>
+                      <p className="bookings-cal-group__blurb type-body">{group.blurb}</p>
                     ) : null}
-                    <p className="bookings-cal-group__count">
+                    <p className="bookings-cal-group__count type-label">
                       {group.events.length} session{group.events.length === 1 ? "" : "s"} to choose from
                     </p>
                   </div>

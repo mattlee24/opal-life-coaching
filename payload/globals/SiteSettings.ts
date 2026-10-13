@@ -39,6 +39,7 @@ export const SiteSettings: GlobalConfig = {
           fields: [
             { name: "facebook", label: "Facebook URL", type: "text" },
             { name: "instagram", label: "Instagram URL", type: "text" },
+            { name: "youtube", label: "YouTube URL", type: "text" },
           ],
         },
       ],

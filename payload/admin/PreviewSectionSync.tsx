@@ -19,6 +19,7 @@ const sectionMaps: { match: RegExp; sections: Record<string, string> }[] = [
       values: "values",
       servicesSection: "services",
       meetCara: "meet-cara",
+      socialSection: "social",
       testimonialsSection: "testimonials",
     },
   },

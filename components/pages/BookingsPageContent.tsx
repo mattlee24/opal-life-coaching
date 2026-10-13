@@ -6,7 +6,6 @@ export function BookingsPageContent() {
   return (
     <div className={"inner-page"}>
       <PageHero
-        eyebrow="Bookings"
         title="Choose your session"
         script="at a time that suits you"
         lead="View live availability and book directly below. Prefer a conversation first? You can always enquire before you commit."

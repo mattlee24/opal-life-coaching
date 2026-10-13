@@ -12,8 +12,10 @@ export function Hero({ content }: HeroProps) {
   const trust = textList(content.trust);
 
   return (
-    <section className={"hero relative isolate flex min-h-[max(100svh,800px)] items-center overflow-hidden bg-[#f7faf8] box-border pt-[calc(var(--header-height)+clamp(2rem,5vh,3.25rem))] pb-[clamp(2.75rem,5.5vh,4.25rem)]"}>
-      <div className={"hero-bg absolute inset-0 overflow-hidden"} aria-hidden="true">
+    <section className={"hero relative isolate flex min-h-[max(100svh,800px)] items-center overflow-hidden bg-[#f7faf8] box-border pt-[calc(var(--header-height)+clamp(2rem,5vh,3.25rem))] pb-[clamp(2.75rem,5.5vh,4.25rem)] max-md:block max-md:min-h-0 max-md:pt-[calc(var(--hero-photo-h)-2.5rem)] max-md:pb-[clamp(3.5rem,10vw,4.5rem)] max-md:[--hero-photo-h:min(54svh,460px)]"}>
+      {/* Mobile: the photo is a band across the top that fades into the page, and the copy sits on the
+          plain background beneath it. Desktop keeps the copy over the faded left side of the photo. */}
+      <div className={"hero-bg absolute inset-0 overflow-hidden max-md:bottom-auto max-md:h-[var(--hero-photo-h)] max-md:[mask-image:linear-gradient(180deg,#000_58%,transparent_100%)] max-md:[-webkit-mask-image:linear-gradient(180deg,#000_58%,transparent_100%)]"} aria-hidden="true">
         {backgroundSrc ? (
           <SiteImageFill
             src={backgroundSrc}
@@ -21,18 +23,18 @@ export function Hero({ content }: HeroProps) {
             priority
             fetchPriority="high"
             sizes="100vw"
-            className={"object-cover object-[62%_52%] [filter:saturate(1.12)_contrast(1.05)_brightness(1.03)]"}
+            className={"object-cover object-[62%_52%] max-md:object-[76%_42%] [filter:saturate(1.12)_contrast(1.05)_brightness(1.03)]"}
           />
         ) : null}
       </div>
-      <div className={"hero-vignette pointer-events-none absolute inset-0 z-[1]"} aria-hidden="true" />
-      <div className={"hero-opal pointer-events-none absolute inset-0 z-[2]"} aria-hidden="true" />
+      <div className={"hero-vignette pointer-events-none absolute inset-0 z-[1] max-md:hidden"} aria-hidden="true" />
+      <div className={"hero-opal pointer-events-none absolute inset-0 z-[2] max-md:bottom-auto max-md:h-[var(--hero-photo-h)]"} aria-hidden="true" />
       <div className={cn("site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]", "hero-inner relative z-[3] w-full")}>
         <div className={"hero-copy max-w-[min(540px,100%)]"}>
-          <h1 className={"mb-[.9rem] max-w-full text-[clamp(2.3rem,3.9vw,3.5rem)] max-md:text-[clamp(2rem,7vw,2.55rem)] leading-[1.08] tracking-[-.03em]"}>{content.title}</h1>
-          <span className={cn("font-script font-normal text-pastel-lilac leading-[1.1]", "block max-w-full text-[clamp(2.45rem,4.2vw,3.75rem)] max-md:text-[clamp(2.2rem,8vw,2.85rem)] max-md:[-webkit-text-stroke:0.5px_currentColor] leading-[1.05] whitespace-normal lg:whitespace-nowrap")}>
-            {content.script}
-          </span>
+          <h1 className={"type-display max-w-full"}>
+            {content.title}
+            <span className={"type-script mt-[.35rem] max-w-full max-md:[-webkit-text-stroke:0.5px_currentColor] max-sm:text-[.95em] lg:whitespace-nowrap"}>{content.script}</span>
+          </h1>
           <div className={"hero-divider my-[1.75rem] flex w-[min(440px,100%)] items-center gap-4"} aria-hidden="true">
             <span className={"hero-divider-line h-[2px] min-w-14 flex-1 rounded-[2px] bg-[linear-gradient(90deg,rgba(179,162,254,0)_0%,rgba(179,162,254,.6)_18%,rgba(188,228,222,.75)_100%)]"} />
             <span className={"hero-divider-heart h-[30px] w-[30px] shrink-0 [filter:drop-shadow(0_4px_14px_rgba(179,162,254,.38))]"}>
@@ -46,7 +48,7 @@ export function Hero({ content }: HeroProps) {
             </span>
             <span className={"hero-divider-line h-[2px] min-w-14 flex-1 rounded-[2px] bg-[linear-gradient(90deg,rgba(188,228,222,.75)_0%,rgba(179,162,254,.6)_82%,rgba(179,162,254,0)_100%)]"} />
           </div>
-          <p className={"hero-lead mb-[2.25rem] max-w-[34ch] text-[clamp(1.02rem,1.35vw,1.12rem)] leading-[1.88] text-muted"}>
+          <p className={"hero-lead type-body mb-[2.25rem] max-w-[34ch]"}>
             {content.lead}
           </p>
           <div className={"hero-btns flex flex-wrap gap-[.9rem]"}>
@@ -62,7 +64,7 @@ export function Hero({ content }: HeroProps) {
           </div>
           <div className={"hero-trust relative mt-8 flex flex-wrap gap-x-[1.35rem] gap-y-[.55rem] border-t border-transparent pt-[1.65rem] md:gap-x-[1.35rem] md:gap-y-[.55rem] max-md:gap-x-4 max-md:gap-y-[.45rem]"} aria-label="Session details">
             {trust.map((item) => (
-              <span key={item} className={"inline-flex items-center gap-[.45rem] text-[.88rem] font-semibold tracking-[.02em] text-blue max-md:text-[.8rem]"}>{item}</span>
+              <span key={item} className={"type-label inline-flex items-center gap-[.45rem]"}>{item}</span>
             ))}
           </div>
         </div>

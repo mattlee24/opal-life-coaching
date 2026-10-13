@@ -12,7 +12,6 @@ export const ClosingCta: GlobalConfig = {
   access: { read: () => true },
   hooks: revalidateGlobalHooks,
   fields: [
-    { name: "eyebrow", type: "text", required: true },
     ...headingFields({ scriptRequired: true }),
     { name: "lead", type: "textarea", required: true },
     textListField("assurances", "Assurances", { singular: "Assurance", plural: "Assurances", maxRows: 4 }),

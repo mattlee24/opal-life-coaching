@@ -10,7 +10,6 @@ export type PageHeroCta = {
 export type PageHeroTone = "lavender" | "sage" | "opal";
 
 export type PageHeroProps = {
-  eyebrow: string;
   title: string;
   script: string;
   lead: string;
@@ -23,7 +22,6 @@ export type PageHeroProps = {
 };
 
 export function PageHero({
-  eyebrow,
   title,
   script,
   lead,
@@ -71,9 +69,10 @@ export function PageHero({
             !split && "page-hero--centered flex w-full max-w-full flex-col items-center mx-auto",
           )}
         >
-          <p className={"inline-flex items-center whitespace-nowrap h-11 px-[.9rem] mb-[2.35rem] text-[.86rem] font-bold tracking-[.18em] uppercase text-[#9580f5] bg-white/82 border border-pastel-lilac/22 rounded-full shadow-[0_8px_24px_rgba(179,162,254,.1)] max-md:text-[.66rem] max-md:tracking-[.1em] max-md:px-[.75rem]"}>{eyebrow}</p>
-          <h1 className={"mb-[.12rem] max-w-full text-[clamp(2.3rem,3.9vw,3.5rem)] max-md:text-[clamp(2rem,7vw,2.55rem)] leading-[1.08] tracking-[-.03em]"}>{title}</h1>
-          <span className={cn("font-script font-normal text-pastel-lilac leading-[1.1]", "block max-w-full text-[clamp(2.45rem,4.2vw,3.75rem)] max-md:text-[clamp(2.2rem,8vw,2.85rem)] leading-[1.05] whitespace-normal lg:whitespace-nowrap")}>{script}</span>
+          <h1 className={"type-display max-w-full"}>
+            {title}
+            <span className={"type-script mt-[.35rem] max-w-full lg:whitespace-nowrap"}>{script}</span>
+          </h1>
           <div
             className={cn("hero-divider my-[1.75rem] flex w-[min(440px,100%)] items-center gap-4", !split && "mx-auto")}
             aria-hidden="true"
@@ -88,7 +87,7 @@ export function PageHero({
             </span>
             <span className={"hero-divider-line h-[2px] min-w-14 flex-1 rounded-[2px] bg-[linear-gradient(90deg,rgba(188,228,222,.75)_0%,rgba(179,162,254,.6)_82%,rgba(179,162,254,0)_100%)]"} />
           </div>
-          <p className={cn("hero-lead mb-[2.25rem] max-w-[34ch] text-[clamp(1.02rem,1.35vw,1.12rem)] leading-[1.88] text-muted", !split && "mx-auto max-w-[min(42ch,100%)] text-center")}>
+          <p className={cn("type-body hero-lead mb-[2.25rem] max-w-[34ch]", !split && "mx-auto max-w-[min(42ch,100%)] text-center")}>
             {lead}
           </p>
           {(primaryCta || secondaryCta) && (
@@ -119,7 +118,7 @@ export function PageHero({
               aria-label="Highlights"
             >
               {trust.map((item) => (
-                <span key={item} className={"inline-flex items-center gap-[.45rem] text-[.76rem] font-semibold tracking-[.02em] text-blue max-md:text-[.72rem]"}>
+                <span key={item} className={"type-label inline-flex items-center gap-[.45rem]"}>
                   {item}
                 </span>
               ))}

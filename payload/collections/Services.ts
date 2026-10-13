@@ -89,7 +89,6 @@ export const Services: CollectionConfig = {
               name: "hero",
               type: "group",
               fields: [
-                { name: "eyebrow", type: "text", required: true },
                 ...headingFields({ scriptRequired: true }),
                 { name: "description", type: "textarea", required: true },
                 textListField("trust", "Highlights", {

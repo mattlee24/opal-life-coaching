@@ -28,15 +28,14 @@ export function Footer() {
         />
       </div>
       <Reveal className={"footer-calm relative z-[2] px-0 pt-[clamp(5.5rem,11vw,7.5rem)] pb-[clamp(2.25rem,4.5vw,3rem)] text-center"}>
-        <div className={cn("site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]", "footer-calm-inner relative mx-auto max-w-[580px] px-2")}>
-          <h2 className={"mb-[.75rem] text-[clamp(2.15rem,4.2vw,3.05rem)] leading-[1.06] tracking-[-.025em] text-blue"}>
+        <div className={cn("site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]", "footer-calm-inner relative mx-auto max-w-[700px] px-2")}>
+          <h2 className={"type-heading mb-[.75rem]"}>
             {footer.title}
-            <br />
-            <span className={"font-script font-normal mt-[.2rem] block text-[clamp(2.05rem,4.2vw,2.75rem)] leading-[1.05] text-[#9580f5] [text-shadow:0_0_40px_rgba(255,255,255,.65)]"}>
+            <span className={"type-script mt-[.2rem] block [text-shadow:0_0_40px_rgba(255,255,255,.65)]"}>
               {footer.script}
             </span>
           </h2>
-          <p className={"mx-auto mb-[1.85rem] max-w-[44ch] text-[clamp(1rem,1.4vw,1.08rem)] leading-[1.82] text-muted"}>
+          <p className={"type-body mx-auto mb-[1.85rem] max-w-[44ch]"}>
             {footer.calmText}
           </p>
           <OpalSep center wide />
@@ -55,32 +54,32 @@ export function Footer() {
                 className={"h-[76px] w-[76px] rounded-full bg-white object-cover shadow-[0_6px_20px_rgba(179,162,254,.14)]"}
               />
             </Link>
-            <p className={"mb-[.65rem] text-[.9rem] leading-[1.72] text-muted"}>
+            <p className={"type-body mb-[.65rem]"}>
               {footer.blurb}
             </p>
-            <span className={"font-script font-normal mt-[.2rem] block text-[1.42rem] leading-[1.2] text-[#9580f5]"}>
+            <span className={"type-title mt-[.2rem] block"}>
               {footer.brandScript}
             </span>
           </div>
           <nav className={"footer-col flex w-[min(100%,280px)] flex-col items-start text-left max-lg:w-full max-lg:border-t max-lg:border-pastel-lilac/15 max-lg:pt-8"} aria-label="Footer navigation">
-            <h4 className={"relative mb-[1.15rem] pb-[.65rem] font-serif text-[1.3rem] font-semibold text-blue after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-9 after:rounded-[2px] after:bg-[linear-gradient(90deg,rgba(179,162,254,.7),rgba(188,228,222,.75))] after:content-['']"}>{footer.exploreHeading}</h4>
+            <h4 className={"type-title relative mb-[1.15rem] pb-[.65rem] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-9 after:rounded-[2px] after:bg-[linear-gradient(90deg,rgba(179,162,254,.7),rgba(188,228,222,.75))] after:content-['']"}>{footer.exploreHeading}</h4>
             <div className={"footer-links grid w-full grid-cols-2 gap-x-6 gap-y-1.5 md:block md:columns-2 md:[column-gap:1.75rem]"}>
               {(footer.exploreLinks ?? []).map(({ href, label }) => (
-                <Link key={href} href={href} className={"block break-inside-avoid py-[.2rem] text-[.88rem] text-muted transition-[color,transform] duration-200 ease-opal hover:translate-x-[3px] hover:text-blue"}>
+                <Link key={href} href={href} className={"type-body block break-inside-avoid py-[.2rem] transition-[color,transform] duration-200 ease-opal hover:translate-x-[3px] hover:text-blue"}>
                   {label}
                 </Link>
               ))}
             </div>
           </nav>
           <div className={"footer-col flex w-[min(100%,280px)] flex-col items-start text-left max-lg:w-full max-lg:border-t max-lg:border-pastel-lilac/15 max-lg:pt-8"}>
-            <h4 className={"relative mb-[1.15rem] pb-[.65rem] font-serif text-[1.3rem] font-semibold text-blue after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-9 after:rounded-[2px] after:bg-[linear-gradient(90deg,rgba(179,162,254,.7),rgba(188,228,222,.75))] after:content-['']"}>{footer.contactHeading}</h4>
-            <p className={"mb-[.6rem] text-[.88rem] leading-[1.65] text-muted"}>
+            <h4 className={"type-title relative mb-[1.15rem] pb-[.65rem] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-9 after:rounded-[2px] after:bg-[linear-gradient(90deg,rgba(179,162,254,.7),rgba(188,228,222,.75))] after:content-['']"}>{footer.contactHeading}</h4>
+            <p className={"type-body mb-[.6rem]"}>
               <a href={`mailto:${settings.email}`} className={"border-b border-pastel-lilac/35 text-blue transition-[border-color,color] hover:border-[#9580f5]"}>
                 {settings.email}
               </a>
             </p>
             {textList(footer.locationLines).map((line) => (
-              <p key={line} className={"mb-[.6rem] text-[.88rem] leading-[1.65] text-muted"}>{line}</p>
+              <p key={line} className={"type-body mb-[.6rem]"}>{line}</p>
             ))}
             {showSocial ? (
             <div className={"footer-social mt-[1.15rem] flex justify-start gap-[.7rem]"}>
@@ -91,6 +90,11 @@ export function Footer() {
               />
               <SocialLink
                 network="instagram"
+                showLabel={false}
+                className={"inline-flex h-[42px] w-[42px] items-center justify-center rounded-full border border-pastel-lilac/22 bg-white/72 shadow-[0_6px_18px_rgba(179,162,254,.08)] transition-[background,border-color,transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:border-pastel-lilac/40 hover:bg-white hover:shadow-[0_10px_24px_rgba(179,162,254,.16)] motion-reduce:hover:translate-y-0"}
+              />
+              <SocialLink
+                network="youtube"
                 showLabel={false}
                 className={"inline-flex h-[42px] w-[42px] items-center justify-center rounded-full border border-pastel-lilac/22 bg-white/72 shadow-[0_6px_18px_rgba(179,162,254,.08)] transition-[background,border-color,transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:border-pastel-lilac/40 hover:bg-white hover:shadow-[0_10px_24px_rgba(179,162,254,.16)] motion-reduce:hover:translate-y-0"}
               />
@@ -114,12 +118,12 @@ export function Footer() {
         <div
           className={cn(
             "site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]",
-            "flex flex-wrap items-center justify-between gap-3 text-[.78rem] text-muted max-md:flex-col max-md:items-start max-md:text-left",
+            "type-body flex flex-wrap items-center justify-between gap-3 max-md:flex-col max-md:items-start max-md:text-left",
           )}
         >
           <span suppressHydrationWarning>© {year} {footer.copyrightName}. All rights reserved.</span>
           <span>
-            <Link href={footer.bottomLink.href}>{footer.bottomLink.label}</Link>
+            <Link href={footer.bottomLink.href} className={"font-normal text-blue underline decoration-pastel-lilac/50 underline-offset-4"}>{footer.bottomLink.label}</Link>
           </span>
         </div>
       </div>

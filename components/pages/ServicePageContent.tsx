@@ -23,7 +23,6 @@ export function ServicePageContent({ data, sections, closingCta }: ServicePageCo
   return (
     <div className={"inner-page"}>
       <PageHero
-        eyebrow={data.hero.eyebrow}
         title={data.hero.title}
         script={data.hero.script}
         lead={data.hero.description}
@@ -35,7 +34,6 @@ export function ServicePageContent({ data, sections, closingCta }: ServicePageCo
           <ServiceHeroVisual
             icon={mediaUrl(data.icon)}
             variant={serviceVariant(data.slug)}
-            title={data.hero.title}
           />
         }
         className={"page-hero--service-3d"}

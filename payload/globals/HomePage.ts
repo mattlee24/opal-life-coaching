@@ -46,7 +46,6 @@ export const HomePage: GlobalConfig = {
           label: "Services",
           name: "servicesSection",
           fields: [
-            { name: "eyebrow", type: "text", required: true },
             ...headingFields({ scriptRequired: true }),
             { name: "lead", type: "textarea", required: true },
             { name: "cardButtonLabel", label: "Card button label", type: "text", required: true },
@@ -104,11 +103,30 @@ export const HomePage: GlobalConfig = {
           ],
         },
         {
+          label: "Social",
+          name: "socialSection",
+          description:
+            "The “follow me” section below Meet Cara. The links themselves are set in Site settings → Social links; a card only shows when its link is filled in.",
+          fields: [
+            ...headingFields({ scriptRequired: true }),
+            { name: "lead", type: "textarea", required: true },
+            { name: "body", type: "textarea", required: true, admin: { description: "Shown in larger text under the lead." } },
+            { name: "followLabel", label: "Card button label", type: "text", required: true, admin: { description: "e.g. “Follow”." } },
+            {
+              type: "row",
+              fields: [
+                { name: "facebookCaption", label: "Facebook card text", type: "text" },
+                { name: "instagramCaption", label: "Instagram card text", type: "text" },
+                { name: "youtubeCaption", label: "YouTube card text", type: "text" },
+              ],
+            },
+          ],
+        },
+        {
           label: "Testimonials",
           name: "testimonialsSection",
           description: "The quotes themselves are edited under Content → Testimonials.",
           fields: [
-            { name: "eyebrow", type: "text", required: true },
             ...headingFields({ scriptRequired: true }),
             { name: "lead", type: "textarea", required: true },
             { name: "footerText", type: "text", required: true },

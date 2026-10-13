@@ -16,7 +16,6 @@ export const AboutPage: GlobalConfig = {
           label: "Hero",
           name: "hero",
           fields: [
-            { name: "eyebrow", type: "text", required: true },
             ...headingFields({ scriptRequired: true }),
             { name: "lead", type: "textarea", required: true },
             linkField("primaryCta", "Primary button"),
@@ -30,7 +29,6 @@ export const AboutPage: GlobalConfig = {
           label: "My story",
           name: "story",
           fields: [
-            { name: "eyebrow", type: "text", required: true },
             ...headingFields({ scriptRequired: true }),
             { name: "sub", label: "Subheading", type: "textarea", required: true },
             { name: "lead", label: "Opening paragraph", type: "textarea", required: true },
@@ -44,7 +42,6 @@ export const AboutPage: GlobalConfig = {
           label: "What guides me",
           name: "essence",
           fields: [
-            { name: "kicker", type: "text", required: true },
             ...headingFields({ scriptRequired: true }),
             { name: "intro", type: "textarea", required: true },
             { name: "watermark", type: "text", admin: { description: "Large faint background words." } },
@@ -82,7 +79,6 @@ export const AboutPage: GlobalConfig = {
           label: "My approach",
           name: "path",
           fields: [
-            { name: "kicker", type: "text", required: true },
             ...headingFields({ scriptRequired: true }),
             { name: "intro", type: "textarea", required: true },
             {
@@ -107,7 +103,6 @@ export const AboutPage: GlobalConfig = {
                         { label: "Reiki", value: "reiki" },
                       ],
                     },
-                    { name: "tag", type: "text", required: true },
                   ],
                 },
                 { name: "title", type: "text", required: true },

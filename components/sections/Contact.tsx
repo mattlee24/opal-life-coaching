@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { OpalSep } from "@/components/ui/OpalSep";
 import { Reveal } from "@/components/ui/Reveal";
 import { Select } from "@/components/ui/Select";
@@ -8,6 +9,24 @@ import { SocialLink, useHasSocialLinks } from "@/components/ui/SocialLink";
 import { useSiteSettings } from "@/components/layout/LayoutDataContext";
 import { cn } from "@/lib/cn";
 import { textList, type ContactPage } from "@/lib/cms-types";
+
+type SessionIcon = NonNullable<ContactPage["contact"]["sessionOptions"]>[number]["icon"];
+
+const sessionIcons: Record<SessionIcon, ReactNode> = {
+  online: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z" />
+    </>
+  ),
+  location: (
+    <>
+      <path d="M12 21s7-5.6 7-10.5a7 7 0 10-14 0C5 15.4 12 21 12 21z" />
+      <circle cx="12" cy="10.5" r="2.5" />
+    </>
+  ),
+  message: <path d="M4 5h16v11H9l-5 4V5z" />,
+};
 
 type ContactProps = {
   content: ContactPage;
@@ -20,6 +39,7 @@ export function Contact({ content, offsetHeader }: ContactProps) {
   const intro = content.contact;
   const form = content.form;
   const trust = textList(intro.trust);
+  const sessionOptions = intro.sessionOptions ?? [];
   return (
     <section
       className={cn(
@@ -35,27 +55,26 @@ export function Contact({ content, offsetHeader }: ContactProps) {
         <Reveal variant="left" className={"contact-intro flex flex-col max-lg:text-center"}>
           <div className={"contact-intro-panel relative flex flex-1 flex-col p-0"}>
             <header className={"contact-intro-head relative mb-[.15rem]"}>
-              <h2 className={"mb-[.4rem] text-[clamp(2.25rem,4.4vw,3.1rem)] leading-[1.04] tracking-[-.03em] text-blue"}>
+              <h2 className={"type-heading mb-[.4rem]"}>
                 {intro.title}
-                <br />
-                <span className={"mt-[.12rem] block text-[clamp(2.5rem,4.8vw,3.35rem)] leading-[.98] text-[#9580f5]"}>{intro.script}</span>
+                <span className={"type-script mt-[.12rem] block"}>{intro.script}</span>
               </h2>
               <OpalSep wide className={"my-[1.25rem] mb-[1.5rem] w-[min(440px,100%)] max-lg:mx-auto"} />
             </header>
-            <p className={"contact-lead mb-[2.35rem] max-w-[38ch] text-[clamp(1.02rem,1.45vw,1.1rem)] leading-[1.85] text-muted max-lg:mx-auto"}>
+            <p className={"contact-lead type-body mb-[2.35rem] max-w-[38ch] max-lg:mx-auto"}>
               {intro.lead}
             </p>
             <div className={"contact-channels flex flex-col gap-[clamp(1.85rem,3.5vw,2.35rem)] max-lg:mx-auto max-lg:w-[min(480px,100%)] max-lg:items-center max-lg:text-center"}>
-              <a className={"contact-email flex max-w-[36ch] flex-col gap-[.55rem]"} href={`mailto:${email}`}>
-                <span className={"contact-email-label text-[.66rem] font-bold uppercase tracking-[.16em] text-[#9580f5]"}>{intro.emailLabel}</span>
-                <span className={"contact-email-address font-serif text-[clamp(1.2rem,1.65vw,1.42rem)] font-semibold leading-[1.3] tracking-[.01em] text-blue transition-colors hover:text-[#152570]"}>{email}</span>
-                <span className={"contact-email-note text-[.86rem] leading-[1.6] text-muted"}>
+              <a className={"contact-email flex max-w-[36ch] flex-col gap-[.3rem]"} href={`mailto:${email}`}>
+                <span className={"contact-email-label type-title"}>{intro.emailLabel}</span>
+                <span className={"contact-email-address type-body text-blue! underline decoration-pastel-lilac/50 underline-offset-4 transition-colors hover:text-[#152570]!"}>{email}</span>
+                <span className={"contact-email-note type-body"}>
                   {intro.emailNote}
                 </span>
               </a>
               {showSocial ? (
               <div className={"contact-social-group flex flex-col gap-[.85rem]"}>
-                <span className={"contact-social-label text-[.66rem] font-bold uppercase tracking-[.16em] text-[#9580f5]"}>{intro.socialLabel}</span>
+                <span className={"contact-social-label type-title"}>{intro.socialLabel}</span>
                 <div className={"contact-social flex flex-wrap gap-[.65rem] max-lg:justify-center"}>
                   <SocialLink
                     network="facebook"
@@ -67,75 +86,40 @@ export function Contact({ content, offsetHeader }: ContactProps) {
                     showLabel
                     className={"contact-social-link inline-flex items-center gap-[.6rem] rounded-full border border-pastel-lilac/16 bg-white/50 px-[1.15rem] py-[.62rem] pl-[.85rem] transition-[background,border-color,transform] duration-[250ms] ease-opal hover:-translate-y-px hover:border-pastel-lilac/32 hover:bg-white/88 motion-reduce:hover:translate-y-0"}
                   />
+                  <SocialLink
+                    network="youtube"
+                    showLabel
+                    className={"contact-social-link inline-flex items-center gap-[.6rem] rounded-full border border-pastel-lilac/16 bg-white/50 px-[1.15rem] py-[.62rem] pl-[.85rem] transition-[background,border-color,transform] duration-[250ms] ease-opal hover:-translate-y-px hover:border-pastel-lilac/32 hover:bg-white/88 motion-reduce:hover:translate-y-0"}
+                  />
                 </div>
               </div>
               ) : null}
-              <p className={"contact-location flex max-w-[34ch] items-start gap-[.8rem] text-[.92rem] leading-[1.68] text-muted max-lg:justify-center"}>
-                <svg
-                  aria-hidden="true"
-                  width={20}
-                  height={20}
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#9580f5"
-                  strokeWidth={1.5}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className={"mt-[.12rem] h-5 w-5 shrink-0"}
-                >
-                  <path d="M12 21s7-5.6 7-10.5a7 7 0 10-14 0C5 15.4 12 21 12 21z" />
-                  <circle cx="12" cy="10.5" r="2.5" />
-                </svg>
-                <span>
-                  <strong className={"mb-[.2rem] block text-[.68rem] font-bold uppercase tracking-[.12em] text-blue"}>{intro.locationTitle}</strong>
-                  {intro.locationText}
-                </span>
-              </p>
-              <p className={"contact-location flex max-w-[34ch] items-start gap-[.8rem] text-[.92rem] leading-[1.68] text-muted max-lg:justify-center"}>
-                <svg
-                  aria-hidden="true"
-                  width={20}
-                  height={20}
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#9580f5"
-                  strokeWidth={1.5}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className={"mt-[.12rem] h-5 w-5 shrink-0"}
-                >
-                  <circle cx="12" cy="12" r="9" />
-                  <path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z" />
-                </svg>
-                <span>
-                  <strong className={"mb-[.2rem] block text-[.68rem] font-bold uppercase tracking-[.12em] text-blue"}>Online / Phone call</strong>
-                  Video or phone sessions from anywhere
-                </span>
-              </p>
-              <p className={"contact-location flex max-w-[34ch] items-start gap-[.8rem] text-[.92rem] leading-[1.68] text-muted max-lg:justify-center"}>
-                <svg
-                  aria-hidden="true"
-                  width={20}
-                  height={20}
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#9580f5"
-                  strokeWidth={1.5}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className={"mt-[.12rem] h-5 w-5 shrink-0"}
-                >
-                  <path d="M4 5h16v11H9l-5 4V5z" />
-                </svg>
-                <span>
-                  <strong className={"mb-[.2rem] block text-[.68rem] font-bold uppercase tracking-[.12em] text-blue"}>By message</strong>
-                  Some sessions take place entirely over message
-                </span>
-              </p>
+              {sessionOptions.map((option) => (
+                <p key={option.id ?? option.title} className={"contact-location type-body flex max-w-[34ch] items-start gap-[.8rem] max-lg:justify-center"}>
+                  <svg
+                    aria-hidden="true"
+                    width={20}
+                    height={20}
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#9580f5"
+                    strokeWidth={1.5}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className={"mt-[.3rem] h-5 w-5 shrink-0"}
+                  >
+                    {sessionIcons[option.icon]}
+                  </svg>
+                  <span>
+                    <strong className={"type-title mb-[.2rem] block"}>{option.title}</strong>
+                    {option.text}
+                  </span>
+                </p>
+              ))}
             </div>
             <div className={"contact-trust relative mt-[clamp(1.75rem,3vw,2.25rem)] flex flex-wrap gap-x-[1.35rem] gap-y-[.55rem] pt-[1.6rem] max-lg:justify-center"} aria-label="Contact reassurance">
               {trust.map((item) => (
-                <span key={item} className={"inline-flex items-center gap-[.45rem] text-[.76rem] font-semibold tracking-[.02em] text-blue"}>{item}</span>
+                <span key={item} className={"type-body inline-flex items-center gap-[.45rem]"}>{item}</span>
               ))}
             </div>
             <Link
@@ -153,15 +137,15 @@ export function Contact({ content, offsetHeader }: ContactProps) {
             method="post"
             encType="text/plain"
           >
-            <h3 className={"font-serif text-[clamp(1.55rem,2.2vw,1.85rem)] leading-[1.15] text-blue"}>{form.title}</h3>
-            <p className={"form-note text-[.9rem] leading-[1.7] text-muted"}>
+            <h3 className={"type-title"}>{form.title}</h3>
+            <p className={"form-note type-body"}>
               {form.note}
             </p>
-            <p className={"form-promise mt-[-.25rem] inline-flex items-center gap-[.45rem] text-[.78rem] font-semibold text-[#9580f5]"}>
+            <p className={"form-promise type-body mt-[-.25rem] inline-flex items-center gap-[.45rem] text-[#9580f5]!"}>
               {form.promise}
             </p>
             <div className={"form-field flex flex-col gap-[.45rem]"}>
-              <label htmlFor="cf-name" className={"text-[.72rem] font-bold uppercase tracking-[.08em] text-blue"}>
+              <label htmlFor="cf-name" className={"type-label text-blue!"}>
                 {form.nameLabel}
               </label>
               <input
@@ -175,7 +159,7 @@ export function Contact({ content, offsetHeader }: ContactProps) {
               />
             </div>
             <div className={"form-field flex flex-col gap-[.45rem]"}>
-              <label htmlFor="cf-email" className={"text-[.72rem] font-bold uppercase tracking-[.08em] text-blue"}>
+              <label htmlFor="cf-email" className={"type-label text-blue!"}>
                 {form.emailLabel}
               </label>
               <input
@@ -188,7 +172,7 @@ export function Contact({ content, offsetHeader }: ContactProps) {
                 className={"w-full rounded-xl border border-pastel-lilac/22 bg-[#faf9ff] px-[1.05rem] py-[.85rem] text-[.92rem] text-text transition-[border-color,box-shadow,background] duration-200 placeholder:text-[rgba(92,88,120,.45)] focus:border-pastel-lilac focus:bg-white focus:outline-none focus:ring-[3px] focus:ring-pastel-lilac/14"}
               />
               {form.emailHint ? (
-                <span className={"field-hint mt-[-.15rem] text-[.76rem] font-normal normal-case tracking-normal text-muted"}>
+                <span className={"field-hint type-body mt-[-.15rem]"}>
                   {form.emailHint}
                 </span>
               ) : null}
@@ -201,7 +185,7 @@ export function Contact({ content, offsetHeader }: ContactProps) {
               placeholder={form.servicePlaceholder}
             />
             <div className={"form-field flex flex-col gap-[.45rem]"}>
-              <label htmlFor="cf-message" className={"text-[.72rem] font-bold uppercase tracking-[.08em] text-blue"}>
+              <label htmlFor="cf-message" className={"type-label text-blue!"}>
                 {form.messageLabel}
               </label>
               <textarea
