@@ -6,13 +6,11 @@ import { HeroVisual3D } from "./HeroVisual3D";
 type ServiceHeroVisualProps = {
   icon: string | null;
   variant: ServiceVariant;
-  title: string;
 };
 
 export function ServiceHeroVisual({
   icon,
   variant,
-  title,
 }: ServiceHeroVisualProps) {
   return (
     <HeroVisual3D className={"hero-service-visual"}>
@@ -40,9 +38,6 @@ export function ServiceHeroVisual({
               />
             ) : null}
           </div>
-        </div>
-        <div className={"svc-card-body relative z-[2] flex min-h-0 flex-1 flex-col items-center px-[1.65rem] pt-[.65rem] text-center"}>
-          <h3 className={"text-[clamp(1.58rem,2.2vw,1.95rem)] leading-[1.1] tracking-[-.015em] text-blue transition-colors"}>{title}</h3>
         </div>
       </article>
     </HeroVisual3D>

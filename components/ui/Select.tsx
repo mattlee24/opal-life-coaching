@@ -83,7 +83,7 @@ export function Select({
       <label
         id={`${id}-label`}
         htmlFor={`${id}-trigger`}
-        className={"text-[.72rem] font-bold uppercase tracking-[.08em] text-blue"}
+        className={"type-label text-blue!"}
       >
         {label}
       </label>
@@ -150,7 +150,7 @@ export function Select({
           ))}
         </ul>
       </div>
-      {hint ? <span className={"field-hint mt-[-.15rem] text-[.76rem] font-normal normal-case tracking-normal text-muted"}>{hint}</span> : null}
+      {hint ? <span className={"field-hint type-body mt-[-.15rem]"}>{hint}</span> : null}
     </div>
   );
 }

@@ -22,6 +22,87 @@
   --ease-opal: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/*
+ * Type system — every piece of text on the site uses one of these styles.
+ * A section uses at most three of them. Buttons, form controls and the script
+ * accent inside a heading don't count towards the three.
+ *
+ *   type-display  page title (the hero at the top of each page)
+ *   type-heading  section heading
+ *   type-script   handwritten accent line inside a display/heading (sized relative to it)
+ *   type-title    card titles, questions and other small serif headings
+ *   type-body     all paragraph text
+ *   type-label    small uppercase labels, tags and highlights
+ *
+ * Colours are the defaults; override with an important modifier, e.g. `text-blue!`.
+ */
+@utility type-display {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-style: normal;
+  font-size: clamp(2.3rem, 4vw, 3.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  text-transform: none;
+  color: var(--color-blue);
+}
+
+@utility type-heading {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-style: normal;
+  font-size: clamp(2.05rem, 3.4vw, 2.85rem);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  text-transform: none;
+  color: var(--color-blue);
+}
+
+@utility type-script {
+  display: block;
+  font-family: var(--font-script);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.12em;
+  line-height: 1.08;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #9580f5;
+}
+
+@utility type-title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-style: normal;
+  font-size: clamp(1.32rem, 1.7vw, 1.5rem);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--color-blue);
+}
+
+@utility type-body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-style: normal;
+  font-size: clamp(1rem, 1.1vw, 1.06rem);
+  line-height: 1.8;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--color-muted);
+}
+
+@utility type-label {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 0.74rem;
+  line-height: 1.5;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9580f5;
+}
+
 @layer base {
   :root {
     --blue: #1c30a3;
@@ -632,7 +713,6 @@
 .about-story-sheet-inner{display:grid;grid-template-columns:minmax(300px,1.08fr) minmax(260px,.92fr);gap:clamp(2rem,4.5vw,3.5rem);align-items:center;height:auto}
 .about-story-copy{display:flex;flex-direction:column;gap:0;position:relative;z-index:1}
 .about-story-lead{margin:0;font-family:'Cormorant Garamond',serif;font-size:clamp(1.28rem,2.05vw,1.55rem);line-height:1.72;color:var(--blue);font-weight:500;max-width:46ch}
-.about-story-lead::first-letter{font-size:3.05em;float:left;line-height:.76;margin:.04em .12em 0 0;color:#9580f5;font-weight:600}
 .about-story-rule{width:min(120px,36%);height:2px;margin:clamp(1.35rem,2.4vw,1.75rem) 0;border-radius:2px;background:linear-gradient(90deg,rgba(179,162,254,.55) 0%,rgba(188,228,222,.7) 50%,rgba(179,162,254,.35) 100%)}
 .about-story-detail{margin:0;color:var(--muted);font-size:clamp(1rem,1.12vw,1.05rem);line-height:1.92;max-width:46ch}
 .about-story-facts{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin-top:clamp(1.5rem,2.8vw,2rem);padding-top:clamp(1.35rem,2.5vw,1.65rem);border-top:1px solid rgba(179,162,254,.12)}
@@ -1149,9 +1229,9 @@
   .page-hero--split .page-hero-copy{order:1}
   .hero-visual-3d{max-width:min(320px,88vw);min-height:clamp(340px,96vw,420px)}
   .hero-service-visual .svc-icon-hero{min-height:170px}
-  .hero-opal{background:
-    linear-gradient(90deg,#fff 0%,#fff 34%,rgba(255,255,255,.95) 42%,rgba(255,255,255,.78) 50%,rgba(255,255,255,.48) 58%,rgba(255,255,255,.18) 66%,transparent 76%),
-    linear-gradient(180deg,rgba(255,255,255,.78) 0%,rgba(255,255,255,.32) 14%,transparent 32%)}
+  /* Home hero on mobile: only a soft wash at the top of the photo band, so the logo and menu stay clear. */
+  .hero-opal{background:linear-gradient(180deg,rgba(255,255,255,.6) 0%,transparent 28%)}
+  .hero .hero-lead{margin-bottom:1.75rem}
   .hero-trust{gap:.45rem 1rem}
   .hero-trust span{font-size:.72rem}
   .meet-cara-photo{max-width:min(380px,88vw)}

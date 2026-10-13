@@ -54,16 +54,13 @@ export function ServiceBenefitsSection({ data, sections }: ServiceBenefitsSectio
         <div className="service-benefits-editorial grid w-full grid-cols-1 items-start gap-[clamp(1.75rem,3.2vw,2.75rem)] md:grid-cols-[minmax(0,1fr)_auto]">
           <div className="service-benefits-body max-md:order-2 flex w-full flex-col gap-[clamp(1.85rem,3.4vw,2.55rem)]">
             <Reveal className="service-benefits-head m-0 max-md:text-center">
-              <p className="service-benefits-kicker m-0 mb-4 text-[.68rem] font-bold tracking-[.18em] text-[#9580f5] uppercase">
-                {content.kicker}
-              </p>
-              <h2 className="m-0 font-serif text-[clamp(2.15rem,3.8vw,3rem)] font-semibold leading-[1.08] tracking-[-.028em] text-blue">
+              <h2 className="type-heading m-0">
                 {content.title}{" "}
-                <span className="font-script font-normal text-[clamp(2.5rem,4.4vw,3.45rem)] leading-[.95] text-[#9580f5]">
+                <span className="type-script inline!">
                   {content.script}
                 </span>
               </h2>
-              <p className="service-benefits-sub m-0 mt-[.85rem] max-w-[38ch] text-[clamp(.95rem,1.05vw,1.02rem)] leading-[1.7] text-[var(--muted)] max-md:mx-auto">
+              <p className="service-benefits-sub type-body m-0 mt-[.85rem] max-w-[38ch] max-md:mx-auto">
                 {content.sub}
               </p>
               <OpalSep wide className="mt-[1.15rem] max-md:mx-auto" />
@@ -99,9 +96,9 @@ export function ServiceBenefitsSection({ data, sections }: ServiceBenefitsSectio
                           <span className="service-benefits-pillar-num" aria-hidden="true">
                             {String(index + 1).padStart(2, "0")}
                           </span>
-                          <h3>{benefit.title}</h3>
+                          <h3 className="type-title">{benefit.title}</h3>
                           <span className="service-benefits-pillar-rule" aria-hidden="true" />
-                          <p>{benefit.text}</p>
+                          <p className="type-body">{benefit.text}</p>
                         </div>
                       </div>
                     </article>
@@ -119,9 +116,6 @@ export function ServiceBenefitsSection({ data, sections }: ServiceBenefitsSectio
               02
             </span>
             <span className="service-benefits-rail-line min-h-[clamp(4rem,9vw,6rem)] w-px flex-1 bg-gradient-to-b from-pastel-lilac/50 via-pastel-mint/40 to-transparent max-md:h-px max-md:min-h-0 max-md:flex-1 max-md:bg-gradient-to-r" />
-            <span className="service-benefits-rail-label text-[.62rem] font-bold tracking-[.2em] text-[#9580f5] uppercase [writing-mode:vertical-rl] rotate-180 max-md:rotate-0 max-md:[writing-mode:horizontal-tb] max-md:tracking-[.16em]">
-              {content.kicker}
-            </span>
           </div>
         </div>
       </div>

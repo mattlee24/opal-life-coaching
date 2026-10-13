@@ -62,29 +62,22 @@ export function ServiceOverviewSection({ data, sections }: ServiceOverviewSectio
                   01
                 </span>
                 <span className="service-overview-rail-line min-h-[clamp(4rem,9vw,6rem)] w-px flex-1 bg-gradient-to-b from-pastel-lilac/50 via-pastel-mint/45 to-transparent max-md:h-px max-md:min-h-0 max-md:flex-1 max-md:bg-gradient-to-r" />
-                <span className="service-overview-rail-label text-[.62rem] font-bold tracking-[.2em] text-[#9580f5] uppercase [writing-mode:vertical-rl] rotate-180 max-md:rotate-0 max-md:[writing-mode:horizontal-tb] max-md:tracking-[.16em]">
-                  Overview
-                </span>
               </div>
 
               <div className="service-overview-body flex flex-col gap-[clamp(1.25rem,2.4vw,1.75rem)]">
-                <p className="service-overview-kicker m-0 text-[.68rem] font-bold tracking-[.18em] text-[#9580f5] uppercase max-md:text-center">
-                  {data.hero.eyebrow}
-                </p>
-
-                <h2 className="service-overview-lead m-0 max-w-[18ch] font-serif text-[clamp(2.05rem,3.6vw,2.85rem)] font-semibold leading-[1.12] tracking-[-.028em] text-blue max-md:mx-auto max-md:max-w-[min(540px,100%)] max-md:text-center">
+                <h2 className="service-overview-lead type-heading m-0 max-w-[18ch] max-md:mx-auto max-md:max-w-[min(540px,100%)] max-md:text-center">
                   {data.overview.title}{" "}
-                  <span className="service-overview-lead-script font-script font-normal text-[clamp(2.35rem,4.2vw,3.15rem)] leading-[.95] text-[#9580f5]">
+                  <span className="service-overview-lead-script type-script inline!">
                     {data.overview.script}
                   </span>
                 </h2>
 
-                <p className="service-overview-subline m-0 max-w-[34ch] text-[clamp(1.05rem,1.25vw,1.15rem)] leading-[1.7] text-muted max-md:mx-auto max-md:max-w-[min(480px,100%)] max-md:text-center">
+                <p className="service-overview-subline type-body m-0 max-w-[34ch] max-md:mx-auto max-md:max-w-[min(480px,100%)] max-md:text-center">
                   {data.overview.subline}
                 </p>
 
                 <div className="service-overview-intro relative isolate max-w-[52ch] max-md:mx-auto max-md:max-w-[min(540px,100%)]">
-                  <p className="relative z-[1] m-0 text-[clamp(1rem,1.08vw,1.05rem)] leading-[1.9] text-muted max-md:text-center">
+                  <p className="type-body relative z-[1] m-0 max-md:text-center">
                     {data.intro}
                   </p>
                 </div>
@@ -95,7 +88,7 @@ export function ServiceOverviewSection({ data, sections }: ServiceOverviewSectio
                     aria-label="Session highlights"
                   >
                     {trust.map((item) => (
-                      <li key={item}>{item}</li>
+                      <li key={item} className="type-label">{item}</li>
                     ))}
                   </ul>
                 ) : null}
@@ -138,12 +131,12 @@ export function ServiceOverviewSection({ data, sections }: ServiceOverviewSectio
                   <span className="service-overview-quote-mark" aria-hidden="true">
                     &ldquo;
                   </span>
-                  <p>{data.pullQuote}</p>
+                  <p className="type-body">{data.pullQuote}</p>
                 </blockquote>
 
                 <figcaption className="service-overview-pull-caption">
-                  <span className="service-overview-pull-script">{sections.overview.captionScript}</span>
-                  <span className="service-overview-pull-note">
+                  <span className="service-overview-pull-script type-label">{sections.overview.captionScript}</span>
+                  <span className="service-overview-pull-note type-body">
                     {sections.overview.captionNote}
                   </span>
                 </figcaption>

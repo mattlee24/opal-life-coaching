@@ -32,12 +32,11 @@ export function AboutPageContent({ content, closingCta }: AboutPageContentProps)
           <div className={"about-story-ambient pointer-events-none absolute inset-0 z-[1]"} aria-hidden="true" />
           <div className={cn("site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]", "about-story-inner relative z-[2] w-full")}>
             <header className={"about-story-head mb-[clamp(2.25rem,4.5vw,3rem)] text-center"}>
-              <p className={"inline-flex items-center justify-center h-[34px] px-[.85rem] text-[.68rem] font-bold tracking-[.18em] uppercase leading-none text-[#9580f5] mb-4 bg-white/55 border border-pastel-lilac/20 rounded-full box-border"}>{story.eyebrow}</p>
-              <h2 className={"text-[clamp(2.05rem,4vw,2.85rem)] leading-[1.08]"}>
-                {story.title} <span className={"font-script font-normal text-pastel-lilac leading-[1.1]"}>{story.script}</span>
+              <h2 className={"type-heading"}>
+                {story.title} <span className={"type-script inline!"}>{story.script}</span>
               </h2>
               <OpalSep center wide />
-              <p className={"about-story-sub mt-[clamp(1.35rem,2.5vw,1.75rem)] mx-auto max-w-[min(44ch,100%)] text-center font-serif text-[clamp(1.2rem,2vw,1.45rem)] font-medium leading-[1.62] text-muted"}>
+              <p className={"type-body about-story-sub mt-[clamp(1.35rem,2.5vw,1.75rem)] mx-auto max-w-[min(44ch,100%)] text-center"}>
                 {story.sub}
               </p>
             </header>
@@ -46,16 +45,16 @@ export function AboutPageContent({ content, closingCta }: AboutPageContentProps)
               <div className={cn("opal-panel", "about-story-sheet rounded-[28px] p-[clamp(2.25rem,4vw,3.25rem)] max-md:p-[clamp(1.75rem,4vw,2.25rem)] max-w-[1200px] mx-auto")}>
                 <div className={cn("opal-panel__inner", "about-story-sheet-inner grid items-center gap-[clamp(2rem,4.5vw,3.5rem)] max-md:grid-cols-1 max-md:gap-9 md:grid-cols-[minmax(300px,1.08fr)_minmax(260px,.92fr)]")}>
                   <div className={"about-story-copy relative z-[1] flex flex-col"}>
-                    <p className={"about-story-lead max-w-[46ch] font-serif text-[clamp(1.28rem,2.05vw,1.55rem)] font-medium leading-[1.72] text-blue first-letter:float-left first-letter:mr-[.12em] first-letter:mt-[.04em] first-letter:text-[3.05em] first-letter:font-semibold first-letter:leading-[.76] first-letter:text-[#9580f5]"}>
+                    <p className={"type-body about-story-lead max-w-[46ch]"}>
                       {story.lead}
                     </p>
                     <div className={"about-story-rule my-[clamp(1.35rem,2.4vw,1.75rem)] h-0.5 w-[min(120px,36%)] rounded-[2px] bg-[linear-gradient(90deg,rgba(179,162,254,.55)_0%,rgba(188,228,222,.7)_50%,rgba(179,162,254,.35)_100%)] max-md:w-[min(100px,40%)]"} aria-hidden="true" />
-                    <p className={"about-story-detail max-w-[46ch] text-[clamp(1rem,1.12vw,1.05rem)] leading-[1.92] text-muted"}>
+                    <p className={"type-body about-story-detail max-w-[46ch]"}>
                       {story.detail}
                     </p>
                     <div className={"about-story-facts mt-[clamp(1.5rem,2.8vw,2rem)] flex flex-wrap gap-x-[1.25rem] gap-y-2 border-t border-pastel-lilac/12 pt-[clamp(1.35rem,2.5vw,1.65rem)]"} aria-label="Session details">
                       {textList(story.facts).map((item) => (
-                        <span key={item} className={"inline-flex items-center gap-[.45rem] text-[.74rem] font-bold uppercase tracking-[.05em] text-blue"}>{item}</span>
+                        <span key={item} className={"type-label inline-flex items-center gap-[.45rem]"}>{item}</span>
                       ))}
                     </div>
                   </div>
@@ -85,7 +84,7 @@ export function AboutPageContent({ content, closingCta }: AboutPageContentProps)
                         />
                       ) : null}
                     </div>
-                    <figcaption className={"about-story-tag absolute left-1/2 bottom-[5%] z-[4] max-w-[calc(100%-1.5rem)] -translate-x-1/2 rounded-full border border-pastel-lilac/20 bg-white/95 px-[1.05rem] py-[.58rem] text-center font-serif text-[clamp(.9rem,1.15vw,1rem)] font-semibold leading-[1.2] whitespace-nowrap text-blue shadow-[0_10px_28px_rgba(179,162,254,.12)] backdrop-blur-[8px] max-md:whitespace-normal"}>
+                    <figcaption className={"type-label about-story-tag absolute left-1/2 bottom-[5%] z-[4] max-w-[calc(100%-1.5rem)] -translate-x-1/2 rounded-full border border-pastel-lilac/20 bg-white/95 px-[1.05rem] py-[.58rem] text-center whitespace-nowrap shadow-[0_10px_28px_rgba(179,162,254,.12)] backdrop-blur-[8px] max-md:whitespace-normal"}>
                       {story.caption}
                     </figcaption>
                   </figure>
@@ -101,13 +100,12 @@ export function AboutPageContent({ content, closingCta }: AboutPageContentProps)
           <div className="site-wrap relative z-[1] w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]">
             <div className="about-essence-layout">
               <Reveal className="about-essence-lead">
-                <p className="about-essence-kicker">{essence.kicker}</p>
-                <h2>
+                <h2 className="type-heading">
                   {essence.title}{" "}
-                  <span className="font-script font-normal text-[#9580f5] leading-[1.05]">{essence.script}</span>
+                  <span className="type-script inline!">{essence.script}</span>
                 </h2>
                 <OpalSep wide className="about-essence-sep" />
-                <p className="about-essence-intro">
+                <p className="about-essence-intro type-body">
                   {essence.intro}
                 </p>
               </Reveal>
@@ -133,9 +131,8 @@ export function AboutPageContent({ content, closingCta }: AboutPageContentProps)
                         <DecorativeImage src={valueIconSrc[item.icon]} width={26} height={26} />
                       </span>
                       <div className="about-essence-thread-copy">
-                        <p className="about-essence-thread-index">{String(index + 1).padStart(2, "0")}</p>
-                        <h3>{item.title}</h3>
-                        <p>{item.text}</p>
+                        <h3 className="type-title">{item.title}</h3>
+                        <p className="type-body">{item.text}</p>
                       </div>
                     </article>
                   </Reveal>
@@ -164,12 +161,11 @@ export function AboutPageContent({ content, closingCta }: AboutPageContentProps)
 
           <div className="site-wrap relative z-[2] w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]">
             <Reveal className="about-path-head mx-auto mb-[clamp(2.5rem,5vw,3.5rem)] max-w-[min(640px,100%)] text-center">
-              <p className="about-path-kicker">{path.kicker}</p>
-              <h2>
-                {path.title} <span className="font-script font-normal text-[#9580f5] leading-[1.05]">{path.script}</span>
+              <h2 className="type-heading">
+                {path.title} <span className="type-script inline!">{path.script}</span>
               </h2>
               <OpalSep center wide />
-              <p className="about-path-intro">
+              <p className="about-path-intro type-body">
                 {path.intro}
               </p>
             </Reveal>
@@ -184,14 +180,10 @@ export function AboutPageContent({ content, closingCta }: AboutPageContentProps)
                           <span className="about-path-strand-icon" aria-hidden="true">
                             <DecorativeImage src={valueIconSrc[item.icon]} width={28} height={28} />
                           </span>
-                          <span className="about-path-strand-index" aria-hidden="true">
-                            {String(index + 1).padStart(2, "0")}
-                          </span>
                         </div>
-                        <p className="about-path-strand-tag">{item.tag}</p>
-                        <h3>{item.title}</h3>
-                        <p className="about-path-strand-text">{item.text}</p>
-                        <p className="about-path-strand-note">{item.note}</p>
+                        <h3 className="type-title">{item.title}</h3>
+                        <p className="about-path-strand-text type-body">{item.text}</p>
+                        <p className="about-path-strand-note type-body">{item.note}</p>
                       </article>
                     </Reveal>
                   </li>

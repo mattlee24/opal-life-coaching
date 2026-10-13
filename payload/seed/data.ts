@@ -39,7 +39,6 @@ export const services = [
         "One-to-one life coaching in West Sussex and online — clarity, confidence and gentle support at your pace.",
     },
     hero: {
-      eyebrow: "Services",
       title: "Life Coaching",
       script: "clarity and confidence",
       description:
@@ -130,7 +129,6 @@ export const services = [
         "Thoughtful tarot readings for reflection and fresh perspective — online and in person in West Sussex.",
     },
     hero: {
-      eyebrow: "Services",
       title: "Tarot Readings",
       script: "reflection and insight",
       description:
@@ -222,7 +220,6 @@ export const services = [
         "Gentle Reiki healing in Chichester and Eastergate — release tension, restore balance and invite calm.",
     },
     hero: {
-      eyebrow: "Services",
       title: "Reiki Healing",
       script: "balance and peace",
       description:
@@ -357,7 +354,11 @@ export const globals = {
     tagline: "With Cara",
     email: "hello@opallifecoaching.com",
     location: "Chichester & Eastergate, West Sussex",
-    social: { facebook: null, instagram: null },
+    social: {
+      facebook: "https://www.facebook.com/share/18Fe2wwWNP/",
+      instagram: "https://www.instagram.com/opal_life_coaching",
+      youtube: null,
+    },
     seo: {
       description:
         "Holistic life coaching, Reiki healing and tarot readings in West Sussex and online.",
@@ -412,7 +413,7 @@ export const globals = {
       lead: "Holistic life coaching, Reiki healing and tarot readings — gentle, personal support when you're ready to move forward.",
       primaryCta: link("Book a session", "/bookings"),
       secondaryCta: link("Explore my services", "#services"),
-      trust: texts("Chichester & Eastergate", "In person & online", "By message"),
+      trust: texts("Online, Phone & Message", "In Person – Chichester"),
       backgroundImage: media("hero-woodland-v3.jpg"),
     },
     values: [
@@ -433,7 +434,6 @@ export const globals = {
       },
     ],
     servicesSection: {
-      eyebrow: "Services",
       title: "Find the support",
       script: "that's right for you",
       lead: "Whether you're seeking clarity, calm, or a fresh perspective — each offering is gentle, personal, and shaped entirely around you. Take your time exploring what resonates.",
@@ -478,8 +478,16 @@ export const globals = {
       badge: "One step at a time",
       portrait: media("cara-meet.jpg"),
     },
+    socialSection: {
+      title: "Free Tips, Guidance",
+      script: "& Inspiration",
+      lead: "I regularly share free tips, guidance and inspiration to help you slow down, reconnect with yourself and navigate everyday challenges.",
+      body: "Follow me on Facebook and Instagram for Relax & Reset sessions, intuitive card readings and practical coaching tips.",
+      followLabel: "Follow",
+      facebookCaption: "Opal Life Coaching",
+      instagramCaption: "@opal_life_coaching",
+    },
     testimonialsSection: {
-      eyebrow: "Client stories",
       title: "Kind words",
       script: "from those I've supported",
       lead: "Every journey is different — here's what clients often share after working together.",
@@ -495,7 +503,6 @@ export const globals = {
 
   "about-page": {
     hero: {
-      eyebrow: "About Cara",
       title: "A calm space to",
       script: "be heard",
       lead: "I help people who feel stuck, overwhelmed or at a crossroads find clarity and confidence — with warmth, intuition and absolutely no judgement.",
@@ -506,7 +513,6 @@ export const globals = {
       portrait: media("cara-about-hero.jpg"),
     },
     story: {
-      eyebrow: "My story",
       title: "Warmth, intuition &",
       script: "real life",
       sub: "I'm not here to fix you. You're not broken. I'm here to walk beside you while you find your footing again.",
@@ -518,7 +524,6 @@ export const globals = {
       caption: "Real conversations, real support",
     },
     essence: {
-      kicker: "What guides me",
       title: "Three threads,",
       script: "one conversation",
       intro:
@@ -546,7 +551,6 @@ export const globals = {
       ],
     },
     path: {
-      kicker: "My approach",
       title: "How I work",
       script: "with you",
       intro:
@@ -555,7 +559,6 @@ export const globals = {
         {
           icon: "personal",
           accent: "coaching",
-          tag: "Clarity",
           title: "Practical coaching",
           text: "Grounded conversations, honest reflection and tools you can use in everyday life. We slow things down enough to notice what's true — then find a next step that feels doable, not overwhelming.",
           note: "Ideal when you're stuck, undecided, or ready for clearer direction.",
@@ -563,7 +566,6 @@ export const globals = {
         {
           icon: "holistic",
           accent: "tarot",
-          tag: "Perspective",
           title: "Intuitive guidance",
           text: "Tarot and inner wisdom woven in when it feels supportive — never forced. Sometimes a fresh perspective helps you see what your mind has been circling, so you can move with more trust.",
           note: "Offered gently, only when it deepens the conversation.",
@@ -571,7 +573,6 @@ export const globals = {
         {
           icon: "pace",
           accent: "reiki",
-          tag: "Rest",
           title: "Gentle healing",
           text: "Reiki and restful practices to help your body and mind feel safe again. There's no need to perform or explain everything — rest itself can be the work.",
           note: "A soft place to land when you've been carrying too much.",
@@ -592,8 +593,10 @@ export const globals = {
       emailLabel: "Email me directly",
       emailNote: "The simplest way to start — I'll reply personally.",
       socialLabel: "Or find me on social",
-      locationTitle: "In person",
-      locationText: "Sessions in Chichester & Eastergate, West Sussex",
+      sessionOptions: [
+        { icon: "online", title: "Online, Phone & Message", text: "Video, phone or message sessions from wherever you are" },
+        { icon: "location", title: "In Person – Chichester", text: "Sessions in Chichester, West Sussex" },
+      ],
       trust: texts("Reply within 24 hours", "In person & online", "West Sussex"),
     },
     form: {
@@ -619,7 +622,6 @@ export const globals = {
       submitLabel: "Send my message",
     },
     faqsSection: {
-      eyebrow: "FAQs",
       title: "Questions you might have",
       lead: "Gentle, honest answers — so you know what to expect before reaching out.",
     },
@@ -639,13 +641,11 @@ export const globals = {
       captionNote: "Warm, confidential, and entirely personal",
     },
     benefits: {
-      kicker: "How it helps",
       title: "What you can",
       script: "expect",
       sub: "Three things people often feel after working together — soft, steady, and entirely at your pace.",
     },
     sessions: {
-      kicker: "Your gentle invitation",
       title: "Whenever you're ready,",
       script: "the door is open",
       lead: "There's no rush to decide. When it feels right, you'll find session options, transparent pricing and availability — or reach out first if you'd rather talk it through.",
@@ -662,7 +662,6 @@ export const globals = {
   },
 
   "closing-cta": {
-    eyebrow: "Take the first step",
     title: "I'd love to meet you",
     script: "whenever you're ready",
     lead: "Book a free discovery call, explore a service, or simply send a message. There's no pressure to have it all figured out.",

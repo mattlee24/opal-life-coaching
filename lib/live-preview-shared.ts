@@ -10,6 +10,7 @@ export const previewSectionSelectors: Record<string, string> = {
   values: ".values",
   services: "#services",
   "meet-cara": ".meet-cara",
+  social: "#follow",
   testimonials: "#testimonials",
   contact: "#contact",
   "contact-form": "#contact-form",

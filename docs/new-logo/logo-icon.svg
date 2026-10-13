@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Opal Life Coaching"><title>Opal Life Coaching</title><defs>
+  <radialGradient id="i-bg" cx="0" cy="0" r="256" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#ffffff"/><stop offset=".62" stop-color="#fbfaff"/><stop offset="1" stop-color="#eeeafd"/>
+  </radialGradient>
+  <radialGradient id="i-g1" cx="-158.72" cy="-140.8" r="192" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#a2bffe" stop-opacity=".42"/><stop offset="1" stop-color="#a2bffe" stop-opacity="0"/></radialGradient>
+  <radialGradient id="i-g2" cx="179.2" cy="128" r="184.32" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#bce4de" stop-opacity=".6"/><stop offset="1" stop-color="#bce4de" stop-opacity="0"/></radialGradient>
+  <radialGradient id="i-g3" cx="168.96" cy="-158.72" r="140.8" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#b3a2fe" stop-opacity=".38"/><stop offset="1" stop-color="#b3a2fe" stop-opacity="0"/></radialGradient>
+  <radialGradient id="i-g4" cx="-153.6" cy="174.08" r="128" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f6d6ef" stop-opacity=".38"/><stop offset="1" stop-color="#f6d6ef" stop-opacity="0"/></radialGradient>
+  <linearGradient id="i-ring" x1="-256" y1="-256" x2="256" y2="256" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#8f9dea"/><stop offset=".5" stop-color="#b3a2fe"/><stop offset="1" stop-color="#7fc4b8"/>
+  </linearGradient>
+  <linearGradient id="ih-base" x1="-24" y1="-22" x2="24" y2="20" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#d3dcff"/>
+    <stop offset=".5" stop-color="#e2dafe"/>
+    <stop offset="1" stop-color="#cdeee6"/>
+  </linearGradient>
+<radialGradient id="ih-x0" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(-12 -5) rotate(-35) scale(15 9)"><stop offset="0" stop-color="#7d98ff" stop-opacity="0.9"/><stop offset=".55" stop-color="#7d98ff" stop-opacity="0.405"/><stop offset="1" stop-color="#7d98ff" stop-opacity="0"/></radialGradient><radialGradient id="ih-x1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(11 -10) rotate(25) scale(13 8)"><stop offset="0" stop-color="#9a82ff" stop-opacity="0.85"/><stop offset=".55" stop-color="#9a82ff" stop-opacity="0.3825"/><stop offset="1" stop-color="#9a82ff" stop-opacity="0"/></radialGradient><radialGradient id="ih-x2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(4 6) rotate(-20) scale(15 7.5)"><stop offset="0" stop-color="#5fcab7" stop-opacity="0.8"/><stop offset=".55" stop-color="#5fcab7" stop-opacity="0.36000000000000004"/><stop offset="1" stop-color="#5fcab7" stop-opacity="0"/></radialGradient><radialGradient id="ih-x3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(-4 -16) rotate(10) scale(9 5)"><stop offset="0" stop-color="#ffb3d6" stop-opacity="0.8"/><stop offset=".55" stop-color="#ffb3d6" stop-opacity="0.36000000000000004"/><stop offset="1" stop-color="#ffb3d6" stop-opacity="0"/></radialGradient><radialGradient id="ih-x4" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(17 0) rotate(60) scale(8 5)"><stop offset="0" stop-color="#ffe8a8" stop-opacity="0.75"/><stop offset=".55" stop-color="#ffe8a8" stop-opacity="0.3375"/><stop offset="1" stop-color="#ffe8a8" stop-opacity="0"/></radialGradient><radialGradient id="ih-x5" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(-16 3) rotate(50) scale(7 4.5)"><stop offset="0" stop-color="#a6e6b4" stop-opacity="0.7"/><stop offset=".55" stop-color="#a6e6b4" stop-opacity="0.315"/><stop offset="1" stop-color="#a6e6b4" stop-opacity="0"/></radialGradient><radialGradient id="ih-x6" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(-3 14) rotate(15) scale(9 4.5)"><stop offset="0" stop-color="#8aa6ff" stop-opacity="0.75"/><stop offset=".55" stop-color="#8aa6ff" stop-opacity="0.3375"/><stop offset="1" stop-color="#8aa6ff" stop-opacity="0"/></radialGradient><radialGradient id="ih-x7" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1 -4) rotate(-10) scale(6 4)"><stop offset="0" stop-color="#ffffff" stop-opacity="0.7"/><stop offset=".55" stop-color="#ffffff" stop-opacity="0.315"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient>
+  <radialGradient id="ih-shade" cx="-4" cy="-8" r="30" gradientUnits="userSpaceOnUse"><stop offset=".5" stop-color="#1c30a3" stop-opacity="0"/><stop offset="1" stop-color="#5a4fc9" stop-opacity=".3"/></radialGradient>
+  <clipPath id="ih-clip"><path d="M0 19.5C-7 14.6-23 5.6-23-7.6C-23-16.4-16.6-22-9.6-22C-4.8-22-1.4-19.4 0-15.6C1.4-19.4 4.8-22 9.6-22C16.6-22 23-16.4 23-7.6C23 5.6 7 14.6 0 19.5Z"/></clipPath>
+  <filter id="ih-soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation=".9"/></filter></defs>
+  <g transform="translate(256 256)">
+    <circle r="256" fill="url(#i-bg)"/>
+    <circle r="256" fill="url(#i-g1)"/><circle r="256" fill="url(#i-g2)"/>
+    <circle r="256" fill="url(#i-g3)"/><circle r="256" fill="url(#i-g4)"/>
+    <circle r="234" fill="none" stroke="url(#i-ring)" stroke-width="5"/>
+    <g transform="translate(0 10) scale(6.4)">
+    <g clip-path="url(#ih-clip)">
+      <rect x="-26" y="-25" width="52" height="48" fill="url(#ih-base)"/>
+      <rect x="-26" y="-25" width="52" height="48" fill="url(#ih-x0)"/><rect x="-26" y="-25" width="52" height="48" fill="url(#ih-x1)"/><rect x="-26" y="-25" width="52" height="48" fill="url(#ih-x2)"/><rect x="-26" y="-25" width="52" height="48" fill="url(#ih-x3)"/><rect x="-26" y="-25" width="52" height="48" fill="url(#ih-x4)"/><rect x="-26" y="-25" width="52" height="48" fill="url(#ih-x5)"/><rect x="-26" y="-25" width="52" height="48" fill="url(#ih-x6)"/><rect x="-26" y="-25" width="52" height="48" fill="url(#ih-x7)"/>
+      <rect x="-26" y="-25" width="52" height="48" fill="url(#ih-shade)"/>
+      <path d="M-17.8-8.8C-18.2-14.4-14-17.8-9.6-17.6" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" opacity=".9" filter="url(#ih-soft)"/>
+    </g>
+    <path d="M0 19.5C-7 14.6-23 5.6-23-7.6C-23-16.4-16.6-22-9.6-22C-4.8-22-1.4-19.4 0-15.6C1.4-19.4 4.8-22 9.6-22C16.6-22 23-16.4 23-7.6C23 5.6 7 14.6 0 19.5Z" fill="none" stroke="#1c30a3" stroke-width="1.5625" stroke-linejoin="round"/>
+  </g>
+  </g></svg>

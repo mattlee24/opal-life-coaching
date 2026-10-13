@@ -42,15 +42,11 @@ export function Testimonials({ content, testimonials }: TestimonialsProps) {
     <section className={cn("testimonials relative overflow-hidden bg-white", "py-[var(--section-y)]")} id="testimonials">
       <div className={"site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]"}>
         <Reveal className={"testimonials-head mx-auto mb-[clamp(3rem,5.5vw,4rem)] max-w-[min(760px,100%)] text-center"}>
-          <p className={"text-[.68rem] font-bold tracking-[.18em] uppercase text-muted"}>{content.eyebrow}</p>
-          <h2 className={"mb-4 text-[clamp(2.15rem,4.2vw,3.05rem)] leading-[1.06] tracking-[-.025em] text-blue"}>
+          <h2 className={"type-heading mb-4"}>
             {content.title}
-            <br />
-            <span className={"mt-[.2rem] block text-[clamp(2.35rem,4.5vw,3.2rem)] leading-[.98] text-[#9580f5]"}>
-              {content.script}
-            </span>
+            <span className={"type-script mt-[.15rem]"}>{content.script}</span>
           </h2>
-          <p className={"mx-auto max-w-[44ch] text-[1.02rem] leading-[1.78] text-muted"}>
+          <p className={"type-body mx-auto mb-6 max-w-[44ch]"}>
             {content.lead}
           </p>
           <OpalSep center wide />
@@ -71,20 +67,19 @@ export function Testimonials({ content, testimonials }: TestimonialsProps) {
               )}
             >
               <div className={"test-card-top relative z-[1] mb-[1.15rem] flex w-full items-center justify-between gap-4"}>
-                <span className={"test-theme inline-block rounded-full border border-pastel-lilac/18 bg-[rgba(244,240,255,.88)] px-[.68rem] py-[.32rem] text-[.6rem] font-bold uppercase tracking-[.11em] text-[#9580f5]"}>{item.theme}</span>
+                <span className={"test-theme inline-block rounded-full border border-pastel-lilac/18 bg-[rgba(244,240,255,.88)] px-[.68rem] py-[.32rem] type-label"}>{item.theme}</span>
                 <span className={"test-stars text-[.72rem] tracking-[.14em] text-pastel-lilac opacity-85"} aria-hidden="true">
                   ★★★★★
                 </span>
               </div>
               <blockquote
                 className={cn(
-                  "relative z-[1] mb-[1.25rem] flex-1 pl-[1.25rem] pt-[1.65rem] font-serif text-[clamp(1.08rem,1.4vw,1.2rem)] italic leading-[1.72] text-text before:absolute before:top-[-.15rem] before:left-[-.05rem] before:font-serif before:text-[clamp(3rem,4.5vw,3.75rem)] before:not-italic before:leading-none before:text-[rgba(179,162,254,.22)] before:content-['“']",
-                  item.spotlight && "text-[clamp(1.18rem,1.55vw,1.32rem)] leading-[1.68]",
+                  "type-body relative z-[1] mb-[1.25rem] flex-1 pl-[1.25rem] pt-[1.65rem] text-text! before:absolute before:top-[-.15rem] before:left-[-.05rem] before:font-serif before:text-[clamp(3rem,4.5vw,3.75rem)] before:not-italic before:leading-none before:text-[rgba(179,162,254,.22)] before:content-['“']",
                 )}
               >
                 {item.quote}
               </blockquote>
-              <cite className={"relative z-[1] mt-auto flex items-center gap-[.55rem] text-[.76rem] font-semibold not-italic tracking-[.04em] text-muted before:h-0.5 before:w-[18px] before:shrink-0 before:rounded-[2px] before:bg-[linear-gradient(90deg,rgba(179,162,254,.55),rgba(188,228,222,.65))] before:content-['']"}>{item.cite}</cite>
+              <cite className={"type-label relative z-[1] mt-auto flex items-center gap-[.55rem] not-italic text-muted! before:h-0.5 before:w-[18px] before:shrink-0 before:rounded-[2px] before:bg-[linear-gradient(90deg,rgba(179,162,254,.55),rgba(188,228,222,.65))] before:content-['']"}>{item.cite}</cite>
             </article>
             </Reveal>
             </div>
@@ -107,7 +102,7 @@ export function Testimonials({ content, testimonials }: TestimonialsProps) {
           ))}
         </div>
         <footer className={"testimonials-foot pt-[.35rem] text-center"}>
-          <p className={"mb-[1.15rem] text-[.88rem] leading-[1.65] text-muted"}>
+          <p className={"type-body mb-[1.15rem]"}>
             {content.footerText}
           </p>
           <Link

@@ -20,9 +20,8 @@ export function Faqs({ content, faqs }: FaqsProps) {
       <div className={"faqs-scene pointer-events-none absolute inset-0 z-0"} aria-hidden="true" />
       <div className={"site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]"}>
         <Reveal className={"faqs-head mx-auto mb-[clamp(2.5rem,5vw,3.25rem)] max-w-[640px] text-center"}>
-          <p className={"text-[.68rem] font-bold tracking-[.18em] uppercase text-muted"}>{content.eyebrow}</p>
-          <h2 className={"mb-4 text-[clamp(2rem,3.8vw,2.75rem)] leading-[1.08] tracking-[-.02em] text-blue"}>{content.title}</h2>
-          <p className={"mx-auto text-base leading-[1.75] text-muted"}>
+          <h2 className={"type-heading mb-4"}>{content.title}</h2>
+          <p className={"type-body mb-6 mx-auto"}>
             {content.lead}
           </p>
           <OpalSep center wide />
