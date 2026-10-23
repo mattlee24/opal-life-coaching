@@ -32,8 +32,9 @@ export function Hero({ content }: HeroProps) {
       <div className={cn("site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]", "hero-inner relative z-[3] w-full")}>
         <div className={"hero-copy max-w-[min(540px,100%)]"}>
           <h1 className={"type-display max-w-full"}>
-            {content.title}
-            <span className={"type-script mt-[.35rem] max-w-full max-md:[-webkit-text-stroke:0.5px_currentColor] max-sm:text-[.95em] lg:whitespace-nowrap"}>{content.script}</span>
+            <span className={"block mb-[clamp(1.6rem,3.6vh,2.4rem)] text-[min(1.38em,11.4vw)] font-bold leading-[1.02] text-pastel-lilac"}>Opal Life Coaching</span>
+            <span className={"block text-[.72em]"}>{content.title}</span>
+            <span className={"type-script mt-[.35rem] max-w-full text-[.8em]! max-md:[-webkit-text-stroke:0.5px_currentColor] lg:whitespace-nowrap"}>{content.script}</span>
           </h1>
           <div className={"hero-divider my-[1.75rem] flex w-[min(440px,100%)] items-center gap-4"} aria-hidden="true">
             <span className={"hero-divider-line h-[2px] min-w-14 flex-1 rounded-[2px] bg-[linear-gradient(90deg,rgba(179,162,254,0)_0%,rgba(179,162,254,.6)_18%,rgba(188,228,222,.75)_100%)]"} />

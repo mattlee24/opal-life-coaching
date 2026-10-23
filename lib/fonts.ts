@@ -9,7 +9,7 @@ export const manrope = Manrope({
 
 export const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["400", "600"],
+  weight: ["400", "600", "700"],
   style: ["normal", "italic"],
   display: "swap",
   variable: "--font-cormorant",
