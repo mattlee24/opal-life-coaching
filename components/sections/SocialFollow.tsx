@@ -21,10 +21,27 @@ export function SocialFollow({ content }: SocialFollowProps) {
     instagram: content.instagramCaption,
     youtube: content.youtubeCaption,
   };
-  const cards = networks.flatMap((network) => {
-    const href = social?.[network];
-    return href ? [{ network, href, caption: captions[network], ...socialMeta[network] }] : [];
-  });
+  const cards: { key: string; href: string; label: string; caption?: string | null; icon: string; button: string; aria: string }[] =
+    networks.flatMap((network) => {
+      const href = social?.[network];
+      const meta = socialMeta[network];
+      return href
+        ? [{ key: network, href, label: meta.label, caption: captions[network], icon: meta.icon, button: content.followLabel, aria: `${content.followLabel} on ${meta.label}` }]
+        : [];
+    });
+  {
+    const label = content.emailTitle || "Join my email list";
+    cards.push({
+      key: "email",
+      // Until a sign-up URL is set in Site settings, point at the contact form.
+      href: social?.emailList || "#contact",
+      label,
+      caption: content.emailCaption ?? "For occasional future updates and news.",
+      icon: "/assets/icon-social-email.svg",
+      button: content.emailButtonLabel || "Join",
+      aria: label,
+    });
+  }
 
   // Nothing to follow until a link is set in Site settings.
   if (!cards.length) return null;
@@ -71,11 +88,10 @@ export function SocialFollow({ content }: SocialFollowProps) {
           />
           {cards.map((card) => (
             <a
-              key={card.network}
+              key={card.key}
               href={card.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${content.followLabel} on ${card.label}`}
+              {...(card.href.startsWith("#") ? {} : { target: "_blank", rel: "noopener noreferrer" })}
+              aria-label={card.aria}
               className={
                 "group relative flex items-center gap-4 max-sm:gap-3 rounded-[22px] border border-pastel-lilac/16 bg-[linear-gradient(180deg,#fefffe_0%,#faf8ff_55%,#f6faf7_100%)] px-[clamp(1rem,2.4vw,1.4rem)] py-[clamp(1rem,2vw,1.2rem)] shadow-[0_18px_44px_rgba(179,162,254,.1),0_8px_22px_rgba(93,138,111,.06)] transition-[transform,box-shadow,border-color] duration-[350ms] ease-opal hover:-translate-y-1 hover:border-pastel-lilac/32 hover:shadow-[0_24px_56px_rgba(179,162,254,.16),0_12px_28px_rgba(93,138,111,.08)] motion-reduce:hover:translate-y-0"
               }
@@ -89,7 +105,7 @@ export function SocialFollow({ content }: SocialFollowProps) {
               <span className={"flex min-w-0 flex-1 flex-col text-left"}>
                 <span className={"type-title"}>{card.label}</span>
                 {card.caption ? (
-                  <span className={"type-body truncate"}>{card.caption}</span>
+                  <span className={cn("type-body", card.key === "email" ? "leading-snug" : "truncate")}>{card.caption}</span>
                 ) : null}
               </span>
               <span
@@ -98,7 +114,7 @@ export function SocialFollow({ content }: SocialFollowProps) {
                 }
                 aria-hidden="true"
               >
-                {content.followLabel}
+                {card.button}
               </span>
             </a>
           ))}

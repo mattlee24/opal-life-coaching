@@ -120,6 +120,14 @@ export const HomePage: GlobalConfig = {
                 { name: "youtubeCaption", label: "YouTube card text", type: "text" },
               ],
             },
+            {
+              type: "row",
+              fields: [
+                { name: "emailTitle", label: "Email list card title", type: "text" },
+                { name: "emailCaption", label: "Email list card text", type: "text" },
+                { name: "emailButtonLabel", label: "Email list button label", type: "text" },
+              ],
+            },
           ],
         },
         {

@@ -775,6 +775,9 @@ export interface HomePage {
     facebookCaption?: string | null;
     instagramCaption?: string | null;
     youtubeCaption?: string | null;
+    emailTitle?: string | null;
+    emailCaption?: string | null;
+    emailButtonLabel?: string | null;
   };
   testimonialsSection: {
     title: string;
@@ -1215,6 +1218,10 @@ export interface SiteSetting {
     facebook?: string | null;
     instagram?: string | null;
     youtube?: string | null;
+    /**
+     * Link to your Mailchimp / MailerLite / Substack sign-up page. The “Join my email list” card in the home page follow section links here; until set it links to the contact form.
+     */
+    emailList?: string | null;
   };
   seo: {
     /**
@@ -1324,6 +1331,9 @@ export interface HomePageSelect<T extends boolean = true> {
         facebookCaption?: T;
         instagramCaption?: T;
         youtubeCaption?: T;
+        emailTitle?: T;
+        emailCaption?: T;
+        emailButtonLabel?: T;
       };
   testimonialsSection?:
     | T
@@ -1722,6 +1732,7 @@ export interface SiteSettingsSelect<T extends boolean = true> {
         facebook?: T;
         instagram?: T;
         youtube?: T;
+        emailList?: T;
       };
   seo?:
     | T
