@@ -64,6 +64,11 @@ function formatLabel(event: CalBookingEvent) {
   return event.location === "inPerson" ? "In person" : "Online";
 }
 
+function depositGbp(event: CalBookingEvent) {
+  const deposit = event.priceGbp / 2;
+  return Number.isInteger(deposit) ? String(deposit) : deposit.toFixed(2);
+}
+
 function getDisplayTitle(event: CalBookingEvent, categoryLabel: string) {
   return event.title
     .replace(new RegExp(`^${categoryLabel}\\s*[—–-]\\s*`, "i"), "")
@@ -110,6 +115,11 @@ function CalBookingCard({
 
       <span className="bookings-cal-card__chips">
         <span className="bookings-cal-card__chip type-label">{event.lengthInMinutes} minutes</span>
+        {isInPerson ? (
+          <span className="bookings-cal-card__chip bookings-cal-card__chip--note type-label">
+            £{depositGbp(event)} deposit
+          </span>
+        ) : null}
         {event.note ? <span className="bookings-cal-card__chip bookings-cal-card__chip--note type-label">Flexible</span> : null}
       </span>
 
@@ -157,6 +167,16 @@ function CalProfileEmbed() {
     })();
   }, [embedKey, selectedSlug]);
 
+  // Deep links such as /bookings#bookings-tarot land on that service's group once the grid has rendered.
+  useEffect(() => {
+    const id = window.location.hash.slice(1);
+    if (!id.startsWith("bookings-")) return;
+    const timer = window.setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 350);
+    return () => window.clearTimeout(timer);
+  }, []);
+
   useEffect(() => {
     if (!selectedSlug) return;
     panelRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -194,6 +214,9 @@ function CalProfileEmbed() {
                 <h3 className="bookings-cal-selected-head__title type-title">{selectedEvent.title}</h3>
                 <p className="bookings-cal-selected-head__meta type-body">
                   {selectedEvent.lengthInMinutes} min · {formatLabel(selectedEvent)}
+                  {selectedEvent.location === "inPerson"
+                    ? ` · £${depositGbp(selectedEvent)} deposit to book`
+                    : ""}
                 </p>
               </div>
               <span className="bookings-cal-selected-head__price type-title">£{selectedEvent.priceGbp}</span>
@@ -258,7 +281,8 @@ function CalProfileEmbed() {
             {visibleGroups.map((group) => (
               <section
                 key={group.id}
-                className={cn("bookings-cal-group", `bookings-cal-group--${group.id}`)}
+                id={`bookings-${group.id}`}
+                className={cn("bookings-cal-group scroll-mt-28", `bookings-cal-group--${group.id}`)}
               >
                 <div className="bookings-cal-group__head">
                   {group.icon ? (
