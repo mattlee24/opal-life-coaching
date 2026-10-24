@@ -15,7 +15,6 @@ export default function HomePage({ home, contact, testimonials, faqs }: HomePage
     <>
       <SeoHead title={home.seo.title} description={home.seo.description} path="/" />
       <Hero content={home.hero} />
-      {/* <Values values={home.values} /> */}
       <Services content={home.servicesSection} />
       <MeetCara content={home.meetCara} />
       <SocialFollow content={home.socialSection} />

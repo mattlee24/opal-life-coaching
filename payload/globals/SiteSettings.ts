@@ -42,6 +42,12 @@ export const SiteSettings: GlobalConfig = {
             { name: "youtube", label: "YouTube URL", type: "text" },
           ],
         },
+        {
+          name: "emailList",
+          label: "Email list sign-up URL",
+          type: "text",
+          admin: { description: "Link to your Mailchimp / MailerLite / Substack sign-up page. The “Join my email list” card in the home page follow section links here; until set it links to the contact form." },
+        },
       ],
     },
     {

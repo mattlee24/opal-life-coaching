@@ -8,6 +8,7 @@ import * as migration_20261011_100000_remove_hero_and_contact_eyebrow from './20
 import * as migration_20261013_220245_add_social_section from './20261013_220245_add_social_section';
 import * as migration_20261013_220844_contact_session_options from './20261013_220844_contact_session_options';
 import * as migration_20261013_221804_remove_eyebrows from './20261013_221804_remove_eyebrows';
+import * as migration_20261024_101831_add_email_list from './20261024_101831_add_email_list';
 
 export const migrations = [
   {
@@ -59,5 +60,10 @@ export const migrations = [
     up: migration_20261013_221804_remove_eyebrows.up,
     down: migration_20261013_221804_remove_eyebrows.down,
     name: '20261013_221804_remove_eyebrows',
+  },
+  {
+    up: migration_20261024_101831_add_email_list.up,
+    down: migration_20261024_101831_add_email_list.down,
+    name: '20261024_101831_add_email_list'
   },
 ];

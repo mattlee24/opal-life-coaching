@@ -358,6 +358,7 @@ export const globals = {
       facebook: "https://www.facebook.com/share/18Fe2wwWNP/",
       instagram: "https://www.instagram.com/opal_life_coaching",
       youtube: null,
+      emailList: null,
     },
     seo: {
       description:
@@ -438,9 +439,8 @@ export const globals = {
       script: "that's right for you",
       lead: "Whether you're seeking clarity, calm, or a fresh perspective — each offering is gentle, personal, and shaped entirely around you. Take your time exploring what resonates.",
       cardButtonLabel: "Find out more",
-      footerBefore: "Not sure where to start? Every path can be blended —",
-      footerLink: link("get in touch", "#contact"),
-      footerAfter: "and we'll find what fits.",
+      footerBefore: "Not sure where to start? Every path can be blended — we can go with the flow and find what fits best for you.",
+      footerLink: link("Get in touch", "/#contact"),
       cards: [
         {
           slug: "coaching",
@@ -486,6 +486,9 @@ export const globals = {
       followLabel: "Follow",
       facebookCaption: "Opal Life Coaching",
       instagramCaption: "@opal_life_coaching",
+      emailTitle: "Join my email list",
+      emailCaption: "For occasional future updates and news.",
+      emailButtonLabel: "Join",
     },
     testimonialsSection: {
       title: "Kind words",
