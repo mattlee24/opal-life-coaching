@@ -69,7 +69,6 @@ export const services = [
         text: "Career changes, life crossroads, burnout recovery — support tailored to your season of life.",
       },
     ],
-    sessionsImage: null,
     sessions: [
       {
         name: "Discovery call",
@@ -159,7 +158,6 @@ export const services = [
         text: "Readings can stand alone or weave naturally into coaching work when that feels helpful.",
       },
     ],
-    sessionsImage: media("cara-tarot-session.jpg"),
     sessions: [
       {
         name: "Mini reading",
@@ -249,7 +247,6 @@ export const services = [
         text: "Reiki complements coaching and tarot beautifully as part of wider self-care.",
       },
     ],
-    sessionsImage: media("reiki-room.jpg"),
     sessions: [
       {
         name: "Reiki session",
@@ -296,30 +293,6 @@ export const services = [
   },
 ];
 
-export const testimonials = [
-  {
-    theme: "Feeling calmer & clearer",
-    quote:
-      "I came in feeling overwhelmed and left with a real sense of calm. Cara helped me see things more clearly and find a way forward that actually felt right for me.",
-    cite: "Coaching client",
-    spotlight: false,
-  },
-  {
-    theme: "Feeling understood & supported",
-    quote:
-      "Cara has a wonderful way of making you feel truly heard. There was no judgement — just warmth, compassion and gentle guidance exactly when I needed it.",
-    cite: "Reiki client",
-    spotlight: true,
-  },
-  {
-    theme: "Gaining confidence & direction",
-    quote:
-      "After our sessions I felt so much more confident about the decisions I was facing. I finally had direction and the belief that I could move forward on my own terms.",
-    cite: "Tarot & coaching client",
-    spotlight: false,
-  },
-];
-
 export const faqs = [
   {
     question: "What happens in a first session?",
@@ -353,6 +326,7 @@ export const globals = {
     name: "Opal Life Coaching",
     tagline: "With Cara",
     email: "hello@opallifecoaching.com",
+    phone: null,
     location: "Chichester & Eastergate, West Sussex",
     social: {
       facebook: "https://www.facebook.com/share/18Fe2wwWNP/",
@@ -383,9 +357,6 @@ export const globals = {
       },
   },
   footer: {
-      title: "You're welcome here",
-      script: "Take a breath. You're in the right place.",
-      calmText: "There's no rush here — whenever you feel ready, I'm here to support you.",
       blurb:
         "Holistic life coaching, Reiki healing and tarot readings — gentle, personal support for your journey.",
       brandScript: "Everything is personal. Everything is at your pace.",
@@ -403,7 +374,6 @@ export const globals = {
       contactHeading: "Get in touch",
       locationLines: texts("Chichester & Eastergate", "West Sussex"),
       cta: link("Start your journey", "/bookings"),
-      bottomLink: link("Book a session", "/bookings"),
       copyrightName: "Opal Life Coaching",
   },
 
@@ -511,7 +481,6 @@ export const globals = {
       lead: "I help people who feel stuck, overwhelmed or at a crossroads find clarity and confidence — with warmth, intuition and absolutely no judgement.",
       primaryCta: link("Book a session", "/bookings"),
       secondaryCta: link("Read my story", "#page-content"),
-      trust: texts("West Sussex", "In person & online", "At your pace"),
       badge: "Warm, personal & unhurried",
       portrait: media("cara-about-hero.jpg"),
     },
@@ -600,12 +569,10 @@ export const globals = {
         { icon: "online", title: "Online, Phone & Message", text: "Video, phone or message sessions from wherever you are" },
         { icon: "location", title: "In Person – Chichester", text: "Sessions in Chichester, West Sussex" },
       ],
-      trust: texts("Reply within 24 hours", "In person & online", "West Sussex"),
     },
     form: {
       title: "I'd love to hear from you",
       note: "Share as much or as little as you like — there's no pressure, and every message is met with warmth and care.",
-      promise: "I'll reply personally within 24 hours",
       nameLabel: "Your name",
       namePlaceholder: "How should I address you?",
       emailLabel: "Your email",
@@ -626,7 +593,6 @@ export const globals = {
     },
     faqsSection: {
       title: "Questions you might have",
-      lead: "Gentle, honest answers — so you know what to expect before reaching out.",
     },
     seo: {
       title: "Contact — Opal Life Coaching",
@@ -640,27 +606,11 @@ export const globals = {
       secondaryCta: link("Ask a question", "/contact"),
     },
     overview: {
-      captionScript: "Cara",
-      captionNote: "Warm, confidential, and entirely personal",
     },
     benefits: {
       title: "What you can",
       script: "expect",
       sub: "Three things people often feel after working together — soft, steady, and entirely at your pace.",
-    },
-    sessions: {
-      title: "Whenever you're ready,",
-      script: "the door is open",
-      lead: "There's no rush to decide. When it feels right, you'll find session options, transparent pricing and availability — or reach out first if you'd rather talk it through.",
-      steps: [
-        { title: "Browse sessions", text: "Explore session types and pricing on the bookings page" },
-        { title: "Pick a time", text: "Choose a slot that suits you — online or in person" },
-        { title: "Or talk first", text: "Begin with a free discovery call if you'd like to chat before booking" },
-      ],
-      primaryCta: link("View bookings & pricing", "/bookings"),
-      secondaryCta: link("Ask a question first", "/contact"),
-      caption: "With warmth, whenever you're ready",
-      fallbackImage: media("cara-speaking.png"),
     },
   },
 

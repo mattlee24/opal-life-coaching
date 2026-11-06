@@ -133,7 +133,7 @@ export const HomePage: GlobalConfig = {
         {
           label: "Testimonials",
           name: "testimonialsSection",
-          description: "The quotes themselves are edited under Content → Testimonials.",
+          description: "The quotes themselves live in code (lib/testimonials.ts).",
           fields: [
             ...headingFields({ scriptRequired: true }),
             { name: "lead", type: "textarea", required: true },

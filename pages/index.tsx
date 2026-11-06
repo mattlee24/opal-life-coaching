@@ -10,7 +10,7 @@ import { Values } from "@/components/sections/Values";
 import { SeoHead } from "@/components/layout/SeoHead";
 import { getHomePageProps, REVALIDATE_SECONDS, type HomePageProps } from "@/lib/cms";
 
-export default function HomePage({ home, contact, testimonials, faqs }: HomePageProps) {
+export default function HomePage({ home, contact, faqs }: HomePageProps) {
   return (
     <>
       <SeoHead title={home.seo.title} description={home.seo.description} path="/" />
@@ -18,7 +18,7 @@ export default function HomePage({ home, contact, testimonials, faqs }: HomePage
       <Services content={home.servicesSection} />
       <MeetCara content={home.meetCara} />
       <SocialFollow content={home.socialSection} />
-      <Testimonials content={home.testimonialsSection} testimonials={testimonials} />
+      <Testimonials content={home.testimonialsSection} />
       <Contact content={contact} />
       <Faqs content={contact.faqsSection} faqs={faqs} />
     </>

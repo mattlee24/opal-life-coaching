@@ -66,15 +66,6 @@ export function MeetCara({ content }: MeetCaraProps) {
             height={36}
             className={"meet-cara-heart absolute top-[3%] left-0 z-[6] h-9 w-9 opacity-92 [filter:drop-shadow(0_4px_14px_rgba(179,162,254,.4))]"}
           />
-          <div className={"meet-cara-badge absolute right-[2%] bottom-[4%] z-[6] inline-flex max-w-[min(100%,260px)] items-center gap-[.55rem] rounded-full border border-pastel-lilac/24 bg-white/97 px-[1.05rem] py-[.6rem] pl-[.75rem] shadow-[0_12px_32px_rgba(179,162,254,.16)] backdrop-blur-[8px] max-md:right-[4%] max-md:bottom-[3%] max-md:max-w-[calc(100%-1.5rem)]"} aria-hidden="true">
-            <DecorativeImage
-              src="/assets/icon-opal-heart.svg"
-              width={22}
-              height={22}
-              className={"h-[22px] w-[22px] shrink-0 [filter:drop-shadow(0_2px_6px_rgba(179,162,254,.25))]"}
-            />
-            <p className={"type-label whitespace-nowrap max-md:whitespace-normal"}>{content.badge}</p>
-          </div>
         </Reveal>
         <Reveal variant="right" delay={120} className={"meet-cara-copy relative max-w-[min(580px,100%)] max-md:mx-auto max-md:text-center"}>
           <span className={"meet-cara-copy-sprig pointer-events-none absolute top-[-.25rem] right-[clamp(-1rem,-2vw,0)] w-[min(76px,16vw)] opacity-20 max-md:hidden"} aria-hidden="true">
@@ -107,9 +98,6 @@ export function MeetCara({ content }: MeetCaraProps) {
             >
               {content.cta.label}
             </Link>
-            <p className={"meet-cara-note type-body max-w-[36ch] max-md:mx-auto"}>
-              {content.note}
-            </p>
           </div>
         </Reveal>
       </div>

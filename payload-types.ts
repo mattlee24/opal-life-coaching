@@ -68,7 +68,6 @@ export interface Config {
   blocks: {};
   collections: {
     services: Service;
-    testimonials: Testimonial;
     faqs: Faq;
     media: Media;
     users: User;
@@ -85,7 +84,6 @@ export interface Config {
   };
   collectionsSelect: {
     services: ServicesSelect<false> | ServicesSelect<true>;
-    testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     faqs: FaqsSelect<false> | FaqsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
@@ -213,10 +211,6 @@ export interface Service {
         id?: string | null;
       }[]
     | null;
-  /**
-   * Optional — defaults to the photo set in “Service page sections”.
-   */
-  sessionsImage?: (number | null) | Media;
   seo: {
     title: string;
     description: string;
@@ -301,31 +295,6 @@ export interface FolderInterface {
   createdAt: string;
 }
 /**
- * The home page shows the first three, in this order. Drag to reorder.
- *
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "testimonials".
- */
-export interface Testimonial {
-  id: number;
-  _order?: string | null;
-  /**
-   * Short headline, e.g. “Feeling calmer & clearer”.
-   */
-  theme: string;
-  quote: string;
-  /**
-   * e.g. “Coaching client”.
-   */
-  cite: string;
-  /**
-   * Highlight this card (works best on the middle card).
-   */
-  spotlight?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
  * Shown on the home and contact pages, in this order. Drag to reorder.
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -393,10 +362,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'services';
         value: number | Service;
-      } | null)
-    | ({
-        relationTo: 'testimonials';
-        value: number | Testimonial;
       } | null)
     | ({
         relationTo: 'faqs';
@@ -499,7 +464,6 @@ export interface ServicesSelect<T extends boolean = true> {
         text?: T;
         id?: T;
       };
-  sessionsImage?: T;
   seo?:
     | T
     | {
@@ -530,19 +494,6 @@ export interface ServicesSelect<T extends boolean = true> {
         id?: T;
       };
   bookingLabel?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "testimonials_select".
- */
-export interface TestimonialsSelect<T extends boolean = true> {
-  _order?: T;
-  theme?: T;
-  quote?: T;
-  cite?: T;
-  spotlight?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -829,12 +780,6 @@ export interface AboutPage {
        */
       href: string;
     };
-    trust?:
-      | {
-          text: string;
-          id?: string | null;
-        }[]
-      | null;
     badge: string;
     portrait: number | Media;
   };
@@ -916,7 +861,6 @@ export interface ContactPage {
      * Shown in the handwritten accent font.
      */
     script: string;
-    lead: string;
     emailLabel: string;
     emailNote: string;
     socialLabel: string;
@@ -928,17 +872,10 @@ export interface ContactPage {
           id?: string | null;
         }[]
       | null;
-    trust?:
-      | {
-          text: string;
-          id?: string | null;
-        }[]
-      | null;
   };
   form: {
     title: string;
     note: string;
-    promise: string;
     nameLabel: string;
     namePlaceholder?: string | null;
     emailLabel: string;
@@ -962,7 +899,6 @@ export interface ContactPage {
   };
   faqsSection: {
     title: string;
-    lead: string;
   };
   seo: {
     title: string;
@@ -1035,19 +971,13 @@ export interface Header {
   createdAt?: string | null;
 }
 /**
- * The welcome message, links and contact details at the bottom of every page.
+ * The links and contact details at the bottom of every page.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "footer".
  */
 export interface Footer {
   id: number;
-  title: string;
-  /**
-   * Shown in the handwritten accent font.
-   */
-  script: string;
-  calmText: string;
   blurb: string;
   brandScript: string;
   exploreHeading: string;
@@ -1066,13 +996,6 @@ export interface Footer {
       }[]
     | null;
   cta: {
-    label: string;
-    /**
-     * A page path such as /bookings, or a section anchor such as #contact.
-     */
-    href: string;
-  };
-  bottomLink: {
     label: string;
     /**
      * A page path such as /bookings, or a section anchor such as #contact.
@@ -1150,8 +1073,10 @@ export interface ServicePageSection {
     };
   };
   overview: {
-    captionScript: string;
-    captionNote: string;
+    /**
+     * Shown on every service page. Put each paragraph on its own line. Leave empty to use each service's own pull quote.
+     */
+    quote?: string | null;
   };
   benefits: {
     title: string;
@@ -1160,40 +1085,6 @@ export interface ServicePageSection {
      */
     script: string;
     sub: string;
-  };
-  sessions: {
-    title: string;
-    /**
-     * Shown in the handwritten accent font.
-     */
-    script: string;
-    lead: string;
-    steps?:
-      | {
-          title: string;
-          text: string;
-          id?: string | null;
-        }[]
-      | null;
-    primaryCta: {
-      label: string;
-      /**
-       * A page path such as /bookings, or a section anchor such as #contact.
-       */
-      href: string;
-    };
-    secondaryCta: {
-      label: string;
-      /**
-       * A page path such as /bookings, or a section anchor such as #contact.
-       */
-      href: string;
-    };
-    caption: string;
-    /**
-     * Used when a service has no booking section photo of its own.
-     */
-    fallbackImage: number | Media;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1207,6 +1098,10 @@ export interface SiteSetting {
   name: string;
   tagline: string;
   email: string;
+  /**
+   * Cara's phone number, shown next to the email in the contact section and footer. Leave blank to hide.
+   */
+  phone?: string | null;
   /**
    * Used in search engine data, e.g. “Chichester & Eastergate, West Sussex”.
    */
@@ -1382,12 +1277,6 @@ export interface AboutPageSelect<T extends boolean = true> {
               label?: T;
               href?: T;
             };
-        trust?:
-          | T
-          | {
-              text?: T;
-              id?: T;
-            };
         badge?: T;
         portrait?: T;
       };
@@ -1462,7 +1351,6 @@ export interface ContactPageSelect<T extends boolean = true> {
     | {
         title?: T;
         script?: T;
-        lead?: T;
         emailLabel?: T;
         emailNote?: T;
         socialLabel?: T;
@@ -1474,19 +1362,12 @@ export interface ContactPageSelect<T extends boolean = true> {
               text?: T;
               id?: T;
             };
-        trust?:
-          | T
-          | {
-              text?: T;
-              id?: T;
-            };
       };
   form?:
     | T
     | {
         title?: T;
         note?: T;
-        promise?: T;
         nameLabel?: T;
         namePlaceholder?: T;
         emailLabel?: T;
@@ -1509,7 +1390,6 @@ export interface ContactPageSelect<T extends boolean = true> {
     | T
     | {
         title?: T;
-        lead?: T;
       };
   seo?:
     | T
@@ -1582,9 +1462,6 @@ export interface HeaderSelect<T extends boolean = true> {
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
-  title?: T;
-  script?: T;
-  calmText?: T;
   blurb?: T;
   brandScript?: T;
   exploreHeading?: T;
@@ -1603,12 +1480,6 @@ export interface FooterSelect<T extends boolean = true> {
         id?: T;
       };
   cta?:
-    | T
-    | {
-        label?: T;
-        href?: T;
-      };
-  bottomLink?:
     | T
     | {
         label?: T;
@@ -1675,8 +1546,7 @@ export interface ServicePageSectionsSelect<T extends boolean = true> {
   overview?:
     | T
     | {
-        captionScript?: T;
-        captionNote?: T;
+        quote?: T;
       };
   benefits?:
     | T
@@ -1684,34 +1554,6 @@ export interface ServicePageSectionsSelect<T extends boolean = true> {
         title?: T;
         script?: T;
         sub?: T;
-      };
-  sessions?:
-    | T
-    | {
-        title?: T;
-        script?: T;
-        lead?: T;
-        steps?:
-          | T
-          | {
-              title?: T;
-              text?: T;
-              id?: T;
-            };
-        primaryCta?:
-          | T
-          | {
-              label?: T;
-              href?: T;
-            };
-        secondaryCta?:
-          | T
-          | {
-              label?: T;
-              href?: T;
-            };
-        caption?: T;
-        fallbackImage?: T;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -1725,6 +1567,7 @@ export interface SiteSettingsSelect<T extends boolean = true> {
   name?: T;
   tagline?: T;
   email?: T;
+  phone?: T;
   location?: T;
   social?:
     | T

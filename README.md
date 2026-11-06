@@ -84,7 +84,7 @@ OpalLifeCoaching/
 ├── app/(payload)/              # Payload admin (/admin) + REST/GraphQL API (/api) — generated, App Router
 ├── payload.config.ts           # Payload config: database, storage, collections, globals
 ├── payload/
-│   ├── collections/            # Services, Testimonials, FAQs, Media, Users
+│   ├── collections/            # Services, FAQs, Media, Users
 │   ├── globals/                # Home, About, Contact & FAQs, Service page sections, Closing invitation, Header & footer, Site settings
 │   ├── fields/                 # Shared field helpers (links, headings, SEO…)
 │   ├── hooks/revalidateSite.ts # Refreshes the static pages after every content change
@@ -129,11 +129,11 @@ OpalLifeCoaching/
 
 ### Key modules
 
-- **Payload CMS** — all page copy, services, testimonials, FAQs, navigation and photos are edited at `/admin` (see [Content management](#content-management)).
+- **Payload CMS** — all page copy, services, FAQs, navigation and photos are edited at `/admin` (see [Content management](#content-management)).
 - **`lib/cms.ts`** — Loads Payload content through the Local API inside `getStaticProps`.
 - **`components/pages/ServicePageContent.tsx`** — Shared layout for all three service routes.
 - **`components/pages/BookingsStudioSection.tsx`** — Session grid grouped by service, with per-event Cal.com booking embeds.
-- **`components/pages/ClosingInvitationCta.tsx`** — Shared closing call-to-action used across service, about, and bookings pages.
+- **`components/pages/ClosingInvitationCta.tsx`** — Shared closing call-to-action used across about and bookings pages.
 - **`styles/globals.css`** — Brand tokens, opal/vine border systems, header behaviour, and section styling.
 
 ---
@@ -188,7 +188,7 @@ Site content lives in [Payload CMS](https://payloadcms.com/), served from the sa
 | **Pages → Life Coaching / Tarot / Reiki** | Each service's page, card, menu entry, photo and SEO |
 | **Components → Header / Footer** | Navigation, Services dropdown, footer copy and links |
 | **Components → Closing invitation / Service page layout** | Shared sections used on several pages |
-| **Components → Testimonials / FAQs** | Home page quotes (first three shown) and the FAQ list (drag to reorder) |
+| **Components → FAQs** | The FAQ list (drag to reorder) |
 | **Library → Photos** | Uploaded photos and service icons |
 | **Settings → Site settings / Admin users** | Email, social links, default SEO and who can sign in |
 

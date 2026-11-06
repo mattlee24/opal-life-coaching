@@ -30,6 +30,7 @@ export function SeoHead({
     description: description ?? settings.seo.description,
     url: site.url,
     email: settings.email,
+    ...(settings.phone ? { telephone: settings.phone } : {}),
     areaServed: settings.location,
     image: imageUrl,
     priceRange: "££",

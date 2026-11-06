@@ -3,11 +3,11 @@ import { ServicePageContent } from "@/components/pages/ServicePageContent";
 import type { ServicePageProps } from "@/lib/cms";
 
 /** Shared page component for /coaching, /tarot and /reiki. */
-export function ServicePage({ service, sections, closingCta }: ServicePageProps) {
+export function ServicePage({ service, sections }: ServicePageProps) {
   return (
     <>
       <SeoHead title={service.seo.title} description={service.seo.description} path={`/${service.slug}`} />
-      <ServicePageContent data={service} sections={sections} closingCta={closingCta} />
+      <ServicePageContent data={service} sections={sections} />
     </>
   );
 }

@@ -1,45 +1,61 @@
-import type { ServiceVariant } from "@/lib/cms-types";
 import { DecorativeImage } from "@/components/ui/DecorativeImage";
-import { cn } from "@/lib/cn";
-import { HeroVisual3D } from "./HeroVisual3D";
 
-type ServiceHeroVisualProps = {
+type ServiceHeroBackdropProps = {
   icon: string | null;
-  variant: ServiceVariant;
 };
 
-export function ServiceHeroVisual({
-  icon,
-  variant,
-}: ServiceHeroVisualProps) {
+const RINGS = [
+  { r: 150, o: 0.5 },
+  { r: 215, o: 0.38 },
+  { r: 290, o: 0.28 },
+  { r: 380, o: 0.2 },
+  { r: 480, o: 0.13 },
+];
+
+/**
+ * Layered hero atmosphere: aurora washes, fine concentric hairlines and the
+ * service icon as a large, soft watermark that fades into the copy side.
+ */
+export function ServiceHeroBackdrop({ icon }: ServiceHeroBackdropProps) {
+  if (!icon) return null;
+
   return (
-    <HeroVisual3D className={"hero-service-visual"}>
-      <div className={cn("hero-orbit pointer-events-none absolute rounded-full border border-pastel-lilac/22 animate-[hero-orbit-spin_28s_linear_infinite] motion-reduce:animate-none", "hero-orbit--outer inset-[2%] border-pastel-mint/35")} aria-hidden="true" />
-      <div className={cn("hero-orbit pointer-events-none absolute rounded-full border border-pastel-lilac/22 animate-[hero-orbit-spin_28s_linear_infinite] motion-reduce:animate-none", "hero-orbit--inner inset-[14%] animate-[hero-orbit-spin_22s_linear_infinite_reverse] border-dashed border-pastel-lilac/28 motion-reduce:animate-none")} aria-hidden="true" />
-      <div className={cn("hero-float pointer-events-none absolute z-[4] opacity-55 [filter:drop-shadow(0_6px_16px_rgba(179,162,254,.18))] animate-[hero-float-drift_7s_ease-in-out_infinite] motion-reduce:animate-none", "hero-float--a top-[6%] right-[2%] w-[min(52px,14vw)] [animation-delay:-1.5s]")} aria-hidden="true">
-        <DecorativeImage src="/assets/nature-leaf-opal.svg" width={80} height={80} className={"block h-auto w-full"} />
+    <div className={"pointer-events-none absolute inset-0 z-[1] overflow-hidden"} aria-hidden="true">
+      {/* aurora washes */}
+      <div className={"absolute top-[-12%] right-[-8%] h-[70%] w-[62%] bg-[radial-gradient(ellipse_at_center,rgba(179,162,254,.2),transparent_68%)] blur-2xl"} />
+      <div className={"absolute right-[8%] bottom-[-18%] h-[62%] w-[52%] bg-[radial-gradient(ellipse_at_center,rgba(188,228,222,.3),transparent_70%)] blur-2xl"} />
+
+      {/* emblem: rings + glow + icon, centred ~66% across */}
+      <div
+        className={
+          "absolute top-1/2 left-[70%] aspect-square w-[min(1040px,92vw)] -translate-x-1/2 -translate-y-[48%] max-md:left-1/2 max-md:w-[150vw] [mask-image:radial-gradient(circle_closest-side,#000_55%,transparent_100%)]"
+        }
+      >
+        <svg viewBox="-500 -500 1000 1000" className={"absolute inset-0 h-full w-full"}>
+          <defs>
+            <linearGradient id="hero-ring" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor="#b3a2fe" />
+              <stop offset="0.55" stopColor="#a2bffe" />
+              <stop offset="1" stopColor="#8fd6c8" />
+            </linearGradient>
+          </defs>
+          {RINGS.map(({ r, o }) => (
+            <circle key={r} r={r} fill="none" stroke="url(#hero-ring)" strokeWidth="1" opacity={o} />
+          ))}
+          <circle r="250" fill="none" stroke="url(#hero-ring)" strokeWidth="1.5" strokeDasharray="1 11" strokeLinecap="round" opacity="0.55" />
+          <circle r="430" fill="none" stroke="url(#hero-ring)" strokeWidth="1.5" strokeDasharray="1 14" strokeLinecap="round" opacity="0.4" />
+        </svg>
+        <div className={"absolute inset-[26%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,.85)_0%,rgba(222,240,238,.5)_45%,transparent_72%)]"} />
+        <DecorativeImage
+          src={icon}
+          width={400}
+          height={266}
+          className={"absolute inset-[16%] h-[68%] w-[68%] object-contain opacity-[.4] [filter:saturate(1.15)_drop-shadow(0_18px_40px_rgba(179,162,254,.25))] max-md:opacity-[.28]"}
+        />
       </div>
-      <div className={cn("hero-float pointer-events-none absolute z-[4] opacity-55 [filter:drop-shadow(0_6px_16px_rgba(179,162,254,.18))] animate-[hero-float-drift_7s_ease-in-out_infinite] motion-reduce:animate-none", "hero-float--b bottom-[10%] left-0 w-[min(64px,16vw)] [animation-delay:-3.2s]")} aria-hidden="true">
-        <DecorativeImage src="/assets/sprig-delicate.svg" width={40} height={80} className={"block h-auto w-full"} />
-      </div>
-      <div className={cn("hero-float pointer-events-none absolute z-[4] opacity-55 [filter:drop-shadow(0_6px_16px_rgba(179,162,254,.18))] animate-[hero-float-drift_7s_ease-in-out_infinite] motion-reduce:animate-none", "hero-float--c top-[18%] left-[4%] w-[min(44px,12vw)] [animation-delay:-4.8s]")} aria-hidden="true">
-        <DecorativeImage src="/assets/sprig-fern.svg" width={48} height={96} className={"block h-auto w-full"} />
-      </div>
-      <article className={cn("hero-service-card pointer-events-none relative z-[3] mx-auto w-[min(100%,340px)] [transform:translateZ(48px)] shadow-[0_1px_0_rgba(255,255,255,.95)_inset,0_28px_70px_rgba(93,138,111,.14),0_12px_36px_rgba(179,162,254,.12)] hover:[transform:translateZ(48px)]", "svc-card relative flex h-auto flex-col isolate overflow-hidden rounded-[26px] border-2 border-transparent bg-clip-padding bg-[linear-gradient(180deg,#fdfffe_0%,#f3f9f6_55%,#f8f6fc_100%)] pb-[clamp(1.65rem,4vw,2.35rem)] shadow-[0_1px_0_rgba(255,255,255,.95)_inset,0_20px_54px_rgba(93,138,111,.08),0_8px_26px_rgba(179,162,254,.05)] transition-[transform,box-shadow] duration-500 ease-opal hover:-translate-y-2.5 hover:shadow-[0_1px_0_rgba(255,255,255,1)_inset,0_32px_70px_rgba(93,138,111,.13),0_14px_36px_rgba(179,162,254,.12)] motion-reduce:hover:translate-y-0", "svc-card", variant)}>
-        <span className={"svc-opal-sheen pointer-events-none absolute inset-0 z-[1] rounded-[inherit]"} aria-hidden="true" />
-        <div className={"svc-icon-hero relative z-[2] flex min-h-[clamp(200px,21vw,240px)] items-center justify-center px-4 pt-[clamp(1.65rem,4vw,2rem)] pb-[clamp(1.15rem,3vw,1.65rem)] max-md:min-h-[170px] max-md:pt-6 max-md:pb-4 lg:min-h-[200px] xl:min-h-[230px] xl:pt-10"}>
-          <div className={"svc-icon-halo relative flex aspect-square w-[min(176px,76%)] items-center justify-center rounded-full bg-[radial-gradient(circle_at_50%_38%,#fff_0%,rgba(244,252,248,.95)_35%,rgba(212,235,228,.75)_62%,rgba(188,228,222,.35)_82%,transparent_94%)] shadow-[0_14px_44px_rgba(93,138,111,.13),0_0_0_2px_rgba(122,171,142,.14)_inset,0_0_0_6px_rgba(255,255,255,.7)] transition-[transform,box-shadow] duration-[550ms] ease-opal max-md:w-[min(152px,68%)] lg:w-[min(172px,76%)] xl:w-[188px]"}>
-            {icon ? (
-              <DecorativeImage
-                src={icon}
-                width={400}
-                height={266}
-                className={"relative z-[1] h-auto w-[min(146px,82%)] object-contain [filter:saturate(1.12)_contrast(1.06)_drop-shadow(0_10px_22px_rgba(93,138,111,.18))] transition-transform duration-[550ms] ease-opal lg:w-[min(142px,82%)] xl:w-[156px]"}
-              />
-            ) : null}
-          </div>
-        </div>
-      </article>
-    </HeroVisual3D>
+
+      {/* keep copy side clean */}
+      <div className={"absolute inset-y-0 left-0 w-[58%] bg-[linear-gradient(90deg,rgba(252,251,255,.85)_0%,rgba(252,251,255,.5)_55%,transparent_100%)] max-md:w-full max-md:bg-[linear-gradient(180deg,rgba(252,251,255,.55),rgba(252,251,255,.25))]"} />
+    </div>
   );
 }

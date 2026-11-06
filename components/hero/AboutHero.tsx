@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { DecorativeImage } from "@/components/ui/DecorativeImage";
 import { cn } from "@/lib/cn";
-import { asMedia, textList, type AboutPage } from "@/lib/cms-types";
+import { asMedia, type AboutPage } from "@/lib/cms-types";
 
 type AboutHeroProps = {
   content: AboutPage["hero"];
@@ -9,7 +9,6 @@ type AboutHeroProps = {
 
 export function AboutHero({ content }: AboutHeroProps) {
   const portrait = asMedia(content.portrait);
-  const trust = textList(content.trust);
 
   return (
     <section className={"about-hero relative isolate flex min-h-[max(100svh,820px)] items-center overflow-hidden bg-[linear-gradient(168deg,#fcfbff_0%,#f8f6fc_38%,#f3f0fa_72%,#f6faf7_100%)] box-border pt-[calc(var(--header-height)+clamp(2rem,5vh,3.25rem))] pb-[clamp(4rem,7vh,5.5rem)]"}>
@@ -53,11 +52,6 @@ export function AboutHero({ content }: AboutHeroProps) {
             <Link href={content.secondaryCta.href} className={"inline-flex items-center justify-center gap-[.45rem] px-7 py-[.85rem] rounded-[4px] text-[.72rem] font-bold tracking-[.08em] uppercase border-2 border-transparent cursor-pointer transition-[transform,box-shadow,background,border-color] duration-200 ease-opal hover:-translate-y-0.5 motion-reduce:hover:translate-y-0 disabled:opacity-55 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:shadow-none bg-transparent text-blue border-pastel-lilac hover:bg-pastel-lilac/8 text-pastel-lilac border-pastel-lilac/32 bg-white/82 backdrop-blur-[10px] shadow-[0_8px_24px_rgba(179,162,254,.08)] hover:bg-white/92 hover:text-[#a894fc] hover:border-[#a894fc]"}>
               {content.secondaryCta.label}
             </Link>
-          </div>
-          <div className={cn("hero-trust relative mt-8 flex flex-wrap gap-x-[1.35rem] gap-y-[.55rem] border-t border-transparent pt-[1.65rem] md:gap-x-[1.35rem] md:gap-y-[.55rem] max-md:gap-x-4 max-md:gap-y-[.45rem]", "about-hero-trust")} aria-label="At a glance">
-            {trust.map((item) => (
-              <span key={item} className={"type-label inline-flex items-center gap-[.45rem]"}>{item}</span>
-            ))}
           </div>
         </div>
 
@@ -105,14 +99,6 @@ export function AboutHero({ content }: AboutHeroProps) {
                   />
                 ) : null}
               </div>
-            </div>
-            <div className={"about-hero-badge absolute right-[-2%] bottom-[6%] z-[6] inline-flex max-w-[calc(100%-1rem)] items-center gap-[.55rem] rounded-full border border-pastel-lilac/24 bg-white/97 px-[1.05rem] py-[.62rem] pl-[.75rem] shadow-[0_12px_32px_rgba(179,162,254,.16)] backdrop-blur-[10px] max-md:right-1/2 max-md:bottom-[4%] max-md:translate-x-1/2"} aria-hidden="true">
-              <img
-                src="/assets/icon-opal-heart.svg"
-                alt=""
-                className={"h-5 w-5 shrink-0"}
-              />
-              <p className={"type-label whitespace-nowrap max-md:text-center max-md:whitespace-normal"}>{content.badge}</p>
             </div>
           </div>
         </div>

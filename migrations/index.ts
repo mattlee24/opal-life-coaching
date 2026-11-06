@@ -9,6 +9,15 @@ import * as migration_20261013_220245_add_social_section from './20261013_220245
 import * as migration_20261013_220844_contact_session_options from './20261013_220844_contact_session_options';
 import * as migration_20261013_221804_remove_eyebrows from './20261013_221804_remove_eyebrows';
 import * as migration_20261024_101831_add_email_list from './20261024_101831_add_email_list';
+import * as migration_20261105_130355_remove_testimonials from './20261105_130355_remove_testimonials';
+import * as migration_20261105_140000_add_phone from './20261105_140000_add_phone';
+import * as migration_20261105_150000_remove_contact_trust_promise from './20261105_150000_remove_contact_trust_promise';
+import * as migration_20261105_160000_remove_faqs_lead_footer_welcome from './20261105_160000_remove_faqs_lead_footer_welcome';
+
+import * as migration_20261105_170000_add_overview_quote from './20261105_170000_add_overview_quote';
+import * as migration_20261105_180000_remove_service_sessions_section from './20261105_180000_remove_service_sessions_section';
+import * as migration_20261105_190000_remove_overview_caption from './20261105_190000_remove_overview_caption';
+import * as migration_20261105_200000_remove_about_hero_trust from './20261105_200000_remove_about_hero_trust';
 
 export const migrations = [
   {
@@ -64,6 +73,46 @@ export const migrations = [
   {
     up: migration_20261024_101831_add_email_list.up,
     down: migration_20261024_101831_add_email_list.down,
-    name: '20261024_101831_add_email_list'
+    name: '20261024_101831_add_email_list',
+  },
+  {
+    up: migration_20261105_130355_remove_testimonials.up,
+    down: migration_20261105_130355_remove_testimonials.down,
+    name: '20261105_130355_remove_testimonials'
+  },
+  {
+    up: migration_20261105_140000_add_phone.up,
+    down: migration_20261105_140000_add_phone.down,
+    name: '20261105_140000_add_phone',
+  },
+  {
+    up: migration_20261105_150000_remove_contact_trust_promise.up,
+    down: migration_20261105_150000_remove_contact_trust_promise.down,
+    name: '20261105_150000_remove_contact_trust_promise',
+  },
+  {
+    up: migration_20261105_160000_remove_faqs_lead_footer_welcome.up,
+    down: migration_20261105_160000_remove_faqs_lead_footer_welcome.down,
+    name: '20261105_160000_remove_faqs_lead_footer_welcome',
+  },
+  {
+    up: migration_20261105_170000_add_overview_quote.up,
+    down: migration_20261105_170000_add_overview_quote.down,
+    name: '20261105_170000_add_overview_quote',
+  },
+  {
+    up: migration_20261105_180000_remove_service_sessions_section.up,
+    down: migration_20261105_180000_remove_service_sessions_section.down,
+    name: '20261105_180000_remove_service_sessions_section',
+  },
+  {
+    up: migration_20261105_190000_remove_overview_caption.up,
+    down: migration_20261105_190000_remove_overview_caption.down,
+    name: '20261105_190000_remove_overview_caption',
+  },
+  {
+    up: migration_20261105_200000_remove_about_hero_trust.up,
+    down: migration_20261105_200000_remove_about_hero_trust.down,
+    name: '20261105_200000_remove_about_hero_trust',
   },
 ];

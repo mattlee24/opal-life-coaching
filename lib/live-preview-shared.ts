@@ -21,5 +21,4 @@ export const previewSectionSelectors: Record<string, string> = {
   path: ".about-path",
   overview: ".service-overview",
   benefits: ".service-benefits",
-  sessions: ".service-sessions",
 };

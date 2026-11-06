@@ -2,17 +2,20 @@
 
 import Link from "next/link";
 import { useRef, useState } from "react";
+import { useSiteSettings } from "@/components/layout/LayoutDataContext";
 import { OpalSep } from "@/components/ui/OpalSep";
 import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/cn";
-import type { HomePage, Testimonial } from "@/lib/cms-types";
+import type { HomePage } from "@/lib/cms-types";
+import { testimonials } from "@/lib/testimonials";
 
 type TestimonialsProps = {
   content: HomePage["testimonialsSection"];
-  testimonials: Testimonial[];
 };
 
-export function Testimonials({ content, testimonials }: TestimonialsProps) {
+export function Testimonials({ content }: TestimonialsProps) {
+  const { social } = useSiteSettings();
+  const reviewUrl = social?.facebook || "/contact";
   const trackRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
 
@@ -42,13 +45,10 @@ export function Testimonials({ content, testimonials }: TestimonialsProps) {
     <section className={cn("testimonials relative overflow-hidden bg-white", "py-[var(--section-y)]")} id="testimonials">
       <div className={"site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]"}>
         <Reveal className={"testimonials-head mx-auto mb-[clamp(3rem,5.5vw,4rem)] max-w-[min(760px,100%)] text-center"}>
-          <h2 className={"type-heading mb-4"}>
+          <h2 className={"type-heading mb-6"}>
             {content.title}
             <span className={"type-script mt-[.15rem]"}>{content.script}</span>
           </h2>
-          <p className={"type-body mx-auto mb-6 max-w-[44ch]"}>
-            {content.lead}
-          </p>
           <OpalSep center wide />
         </Reveal>
         <div
@@ -66,12 +66,6 @@ export function Testimonials({ content, testimonials }: TestimonialsProps) {
                 item.spotlight && "test-card--spotlight -translate-y-[14px] px-[clamp(2rem,3vw,2.45rem)] pt-[clamp(2.35rem,3.6vw,2.85rem)] pb-[clamp(2.35rem,3.5vw,2.7rem)] shadow-[0_24px_58px_rgba(179,162,254,.11),0_12px_30px_rgba(93,138,111,.07)] hover:-translate-y-[18px] hover:shadow-[0_32px_72px_rgba(179,162,254,.16),0_16px_38px_rgba(93,138,111,.1)] max-md:translate-y-0 max-md:hover:-translate-y-1.5",
               )}
             >
-              <div className={"test-card-top relative z-[1] mb-[1.15rem] flex w-full items-center justify-between gap-4"}>
-                <span className={"test-theme inline-block rounded-full border border-pastel-lilac/18 bg-[rgba(244,240,255,.88)] px-[.68rem] py-[.32rem] type-label"}>{item.theme}</span>
-                <span className={"test-stars text-[.72rem] tracking-[.14em] text-pastel-lilac opacity-85"} aria-hidden="true">
-                  ★★★★★
-                </span>
-              </div>
               <blockquote
                 className={cn(
                   "type-body relative z-[1] mb-[1.25rem] flex-1 pl-[1.25rem] pt-[1.65rem] text-text! before:absolute before:top-[-.15rem] before:left-[-.05rem] before:font-serif before:text-[clamp(3rem,4.5vw,3.75rem)] before:not-italic before:leading-none before:text-[rgba(179,162,254,.22)] before:content-['“']",
@@ -102,17 +96,15 @@ export function Testimonials({ content, testimonials }: TestimonialsProps) {
           ))}
         </div>
         <footer className={"testimonials-foot pt-[.35rem] text-center"}>
-          <p className={"type-body mb-[1.15rem]"}>
-            {content.footerText}
-          </p>
           <Link
-            href={content.cta.href}
+            href={reviewUrl}
+            {...(social?.facebook ? { target: "_blank", rel: "noopener noreferrer" } : {})}
             className={cn(
               "inline-flex items-center justify-center gap-[.45rem] px-7 py-[.85rem] rounded-[4px] text-[.72rem] font-bold tracking-[.08em] uppercase border-2 border-transparent cursor-pointer transition-[transform,box-shadow,background,border-color] duration-200 ease-opal hover:-translate-y-0.5 motion-reduce:hover:translate-y-0 disabled:opacity-55 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:shadow-none bg-pastel-lilac text-white border-pastel-lilac shadow-[0_8px_24px_rgba(179,162,254,.28)] hover:bg-[#a894fc] hover:border-[#a894fc]",
-              "normal-case tracking-[.02em] text-[.82rem] font-semibold px-7 py-[.85rem]",
+              "normal-case tracking-[.02em] text-[.95rem] font-semibold px-9 py-[1.05rem]",
             )}
           >
-            {content.cta.label}
+            Add a review
           </Link>
         </footer>
       </div>

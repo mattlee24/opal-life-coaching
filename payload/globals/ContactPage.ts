@@ -20,7 +20,6 @@ export const ContactPage: GlobalConfig = {
           name: "contact",
           fields: [
             ...headingFields({ scriptRequired: true }),
-            { name: "lead", type: "textarea", required: true },
             {
               type: "row",
               fields: [
@@ -58,7 +57,6 @@ export const ContactPage: GlobalConfig = {
                 { name: "text", type: "text" },
               ],
             },
-            textListField("trust", "Reassurances", { singular: "Reassurance", plural: "Reassurances", maxRows: 4 }),
           ],
         },
         {
@@ -68,7 +66,6 @@ export const ContactPage: GlobalConfig = {
           fields: [
             { name: "title", type: "text", required: true },
             { name: "note", type: "textarea", required: true },
-            { name: "promise", type: "text", required: true },
             {
               type: "row",
               fields: [
@@ -128,7 +125,6 @@ export const ContactPage: GlobalConfig = {
           description: "The questions themselves are edited under Content → FAQs.",
           fields: [
             { name: "title", label: "Heading", type: "text", required: true },
-            { name: "lead", type: "textarea", required: true },
           ],
         },
         {

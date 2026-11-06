@@ -76,7 +76,6 @@ export function SocialFollow({ content }: SocialFollowProps) {
             <span className={"type-script mt-[.15rem]"}>{content.script}</span>
           </h2>
           <OpalSep wide className={"mb-[1.5rem] w-[min(400px,100%)] max-md:mx-auto"} />
-          <p className={"type-body mb-[1.15rem] max-w-[44ch] max-md:mx-auto"}>{content.lead}</p>
           <p className={"type-body max-w-[44ch] max-md:mx-auto"}>
             {content.body}
           </p>

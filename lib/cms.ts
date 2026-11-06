@@ -14,7 +14,6 @@ import type {
   Service,
   ServicePageSection,
   ServiceSlug,
-  Testimonial,
 } from "@/lib/cms-types";
 import { toSummary } from "@/lib/cms-types";
 
@@ -51,20 +50,18 @@ export type HomePageProps = {
   layout: LayoutData;
   home: HomePage;
   contact: ContactPage;
-  testimonials: Testimonial[];
   faqs: Faq[];
 };
 
 export async function getHomePageProps(): Promise<HomePageProps> {
   const client = await payload();
-  const [layout, home, contact, testimonials, faqs] = await Promise.all([
+  const [layout, home, contact, faqs] = await Promise.all([
     getLayoutData(),
     client.findGlobal({ slug: "home-page", depth: 1 }),
     client.findGlobal({ slug: "contact-page", depth: 0 }),
-    client.find({ collection: "testimonials", sort: "_order", limit: 3, depth: 0 }),
     client.find({ collection: "faqs", sort: "_order", limit: 50, depth: 0 }),
   ]);
-  return serialize({ layout, home, contact, testimonials: testimonials.docs, faqs: faqs.docs });
+  return serialize({ layout, home, contact, faqs: faqs.docs });
 }
 
 export type AboutPageProps = {
@@ -103,20 +100,18 @@ export type ServicePageProps = {
   layout: LayoutData;
   service: Service;
   sections: ServicePageSection;
-  closingCta: ClosingCta;
 };
 
 export async function getServicePageProps(slug: ServiceSlug): Promise<ServicePageProps | null> {
   const client = await payload();
-  const [layout, services, sections, closingCta] = await Promise.all([
+  const [layout, services, sections] = await Promise.all([
     getLayoutData(),
     client.find({ collection: "services", where: { slug: { equals: slug } }, depth: 1, limit: 1 }),
     client.findGlobal({ slug: "service-page-sections", depth: 1 }),
-    client.findGlobal({ slug: "closing-cta", depth: 0 }),
   ]);
   const service = services.docs[0];
   if (!service) return null;
-  return serialize({ layout, service, sections, closingCta });
+  return serialize({ layout, service, sections });
 }
 
 /** Shared getStaticProps result for /coaching, /tarot and /reiki. */
@@ -138,21 +133,17 @@ export type ComponentPreviewProps = {
   home: HomePage | null;
   contact: ContactPage | null;
   closingCta: ClosingCta | null;
-  testimonials: Testimonial[];
   faqs: Faq[];
 };
 
 export async function getComponentPreviewProps(component: PreviewComponent): Promise<ComponentPreviewProps> {
   const client = await payload();
-  const [layout, home, contact, closingCta, testimonials, faqs] = await Promise.all([
+  const [layout, home, contact, closingCta, faqs] = await Promise.all([
     getLayoutData(),
     component === "testimonials" ? client.findGlobal({ slug: "home-page", depth: 0 }) : null,
     component === "faqs" ? client.findGlobal({ slug: "contact-page", depth: 0 }) : null,
     component === "closing-cta" ? client.findGlobal({ slug: "closing-cta", depth: 0 }) : null,
-    component === "testimonials"
-      ? client.find({ collection: "testimonials", sort: "_order", limit: 3, depth: 0 }).then((r) => r.docs)
-      : [],
     component === "faqs" ? client.find({ collection: "faqs", sort: "_order", limit: 50, depth: 0 }).then((r) => r.docs) : [],
   ]);
-  return serialize({ layout, bare: true as const, component, home, contact, closingCta, testimonials, faqs });
+  return serialize({ layout, bare: true as const, component, home, contact, closingCta, faqs });
 }

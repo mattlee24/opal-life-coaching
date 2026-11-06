@@ -1,0 +1,30 @@
+import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-postgres'
+
+export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
+  await db.execute(sql`
+   ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT IF EXISTS "payload_locked_documents_rels_testimonials_fk";
+  DROP INDEX IF EXISTS "payload_locked_documents_rels_testimonials_id_idx";
+  ALTER TABLE "payload_locked_documents_rels" DROP COLUMN IF EXISTS "testimonials_id";
+  DROP TABLE IF EXISTS "testimonials" CASCADE;`)
+}
+
+export async function down({ db, payload, req }: MigrateDownArgs): Promise<void> {
+  await db.execute(sql`
+   CREATE TABLE "testimonials" (
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_order" varchar,
+  	"theme" varchar NOT NULL,
+  	"quote" varchar NOT NULL,
+  	"cite" varchar NOT NULL,
+  	"spotlight" boolean DEFAULT false,
+  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+  );
+  
+  ALTER TABLE "payload_locked_documents_rels" ADD COLUMN "testimonials_id" integer;
+  CREATE INDEX "testimonials__order_idx" ON "testimonials" USING btree ("_order");
+  CREATE INDEX "testimonials_updated_at_idx" ON "testimonials" USING btree ("updated_at");
+  CREATE INDEX "testimonials_created_at_idx" ON "testimonials" USING btree ("created_at");
+  ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_testimonials_fk" FOREIGN KEY ("testimonials_id") REFERENCES "public"."testimonials"("id") ON DELETE cascade ON UPDATE no action;
+  CREATE INDEX "payload_locked_documents_rels_testimonials_id_idx" ON "payload_locked_documents_rels" USING btree ("testimonials_id");`)
+}
