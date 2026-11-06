@@ -2,12 +2,10 @@ import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-postgres'
 
 export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   await db.execute(sql`
-   ALTER TABLE "testimonials" DISABLE ROW LEVEL SECURITY;
-  DROP TABLE "testimonials" CASCADE;
-  ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_testimonials_fk";
-  
-  DROP INDEX "payload_locked_documents_rels_testimonials_id_idx";
-  ALTER TABLE "payload_locked_documents_rels" DROP COLUMN "testimonials_id";`)
+   ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT IF EXISTS "payload_locked_documents_rels_testimonials_fk";
+  DROP INDEX IF EXISTS "payload_locked_documents_rels_testimonials_id_idx";
+  ALTER TABLE "payload_locked_documents_rels" DROP COLUMN IF EXISTS "testimonials_id";
+  DROP TABLE IF EXISTS "testimonials" CASCADE;`)
 }
 
 export async function down({ db, payload, req }: MigrateDownArgs): Promise<void> {
