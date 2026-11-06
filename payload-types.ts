@@ -899,7 +899,6 @@ export interface ContactPage {
   };
   faqsSection: {
     title: string;
-    lead: string;
   };
   seo: {
     title: string;
@@ -1391,7 +1390,6 @@ export interface ContactPageSelect<T extends boolean = true> {
     | T
     | {
         title?: T;
-        lead?: T;
       };
   seo?:
     | T

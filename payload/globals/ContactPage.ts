@@ -125,7 +125,6 @@ export const ContactPage: GlobalConfig = {
           description: "The questions themselves are edited under Content → FAQs.",
           fields: [
             { name: "title", label: "Heading", type: "text", required: true },
-            { name: "lead", type: "textarea", required: true },
           ],
         },
         {
