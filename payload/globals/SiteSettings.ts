@@ -21,6 +21,12 @@ export const SiteSettings: GlobalConfig = {
       fields: [
         { name: "email", type: "email", required: true },
         {
+          name: "phone",
+          label: "Phone number",
+          type: "text",
+          admin: { description: "Cara's phone number, shown next to the email in the contact section and footer. Leave blank to hide." },
+        },
+        {
           name: "location",
           type: "text",
           required: true,

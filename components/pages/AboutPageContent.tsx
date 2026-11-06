@@ -84,9 +84,6 @@ export function AboutPageContent({ content, closingCta }: AboutPageContentProps)
                         />
                       ) : null}
                     </div>
-                    <figcaption className={"type-label about-story-tag absolute left-1/2 bottom-[5%] z-[4] max-w-[calc(100%-1.5rem)] -translate-x-1/2 rounded-full border border-pastel-lilac/20 bg-white/95 px-[1.05rem] py-[.58rem] text-center whitespace-nowrap shadow-[0_10px_28px_rgba(179,162,254,.12)] backdrop-blur-[8px] max-md:whitespace-normal"}>
-                      {story.caption}
-                    </figcaption>
                   </figure>
                 </div>
               </div>

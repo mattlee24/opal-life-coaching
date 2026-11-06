@@ -17,7 +17,7 @@ import {
  * (see payload/livePreview.ts). Not linked from the site and never indexed.
  */
 export default function ComponentPreview(props: ComponentPreviewProps) {
-  const { component, home, contact, closingCta, testimonials, faqs } = props;
+  const { component, home, contact, closingCta, faqs } = props;
 
   return (
     <>
@@ -33,7 +33,7 @@ export default function ComponentPreview(props: ComponentPreviewProps) {
       {component === "footer" ? <Footer /> : null}
       {component === "closing-cta" && closingCta ? <ClosingInvitationCta content={closingCta} /> : null}
       {component === "testimonials" && home ? (
-        <Testimonials content={home.testimonialsSection} testimonials={testimonials} />
+        <Testimonials content={home.testimonialsSection} />
       ) : null}
       {component === "faqs" && contact ? <Faqs content={contact.faqsSection} faqs={faqs} /> : null}
     </>

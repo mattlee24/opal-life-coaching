@@ -137,11 +137,6 @@ export const Services: CollectionConfig = {
                 { name: "text", type: "textarea", required: true },
               ],
             },
-            imageField("sessionsImage", "Booking section photo", {
-              admin: {
-                description: "Optional — defaults to the photo set in “Service page sections”.",
-              },
-            }),
           ],
         },
         {

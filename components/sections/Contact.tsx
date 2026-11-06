@@ -8,7 +8,7 @@ import { Select } from "@/components/ui/Select";
 import { SocialLink, useHasSocialLinks } from "@/components/ui/SocialLink";
 import { useSiteSettings } from "@/components/layout/LayoutDataContext";
 import { cn } from "@/lib/cn";
-import { textList, type ContactPage } from "@/lib/cms-types";
+import type { ContactPage } from "@/lib/cms-types";
 
 type SessionIcon = NonNullable<ContactPage["contact"]["sessionOptions"]>[number]["icon"];
 
@@ -34,11 +34,10 @@ type ContactProps = {
 };
 
 export function Contact({ content, offsetHeader }: ContactProps) {
-  const { email } = useSiteSettings();
+  const { email, phone } = useSiteSettings();
   const showSocial = useHasSocialLinks();
   const intro = content.contact;
   const form = content.form;
-  const trust = textList(intro.trust);
   const sessionOptions = intro.sessionOptions ?? [];
   return (
     <section
@@ -61,9 +60,6 @@ export function Contact({ content, offsetHeader }: ContactProps) {
               </h2>
               <OpalSep wide className={"my-[1.25rem] mb-[1.5rem] w-[min(440px,100%)] max-lg:mx-auto"} />
             </header>
-            <p className={"contact-lead type-body mb-[2.35rem] max-w-[38ch] max-lg:mx-auto"}>
-              {intro.lead}
-            </p>
             <div className={"contact-channels flex flex-col gap-[clamp(1.85rem,3.5vw,2.35rem)] max-lg:mx-auto max-lg:w-[min(480px,100%)] max-lg:items-center max-lg:text-center"}>
               <a className={"contact-email flex max-w-[36ch] flex-col gap-[.3rem]"} href={`mailto:${email}`}>
                 <span className={"contact-email-label type-title"}>{intro.emailLabel}</span>
@@ -72,6 +68,12 @@ export function Contact({ content, offsetHeader }: ContactProps) {
                   {intro.emailNote}
                 </span>
               </a>
+              {phone ? (
+                <a className={"contact-phone flex max-w-[36ch] flex-col gap-[.3rem]"} href={`tel:${phone.replace(/[^+\d]/g, "")}`}>
+                  <span className={"contact-phone-label type-title"}>Call or text</span>
+                  <span className={"contact-phone-number type-body text-blue! underline decoration-pastel-lilac/50 underline-offset-4 transition-colors hover:text-[#152570]!"}>{phone}</span>
+                </a>
+              ) : null}
               {showSocial ? (
               <div className={"contact-social-group flex flex-col gap-[.85rem]"}>
                 <span className={"contact-social-label type-title"}>{intro.socialLabel}</span>
@@ -117,11 +119,6 @@ export function Contact({ content, offsetHeader }: ContactProps) {
                 </p>
               ))}
             </div>
-            <div className={"contact-trust relative mt-[clamp(1.75rem,3vw,2.25rem)] flex flex-wrap gap-x-[1.35rem] gap-y-[.55rem] pt-[1.6rem] max-lg:justify-center"} aria-label="Contact reassurance">
-              {trust.map((item) => (
-                <span key={item} className={"type-body inline-flex items-center gap-[.45rem]"}>{item}</span>
-              ))}
-            </div>
             <Link
               href="/bookings"
               className={"mt-[1.75rem] inline-flex items-center justify-center self-start rounded-[4px] border-2 border-pastel-lilac bg-pastel-lilac px-8 py-[.95rem] text-[.74rem] font-bold uppercase tracking-[.1em] text-white shadow-[0_12px_36px_rgba(179,162,254,.34),0_4px_12px_rgba(179,162,254,.18)] transition-[transform,box-shadow,background,border-color] duration-200 ease-opal hover:-translate-y-0.5 hover:border-[#a894fc] hover:bg-[#a894fc] hover:shadow-[0_16px_42px_rgba(179,162,254,.4),0_6px_16px_rgba(179,162,254,.22)] motion-reduce:hover:translate-y-0 max-lg:self-center"}
@@ -140,9 +137,6 @@ export function Contact({ content, offsetHeader }: ContactProps) {
             <h3 className={"type-title"}>{form.title}</h3>
             <p className={"form-note type-body"}>
               {form.note}
-            </p>
-            <p className={"form-promise type-body mt-[-.25rem] inline-flex items-center gap-[.45rem] text-[#9580f5]!"}>
-              {form.promise}
             </p>
             <div className={"form-field flex flex-col gap-[.45rem]"}>
               <label htmlFor="cf-name" className={"type-label text-blue!"}>

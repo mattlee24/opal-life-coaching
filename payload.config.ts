@@ -9,7 +9,6 @@ import { fileURLToPath } from "url";
 import { Faqs } from "./payload/collections/Faqs";
 import { Media } from "./payload/collections/Media";
 import { Services } from "./payload/collections/Services";
-import { Testimonials } from "./payload/collections/Testimonials";
 import { Users } from "./payload/collections/Users";
 import { AboutPage } from "./payload/globals/AboutPage";
 import { ClosingCta } from "./payload/globals/ClosingCta";
@@ -50,7 +49,7 @@ export default buildConfig({
     },
   },
   folders: {},
-  collections: [Services, Testimonials, Faqs, Media, Users],
+  collections: [Services, Faqs, Media, Users],
   globals: [HomePage, AboutPage, ContactPage, Header, Footer, ClosingCta, ServicePageSections, SiteSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",

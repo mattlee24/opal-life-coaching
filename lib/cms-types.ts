@@ -14,7 +14,6 @@ import type {
   Service,
   ServicePageSection,
   SiteSetting,
-  Testimonial,
 } from "@/payload-types";
 
 export type {
@@ -29,7 +28,6 @@ export type {
   Service,
   ServicePageSection,
   SiteSetting,
-  Testimonial,
 };
 
 export type ServiceSlug = Service["slug"];

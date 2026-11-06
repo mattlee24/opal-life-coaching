@@ -1,8 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { OpalSep } from "@/components/ui/OpalSep";
-import { Reveal } from "@/components/ui/Reveal";
 import { SiteImage } from "@/components/ui/SiteImage";
 import { SocialLink, useHasSocialLinks } from "@/components/ui/SocialLink";
 import { useLayoutData } from "@/components/layout/LayoutDataContext";
@@ -27,21 +25,7 @@ export function Footer() {
           className={"footer-sprig absolute bottom-[clamp(5rem,12vh,8rem)] right-[clamp(.5rem,3vw,2.5rem)] w-[clamp(58px,6.5vw,84px)] scale-x-[-1] opacity-22 [filter:drop-shadow(0_6px_16px_rgba(179,162,254,.1))] max-lg:opacity-14"}
         />
       </div>
-      <Reveal className={"footer-calm relative z-[2] px-0 pt-[clamp(5.5rem,11vw,7.5rem)] pb-[clamp(2.25rem,4.5vw,3rem)] text-center"}>
-        <div className={cn("site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]", "footer-calm-inner relative mx-auto max-w-[700px] px-2")}>
-          <h2 className={"type-heading mb-[.75rem]"}>
-            {footer.title}
-            <span className={"type-script mt-[.2rem] block [text-shadow:0_0_40px_rgba(255,255,255,.65)]"}>
-              {footer.script}
-            </span>
-          </h2>
-          <p className={"type-body mx-auto mb-[1.85rem] max-w-[44ch]"}>
-            {footer.calmText}
-          </p>
-          <OpalSep center wide />
-        </div>
-      </Reveal>
-      <div className={cn("site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]", "footer-main relative z-[2] pb-[clamp(1.5rem,3vw,2rem)]")}>
+      <div className={cn("site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]", "footer-main relative z-[2] pt-[clamp(3rem,6vw,4.5rem)] pb-[clamp(2.5rem,5vw,3.5rem)]")}>
         <div className={"footer-grid grid justify-items-center gap-[clamp(2rem,4vw,3.5rem)] py-[clamp(2.35rem,4.5vw,3rem)] pb-[clamp(1rem,2vw,1.25rem)] max-lg:grid-cols-1 max-lg:justify-items-start max-lg:gap-8 md:grid-cols-[1.15fr_1fr_1fr]"}>
           <div className={"footer-brand flex w-[min(100%,34ch)] flex-col items-start text-left max-lg:w-full"}>
             <Link className={"footer-logo-wrap relative mb-[1.2rem] inline-block rounded-full bg-[linear-gradient(145deg,rgba(179,162,254,.45),rgba(188,228,222,.38)_50%,rgba(179,162,254,.35))] p-1 shadow-[0_10px_28px_rgba(179,162,254,.16)]"} href="/">
@@ -78,6 +62,13 @@ export function Footer() {
                 {settings.email}
               </a>
             </p>
+            {settings.phone ? (
+              <p className={"type-body mb-[.6rem]"}>
+                <a href={`tel:${settings.phone.replace(/[^+\d]/g, "")}`} className={"border-b border-pastel-lilac/35 text-blue transition-[border-color,color] hover:border-[#9580f5]"}>
+                  {settings.phone}
+                </a>
+              </p>
+            ) : null}
             {textList(footer.locationLines).map((line) => (
               <p key={line} className={"type-body mb-[.6rem]"}>{line}</p>
             ))}
@@ -122,9 +113,6 @@ export function Footer() {
           )}
         >
           <span suppressHydrationWarning>© {year} {footer.copyrightName}. All rights reserved.</span>
-          <span>
-            <Link href={footer.bottomLink.href} className={"font-normal text-blue underline decoration-pastel-lilac/50 underline-offset-4"}>{footer.bottomLink.label}</Link>
-          </span>
         </div>
       </div>
     </footer>

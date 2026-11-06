@@ -20,7 +20,6 @@ export const AboutPage: GlobalConfig = {
             { name: "lead", type: "textarea", required: true },
             linkField("primaryCta", "Primary button"),
             linkField("secondaryCta", "Secondary button"),
-            textListField("trust", "Highlights", { singular: "Highlight", plural: "Highlights", maxRows: 4 }),
             { name: "badge", label: "Photo badge", type: "text", required: true },
             imageField("portrait", "Portrait", { required: true }),
           ],

@@ -33,7 +33,7 @@ const sectionMaps: { match: RegExp; sections: Record<string, string> }[] = [
   },
   {
     match: /^\/admin\/globals\/service-page-sections/,
-    sections: { hero: "hero", overview: "overview", benefits: "benefits", sessions: "sessions" },
+    sections: { hero: "hero", overview: "overview", benefits: "benefits" },
   },
   {
     match: /^\/admin\/collections\/services\/[^/]+/,
@@ -49,7 +49,6 @@ const sectionMaps: { match: RegExp; sections: Record<string, string> }[] = [
       pullQuote: "overview",
       overview: "overview",
       benefits: "benefits",
-      sessionsImage: "sessions",
     },
   },
 ];

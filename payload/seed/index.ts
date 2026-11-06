@@ -57,7 +57,7 @@ function resolveMedia<T>(value: T, ids: Map<string, number>): T {
   return value;
 }
 
-async function upsert<C extends "services" | "testimonials" | "faqs">(
+async function upsert<C extends "services" | "faqs">(
   payload: Payload,
   collection: C,
   key: string,
@@ -116,7 +116,6 @@ async function seed() {
 
   const ids = await seedMedia(payload);
   await upsert(payload, "services", "slug", resolveMedia(data.services, ids));
-  await upsert(payload, "testimonials", "theme", data.testimonials);
   await upsert(payload, "faqs", "question", data.faqs);
   await seedGlobals(payload, ids);
 

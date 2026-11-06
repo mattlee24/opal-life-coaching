@@ -22,8 +22,6 @@ function collectionPreviewPath(slug: string, data: Record<string, unknown>) {
   switch (slug) {
     case "services":
       return typeof data.slug === "string" ? `/${data.slug}` : "/coaching";
-    case "testimonials":
-      return "/preview/testimonials";
     case "faqs":
       return "/preview/faqs";
     default:
@@ -34,7 +32,7 @@ function collectionPreviewPath(slug: string, data: Record<string, unknown>) {
 export const livePreview: RootLivePreviewConfig = {
   openByDefault: true,
   globals: Object.keys(globalPreviewPaths),
-  collections: ["services", "testimonials", "faqs"],
+  collections: ["services", "faqs"],
   breakpoints: [
     { name: "mobile", label: "Mobile", width: 390, height: 844 },
     { name: "tablet", label: "Tablet", width: 820, height: 1180 },
@@ -50,7 +48,7 @@ export const livePreview: RootLivePreviewConfig = {
     if (!origin || !path) return null;
 
     // The query flag switches on live updates in the page; the id tells a list
-    // (testimonials, FAQs) which item is being edited.
+    // (FAQs) which item is being edited.
     const [pathname, hash] = path.split("#");
     const params = new URLSearchParams({ [LIVE_PREVIEW_PARAM]: "1" });
     if (collectionConfig && data.id) params.set("previewId", String(data.id));

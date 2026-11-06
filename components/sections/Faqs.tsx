@@ -21,9 +21,6 @@ export function Faqs({ content, faqs }: FaqsProps) {
       <div className={"site-wrap w-full max-w-[var(--max)] mx-auto px-[var(--page-x)]"}>
         <Reveal className={"faqs-head mx-auto mb-[clamp(2.5rem,5vw,3.25rem)] max-w-[640px] text-center"}>
           <h2 className={"type-heading mb-4"}>{content.title}</h2>
-          <p className={"type-body mb-6 mx-auto"}>
-            {content.lead}
-          </p>
           <OpalSep center wide />
         </Reveal>
         <Reveal delay={80}>

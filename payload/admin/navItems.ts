@@ -65,7 +65,6 @@ export async function getNavSections(payload: Payload): Promise<NavSection[]> {
         { href: "/admin/globals/footer", label: "Footer", icon: "panelBottom", description: "Welcome message, links and contact details" },
         { href: "/admin/globals/closing-cta", label: "Closing invitation", icon: "sun", description: "“Take the first step” — About and service pages" },
         { href: "/admin/globals/service-page-sections", label: "Service page layout", icon: "layers", description: "Wording shared by all three service pages" },
-        { href: "/admin/collections/testimonials", label: "Testimonials", icon: "quote", description: "Kind words shown on the home page" },
         { href: "/admin/collections/faqs", label: "FAQs", icon: "help", description: "Questions on the home and contact pages" },
       ],
     },
