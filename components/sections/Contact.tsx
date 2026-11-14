@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useRef, type ReactNode } from "react";
 import { OpalSep } from "@/components/ui/OpalSep";
 import { Reveal } from "@/components/ui/Reveal";
 import { Select } from "@/components/ui/Select";
@@ -39,6 +40,15 @@ export function Contact({ content, offsetHeader }: ContactProps) {
   const intro = content.contact;
   const form = content.form;
   const sessionOptions = intro.sessionOptions ?? [];
+  const messageRef = useRef<HTMLTextAreaElement>(null);
+  const { isReady, query } = useRouter();
+  // "Enquire now" on an event links here with ?event=…; start the message for them.
+  const enquiry = isReady && typeof query.event === "string" ? query.event.slice(0, 200) : "";
+  useEffect(() => {
+    const field = messageRef.current;
+    if (!enquiry || !field || field.value.trim()) return;
+    field.value = `Hi Cara, I'd like to enquire about ${enquiry}.\n\n`;
+  }, [enquiry]);
   return (
     <section
       className={cn(
@@ -183,6 +193,7 @@ export function Contact({ content, offsetHeader }: ContactProps) {
                 {form.messageLabel}
               </label>
               <textarea
+                ref={messageRef}
                 id="cf-message"
                 name="message"
                 required

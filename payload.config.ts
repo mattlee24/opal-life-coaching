@@ -6,6 +6,7 @@ import { buildConfig } from "payload";
 import sharp from "sharp";
 import { fileURLToPath } from "url";
 
+import { Events } from "./payload/collections/Events";
 import { Faqs } from "./payload/collections/Faqs";
 import { Media } from "./payload/collections/Media";
 import { Services } from "./payload/collections/Services";
@@ -49,7 +50,7 @@ export default buildConfig({
     },
   },
   folders: {},
-  collections: [Services, Faqs, Media, Users],
+  collections: [Services, Events, Faqs, Media, Users],
   globals: [HomePage, AboutPage, ContactPage, Header, Footer, ClosingCta, ServicePageSections, SiteSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
