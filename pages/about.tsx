@@ -3,11 +3,11 @@ import { AboutPageContent } from "@/components/pages/AboutPageContent";
 import { SeoHead } from "@/components/layout/SeoHead";
 import { getAboutPageProps, REVALIDATE_SECONDS, type AboutPageProps } from "@/lib/cms";
 
-export default function AboutPage({ about, closingCta }: AboutPageProps) {
+export default function AboutPage({ about }: AboutPageProps) {
   return (
     <>
       <SeoHead title={about.seo.title} description={about.seo.description} path="/about" />
-      <AboutPageContent content={about} closingCta={closingCta} />
+      <AboutPageContent content={about} />
     </>
   );
 }

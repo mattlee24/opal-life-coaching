@@ -846,33 +846,12 @@ export interface AboutPage {
      */
     script: string;
     sub: string;
-    lead: string;
-    detail: string;
-    facts?:
-      | {
-          text: string;
-          id?: string | null;
-        }[]
-      | null;
-    image: number | Media;
-    caption: string;
-  };
-  essence: {
-    title: string;
     /**
-     * Shown in the handwritten accent font.
+     * Each section can have an optional heading. Leave a blank line in the text to start a new paragraph.
      */
-    script: string;
-    intro: string;
-    /**
-     * Large faint background words.
-     */
-    watermark?: string | null;
-    items?:
+    sections?:
       | {
-          icon: 'pace' | 'personal' | 'holistic';
-          accent: 'personal' | 'holistic' | 'pace';
-          title: string;
+          heading?: string | null;
           text: string;
           id?: string | null;
         }[]
@@ -884,7 +863,6 @@ export interface AboutPage {
      * Shown in the handwritten accent font.
      */
     script: string;
-    intro: string;
     steps?:
       | {
           icon: 'pace' | 'personal' | 'holistic';
@@ -1350,30 +1328,10 @@ export interface AboutPageSelect<T extends boolean = true> {
         title?: T;
         script?: T;
         sub?: T;
-        lead?: T;
-        detail?: T;
-        facts?:
+        sections?:
           | T
           | {
-              text?: T;
-              id?: T;
-            };
-        image?: T;
-        caption?: T;
-      };
-  essence?:
-    | T
-    | {
-        title?: T;
-        script?: T;
-        intro?: T;
-        watermark?: T;
-        items?:
-          | T
-          | {
-              icon?: T;
-              accent?: T;
-              title?: T;
+              heading?: T;
               text?: T;
               id?: T;
             };
@@ -1383,7 +1341,6 @@ export interface AboutPageSelect<T extends boolean = true> {
     | {
         title?: T;
         script?: T;
-        intro?: T;
         steps?:
           | T
           | {

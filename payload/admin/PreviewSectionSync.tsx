@@ -25,7 +25,7 @@ const sectionMaps: { match: RegExp; sections: Record<string, string> }[] = [
   },
   {
     match: /^\/admin\/globals\/about-page/,
-    sections: { hero: "about-hero", story: "story", essence: "essence", path: "path" },
+    sections: { hero: "about-hero", story: "story", path: "path" },
   },
   {
     match: /^\/admin\/globals\/contact-page/,

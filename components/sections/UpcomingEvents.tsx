@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DecorativeImage } from "@/components/ui/DecorativeImage";
 import { OpalSep } from "@/components/ui/OpalSep";
 import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/cn";
@@ -27,13 +28,22 @@ export function UpcomingEvents({ content, events }: UpcomingEventsProps) {
 
   return (
     <section
-      className={"upcoming-events relative isolate overflow-hidden bg-[linear-gradient(180deg,#f7faf8_0%,#fcfbff_100%)] py-[clamp(3.5rem,7vw,5.5rem)]"}
+      className={"upcoming-events relative isolate overflow-hidden bg-[#f3f0fa] py-[clamp(3.5rem,7vw,5.5rem)]"}
       id="events"
       aria-labelledby="events-heading"
     >
-      <div
-        className={"pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_50%_60%_at_12%_18%,rgba(179,162,254,.16),transparent_68%),radial-gradient(ellipse_46%_58%_at_90%_82%,rgba(188,228,222,.26),transparent_66%)]"}
-        aria-hidden="true"
+      <div className={"upcoming-events-scene pointer-events-none absolute inset-0 z-0"} aria-hidden="true" />
+      <DecorativeImage
+        src="/assets/sprig-fern.svg"
+        width={48}
+        height={96}
+        className={"upcoming-events-float upcoming-events-float--tl pointer-events-none absolute z-0"}
+      />
+      <DecorativeImage
+        src="/assets/nature-leaf-opal.svg"
+        width={80}
+        height={80}
+        className={"upcoming-events-float upcoming-events-float--br pointer-events-none absolute z-0"}
       />
       <div className={"site-wrap relative z-[1] mx-auto w-full max-w-[var(--max)] px-[var(--page-x)]"}>
         <Reveal className={"mx-auto mb-[clamp(2.25rem,4.5vw,3rem)] max-w-[640px] text-center"}>
@@ -58,9 +68,10 @@ export function UpcomingEvents({ content, events }: UpcomingEventsProps) {
               <Reveal delay={index * 90} fill className={"flex w-full"}>
                 <article
                   className={
-                    "flex w-full gap-[clamp(1.1rem,2.5vw,1.6rem)] rounded-[22px] border border-pastel-lilac/18 bg-white/88 p-[clamp(1.4rem,3vw,2rem)] shadow-[0_22px_56px_rgba(179,162,254,.12),0_10px_28px_rgba(93,138,111,.07)] backdrop-blur-[6px] max-sm:flex-col"
+                    "relative flex w-full gap-[clamp(1.1rem,2.5vw,1.6rem)] rounded-[22px] bg-[linear-gradient(180deg,rgba(255,255,255,.94)_0%,rgba(250,248,255,.92)_55%,rgba(246,250,247,.92)_100%)] px-[clamp(2.1rem,3.6vw,2.75rem)] py-[clamp(2.25rem,3.8vw,2.85rem)] shadow-[0_22px_56px_rgba(179,162,254,.12),0_10px_28px_rgba(93,138,111,.07)] backdrop-blur-[6px] max-sm:flex-col"
                   }
                 >
+                  <span className={"vine-frame"} aria-hidden="true" />
                   <time
                     dateTime={event.date.slice(0, 10)}
                     className={

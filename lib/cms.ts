@@ -103,17 +103,15 @@ export async function getHomePageProps(): Promise<HomePageProps> {
 export type AboutPageProps = {
   layout: LayoutData;
   about: AboutPage;
-  closingCta: ClosingCta;
 };
 
 export async function getAboutPageProps(): Promise<AboutPageProps> {
   const client = await payload();
-  const [layout, about, closingCta] = await Promise.all([
+  const [layout, about] = await Promise.all([
     getLayoutData(),
     client.findGlobal({ slug: "about-page", depth: 1 }),
-    client.findGlobal({ slug: "closing-cta", depth: 0 }),
   ]);
-  return serialize({ layout, about, closingCta });
+  return serialize({ layout, about });
 }
 
 export type ContactPageProps = {

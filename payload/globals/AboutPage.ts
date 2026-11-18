@@ -1,5 +1,5 @@
 import type { GlobalConfig } from "payload";
-import { headingFields, iconChoiceField, imageField, linkField, seoField, textListField } from "../fields";
+import { headingFields, iconChoiceField, imageField, linkField, seoField } from "../fields";
 import { revalidateGlobalHooks } from "../hooks/revalidateSite";
 
 export const AboutPage: GlobalConfig = {
@@ -30,45 +30,17 @@ export const AboutPage: GlobalConfig = {
           fields: [
             ...headingFields({ scriptRequired: true }),
             { name: "sub", label: "Subheading", type: "textarea", required: true },
-            { name: "lead", label: "Opening paragraph", type: "textarea", required: true },
-            { name: "detail", label: "Second paragraph", type: "textarea", required: true },
-            textListField("facts", "Facts", { singular: "Fact", plural: "Facts", maxRows: 4 }),
-            imageField("image", "Photo", { required: true }),
-            { name: "caption", type: "text", required: true },
-          ],
-        },
-        {
-          label: "What guides me",
-          name: "essence",
-          fields: [
-            ...headingFields({ scriptRequired: true }),
-            { name: "intro", type: "textarea", required: true },
-            { name: "watermark", type: "text", admin: { description: "Large faint background words." } },
             {
-              name: "items",
+              name: "sections",
+              label: "Text in the bordered panel",
               type: "array",
-              labels: { singular: "Principle", plural: "Principles" },
-              minRows: 3,
-              maxRows: 3,
+              labels: { singular: "Section", plural: "Sections" },
+              minRows: 1,
+              admin: {
+                description: "Each section can have an optional heading. Leave a blank line in the text to start a new paragraph.",
+              },
               fields: [
-                {
-                  type: "row",
-                  fields: [
-                    iconChoiceField(),
-                    {
-                      name: "accent",
-                      label: "Colour accent",
-                      type: "select",
-                      required: true,
-                      options: [
-                        { label: "Personal (lilac)", value: "personal" },
-                        { label: "Holistic (sage)", value: "holistic" },
-                        { label: "Pace (opal)", value: "pace" },
-                      ],
-                    },
-                  ],
-                },
-                { name: "title", type: "text", required: true },
+                { name: "heading", type: "text" },
                 { name: "text", type: "textarea", required: true },
               ],
             },
@@ -79,7 +51,6 @@ export const AboutPage: GlobalConfig = {
           name: "path",
           fields: [
             ...headingFields({ scriptRequired: true }),
-            { name: "intro", type: "textarea", required: true },
             {
               name: "steps",
               type: "array",
