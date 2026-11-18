@@ -18,6 +18,8 @@ import * as migration_20261105_170000_add_overview_quote from './20261105_170000
 import * as migration_20261105_180000_remove_service_sessions_section from './20261105_180000_remove_service_sessions_section';
 import * as migration_20261105_190000_remove_overview_caption from './20261105_190000_remove_overview_caption';
 import * as migration_20261105_200000_remove_about_hero_trust from './20261105_200000_remove_about_hero_trust';
+import * as migration_20261114_120000_add_events from './20261114_120000_add_events';
+import * as migration_20261118_120000_about_story_sections from './20261118_120000_about_story_sections';
 
 export const migrations = [
   {
@@ -114,5 +116,15 @@ export const migrations = [
     up: migration_20261105_200000_remove_about_hero_trust.up,
     down: migration_20261105_200000_remove_about_hero_trust.down,
     name: '20261105_200000_remove_about_hero_trust',
+  },
+  {
+    up: migration_20261114_120000_add_events.up,
+    down: migration_20261114_120000_add_events.down,
+    name: '20261114_120000_add_events',
+  },
+  {
+    up: migration_20261118_120000_about_story_sections.up,
+    down: migration_20261118_120000_about_story_sections.down,
+    name: '20261118_120000_about_story_sections',
   },
 ];

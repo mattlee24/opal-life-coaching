@@ -8,6 +8,7 @@ import type {
   AboutPage,
   ClosingCta,
   ContactPage,
+  Event,
   Faq,
   HomePage,
   LayoutData,
@@ -51,33 +52,66 @@ export type HomePageProps = {
   home: HomePage;
   contact: ContactPage;
   faqs: Faq[];
+  events: Event[];
 };
+
+/**
+ * Events from today onwards, soonest first. An event stays listed for its whole day
+ * (dates are stored at midnight). Pages regenerate at least hourly, so past events
+ * drop off without anyone having to delete them.
+ */
+async function findUpcomingEvents(): Promise<Event[]> {
+  const client = await payload();
+  const startOfToday = new Date();
+  startOfToday.setUTCHours(0, 0, 0, 0);
+  // A day's grace covers dates saved at local midnight (e.g. 23:00 UTC the day before).
+  startOfToday.setUTCDate(startOfToday.getUTCDate() - 1);
+  try {
+    const result = await client.find({
+      collection: "events",
+      where: { date: { greater_than_equal: startOfToday.toISOString() } },
+      sort: "date",
+      limit: 12,
+      depth: 0,
+    });
+    const today = new Date().toISOString().slice(0, 10);
+    return result.docs.filter((event) => londonDay(event.date) >= today);
+  } catch (error) {
+    // Never let events take the home page down (e.g. before the migration has run).
+    client.logger.warn(`Could not load events: ${(error as Error).message}`);
+    return [];
+  }
+}
+
+/** The calendar day (YYYY-MM-DD) a stored date falls on in the UK. */
+function londonDay(iso: string) {
+  return new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/London" }).format(new Date(iso));
+}
 
 export async function getHomePageProps(): Promise<HomePageProps> {
   const client = await payload();
-  const [layout, home, contact, faqs] = await Promise.all([
+  const [layout, home, contact, faqs, events] = await Promise.all([
     getLayoutData(),
     client.findGlobal({ slug: "home-page", depth: 1 }),
     client.findGlobal({ slug: "contact-page", depth: 0 }),
     client.find({ collection: "faqs", sort: "_order", limit: 50, depth: 0 }),
+    findUpcomingEvents(),
   ]);
-  return serialize({ layout, home, contact, faqs: faqs.docs });
+  return serialize({ layout, home, contact, faqs: faqs.docs, events });
 }
 
 export type AboutPageProps = {
   layout: LayoutData;
   about: AboutPage;
-  closingCta: ClosingCta;
 };
 
 export async function getAboutPageProps(): Promise<AboutPageProps> {
   const client = await payload();
-  const [layout, about, closingCta] = await Promise.all([
+  const [layout, about] = await Promise.all([
     getLayoutData(),
     client.findGlobal({ slug: "about-page", depth: 1 }),
-    client.findGlobal({ slug: "closing-cta", depth: 0 }),
   ]);
-  return serialize({ layout, about, closingCta });
+  return serialize({ layout, about });
 }
 
 export type ContactPageProps = {

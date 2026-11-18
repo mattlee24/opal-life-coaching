@@ -68,6 +68,7 @@ export interface Config {
   blocks: {};
   collections: {
     services: Service;
+    events: Event;
     faqs: Faq;
     media: Media;
     users: User;
@@ -84,6 +85,7 @@ export interface Config {
   };
   collectionsSelect: {
     services: ServicesSelect<false> | ServicesSelect<true>;
+    events: EventsSelect<false> | EventsSelect<true>;
     faqs: FaqsSelect<false> | FaqsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
@@ -295,6 +297,31 @@ export interface FolderInterface {
   createdAt: string;
 }
 /**
+ * Shown in “Upcoming events” on the home page, soonest first. Events drop off the site automatically the day after they happen.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events".
+ */
+export interface Event {
+  id: number;
+  /**
+   * e.g. “Mini tarot readings”.
+   */
+  title: string;
+  date: string;
+  /**
+   * Optional, e.g. “10am – 4pm”.
+   */
+  time?: string | null;
+  /**
+   * Optional, e.g. the shop name and town.
+   */
+  location?: string | null;
+  description: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * Shown on the home and contact pages, in this order. Drag to reorder.
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -362,6 +389,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'services';
         value: number | Service;
+      } | null)
+    | ({
+        relationTo: 'events';
+        value: number | Event;
       } | null)
     | ({
         relationTo: 'faqs';
@@ -494,6 +525,19 @@ export interface ServicesSelect<T extends boolean = true> {
         id?: T;
       };
   bookingLabel?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events_select".
+ */
+export interface EventsSelect<T extends boolean = true> {
+  title?: T;
+  date?: T;
+  time?: T;
+  location?: T;
+  description?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -647,6 +691,18 @@ export interface HomePage {
         id?: string | null;
       }[]
     | null;
+  eventsSection: {
+    title: string;
+    /**
+     * Shown in the handwritten accent font.
+     */
+    script: string;
+    lead?: string | null;
+    /**
+     * e.g. “Enquire now”. Opens the contact form with the event filled in.
+     */
+    buttonLabel: string;
+  };
   servicesSection: {
     title: string;
     /**
@@ -790,33 +846,12 @@ export interface AboutPage {
      */
     script: string;
     sub: string;
-    lead: string;
-    detail: string;
-    facts?:
-      | {
-          text: string;
-          id?: string | null;
-        }[]
-      | null;
-    image: number | Media;
-    caption: string;
-  };
-  essence: {
-    title: string;
     /**
-     * Shown in the handwritten accent font.
+     * Each section can have an optional heading. Leave a blank line in the text to start a new paragraph.
      */
-    script: string;
-    intro: string;
-    /**
-     * Large faint background words.
-     */
-    watermark?: string | null;
-    items?:
+    sections?:
       | {
-          icon: 'pace' | 'personal' | 'holistic';
-          accent: 'personal' | 'holistic' | 'pace';
-          title: string;
+          heading?: string | null;
           text: string;
           id?: string | null;
         }[]
@@ -828,7 +863,6 @@ export interface AboutPage {
      * Shown in the handwritten accent font.
      */
     script: string;
-    intro: string;
     steps?:
       | {
           icon: 'pace' | 'personal' | 'holistic';
@@ -1072,7 +1106,7 @@ export interface ServicePageSection {
       href: string;
     };
   };
-  overview: {
+  overview?: {
     /**
      * Shown on every service page. Put each paragraph on its own line. Leave empty to use each service's own pull quote.
      */
@@ -1166,6 +1200,14 @@ export interface HomePageSelect<T extends boolean = true> {
         title?: T;
         description?: T;
         id?: T;
+      };
+  eventsSection?:
+    | T
+    | {
+        title?: T;
+        script?: T;
+        lead?: T;
+        buttonLabel?: T;
       };
   servicesSection?:
     | T
@@ -1286,30 +1328,10 @@ export interface AboutPageSelect<T extends boolean = true> {
         title?: T;
         script?: T;
         sub?: T;
-        lead?: T;
-        detail?: T;
-        facts?:
+        sections?:
           | T
           | {
-              text?: T;
-              id?: T;
-            };
-        image?: T;
-        caption?: T;
-      };
-  essence?:
-    | T
-    | {
-        title?: T;
-        script?: T;
-        intro?: T;
-        watermark?: T;
-        items?:
-          | T
-          | {
-              icon?: T;
-              accent?: T;
-              title?: T;
+              heading?: T;
               text?: T;
               id?: T;
             };
@@ -1319,7 +1341,6 @@ export interface AboutPageSelect<T extends boolean = true> {
     | {
         title?: T;
         script?: T;
-        intro?: T;
         steps?:
           | T
           | {

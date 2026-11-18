@@ -17,7 +17,6 @@ export const previewSectionSelectors: Record<string, string> = {
   faqs: "#faqs",
   "about-hero": ".about-hero",
   story: ".about-story",
-  essence: ".about-essence",
   path: ".about-path",
   overview: ".service-overview",
   benefits: ".service-benefits",

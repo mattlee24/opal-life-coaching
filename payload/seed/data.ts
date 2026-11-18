@@ -480,7 +480,7 @@ export const globals = {
       script: "be heard",
       lead: "I help people who feel stuck, overwhelmed or at a crossroads find clarity and confidence — with warmth, intuition and absolutely no judgement.",
       primaryCta: link("Book a session", "/bookings"),
-      secondaryCta: link("Read my story", "#page-content"),
+      secondaryCta: link("Get in touch", "/contact"),
       badge: "Warm, personal & unhurried",
       portrait: media("cara-about-hero.jpg"),
     },
@@ -488,45 +488,19 @@ export const globals = {
       title: "Warmth, intuition &",
       script: "real life",
       sub: "I'm not here to fix you. You're not broken. I'm here to walk beside you while you find your footing again.",
-      lead: "I came to this work after navigating my own seasons of change — the kind that leave you questioning everything and wondering if you're the only one who feels this way. That experience taught me how much difference it makes when someone meets you with genuine warmth, not judgement.",
-      detail:
-        "Based in West Sussex, I offer sessions in Chichester and Eastergate, as well as online coaching and tarot for clients further afield. Everything is unhurried, confidential and tailored to you.",
-      facts: texts("West Sussex", "In person & online", "At your pace"),
-      image: media("about-story-room.jpg"),
-      caption: "Real conversations, real support",
-    },
-    essence: {
-      title: "Three threads,",
-      script: "one conversation",
-      intro:
-        "The work is never one fixed method. It is a gentle weaving — personal, holistic, and always at a pace that feels kind.",
-      watermark: "woven together",
-      items: [
+      sections: [
         {
-          icon: "personal",
-          accent: "personal",
-          title: "Entirely personal",
-          text: "Sessions shaped around your story — never a template. We start where you are, and let the conversation find its own shape.",
+          text: "It's important to me to be accessible to anyone that wants to work with me. So I offer face to face sessions in Eastergate, Chichester but also by phone, video and online messaging.",
         },
         {
-          icon: "holistic",
-          accent: "holistic",
-          title: "Many strands",
-          text: "Coaching, intuitive guidance and gentle healing — woven in when it helps, left aside when it doesn't.",
-        },
-        {
-          icon: "pace",
-          accent: "pace",
-          title: "At your pace",
-          text: "Unhurried, confidential support with no pressure to perform. There is room to pause, breathe, and begin again.",
+          heading: "My Personal Story",
+          text: "I came to this work after navigating my own seasons of change.\n\nThat experience taught me how much difference it makes when someone meets you with genuine warmth, not judgement.",
         },
       ],
     },
     path: {
       title: "How I work",
       script: "with you",
-      intro:
-        "A calm, collaborative space — practical when you need direction, intuitive when you need perspective, gentle when you need rest.",
       steps: [
         {
           icon: "personal",

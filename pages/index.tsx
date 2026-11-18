@@ -6,15 +6,17 @@ import { MeetCara } from "@/components/sections/MeetCara";
 import { Services } from "@/components/sections/Services";
 import { SocialFollow } from "@/components/sections/SocialFollow";
 import { Testimonials } from "@/components/sections/Testimonials";
+import { UpcomingEvents } from "@/components/sections/UpcomingEvents";
 import { Values } from "@/components/sections/Values";
 import { SeoHead } from "@/components/layout/SeoHead";
 import { getHomePageProps, REVALIDATE_SECONDS, type HomePageProps } from "@/lib/cms";
 
-export default function HomePage({ home, contact, faqs }: HomePageProps) {
+export default function HomePage({ home, contact, faqs, events }: HomePageProps) {
   return (
     <>
       <SeoHead title={home.seo.title} description={home.seo.description} path="/" />
       <Hero content={home.hero} />
+      <UpcomingEvents content={home.eventsSection} events={events} />
       <Services content={home.servicesSection} />
       <MeetCara content={home.meetCara} />
       <SocialFollow content={home.socialSection} />

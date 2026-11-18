@@ -43,6 +43,17 @@ export const HomePage: GlobalConfig = {
           ],
         },
         {
+          label: "Events",
+          name: "eventsSection",
+          description:
+            "The “Upcoming events” section just below the hero. The events themselves are added under Events; the section is hidden when none are coming up.",
+          fields: [
+            ...headingFields({ scriptRequired: true }),
+            { name: "lead", type: "textarea" },
+            { name: "buttonLabel", label: "Button label", type: "text", required: true, admin: { description: "e.g. “Enquire now”. Opens the contact form with the event filled in." } },
+          ],
+        },
+        {
           label: "Services",
           name: "servicesSection",
           fields: [
