@@ -129,7 +129,7 @@ export function ServiceOverviewSection({ data, sections }: ServiceOverviewSectio
                   <span className="service-overview-quote-mark" aria-hidden="true">
                     &ldquo;
                   </span>
-                  {paragraphs(sections.overview.quote?.trim() ? sections.overview.quote : data.pullQuote).map((text, i) => (
+                  {paragraphs(sections.overview?.quote?.trim() || data.pullQuote).map((text, i) => (
                     <p key={i} className="type-body">
                       {text}
                     </p>
