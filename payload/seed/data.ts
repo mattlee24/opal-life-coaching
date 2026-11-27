@@ -558,6 +558,7 @@ export const globals = {
         { value: "coaching", label: "Life coaching" },
         { value: "tarot", label: "Tarot readings" },
         { value: "reiki", label: "Reiki healing" },
+        { value: "events", label: "Events & workshops" },
         { value: "unsure", label: "Not sure yet" },
       ],
       messageLabel: "Your message",

@@ -297,7 +297,7 @@ export interface FolderInterface {
   createdAt: string;
 }
 /**
- * Shown in “Upcoming events” on the home page, soonest first. Events drop off the site automatically the day after they happen.
+ * Shown together in one “Upcoming events” list on the home page, soonest first. Each one has an Enquire button that pre-fills the contact form with its details. Events drop off the site automatically the day after they happen.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "events".
@@ -308,6 +308,10 @@ export interface Event {
    * e.g. “Mini tarot readings”.
    */
   title: string;
+  /**
+   * Shown as a label on the list, and added to the enquiry form when someone enquires.
+   */
+  type: 'workshop' | 'live-session' | 'pamper-event' | 'readings' | 'other';
   date: string;
   /**
    * Optional, e.g. “10am – 4pm”.
@@ -534,6 +538,7 @@ export interface ServicesSelect<T extends boolean = true> {
  */
 export interface EventsSelect<T extends boolean = true> {
   title?: T;
+  type?: T;
   date?: T;
   time?: T;
   location?: T;
