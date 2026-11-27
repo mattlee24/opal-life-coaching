@@ -7,10 +7,10 @@ export const Events: CollectionConfig = {
   defaultSort: "date",
   admin: {
     useAsTitle: "title",
-    defaultColumns: ["title", "date", "location"],
+    defaultColumns: ["title", "type", "date", "location"],
     group: false /* shown via the custom sidebar (payload/admin/navItems.ts) */,
     description:
-      "Shown in “Upcoming events” on the home page, soonest first. Events drop off the site automatically the day after they happen.",
+      "Shown together in one “Upcoming events” list on the home page, soonest first. Each one has an Enquire button that pre-fills the contact form with its details. Events drop off the site automatically the day after they happen.",
   },
   access: {
     read: () => true,
@@ -18,6 +18,20 @@ export const Events: CollectionConfig = {
   hooks: revalidateCollectionHooks,
   fields: [
     { name: "title", type: "text", required: true, admin: { description: "e.g. “Mini tarot readings”." } },
+    {
+      name: "type",
+      type: "select",
+      required: true,
+      defaultValue: "workshop",
+      options: [
+        { label: "Workshop", value: "workshop" },
+        { label: "Live session", value: "live-session" },
+        { label: "Pamper event", value: "pamper-event" },
+        { label: "Readings", value: "readings" },
+        { label: "Other", value: "other" },
+      ],
+      admin: { description: "Shown as a label on the list, and added to the enquiry form when someone enquires." },
+    },
     {
       type: "row",
       fields: [

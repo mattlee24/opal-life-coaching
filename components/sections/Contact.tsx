@@ -42,13 +42,33 @@ export function Contact({ content, offsetHeader }: ContactProps) {
   const sessionOptions = intro.sessionOptions ?? [];
   const messageRef = useRef<HTMLTextAreaElement>(null);
   const { isReady, query } = useRouter();
-  // "Enquire now" on an event links here with ?event=…; start the message for them.
-  const enquiry = isReady && typeof query.event === "string" ? query.event.slice(0, 200) : "";
+  // "Enquire" on an event links here with its details in the query string.
+  const param = (key: string) => {
+    const value = query[key];
+    return isReady && typeof value === "string" ? value.slice(0, 200).trim() : "";
+  };
+  const eventTitle = param("event");
+  const eventWhen = param("when");
+  const eventTime = param("time");
+  const eventLocation = param("location");
+  const eventType = param("type");
+  const eventName = eventTitle
+    ? `${eventTitle}${eventWhen ? ` (${eventWhen})` : ""}`
+    : "";
+  const eventSummary = [eventWhen, eventTime, eventLocation].filter(Boolean).join(" · ");
+  const eventOption = { value: "events", label: "Events & workshops" };
+  const serviceOptions = eventTitle
+    ? form.serviceOptions?.some((o) => o.value === eventOption.value)
+      ? (form.serviceOptions ?? [])
+      : [...(form.serviceOptions ?? []), eventOption]
+    : (form.serviceOptions ?? []);
   useEffect(() => {
     const field = messageRef.current;
-    if (!enquiry || !field || field.value.trim()) return;
-    field.value = `Hi Cara, I'd like to enquire about ${enquiry}.\n\n`;
-  }, [enquiry]);
+    if (!eventTitle || !field || field.value.trim()) return;
+    const label = eventType === "live-session" ? "live session" : eventType === "workshop" ? "workshop" : "event";
+    const detail = [eventWhen, eventTime, eventLocation].filter(Boolean).join(", ");
+    field.value = `Hi Cara, I'd like to enquire about the ${label} "${eventTitle}"${detail ? ` (${detail})` : ""}.\n\nHow many places would you like? \n\n`;
+  }, [eventTitle, eventWhen, eventTime, eventLocation, eventType]);
   return (
     <section
       className={cn(
@@ -181,11 +201,21 @@ export function Contact({ content, offsetHeader }: ContactProps) {
                 </span>
               ) : null}
             </div>
+            {eventName ? (
+              <p className={"event-enquiry-note type-body rounded-xl border border-pastel-lilac/30 bg-pastel-lilac/10 px-[1.05rem] py-[.85rem]"}>
+                <strong className={"type-label block text-blue!"}>You&apos;re enquiring about</strong>
+                {eventTitle}
+                {eventSummary ? <span className={"block opacity-80"}>{eventSummary}</span> : null}
+                <input type="hidden" name="event" value={eventName} />
+              </p>
+            ) : null}
             <Select
+              key={eventTitle ? "event" : "default"}
               id="cf-service"
               name="service"
               label={form.serviceLabel}
-              options={form.serviceOptions ?? []}
+              defaultValue={eventTitle ? eventOption.value : ""}
+              options={serviceOptions}
               placeholder={form.servicePlaceholder}
             />
             <div className={"form-field flex flex-col gap-[.45rem]"}>

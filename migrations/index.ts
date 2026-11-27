@@ -20,6 +20,8 @@ import * as migration_20261105_190000_remove_overview_caption from './20261105_1
 import * as migration_20261105_200000_remove_about_hero_trust from './20261105_200000_remove_about_hero_trust';
 import * as migration_20261114_120000_add_events from './20261114_120000_add_events';
 import * as migration_20261118_120000_about_story_sections from './20261118_120000_about_story_sections';
+import * as migration_20261119_120000_drop_old_about_fields from './20261119_120000_drop_old_about_fields';
+import * as migration_20261127_120000_event_type from './20261127_120000_event_type';
 
 export const migrations = [
   {
@@ -126,5 +128,15 @@ export const migrations = [
     up: migration_20261118_120000_about_story_sections.up,
     down: migration_20261118_120000_about_story_sections.down,
     name: '20261118_120000_about_story_sections',
+  },
+  {
+    up: migration_20261119_120000_drop_old_about_fields.up,
+    down: migration_20261119_120000_drop_old_about_fields.down,
+    name: '20261119_120000_drop_old_about_fields',
+  },
+  {
+    up: migration_20261127_120000_event_type.up,
+    down: migration_20261127_120000_event_type.down,
+    name: '20261127_120000_event_type',
   },
 ];
